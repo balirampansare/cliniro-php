@@ -5,14 +5,14 @@
 	<meta name="viewport" content=
 	"width=device-width,initial-scale=1.0">
 
-	<!-- CSS only -->
+	
 	<link href=
 "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
 		integrity=
 "sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
 		crossorigin="anonymous" rel="stylesheet">
 
-	<!-- Html2Pdf -->
+	
 	<script src=
 "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js"
 		integrity=
@@ -25,6 +25,12 @@
 		text-align: center;
 		color: #2F8D46;
 		}
+
+		#autoresizing {
+		display: block;
+		overflow: hidden;
+		resize: none;
+	}
 	</style>
 </head>
 
@@ -33,7 +39,7 @@
 	GeeksForGeeks
 	</h2>
 
-	<!-- Form encrypted as text -->
+	
 	<form id ="form-print" enctype="text/plain"
 		class="form-control">
 
@@ -76,7 +82,7 @@
 		<strong>Enter Message </strong>
 		</label>
 		<textarea class= "form-control border-0"
-		id="message" name="message"
+		id="autoresizing" name="message"
 		placeholder="Enter you message">
 		</textarea>
 		<br>
@@ -88,6 +94,14 @@
 				
 	<script>		
 		// Function to GeneratePdf
+		textarea = document.querySelector("#autoresizing");
+	textarea.addEventListener('input', autoResize, false);
+		
+	function autoResize() {
+		this.style.height = 'auto';
+		this.style.height = this.scrollHeight + 'px';
+	}
+
 		function GeneratePdf() {
 			var element = document.getElementById('form-print');
 			html2pdf(element);
@@ -102,3 +116,6 @@
 	</script>
 </body>
 </html>
+
+
+

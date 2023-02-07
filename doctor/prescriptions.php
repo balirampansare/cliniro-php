@@ -399,6 +399,7 @@ if(isset($_POST['submit']))
                           <button class="btn btn-outline-success mt-2 text-center align-items-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add +</button>
                         </div>
                       </div>
+                      <?php }?>
                         
                       <section>
                     <!-- Modal -->
@@ -415,17 +416,61 @@ if(isset($_POST['submit']))
                                       <!--div class="col-sm-12 mx-t3">
                                         <h2 class="text-center text-info">Register</h2>
                                       </div-->
+                                      <?php
+              $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
+              while ($row=mysqli_fetch_array($ret)) { 
+                ?>
           
-                                      <div class="d-flex">
-                                        <div class=" fw-bold" id="form-subhead">Personal</div>
-                                        <div class="ms-auto"><label for="doctorname">Date: 5/02/2023</label></div>
-                                      </div>
-                                      <div class=" mt-0"><hr></div>
+                                      <div class="row">
+                  <div class="col-sm-2 text-center justify-content-center m-auto">
+                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
+                  </div>
+                  <div class="col-sm-10">
+                    <div class="row">
+                    <div class="col-sm-7">
+                  <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+                  <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
+                  <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
+                  <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+                  
+                </div>
+                  
+                  <div class="col-sm-5">
+                  <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
+                  <div class="text-center text-danger">Closed: Sunday</div>
+                  <div class="text-center fw-bold" id="form-subhead">Contact:</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  
+                  </div>
+
+                    </div>
+                    <div class="d-flex flex-row">
+                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
+                  <div id="form-subhead"><?php echo $row['address'];?></div>
+                    </div>
+
+                  </div>
+                  <hr style="border: 1px solid #012970;"> 
+
+                  <?php }?>
+                
+
+              </div> <!---------END OF HEADER----------->
+
+                                      
           
                                       <!--div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
                                           Personal <hr class="mt-0">
           
                                       </div-->
+
+                                      <?php
+            $prespid=$_GET['prespid'];
+            $ret=mysqli_query($con,"select * from tblpatient where ID='$prespid'");
+            while ($row=mysqli_fetch_array($ret)) {
+            
+                               ?>
                                       <div class="col-sm-4 text-center form-group">
                               <label for="doctorname" class="fw-bold">Name:</label>
                               <input type="text" class="form-control text-center border-0" name="patname" id="patname" value="<?php  echo $row['PatientName'];?>" readonly  >
@@ -465,7 +510,7 @@ if(isset($_POST['submit']))
           
                                      
 
-                                        <div class=" mt-0"><hr></div>
+                                        <div class=" mt-0"><hr style="border: 1px solid #012970;"></div>
           
           
                                         <?php }?>
@@ -473,8 +518,8 @@ if(isset($_POST['submit']))
                                       <!------------------------------------------------------------------>
                                       
                                       
-                                      <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
-                                      Symptoms <hr class="mt-0">
+                                      <div class="col-sm-12  fw-bold" id="form-subhead">
+                                      Symptoms
                                       </div>
 
                                       <div class="col-sm-12 form-group">
@@ -578,7 +623,7 @@ if(isset($_POST['submit']))
           
                                       <!--------------------------------------------------------------------->
                                       <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
-                                       Tests/Advice/Other <hr class="mt-0">
+                                       Tests/Advice/Other
                                       </div>
                                       <div class="col-sm-12 form-group mt-1">
                                           
@@ -596,10 +641,10 @@ if(isset($_POST['submit']))
                                   </form>
                             
                             </div>
-                            <div class="modal-footer">
+                            <!--div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Understood</button>
-                            </div>
+                            </div-->
                         </div>
                         </div>
                     </div>
@@ -714,10 +759,10 @@ while ($row=mysqli_fetch_array($ret)) {
                   
                   <div class="col-sm-5">
                   <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                  <div class=" text-danger text-center">9 am to 2pm | 6pm to 9pm</div>
-                  <div class="text-center" id="tred">Closed: Sunday</div>
+                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
+                  <div class="text-center text-danger">Closed: Sunday</div>
                   <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                  <div class="text-center" id="tred"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
                   
                   </div>
 
