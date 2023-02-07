@@ -230,7 +230,7 @@ header("location:manage-patient.php");
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="appointments.php">
               <i class="bi bi-circle"></i><span>Appointments</span>
             </a>
           </li>

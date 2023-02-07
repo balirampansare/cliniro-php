@@ -194,7 +194,7 @@ if(strlen($_SESSION['id']==0)) {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="appointments.php">
               <i class="bi bi-circle"></i><span>Appointments</span>
             </a>
           </li>
