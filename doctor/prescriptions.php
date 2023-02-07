@@ -692,51 +692,56 @@ while ($row=mysqli_fetch_array($ret)) {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-          <?php
-          $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
-          while ($row=mysqli_fetch_array($ret)) { 
-            ?>
-         
-            <div class="row">
-              <div class="col-sm-2 text-center bg-dark">
-                <img src="assets/img/logo.svg" alt="" style="width:100px; height:100px">
-              </div>
-              <div class="col-sm-6 bg-danger">
-              <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
-              <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['clinic_name'];?></div>
-              <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
-              </div>
-              <div class="col-sm-4 bg-primary">
-              <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-              <div class=" text-danger fs-6 p-0 m-0">Mon-Sat: 9am - 2pm|6pm - 9pm</div>
+            <form>
+            <?php
+              $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
+              while ($row=mysqli_fetch_array($ret)) { 
+                ?>
+            
+                <div class="row">
+                  <div class="col-sm-2 text-center justify-content-center m-auto">
+                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
+                  </div>
+                  <div class="col-sm-10">
+                    <div class="row">
+                    <div class="col-sm-7">
+                  <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+                  <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
+                  <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
+                  <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+                  
+                </div>
+                  
+                  <div class="col-sm-5">
+                  <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+                  <div class=" text-danger text-center">9 am to 2pm | 6pm to 9pm</div>
+                  <div class="text-center" id="tred">Closed: Sunday</div>
+                  <div class="text-center fw-bold" id="form-subhead">Contact:</div>
+                  <div class="text-center" id="tred"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  
+                  </div>
 
-              </div>
-              
-            </div>
-            <div class="row">
-              <div class="col-sm-5">
-                <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                <div class=" text-danger">9 am to 2pm | 6pm to 9pm</div>
-                <div class="" style="color:red;">Closed:</div>
-              </div>
-              <div class="col-sm-3">
-              <div class="text-center fw-bold" id="form-subhead">Address:</div>
+                    </div>
+                    <div class="d-flex flex-row">
+                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
+                  <div id="form-subhead"><?php echo $row['address'];?></div>
+                    </div>
 
+                  </div>
+                  <hr style="border: 1px solid #012970;;"> 
+
+                  
+                <?php }?>
+
+              </div> <!---------END OF HEADER----------->
+
+              </form>
+            
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
               </div>
-              <div class="col-sm-3">
-              <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-
-              </div>
-
-            </div>
-            <?php }?>
-
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
-          </div>
-        </div>
       </div>
     </div>
   </section>

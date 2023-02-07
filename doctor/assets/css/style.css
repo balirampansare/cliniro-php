@@ -1780,6 +1780,11 @@ button {
 
 }
 
+#tred{
+  color: red !important;
+}
+
+
 label{
   color: #012970;
 }
