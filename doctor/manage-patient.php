@@ -323,7 +323,7 @@ if(strlen($_SESSION['id']==0)) {
     </div>
 
     <div class="col-xxl-12 mx-auto">
-                    <div class="container-fluid box8 rounded" id="patients-patients-cont">
+                    <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                         <table class="table datatable">
                             <thead>
                               <tr id="form-subhead">
@@ -370,6 +370,8 @@ if(strlen($_SESSION['id']==0)) {
   
 
   </main>
+  
+  
 
 
  

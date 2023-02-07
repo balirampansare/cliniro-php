@@ -617,7 +617,7 @@ $ret=mysqli_query($con,"select * from tblmedicalhistory  where PatientID='$presp
 
 
  ?>
-                         <div class="container-fluid box8 rounded" id="patients-patients-cont">
+                         <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                         <table class="table datatable">
                             <thead>
                               <tr id="form-subhead">
@@ -638,8 +638,8 @@ while ($row=mysqli_fetch_array($ret)) {
                                 <td><?php echo $row['symptoms'];?></td>
 
                                     <td> 
-                                    <a href="#" class="p-2"><i class="bi bi-eye"></i></a> 
-                                        <a href="#"><i class="bi bi-download"></i></a>  
+                                    <button class="btn btn-outline-success m-1"  data-bs-toggle="modal" data-bs-target="#viewpresp"><i class="bi bi-eye"></i></button> 
+                                        <button href="#" class="btn btn-outline-success m-1"><i class="bi bi-download"></i></button>  
                                     </td>
                                     
                                   </tr>
@@ -661,17 +661,58 @@ while ($row=mysqli_fetch_array($ret)) {
                
 </section>
 
-<!------------------------------------------------------MODAL--------------------------------------------------------->
-
-
-
-
-
-
-  
-
+<!------------------------------------------------------MODAL END--------------------------------------------------------->
   </main>
+  <!--div class="modal fade modal-dialog-scrollable modal-lg " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">New Prescription</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div-->
 
+
+
+  <!----------------------------------------------VIEW PRESCRIPTION MODAL----------------------------->
+  <section>
+    <div class="modal fade modal-dialog-scrollable modal-lg " id="viewpresp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">New Prescription</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+          <?php
+          $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
+          while ($row=mysqli_fetch_array($ret)) { 
+            ?>
+         
+            <div class="row">
+              <div class="text-center fw-bold "><?php echo $row['clinic_name'];?></div>
+              <div class="text-center fw-bold"><?php echo $row['doctorName'];?></div>
+              <div class="text-center fw-bold"><?php echo $row['specilization'];?> Specialist</div>
+            </div>
+            <?php }?>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
  
 
