@@ -698,9 +698,31 @@ while ($row=mysqli_fetch_array($ret)) {
             ?>
          
             <div class="row">
-              <div class="text-center fw-bold "><?php echo $row['clinic_name'];?></div>
-              <div class="text-center fw-bold"><?php echo $row['doctorName'];?></div>
-              <div class="text-center fw-bold"><?php echo $row['specilization'];?> Specialist</div>
+              <div class="col-sm-2">
+                <img src="assets/img/logo.svg" alt="" style="width:100px; height:100px">
+              </div>
+              <div class="col-sm-10">
+              <div class="text-center fw-bold " id="form-subhead"><?php echo $row['clinic_name'];?></div>
+              <div class="text-center fw-bold" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+              <div class="text-center fw-bold" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+              </div>
+              
+            </div>
+            <div class="row">
+              <div class="col-sm-5">
+                <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+                <div class=" text-danger">9 am to 2pm | 6pm to 9pm</div>
+                <div class="" style="color:red;">Closed:</div>
+              </div>
+              <div class="col-sm-3">
+              <div class="text-center fw-bold" id="form-subhead">Address:</div>
+
+              </div>
+              <div class="col-sm-3">
+              <div class="text-center fw-bold" id="form-subhead">Contact:</div>
+
+              </div>
+
             </div>
             <?php }?>
 
