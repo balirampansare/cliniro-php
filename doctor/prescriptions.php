@@ -822,7 +822,7 @@ while ($row=mysqli_fetch_array($ret)) {
                               </div>
                               <hr>
 
-                              <div class="col-sm-12  fw-bold" id="form-subhead">Symptoms: </div>
+                              <div class="col-sm-12  fw-bold form-group" id="form-subhead">Symptoms: </div>
                               
                               <div class="col-sm-12 form-group">
                               <textarea class="form-control border-0" name="pdfsymptoms" id="symptoms" cols="30" rows=auto readonly><?php  echo $row['symptoms'];?></textarea>
@@ -920,8 +920,21 @@ while ($row=mysqli_fetch_array($ret)) {
   <script>
     function GeneratePdf() {
 			var element = document.getElementById('form-print');
-			html2pdf(element);
+      var opt = {
+  margin:       1,
+  filename:     'myfile.pdf',
+  image:        { type: 'jpeg', quality: 0.98 },
+  html2canvas:  { scale: 2 },
+  jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+};
+
+// New Promise-based usage:
+//html2pdf().set(opt).from(element).save();
+
+// Old monolithic-style usage:
+html2pdf(element, opt);
 		}
+	
   </script>
 
   
