@@ -321,7 +321,7 @@ if(strlen($_SESSION['id']==0)) {
       </nav>
     </div>
 
-    <div class="col-xxl-12 mx-auto">
+    <!--div class="col-xxl-12 mx-auto"-->
                     <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                         <table class="table datatable">
                             <thead>
@@ -331,7 +331,7 @@ if(strlen($_SESSION['id']==0)) {
                                 <th scope="col">Patient Contact</th>
                                 <th scope="col">Appointment Date</th>
                                 <th scope="col">Appointment Creation Date</th>
-                                <th scope="col">Updation Date</th>
+                                <th>Current Status</th>
                                 <th scope="col">Action</th>
                               </tr>
                             </thead>
@@ -345,15 +345,43 @@ while($row=mysqli_fetch_array($sql))
 ?>
                                 <tr>
                                 <td class="center"><?php echo $cnt;?>.</td>
-                                <td class="hidden-xs"><?php echo $row['PatientName'];?></td>
+                                <td class="hidden-xs"><?php echo $row['fname'];?></td>
                                 <td><?php echo $row['PatientContno'];?></td>
-                                <td><?php echo $row['PatientGender'];?></td>
-                                <td><?php echo $row['CreationDate'];?></td>
-                                <td><?php echo $row['UpdationDate'];?></td>
+                                <td><?php echo $row['appointmentDate'];?> / <?php echo
+												 $row['appointmentTime'];?></td>
+                                <td><?php echo $row['postingDate'];?></td>
+                                
+                                <td>
+<?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
+{
+	echo "Active";
+}
+if(($row['userStatus']==0) && ($row['doctorStatus']==1))  
+{
+	echo "Cancel by Patient";
+}
 
-                                    <td> 
-                                        <a href="view-patient.php?viewid=<?php echo $row['ID'];?>"><i class="bi bi-eye"></i></a> 
-                                    </td>
+if(($row['userStatus']==1) && ($row['doctorStatus']==0))  
+{
+	echo "Cancel by you";
+}
+
+
+
+												?></td>
+                                                <td >
+												<!--div class="visible-md visible-lg hidden-sm hidden-xs"-->
+							<?php if(($row['userStatus']==1) && ($row['doctorStatus']==1))  
+{ ?>
+
+													
+	<a href="appointment-history.php?id=<?php echo $row['id']?>&cancel=update" onClick="return confirm('Are you sure you want to cancel this appointment ?')"class="btn btn-transparent btn-xs tooltips" title="Cancel Appointment" tooltip-placement="top" tooltip="Remove">Cancel</a>
+	<?php } else {
+
+		echo "Canceled";
+		} ?>
+												<!--/div-->
+												</td>
                                     
                                   </tr>
 
@@ -364,7 +392,7 @@ while($row=mysqli_fetch_array($sql))
                           </table>
                        
                       </div>
-                     </div>
+                     <!--/div-->
 
 
   
