@@ -82,7 +82,10 @@ if(isset($_POST['submit']))
   <script data-require="jquery@*" data-semver="3.0.0" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css" />
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
-    
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js" integrity="sha512vDKWohFHe2vkVWXHp3tKvIxxXg0pJxeid5eo+UjdjME3DBFBn2F8yWOE0XmiFcFbXxrEOR1JriWEno5Ckpn15A=="
+		crossorigin="anonymous">
+	</script>
 
 </head>
 
@@ -560,7 +563,7 @@ if(isset($_POST['submit']))
                                         </div>
                                         <div class="col-sm-2 form-group">
                                           <label for="tabdays1">Day/Week/Mth</label>
-                                          <input type="text" class="form-control border-0" name="tabdays2" id="tabdays1" placeholder="days" required>
+                                          <input type="text" class="form-control border-0" name="tabdays1" id="tabdays1" placeholder="days" required>
                                         </div>
                                         <div class="col-sm-5 form-group mt-1">
                                           <input type="text" class="form-control border-0" name="tabname2" id="tabname" placeholder="" required>
@@ -684,7 +687,7 @@ while ($row=mysqli_fetch_array($ret)) {
 
                                     <td> 
                                     <button class="btn btn-outline-success m-1"  data-bs-toggle="modal" data-bs-target="#viewpresp"><i class="bi bi-eye"></i></button> 
-                                        <button href="#" class="btn btn-outline-success m-1"><i class="bi bi-download"></i></button>  
+                                        <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
                                     </td>
                                     
                                   </tr>
@@ -737,7 +740,7 @@ while ($row=mysqli_fetch_array($ret)) {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id ="form-print" enctype="text/plain">
             <?php
               $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
               while ($row=mysqli_fetch_array($ret)) { 
@@ -788,46 +791,47 @@ while ($row=mysqli_fetch_array($ret)) {
 
               <div class="col-sm-4 text-center form-group">
                               <label for="doctorname" class="fw-bold">Name:</label>
-                              <input type="text" class="form-control text-center border-0" name="patname" id="patname" value="<?php  echo $row['PatientName'];?>" readonly  >
+                              <input type="text" class="form-control text-center border-0" name="pdfname" id="patname" value="<?php  echo $row['PatientName'];?>" readonly  >
                             </div>
                             
                             <div class="col-sm-2 text-center form-group">
                                 <label for="sex" class="fw-bold">Gender:</label>
-                                <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
+                                <input type="text" class="form-control text-center border-0" name="pdfgender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
                             </div>
                             <div class="col-sm-2 text-center form-group">
                                 <label for="age" class="fw-bold">Age:</label>
-                                <input type="number" class="form-control text-center border-0" name="patage" id="patage" value="<?php  echo $row['age'];?>" required readonly >
+                                <input type="number" class="form-control text-center border-0" name="pdfpatage" id="patage" value="<?php  echo $row['age'];?>" required readonly >
                             </div>
 
 
                             <div class="col-sm-2 text-center form-group">
                                 <label for="blood" class="fw-bold">Blood Group:</label>
-                                <input type="text" class="form-control text-center border-0" name="patblood" id="blood" value="<?php  echo $row['bloodgrp'];?>" readonly readonly >
+                                <input type="text" class="form-control text-center border-0" name="pdfpatblood" id="blood" value="<?php  echo $row['bloodgrp'];?>" readonly readonly >
                             </div>
                             <div class="col-sm-2 text-center form-group">
                                 <label for="weight" class="fw-bold">Weight</label>
-                                <input type="number" class="form-control text-center border-0" name="weight" id="patweight" value="<?php  echo $row['Weight'];?>" required readonly>
+                                <input type="number" class="form-control text-center border-0" name="pdfweight" id="patweight" value="<?php  echo $row['Weight'];?>" required readonly>
                               </div>
                               <div class="col-sm-4 text-center form-group mt-1">
                                 <label for="bp" class="fw-bold">BP</label>
-                                <input type="number" class="form-control text-center border-0" name="bp" id="patbp" value="<?php  echo $row['BloodPressure'];?>" required readonly>
+                                <input type="number" class="form-control text-center border-0" name="pdfbp" id="patbp" value="<?php  echo $row['BloodPressure'];?>" required readonly>
                               </div>
                               <div class="col-sm-2 text-center form-group mt-1">
                                 <label for="temp" class="fw-bold">Temp</label>
-                                <input type="number" class="form-control text-center border-0" name="temp" id="patbp" value="<?php  echo $row['Temperature'];?>"  required readonly>
+                                <input type="number" class="form-control text-center border-0" name="pdftemp" id="patbp" value="<?php  echo $row['Temperature'];?>"  required readonly>
                               </div>
                               <hr>
 
                               <div class="col-sm-12  fw-bold" id="form-subhead">Symptoms: </div>
                               
                               <div class="col-sm-12 form-group">
-                              <textarea class="form-control border-0" name="symptoms" id="symptoms" cols="30" rows=auto readonly><?php  echo $row['symptoms'];?></textarea>
+                              <textarea class="form-control border-0" name="pdfsymptoms" id="symptoms" cols="30" rows=auto readonly><?php  echo $row['symptoms'];?></textarea>
                               </div>
 
-                              <table class="table">
+                              <div class="table-responsive mt-1"><hr>
+                              <table class="table table-bordered table-sm align-middle border-primary">
                                 <thead>
-                                  <tr>
+                                  <tr class="text-center">
                                     <th scope="col">Tablet</th>
                                     <th scope="col">Pattern</th>
                                     <th scope="col">Period</th>
@@ -835,15 +839,33 @@ while ($row=mysqli_fetch_array($ret)) {
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <th scope="row"><?php  echo $row['tabname1'];?></th>
+                                  <tr class="text-center">
+                                    <td><?php  echo $row['tabname1'];?></td>
                                     <td><?php  echo $row['tabpat1'];?></td>
                                     <td><?php  echo $row['tabped1'];?></td>
-                                    <td><?php  echo $row['tabdays1'];?></td>
+                                    <td><?php  echo $row['tabday1'];?></td>
                                   </tr>
                                  
                                 </tbody>
                               </table>
+
+                              </div>
+
+                              <div class="col-sm-12 form-group mt-1">
+                                          
+                                          <textarea class="form-control border-0" name="pdftabother" id="tabother" cols="30" rows="2"><?php  echo $row['tabother'];?></textarea>
+                                      </div>
+          
+                                      <!--------------------------------------------------------------------->
+                                      <div class="col-sm-12 mt-3 fw-bold" id="form-subhead"><hr>
+                                       Tests/Advice/Other
+                                      </div>
+                                      <div class="col-sm-12 form-group mt-1">
+                                          
+                                          <textarea class="form-control border-0" name="pdftests" id="tests" cols="30" rows="2"><?php  echo $row['tests'];?></textarea>
+                                      </div>
+
+                              
 
                               <?php }?>
 
@@ -894,6 +916,13 @@ while ($row=mysqli_fetch_array($ret)) {
   <!-- Template Main JS File -->
 
   <script src="assets/js/main.js"></script>
+
+  <script>
+    function GeneratePdf() {
+			var element = document.getElementById('form-print');
+			html2pdf(element);
+		}
+  </script>
 
   
 
