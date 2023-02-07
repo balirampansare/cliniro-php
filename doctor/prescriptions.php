@@ -82,7 +82,7 @@ if(isset($_POST['submit']))
   <script data-require="jquery@*" data-semver="3.0.0" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
     <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css" />
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
-
+    
 
 </head>
 
@@ -497,7 +497,7 @@ if(isset($_POST['submit']))
 
                               <div class="col-sm-4 text-center form-group mt-1">
                                 <label for="bp" class="fw-bold">BP</label>
-                                <input type="number" class="form-control text-center border-0" name="bp" id="patbp" value="<?php  echo $row['weight'];?>" required>
+                                <input type="number" class="form-control text-center border-0" name="bp" id="patbp" required>
                               </div>
                               <div class="col-sm-2 text-center form-group mt-1">
                                 <label for="temp" class="fw-bold">Temp</label>
@@ -743,7 +743,8 @@ while ($row=mysqli_fetch_array($ret)) {
               while ($row=mysqli_fetch_array($ret)) { 
                 ?>
             
-                <div class="row">
+               <div class="row">
+               <div class="row">
                   <div class="col-sm-2 text-center justify-content-center m-auto">
                     <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
                   </div>
@@ -780,6 +781,76 @@ while ($row=mysqli_fetch_array($ret)) {
 
               </div> <!---------END OF HEADER----------->
 
+              <?php
+              $ret=mysqli_query($con,"select * from tblmedicalhistory where ID='$prespid'");
+              while ($row=mysqli_fetch_array($ret)) { 
+                ?>
+
+              <div class="col-sm-4 text-center form-group">
+                              <label for="doctorname" class="fw-bold">Name:</label>
+                              <input type="text" class="form-control text-center border-0" name="patname" id="patname" value="<?php  echo $row['PatientName'];?>" readonly  >
+                            </div>
+                            
+                            <div class="col-sm-2 text-center form-group">
+                                <label for="sex" class="fw-bold">Gender:</label>
+                                <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
+                            </div>
+                            <div class="col-sm-2 text-center form-group">
+                                <label for="age" class="fw-bold">Age:</label>
+                                <input type="number" class="form-control text-center border-0" name="patage" id="patage" value="<?php  echo $row['age'];?>" required readonly >
+                            </div>
+
+
+                            <div class="col-sm-2 text-center form-group">
+                                <label for="blood" class="fw-bold">Blood Group:</label>
+                                <input type="text" class="form-control text-center border-0" name="patblood" id="blood" value="<?php  echo $row['bloodgrp'];?>" readonly readonly >
+                            </div>
+                            <div class="col-sm-2 text-center form-group">
+                                <label for="weight" class="fw-bold">Weight</label>
+                                <input type="number" class="form-control text-center border-0" name="weight" id="patweight" value="<?php  echo $row['Weight'];?>" required readonly>
+                              </div>
+                              <div class="col-sm-4 text-center form-group mt-1">
+                                <label for="bp" class="fw-bold">BP</label>
+                                <input type="number" class="form-control text-center border-0" name="bp" id="patbp" value="<?php  echo $row['BloodPressure'];?>" required readonly>
+                              </div>
+                              <div class="col-sm-2 text-center form-group mt-1">
+                                <label for="temp" class="fw-bold">Temp</label>
+                                <input type="number" class="form-control text-center border-0" name="temp" id="patbp" value="<?php  echo $row['Temperature'];?>"  required readonly>
+                              </div>
+                              <hr>
+
+                              <div class="col-sm-12  fw-bold" id="form-subhead">Symptoms: </div>
+                              
+                              <div class="col-sm-12 form-group">
+                              <textarea class="form-control border-0" name="symptoms" id="symptoms" cols="30" rows=auto readonly><?php  echo $row['symptoms'];?></textarea>
+                              </div>
+
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Tablet</th>
+                                    <th scope="col">Pattern</th>
+                                    <th scope="col">Period</th>
+                                    <th scope="col">Days</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row"><?php  echo $row['tabname1'];?></th>
+                                    <td><?php  echo $row['tabpat1'];?></td>
+                                    <td><?php  echo $row['tabped1'];?></td>
+                                    <td><?php  echo $row['tabdays1'];?></td>
+                                  </tr>
+                                 
+                                </tbody>
+                              </table>
+
+                              <?php }?>
+
+
+                              
+
+               </div>
               </form>
             
               <div class="modal-footer">
@@ -823,6 +894,8 @@ while ($row=mysqli_fetch_array($ret)) {
   <!-- Template Main JS File -->
 
   <script src="assets/js/main.js"></script>
+
+  
 
 </body>
 
