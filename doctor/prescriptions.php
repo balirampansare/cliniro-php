@@ -8,7 +8,7 @@ session_start();
 error_reporting(0);
 include('include/config.php');
 if(strlen($_SESSION['id']==0)) {
- header('location:logout.php');
+ header('location:doctorlogout.php');
   } else{
 if(isset($_POST['submit']))
   {
