@@ -698,13 +698,18 @@ while ($row=mysqli_fetch_array($ret)) {
             ?>
          
             <div class="row">
-              <div class="col-sm-2">
+              <div class="col-sm-2 text-center bg-dark">
                 <img src="assets/img/logo.svg" alt="" style="width:100px; height:100px">
               </div>
-              <div class="col-sm-10">
-              <div class="text-center fw-bold " id="form-subhead"><?php echo $row['clinic_name'];?></div>
-              <div class="text-center fw-bold" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
-              <div class="text-center fw-bold" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+              <div class="col-sm-6 bg-danger">
+              <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+              <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['clinic_name'];?></div>
+              <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+              </div>
+              <div class="col-sm-4 bg-primary">
+              <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+              <div class=" text-danger fs-6 p-0 m-0">Mon-Sat: 9am - 2pm|6pm - 9pm</div>
+
               </div>
               
             </div>
