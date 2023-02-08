@@ -566,7 +566,7 @@ if(isset($_POST['submit']))
                                           <input type="text" class="form-control border-0" name="tabdays1" id="tabdays1" placeholder="days" required>
                                         </div>
                                         <div class="col-sm-5 form-group mt-1">
-                                          <input type="text" class="form-control border-0" name="tabname2" id="tabname" placeholder="" required>
+                                          <input type="text" class="form-control border-0" name="tabname2" id="tabname" placeholder="" >
                                         </div>
                                         <div class="col-sm-2 form-group mt-1">
                                           <select name="pattern2" id="pattern" class="form-control border-0 browser-default custom-select">
@@ -589,10 +589,10 @@ if(isset($_POST['submit']))
                                           </select>
                                         </div>
                                         <div class="col-sm-2 form-group mt-1">
-                                          <input type="text" class="form-control border-0" name="tabdays2" id="tabdays2" placeholder="" required>
+                                          <input type="text" class="form-control border-0" name="tabdays2" id="tabdays2" placeholder="" >
                                         </div>
                                         <div class="col-sm-5 form-group mt-1">
-                                          <input type="text" class="form-control border-0" name="tabname3" id="tabname" placeholder="" required>
+                                          <input type="text" class="form-control border-0" name="tabname3" id="tabname" placeholder="" >
                                         </div>
                                         <div class="col-sm-2 form-group mt-1">
                                           <select name="pattern3" id="pattern" class="form-control border-0 browser-default custom-select">
@@ -615,7 +615,7 @@ if(isset($_POST['submit']))
                                           </select>
                                         </div>
                                         <div class="col-sm-2 form-group mt-1">
-                                          <input type="text" class="form-control border-0" name="tabdays3" id="tabdays3" placeholder="" required>
+                                          <input type="text" class="form-control border-0" name="tabdays3" id="tabdays3" placeholder="" >
                                         </div>
                                       <!--/section-->
                                       <!-------------------END OF TABLET SECTION----------------------->

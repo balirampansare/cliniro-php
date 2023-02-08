@@ -84,7 +84,7 @@ header('location:add-patient.php');
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
     
     
-    <script>
+    <!--script>
 function userAvailability() {
 $("#loaderIcon").show();
 jQuery.ajax({
@@ -98,7 +98,7 @@ $("#loaderIcon").hide();
 error:function (){}
 });
 }
-</script>
+</script-->
 
 </head>
 
