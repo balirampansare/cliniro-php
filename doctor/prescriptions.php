@@ -921,7 +921,7 @@ while ($row=mysqli_fetch_array($ret)) {
     function GeneratePdf() {
 			var element = document.getElementById('form-print');
       var opt = {
-  margin:       1,
+  margin:       0.2,
   filename:     'myfile.pdf',
   image:        { type: 'jpeg', quality: 0.98 },
   html2canvas:  { scale: 2 },

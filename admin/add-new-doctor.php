@@ -69,6 +69,37 @@ echo "<script>window.location.href ='managedoctor.php'</script>";
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
 
 
+    <script type="text/javascript">
+function valid()
+{
+ if(document.adddoc.npass.value!= document.adddoc.cfpass.value)
+{
+alert("Password and Confirm Password Field do not match  !!");
+document.adddoc.cfpass.focus();
+return false;
+}
+return true;
+}
+</script>
+
+
+<script>
+function checkemailAvailability() {
+$("#loaderIcon").show();
+jQuery.ajax({
+url: "check_availability.php",
+data:'emailid='+$("#docemail").val(),
+type: "POST",
+success:function(data){
+$("#email-availability-status").html(data);
+$("#loaderIcon").hide();
+},
+error:function (){}
+});
+}
+</script>
+
+
 </head>
 
 <!--script>
