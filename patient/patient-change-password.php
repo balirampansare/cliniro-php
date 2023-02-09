@@ -188,21 +188,21 @@ return true;
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed " href="doctorlanding.php">
+        <a class="nav-link collapsed " href="patientlanding.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed " href="doctorlanding.php">
+        <a class="nav-link collapsed " href="#">
           <i class="bi bi-stack"></i>
           <span>Stuff</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed " href="doctorlanding.php">
+        <a class="nav-link collapsed " href="#">
           <i class="bi bi-search"></i>
           <span>Find</span>
         </a>
@@ -267,8 +267,7 @@ return true;
     <!-- quote -->
 
     <?php 
-$did=$_SESSION['dlogin'];
-$sql=mysqli_query($con,"select * from doctors where docEmail='$did'");
+$sql=mysqli_query($con,"select * from users where id='".$_SESSION['id']."'");
 while($data=mysqli_fetch_array($sql))
 {
 ?>
@@ -281,14 +280,8 @@ while($data=mysqli_fetch_array($sql))
           <img class="avatar rounded-circle" src="../assets/img/messages-3.jpg" alt="patientpic">
 
           <div>
-          <h4 class="card-title"><?php echo htmlentities($data['doctorName']);?></h4>
-          <span>
-              <?php $query=mysqli_query($con,"select specilization from doctors where id='".$_SESSION['id']."'");
-            while($row=mysqli_fetch_array($query))
-            {
-	            echo $row['specilization'];
-            }?> Specialist
-              </span>
+          <h4 class="card-title"><?php echo htmlentities($data['fullName']);?></h4>
+          
 
           </div>
           
@@ -298,10 +291,24 @@ while($data=mysqli_fetch_array($sql))
           <a href="#" class="btn btn-outline-info">Message</a-->
 
           <div class="d-flex justify-content-between flex-wrap" id="form-subhead">
-            <div class="px-2"> <b>Contact:</b><?php echo htmlentities($data['contactno']);?></div>
-            <div class="px-2"> <b>Email:</b> <?php echo htmlentities($data['docEmail']);?></div>
-            <div class="px-2"> <b>Fees:</b> <?php echo htmlentities($data['docFees']);?></div>
-          </div>
+                            <div class="px-2"> <b>Id:</b>PT-<?php echo htmlentities($data['id']);?></div>
+                            <div class="px-2"> <b>City:</b><?php echo htmlentities($data['city']);?></div>
+                            
+                            <div class="px-2"> <b>Gender:</b><?php echo htmlentities($data['gender']);?></div>
+                            <div class="px-2"> <b>Email:</b> <?php echo htmlentities($data['email']);?></div>
+                            <div class="px-2"> <b>Address:</b> <?php echo htmlentities($data['address']);?></div>
+                          </div>
+                          <div class="text-center">
+                            <hr>Profile
+                          </div>
+                          <div class="d-flex justify-content-between flex-wrap" id="form-subhead">
+                              <div class="px-2"> <b>Registerd:</b><?php echo htmlentities($data['regDate']);?></div>
+                              <div class="px-2">
+                                <?php if($data['updationDate']){?>
+                                    <b>Updated:</b> <?php echo htmlentities($data['updationDate']);?>
+                                <?php } ?>  
+                              </div>
+                          </div>
 
          
 
@@ -315,7 +322,7 @@ while($data=mysqli_fetch_array($sql))
    <!-- patient form  -->
    <div class="col-xxl-9">
     <div class="container rounded" id="patients-patients-cont">
-    <form role="form" name="adddoc" method="post" onSubmit="return valid();">
+    <form  role="form" name="chngpwd" method="post" onSubmit="return valid();">
                           <div class="row jumbotron box8 rounded py-2">
                           <p style="color:red;"><?php echo htmlentities($_SESSION['msg1']);?>
 								<?php echo htmlentities($_SESSION['msg1']="");?></p>	

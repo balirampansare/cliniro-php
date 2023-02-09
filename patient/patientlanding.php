@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 include('include/config.php');
 if(strlen($_SESSION['id']==0)) {
- header('location:doctorlogout.php');
+ header('location:patientlogout.php');
   } else{
 
 
@@ -116,7 +116,7 @@ if(strlen($_SESSION['id']==0)) {
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="doctor-profile.php">
+              <a class="dropdown-item d-flex align-items-center" href="patient-profile.php">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -164,21 +164,21 @@ if(strlen($_SESSION['id']==0)) {
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed " href="doctorlanding.php">
+        <a class="nav-link collapsed " href="patientlanding.php">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed " href="doctorlanding.php">
+        <a class="nav-link collapsed " href="#">
           <i class="bi bi-stack"></i>
           <span>Stuff</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed " href="doctorlanding.php">
+        <a class="nav-link collapsed " href="#">
           <i class="bi bi-search"></i>
           <span>Find</span>
         </a>
@@ -186,7 +186,7 @@ if(strlen($_SESSION['id']==0)) {
     
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="doctor-profile.php">
+        <a class="nav-link collapsed" href="patient-profile.php">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
