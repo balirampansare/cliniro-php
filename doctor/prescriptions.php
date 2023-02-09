@@ -785,6 +785,7 @@ while ($row=mysqli_fetch_array($ret)) {
               </div> <!---------END OF HEADER----------->
 
               <?php
+              $cntval=$_GET['cntval'];
               $ret=mysqli_query($con,"select * from tblmedicalhistory where ID='$prespid'");
               while ($row=mysqli_fetch_array($ret)) { 
                 ?>
