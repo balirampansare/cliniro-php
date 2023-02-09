@@ -1,35 +1,28 @@
 <?php
-session_start();
-error_reporting(0);
-include("include/config.php");
+include_once('include/config.php');
 if(isset($_POST['submit']))
 {
-$puname=$_POST['username'];	
-$ppwd=md5($_POST['password']);
-$ret=mysqli_query($con,"SELECT * FROM users WHERE email='$puname' and password='$ppwd'");
-$num=mysqli_fetch_array($ret);
-if($num>0)
+$fname=$_POST['patname'];
+$gender=$_POST['gender'];
+$age=$_POST['age'];
+$height=$_POST['height'];
+$weight=$_POST['weight'];
+$medhis=$_POST['medhis'];
+$allergy=$_POST['allergy'];
+$contact=$_POST['contact'];
+$email=$_POST['email'];
+$locality=$_POST['locality'];
+$city=$_POST['city'];
+$address=$_POST['address'];
+$ename=$_POST['ename'];
+$erelation=$_POST['erelation'];
+$ephone=$_POST['ephone'];
+$password=md5($_POST['password']);
+$query=mysqli_query($con,"insert into users(fullname,address,city,gender,email,password,Age,Height,Weight,Medication,Allergy,Phone,Locality,Ename,Erelation,Econtact) values('$fname','$address','$city','$gender','$email','$password','$age','$height','$weight','$medhis','$allergy','$contact','$locality','$ename','$erelation','$ephone')");
+if($query)
 {
-$_SESSION['login']=$_POST['username'];
-$_SESSION['id']=$num['id'];
-$pid=$num['id'];
-$host=$_SERVER['HTTP_HOST'];
-$uip=$_SERVER['REMOTE_ADDR'];
-$status=1;
-// For stroing log if user login successfull
-$log=mysqli_query($con,"insert into userlog(uid,username,userip,status) values('$pid','$puname','$uip','$status')");
-header("location:patientlanding.php");
-}
-else
-{
-// For stroing log if user login unsuccessfull
-$_SESSION['login']=$_POST['username'];	
-$uip=$_SERVER['REMOTE_ADDR'];
-$status=0;
-mysqli_query($con,"insert into userlog(username,userip,status) values('$puname','$uip','$status')");
-$_SESSION['errmsg']="Invalid username or password";
-
-header("location:patientlogin.php");
+	echo "<script>alert('Successfully Registered. You can login now');</script>";
+	//header('location:user-login.php');
 }
 }
 ?>
@@ -42,7 +35,7 @@ header("location:patientlogin.php");
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Patient Login</title>
+  <title>Patient Signup</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -65,6 +58,19 @@ header("location:patientlogin.php");
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <script type="text/javascript">
+function valid()
+{
+ if(document.registration.password.value!= document.registration.password_again.value)
+{
+alert("Password and Confirm Password Field do not match  !!");
+document.registration.password_again.focus();
+return false;
+}
+return true;
+}
+</script>
 
 </head>
 
@@ -89,31 +95,26 @@ header("location:patientlogin.php");
 
                 <div class="card-body">
 
-                  <div class="pt-4 pb-2">
+                  <div class="">
                     <h5 class="card-title text-center pb-0 fs-4">Just one form to setup your patient profile</h5>
-                    <p>
-								
-								<span style="color:red;"><?php echo htmlentities($_SESSION['errmsg']); ?><?php echo htmlentities($_SESSION['errmsg']="");?></span>
-							</p>
+                    
                   </div>
 
-                  <form role="form" name="" method="post">
-                            <div class="row jumbotron  rounded py-2">
+                  <form name="registration" id="registration"  method="post" onSubmit="return valid();">
+                            <div class="row jumbotron  rounded ">
 
                               <div class="d-flex">
-                                <div class="p-1 fw-bold" id="form-subhead">Personal</div>
+                                <div class="fw-bold" id="form-subhead">Personal</div>
                               </div>
                               <div class=" mt-0"><hr></div>
                               <div class="col-sm-4 form-group">
                               <label for="doctorname">Patient Name</label>
-                              <input type="text" class="form-control" name="patname" id="patname" value="<?php  echo $row['fullName'];?>" required>
+                              <input type="text" class="form-control" name="patname" id="patname" required>
                             </div>
                             
                             <div class="col-sm-2 form-group">
                                 <label for="sex">Gender</label>
                                 <select name="gender" id="sex" class="form-control browser-default custom-select">
-                                <option value="<?php  echo $row['gender'];?>">
-                                <?php  echo $row['gender'];?></option>  
                                 <option value="Male">Male</option>
                                   <option value="Female">Female</option>
                                   <option value="Other">Other</option>
@@ -121,55 +122,28 @@ header("location:patientlogin.php");
                             </div>
                             <div class="col-sm-2 form-group">
                                 <label for="age">Age</label>
-                                <input type="number" class="form-control" name="patage" id="patage" value="<?php  echo $row['PatientAge'];?>" required>
+                                <input type="number" class="form-control" name="age" id="patage"  required>
                             </div>
 
 
-                            <div class="col-sm-2 form-group mt-1">
-                                <label for="blood">Blood Group</label>
-                                <select id="blood" name="patblood"  class="form-control browser-default custom-select">
-                                <option value="<?php  echo $row['bloodgrp'];?>">
-                                <?php  echo $row['bloodgrp'];?></option>
-                                  <option value="A+">A+</option>
-                                  <option value="A-">A-</option>
-                                  <option value="B+">B+</option>
-                                  <option value="B-">B-</option>
-                                  <option value="O+">O+</option>
-                                  <option value="O-">O-</option>
-                                  <option value="AB+">AB+</option>
-                                  <option value="AB-">AB-</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-2 form-group mt-1">
-                                <label for="sugar">Sugar</label>
-                                <select id="sugar" name="patsugar" class="form-control browser-default custom-select">
-                                <option value="<?php  echo $row['sugar'];?>">
-                                <?php  echo $row['sugar'];?></option>    
-                                <option value="none">None</option>
-                                    <option value="type1">Type1</option>
-                                    <option value="type2">Type2</option>
-                                  </select>
-                            </div>
-                            <div class="col-sm-3 form-group mt-1">
-                                <label for="Date">Date Of Birth</label>
-                                <input type="Date" name="patdob" class="form-control" id="patdob" value="<?php  echo $row['dob'];?>" required>
-                            </div>
+                            
+                           
                             <div class="col-sm-2 form-group mt-1">
                                 <label for="height">Height</label>
-                                <input type="text" name="patheight" class="form-control" id="patheight"value="<?php  echo $row['height'];?>" required>
+                                <input type="text" name="height" class="form-control" id="patheight">
                               </div>
                               <div class="col-sm-2 form-group mt-1">
                                 <label for="weight">Weight</label>
-                                <input type="text" class="form-control" name="patweight" id="patweight" value="<?php  echo $row['weight'];?>" required>
+                                <input type="text" class="form-control" name="weight" id="patweight">
                               </div>
 
                               <div class="col-sm-6 form-group mt-1">
                                 <label for="medication">Any medication taken regularly</label>
-                                <textarea class="form-control" name="medhis" id="medhis" cols="30" rows="2"><?php  echo $row['PatientMedhis'];?></textarea>
+                                <textarea class="form-control" name="medhis" id="medhis" cols="30" rows="2"></textarea>
                               </div>
                               <div class="col-sm-6 form-group mt-1">
                                 <label for="allergy">Allergy / Medical problem</label>
-                                <textarea class="form-control" name="patallergy" id="patallergy" cols="30" rows="2"><?php  echo $row['allergy'];?></textarea>
+                                <textarea class="form-control" name="allergy" id="patallergy" cols="30" rows="2"></textarea>
                               </div>
 
                             <!------------------------------------------------------------------>
@@ -178,25 +152,25 @@ header("location:patientlogin.php");
                             </div>
                             <div class="col-sm-3 form-group">
                               <label for="phone">Phone</label>
-                              <input type="tel" class="form-control" name="patcontact" id="patcontact" value="<?php  echo $row['PatientContno'];?>" required>
+                              <input type="tel" class="form-control" name="contact" id="patcontact"  required>
                             </div>
                             <div class="col-sm-5 form-group">
                               <label for="email">Email</label>
-                              <input type="email" class="form-control" name="patemail" id="patemail" value="<?php  echo $row['PatientEmail'];?>" required>
+                              <input type="email" class="form-control" name="email" id="patemail"  required>
                            </div>
                            <div class="col-sm-2 form-group">
                             <label for="locality">Locality</label>
-                            <input type="text" class="form-control" name="patlocality" id="patlocality" value="<?php  echo $row['locality'];?>" required>
+                            <input type="text" class="form-control" name="locality" id="patlocality"  required>
                           </div>
 
                           <div class="col-sm-2 form-group">
                             <label for="city">City</label>
-                            <input type="text" class="form-control" name="patcity" id="patcity" value="<?php  echo $row['city'];?>" required>
+                            <input type="text" class="form-control" name="city" id="patcity"  required>
                           </div>
 
-                          <div class="col-sm-6 form-group">
+                          <div class="col-sm-12 form-group">
                             <label for="address">Patient Address</label>
-                            <textarea name="pataddress" class="form-control" required><?php  echo $row['PatientAdd'];?></textarea>
+                            <textarea name="address" class="form-control" required></textarea>
                           </div>
 
                             <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
@@ -205,15 +179,28 @@ header("location:patientlogin.php");
 
                             <div class="col-sm-4 form-group">
                               <label for="ename">Name</label>
-                              <input type="text" class="form-control" name="ename" id="ename" value="<?php  echo $row['ename'];?>" required>
+                              <input type="text" class="form-control" name="ename" id="ename">
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="erelation">Relation</label>
-                              <input type="text" class="form-control" name="erelation" id="erelation" value="<?php  echo $row['erelation'];?>" required>
+                              <input type="text" class="form-control" name="erelation" id="erelation">
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="ephone">Phone</label>
-                              <input type="tel" class="form-control" name="ephone" id="ephone" value="<?php  echo $row['ephone'];?>" required>
+                              <input type="tel" class="form-control" name="ephone" id="ephone">
+                            </div>
+
+                            <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
+                              Password<hr class="mt-0">
+                            </div>
+
+                            <div class="col-sm-6 form-group">
+                              <label for="password">Password</label>
+                              <input type="password" class="form-control" name="password" id="password" required>
+                            </div>
+                            <div class="col-sm-6 form-group">
+                              <label for="password_again">Enter Password Again</label>
+                              <input type="password" class="form-control"  id="password_again" name="password_again"   required>
                             </div>
 
                            

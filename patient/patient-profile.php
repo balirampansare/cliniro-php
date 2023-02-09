@@ -315,7 +315,7 @@ while($row=mysqli_fetch_array($sql))
                             </div>
                             <div class="col-sm-2 form-group">
                                 <label for="age">Age</label>
-                                <input type="number" class="form-control" name="patage" id="patage" value="<?php  echo $row['PatientAge'];?>" required>
+                                <input type="number" class="form-control" name="patage" id="patage" value="<?php  echo $row['Age'];?>" required>
                             </div>
 
 
@@ -350,20 +350,20 @@ while($row=mysqli_fetch_array($sql))
                             </div>
                             <div class="col-sm-2 form-group mt-1">
                                 <label for="height">Height</label>
-                                <input type="text" name="patheight" class="form-control" id="patheight"value="<?php  echo $row['height'];?>" required>
+                                <input type="text" name="patheight" class="form-control" id="patheight"value="<?php  echo $row['Height'];?>" required>
                               </div>
                               <div class="col-sm-2 form-group mt-1">
                                 <label for="weight">Weight</label>
-                                <input type="text" class="form-control" name="patweight" id="patweight" value="<?php  echo $row['weight'];?>" required>
+                                <input type="text" class="form-control" name="patweight" id="patweight" value="<?php  echo $row['Weight'];?>" required>
                               </div>
 
                               <div class="col-sm-6 form-group mt-1">
                                 <label for="medication">Any medication taken regularly</label>
-                                <textarea class="form-control" name="medhis" id="medhis" cols="30" rows="2"><?php  echo $row['PatientMedhis'];?></textarea>
+                                <textarea class="form-control" name="medhis" id="medhis" cols="30" rows="2"><?php  echo $row['Medication'];?></textarea>
                               </div>
                               <div class="col-sm-6 form-group mt-1">
                                 <label for="allergy">Allergy / Medical problem</label>
-                                <textarea class="form-control" name="patallergy" id="patallergy" cols="30" rows="2"><?php  echo $row['allergy'];?></textarea>
+                                <textarea class="form-control" name="patallergy" id="patallergy" cols="30" rows="2"><?php  echo $row['Allergy'];?></textarea>
                               </div>
 
                             <!------------------------------------------------------------------>
@@ -372,15 +372,15 @@ while($row=mysqli_fetch_array($sql))
                             </div>
                             <div class="col-sm-3 form-group">
                               <label for="phone">Phone</label>
-                              <input type="tel" class="form-control" name="patcontact" id="patcontact" value="<?php  echo $row['PatientContno'];?>" required>
+                              <input type="tel" class="form-control" name="patcontact" id="patcontact" value="<?php  echo $row['Phone'];?>" required>
                             </div>
                             <div class="col-sm-5 form-group">
                               <label for="email">Email</label>
-                              <input type="email" class="form-control" name="patemail" id="patemail" value="<?php  echo $row['PatientEmail'];?>" required>
+                              <input type="email" class="form-control" name="patemail" id="patemail" value="<?php  echo $row['Email'];?>" required>
                            </div>
                            <div class="col-sm-2 form-group">
                             <label for="locality">Locality</label>
-                            <input type="text" class="form-control" name="patlocality" id="patlocality" value="<?php  echo $row['locality'];?>" required>
+                            <input type="text" class="form-control" name="patlocality" id="patlocality" value="<?php  echo $row['Locality'];?>" required>
                           </div>
 
                           <div class="col-sm-2 form-group">
@@ -390,7 +390,7 @@ while($row=mysqli_fetch_array($sql))
 
                           <div class="col-sm-6 form-group">
                             <label for="address">Patient Address</label>
-                            <textarea name="pataddress" class="form-control" required><?php  echo $row['PatientAdd'];?></textarea>
+                            <textarea name="pataddress" class="form-control" required><?php  echo $row['address'];?></textarea>
                           </div>
 
                             <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
@@ -399,15 +399,15 @@ while($row=mysqli_fetch_array($sql))
 
                             <div class="col-sm-4 form-group">
                               <label for="ename">Name</label>
-                              <input type="text" class="form-control" name="ename" id="ename" value="<?php  echo $row['ename'];?>" required>
+                              <input type="text" class="form-control" name="ename" id="ename" value="<?php  echo $row['Ename'];?>" required>
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="erelation">Relation</label>
-                              <input type="text" class="form-control" name="erelation" id="erelation" value="<?php  echo $row['erelation'];?>" required>
+                              <input type="text" class="form-control" name="erelation" id="erelation" value="<?php  echo $row['Erelation'];?>" required>
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="ephone">Phone</label>
-                              <input type="tel" class="form-control" name="ephone" id="ephone" value="<?php  echo $row['ephone'];?>" required>
+                              <input type="tel" class="form-control" name="ephone" id="ephone" value="<?php  echo $row['Econtact'];?>" required>
                             </div>
 
                             <!--------------------------------------------------------------------->
