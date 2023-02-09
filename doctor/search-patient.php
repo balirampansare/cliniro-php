@@ -352,6 +352,7 @@ $sdata=$_POST['searchdata'];
                                 <th scope="col">Patient Name</th>
                                 <th scope="col">Patient Age</th>
                                 <th scope="col">Patient Gender</th>
+                                <th scope="col">Allergies</th>
                                 <th scope="col">Patient Contact</th>
                                 <th scope="col">Action</th>
                               </tr>
@@ -359,7 +360,7 @@ $sdata=$_POST['searchdata'];
 
                             <tbody>
                             <?php
-$sql=mysqli_query($con,"select * from tblpatient where PatientName like '%$sdata%'|| PatientContno like '%$sdata%'");
+$sql=mysqli_query($con,"select * from users where fullName like '%$sdata%'|| Phone like '%$sdata%'");
 $num=mysqli_num_rows($sql);
 if($num>0){
 $cnt=1;
@@ -369,15 +370,16 @@ while($row=mysqli_fetch_array($sql))
                            
                                 <tr>
                                 <td class="center"><?php echo $cnt;?>.</td>
-                                <td ><?php echo $row['PatientName'];?></td>
-                                <td ><?php echo $row['PatientAge'];?></td>
-                                <td><?php echo $row['PatientGender'];?></td>
-                                <td><?php echo $row['PatientContno'];?></td>
+                                <td ><?php echo $row['fullName'];?></td>
+                                <td ><?php echo $row['Age'];?></td>
+                                <td><?php echo $row['gender'];?></td>
+                                <td><?php echo $row['Allergy'];?></td>
+                                <td><?php echo $row['Phone'];?></td>
                                 
 
                                    
                                     <td> 
-                                    <button class="btn btn-outline-success m-1"> <a href="view-patient.php?viewid=<?php echo $row['ID'];?>"><i class="bi bi-eye"></i></a></button> 
+                                    <button class="btn btn-outline-success m-1"> <a href="view-patient.php?viewid=<?php echo $row['id'];?>"><i class="bi bi-eye"></i></a></button> 
                                         <button class="btn btn-outline-success m-1"><a href="#"><i class="bi bi-plus"></i></a></button>  
                                     </td>
                                     

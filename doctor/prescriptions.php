@@ -366,15 +366,15 @@ if(isset($_POST['submit']))
 <section class="section">
 <?php
             $prespid=$_GET['prespid'];
-            $ret=mysqli_query($con,"select * from tblpatient where ID='$prespid'");
+            $ret=mysqli_query($con,"select * from users where id='$prespid'");
             $cnt=1;
             while ($row=mysqli_fetch_array($ret)) {
             
                                ?>
 
                 <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
-                  <a href="view-patient.php?viewid=<?php echo $row['ID'];?>" class="p-2 flex-grow-1 border rounded m-2">Patient Info</a>
-                  <a href="prescriptions.php?prespid=<?php echo $row['ID'];?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Prescriptions</a>
+                  <a href="view-patient.php?viewid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Patient Info</a>
+                  <a href="prescriptions.php?prespid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Prescriptions</a>
                   <a href="#" class="p-2 flex-grow-1 border rounded m-2">Appointments</a>
                   <a href="#" class="p-2 flex-grow-1 border rounded m-2">Billings</a>
                 </div>
@@ -390,12 +390,12 @@ if(isset($_POST['submit']))
                           <img class="avatar rounded-circle" src="../assets/img/messages-3.jpg" alt="patientpic">
                           <h4 class="card-title"><?php  echo $row['PatientName'];?></h4>
                           <div class="d-flex justify-content-between flex-wrap" id="form-subhead">
-                            <div class="px-2"> <b>Id:</b>PT-<?php  echo $row['ID'];?></div>
-                            <div class="px-2"> <b>Weight:</b><?php  echo $row['weight'];?></div>
-                            <div class="px-2"> <b>Age:</b><?php  echo $row['PatientAge'];?></div>
-                            <div class="px-2"> <b>Gender:</b><?php  echo $row['PatientGender'];?></div>
+                            <div class="px-2"> <b>Id:</b>PT-<?php  echo $row['id'];?></div>
+                            <div class="px-2"> <b>Weight:</b><?php  echo $row['Weight'];?></div>
+                            <div class="px-2"> <b>Age:</b><?php  echo $row['Age'];?></div>
+                            <div class="px-2"> <b>Gender:</b><?php  echo $row['gender'];?></div>
                             <div class="px-2"> <b>Blood Grp:</b> <?php  echo $row['bloodgrp'];?></div>
-                            <div class="px-2"> <b>Allergies:</b> <?php  echo $row['allergy'];?></div>
+                            <div class="px-2"> <b>Allergies:</b> <?php  echo $row['Allergy'];?></div>
                           </div>
 
                           <hr class="mt-1">
@@ -470,22 +470,22 @@ if(isset($_POST['submit']))
 
                                       <?php
             $prespid=$_GET['prespid'];
-            $ret=mysqli_query($con,"select * from tblpatient where ID='$prespid'");
+            $ret=mysqli_query($con,"select * from users where id='$prespid'");
             while ($row=mysqli_fetch_array($ret)) {
             
                                ?>
                                       <div class="col-sm-4 text-center form-group">
                               <label for="doctorname" class="fw-bold">Name:</label>
-                              <input type="text" class="form-control text-center border-0" name="patname" id="patname" value="<?php  echo $row['PatientName'];?>" readonly  >
+                              <input type="text" class="form-control text-center border-0" name="patname" id="patname" value="<?php  echo $row['fullName'];?>" readonly  >
                             </div>
                             
                             <div class="col-sm-2 text-center form-group">
                                 <label for="sex" class="fw-bold">Gender:</label>
-                                <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['PatientGender'];?>" readonly  >
+                                <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
                             </div>
                             <div class="col-sm-2 text-center form-group">
                                 <label for="age" class="fw-bold">Age:</label>
-                                <input type="number" class="form-control text-center border-0" name="patage" id="patage" value="<?php  echo $row['PatientAge'];?>" required >
+                                <input type="number" class="form-control text-center border-0" name="patage" id="patage" value="<?php  echo $row['Age'];?>" required >
                             </div>
 
 
@@ -495,7 +495,7 @@ if(isset($_POST['submit']))
                             </div>
                             <div class="col-sm-2 text-center form-group">
                                 <label for="weight" class="fw-bold">Weight</label>
-                                <input type="number" class="form-control text-center border-0" name="weight" id="patweight" value="<?php  echo $row['weight'];?>" required>
+                                <input type="number" class="form-control text-center border-0" name="weight" id="patweight" value="<?php  echo $row['Weight'];?>" required>
                               </div>
 
                               <div class="col-sm-4 text-center form-group mt-1">

@@ -363,6 +363,7 @@ while($data=mysqli_fetch_array($sql))
 ?>
 
 
+
     <div class="col-xxl-3 ">
       <div class="card">
         <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
