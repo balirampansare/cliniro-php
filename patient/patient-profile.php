@@ -239,7 +239,7 @@ if(strlen($_SESSION['id']==0)) {
 
     <?php 
 $sql=mysqli_query($con,"select * from users where id='".$_SESSION['id']."'");
-while($data=mysqli_fetch_array($sql))
+while($row=mysqli_fetch_array($sql))
 {
 ?>
 
@@ -263,21 +263,21 @@ while($data=mysqli_fetch_array($sql))
           <a href="#" class="btn btn-outline-info">Message</a-->
 
           <div class="d-flex justify-content-between flex-wrap" id="form-subhead">
-                            <div class="px-2"> <b>Id:</b>PT-<?php echo htmlentities($data['id']);?></div>
-                            <div class="px-2"> <b>City:</b><?php echo htmlentities($data['city']);?></div>
+                            <div class="px-2"> <b>Id:</b>PT-<?php echo $row['id'];?></div>
+                            <div class="px-2"> <b>City:</b><?php echo $row['city'];?></div>
                             
-                            <div class="px-2"> <b>Gender:</b><?php echo htmlentities($data['gender']);?></div>
-                            <div class="px-2"> <b>Email:</b> <?php echo htmlentities($data['email']);?></div>
-                            <div class="px-2"> <b>Address:</b> <?php echo htmlentities($data['address']);?></div>
+                            <div class="px-2"> <b>Gender:</b><?php echo $row['gender'];?></div>
+                            <div class="px-2"> <b>Email:</b> <?php echo $row['email'];?></div>
+                            <div class="px-2"> <b>Address:</b> <?php echo $row['address'];?></div>
                           </div>
                           <div class="text-center">
                             <hr>Profile
                           </div>
                           <div class="d-flex justify-content-between flex-wrap" id="form-subhead">
-                              <div class="px-2"> <b>Registerd:</b><?php echo htmlentities($data['regDate']);?></div>
+                              <div class="px-2"> <b>Registerd:</b><?php echo $row['regDate'];?></div>
                               <div class="px-2">
                                 <?php if($data['updationDate']){?>
-                                    <b>Updated:</b> <?php echo htmlentities($data['updationDate']);?>
+                                    <b>Updated:</b> <?php echo $row['updationDate'];?>
                                 <?php } ?>  
                               </div>
                           </div>
