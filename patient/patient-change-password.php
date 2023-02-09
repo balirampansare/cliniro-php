@@ -1,14 +1,26 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 include('include/config.php');
-if(strlen($_SESSION['id']==0)) {
- header('location:doctorlogout.php');
-  } else{
-
-
+include('include/checklogin.php');
+check_login();
+date_default_timezone_set('Asia/Kolkata');// change according timezone
+$currentTime = date( 'd-m-Y h:i:s A', time () );
+if(isset($_POST['submit']))
+{
+$sql=mysqli_query($con,"SELECT password FROM  users where password='".md5($_POST['cpass'])."' && id='".$_SESSION['id']."'");
+$num=mysqli_fetch_array($sql);
+if($num>0)
+{
+ $con=mysqli_query($con,"update users set password='".md5($_POST['npass'])."', updationDate='$currentTime' where id='".$_SESSION['id']."'");
+$_SESSION['msg1']="Password Changed Successfully !!";
+}
+else
+{
+$_SESSION['msg1']="Old Password not match !!";
+}
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,6 +57,18 @@ if(strlen($_SESSION['id']==0)) {
     <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css" />
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
 
+    <script type="text/javascript">
+function valid()
+{
+if(document.chngpwd.npass.value!= document.chngpwd.cfpass.value)
+{
+alert("Password and Confirm Password Field do not match  !!");
+document.chngpwd.cfpass.focus();
+return false;
+}
+return true;
+}
+</script>
 
 </head>
 
@@ -219,13 +243,116 @@ if(strlen($_SESSION['id']==0)) {
 
   <main class="main" id="main">
   <div class="pagetitle">
-      <h1>Profile</h1>
+    <div class="pagetitle">
+      <h1>Profile-Change Password</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active ">Profile</li>
+          <li class="breadcrumb-item active ">Change Password</li>
         </ol>
       </nav>
+    </div>
+
+    <div class="section">
+    <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
+  <a href="patient-profile.php" class="p-2 flex-grow-1 border rounded m-2">Profile</a>
+  <a href="patient-change-password.php" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Change Password</a>
+  <!--a href="../patients/pages-patient-appointments.html" class="p-2 flex-grow-1 border rounded m-2">Appointments</a>
+  <a href="../patients/pages-patient-billings.html" class="p-2 flex-grow-1 border rounded m-2">Billings</a-->
+</div>
+
+
+<div class="row" >
+    <!-- quote -->
+
+    <?php 
+$did=$_SESSION['dlogin'];
+$sql=mysqli_query($con,"select * from doctors where docEmail='$did'");
+while($data=mysqli_fetch_array($sql))
+{
+?>
+
+
+    <div class="col-xxl-3 ">
+      <div class="card">
+        <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
+        <div class="card-body text-center">
+          <img class="avatar rounded-circle" src="../assets/img/messages-3.jpg" alt="patientpic">
+
+          <div>
+          <h4 class="card-title"><?php echo htmlentities($data['doctorName']);?></h4>
+          <span>
+              <?php $query=mysqli_query($con,"select specilization from doctors where id='".$_SESSION['id']."'");
+            while($row=mysqli_fetch_array($query))
+            {
+	            echo $row['specilization'];
+            }?> Specialist
+              </span>
+
+          </div>
+          
+          <!--h6 class="card-subtitle mb-2 text-muted">Famous Actor</h6>
+          <p class="card-text">Robert John Downey Jr.'career has included critical and popular success in his youth, followed by a period of substance abuse and legal difficulties, and a resurgence of commercial success in middle age. </p>
+          <a href="#" class="btn btn-info">Follow</a>
+          <a href="#" class="btn btn-outline-info">Message</a-->
+
+          <div class="d-flex justify-content-between flex-wrap" id="form-subhead">
+            <div class="px-2"> <b>Contact:</b><?php echo htmlentities($data['contactno']);?></div>
+            <div class="px-2"> <b>Email:</b> <?php echo htmlentities($data['docEmail']);?></div>
+            <div class="px-2"> <b>Fees:</b> <?php echo htmlentities($data['docFees']);?></div>
+          </div>
+
+         
+
+        </div>
+      </div>
+      <?php } ?>
+
+      
+   </div><!-- End quote -->
+
+   <!-- patient form  -->
+   <div class="col-xxl-9">
+    <div class="container rounded" id="patients-patients-cont">
+    <form role="form" name="adddoc" method="post" onSubmit="return valid();">
+                          <div class="row jumbotron box8 rounded py-2">
+                          <p style="color:red;"><?php echo htmlentities($_SESSION['msg1']);?>
+								<?php echo htmlentities($_SESSION['msg1']="");?></p>	
+                            <!--div class="col-sm-12 mx-t3">
+                              <h2 class="text-center text-info">Register</h2>
+                            </div-->
+                            <div class="form-group">
+															<label for="exampleInputEmail1">Current Password</label>
+							                                <input type="password" name="cpass" class="form-control"  placeholder="Enter Current Password" required>
+														</div>
+														<div class="form-group">
+															<label for="exampleInputPassword1">New Password</label>
+					                                        <input type="password" name="npass" class="form-control"  placeholder="New Password" required>
+														</div>
+														
+                                                        <div class="form-group">
+															<label for="exampleInputPassword1">Confirm Password</label>
+									                        <input type="password" name="cfpass" class="form-control"  placeholder="Confirm Password" required>
+														</div>
+                                                        <div class="col-sm-12 form-group mt-3">
+                                                        <button type="submit" name="submit" class="btn btn-outline-success mt-2 float-end">
+															Change Password
+														</button>
+
+                                                        </div>								
+														
+
+                            
+                      
+                          </div>
+
+                          
+                        </form>
+      </div>
+     </div><!-- End patient form-->
+   </div>
+
     </div>
   
 
@@ -268,5 +395,3 @@ if(strlen($_SESSION['id']==0)) {
 </body>
 
 </html>
-
-<?php } ?>
