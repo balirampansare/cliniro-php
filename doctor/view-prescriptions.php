@@ -13,7 +13,7 @@ if(strlen($_SESSION['id']==0)) {
 if(isset($_POST['submit']))
   {
     
-    $vid=$_GET['viewid'];
+    
     $docid = $_SESSION['id'];
     $patname = $_POST['patname'];
     $gender = $_POST['gender'];
@@ -366,8 +366,9 @@ if(isset($_POST['submit']))
 
 <section class="section">
 <?php
-            $prespid=$_GET['prespid'];
-            $ret=mysqli_query($con,"select * from users where id='$prespid'");
+            $viewid=$_GET['viewid'];
+            
+            $ret=mysqli_query($con,"select * from users where ID='$viewid'");
             $cnt=1;
             while ($row=mysqli_fetch_array($ret)) {
             
@@ -375,7 +376,7 @@ if(isset($_POST['submit']))
 
                 <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
                   <a href="view-patient.php?viewid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Patient Info</a>
-                  <a href="prescriptions.php?prespid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Prescriptions</a>
+                  <a href="view-prescriptions.php?viewid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Prescriptions</a>
                   <a href="#" class="p-2 flex-grow-1 border rounded m-2">Appointments</a>
                   <a href="#" class="p-2 flex-grow-1 border rounded m-2">Billings</a>
                 </div>
@@ -411,6 +412,7 @@ if(isset($_POST['submit']))
        
                    <!-- patient form  -->
                    <div class="col-xxl-9">
+                   <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                    <form id ="form-print" enctype="text/plain">
             <?php
               $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
@@ -457,7 +459,7 @@ if(isset($_POST['submit']))
 
               <?php
               $viewid=$_GET['viewid'];
-              $ret=mysqli_query($con,"select * from tblmedicalhistory where PatientID='$viewid'");
+              $ret=mysqli_query($con,"select * from tblmedicalhistory where ID='$viewid'");
               while ($row=mysqli_fetch_array($ret)) { 
                 ?>
 
@@ -537,6 +539,8 @@ if(isset($_POST['submit']))
                                           <textarea class="form-control border-0" name="pdftests" id="tests" cols="30" rows="2"><?php  echo $row['tests'];?></textarea>
                                       </div>
 
+                                      
+
                               
 
                               <?php }?>
@@ -546,6 +550,8 @@ if(isset($_POST['submit']))
 
                </div>
               </form>
+                    </div>
+                  
                    
 
                        

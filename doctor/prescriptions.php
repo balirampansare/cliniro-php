@@ -662,10 +662,8 @@ if(isset($_POST['submit']))
                    <?php  
                    $docid = $_SESSION['id'];
 
-$ret=mysqli_query($con,"select * from tblmedicalhistory  where PatientID='$prespid' and DocId ='$docid' ");
 
-
-
+$ret=mysqli_query($con,"SELECT * FROM tblmedicalhistory RIGHT JOIN users on users.id = tblmedicalhistory.PatientID WHERE PatientID='$prespid' AND DocId='$docid'; ");
  ?>
                          <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                         <table class="table datatable">
@@ -688,7 +686,8 @@ while ($row=mysqli_fetch_array($ret)) {
                                 <td><?php echo $row['symptoms'];?></td>
 
                                     <td> 
-                                    <a href="view-prescriptions.php?viewid=<?php echo $row['PatientID'];?>"><i class="bi bi-eye"></i></a> 
+                                    <a href="view-prescriptions.php?viewid=<?php echo $row['ID'];?>"><i class="bi bi-eye"></i></a> 
+                                    <button class="btn btn-outline-success mt-2" data-bs-toggle="modal" data-bs-target="#viewpresp">View</button>
                                         <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
                                     </td>
                                     
@@ -787,7 +786,6 @@ while ($row=mysqli_fetch_array($ret)) {
               </div> <!---------END OF HEADER----------->
 
               <?php
-              $cntval=$_GET['cntval'];
               $ret=mysqli_query($con,"select * from tblmedicalhistory where ID='$prespid'");
               while ($row=mysqli_fetch_array($ret)) { 
                 ?>
