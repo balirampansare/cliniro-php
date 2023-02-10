@@ -14,6 +14,7 @@ if(isset($_POST['submit']))
   {
     
     $prespid=$_GET['prespid'];
+    $docid = $_SESSION['id'];
     $patname = $_POST['patname'];
     $gender = $_POST['gender'];
     $patage = $_POST['patage'];
@@ -30,7 +31,7 @@ if(isset($_POST['submit']))
     $tests=$_POST['tests'];
    
  
-      $query=mysqli_query($con, "insert into  tblmedicalhistory(PatientID,PatientName,gender,age,bloodgrp,symptoms,BloodPressure,Weight,Temperature,tabname1,tabpat1,tabped1,tabday1,tabother,tests)values('$prespid','$patname','$gender','$patage','$patblood','$symptoms','$bp','$weight','$temp','$tabname1','$tabpattern1','$tabperiod1','$tabdays1','$tabother','$tests')");
+      $query=mysqli_query($con, "insert into  tblmedicalhistory(PatientID,DocId,PatientName,gender,age,bloodgrp,symptoms,BloodPressure,Weight,Temperature,tabname1,tabpat1,tabped1,tabday1,tabother,tests)values('$prespid','$docid','$patname','$gender','$patage','$patblood','$symptoms','$bp','$weight','$temp','$tabname1','$tabpattern1','$tabperiod1','$tabdays1','$tabother','$tests')");
       //$query=mysqli_query($con,"update tblmedicalhistory set PatientID='$prespid',PatientName='$patname',gender='$gender',age='$patage',bloodgrp='$patblood',BloodPressure='$bp',Weight='$weight',Temperature='$temp',tabname1='$tabname1',tabpat1='$tabpattern1',tabped1='$tabperiod1',tabday1='$tabdays1',tabother='$tabother',tests='$tests'  where ID='$prespid'");
     if ($query) {
     echo '<script>alert("Medicle history has been added.")</script>';
@@ -659,8 +660,9 @@ if(isset($_POST['submit']))
                    <!-- patient form  -->
                    <div class="col-xxl-9">
                    <?php  
+                   $docid = $_SESSION['id'];
 
-$ret=mysqli_query($con,"select * from tblmedicalhistory  where PatientID='$prespid'");
+$ret=mysqli_query($con,"select * from tblmedicalhistory  where PatientID='$prespid' and DocId ='$docid' ");
 
 
 

@@ -340,16 +340,16 @@ if(strlen($_SESSION['id']==0)) {
                             <tbody>
                             <?php
                             $docid=$_SESSION['id'];
-                            $sql=mysqli_query($con,"select * from tblpatient where Docid='$docid' ");
+                            $sql=mysqli_query($con,"SELECT PatientID, DocId,PatientName, gender, age FROM `tblmedicalhistory` WHERE DocID = $docid GROUP BY PatientID;");
                             $cnt=1;
                             while($row=mysqli_fetch_array($sql))
                             {
                             ?>
                                 <tr>
                                 <td class="center"><?php echo $cnt;?>.</td>
-                                <td class="hidden-xs"><?php echo $row['PatientName'];?></td>
+                                <td><?php echo $row['PatientName'];?></td>
                                 <td><?php echo $row['PatientContno'];?></td>
-                                <td><?php echo $row['PatientGender'];?></td>
+                                <td><?php echo $row['gender'];?></td>
                                 <td><?php echo $row['CreationDate'];?></td>
                                 <td><?php echo $row['UpdationDate'];?></td>
 
