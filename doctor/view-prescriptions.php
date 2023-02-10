@@ -371,8 +371,7 @@ if(isset($_POST['submit']))
             $ret=mysqli_query($con,"SELECT * FROM tblmedicalhistory RIGHT JOIN users on users.id = tblmedicalhistory.PatientID WHERE tblmedicalhistory.ID='$viewid';");
             $cnt=1;
             while ($row=mysqli_fetch_array($ret)) {
-            
-                               ?>
+?>
 
                 <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
                   <a href="view-patient.php?viewid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Patient Info</a>
