@@ -13,7 +13,7 @@ if(strlen($_SESSION['id']==0)) {
 if(isset($_POST['submit']))
   {
     
-    $prespid=$_GET['prespid'];
+    $vid=$_GET['viewid'];
     $docid = $_SESSION['id'];
     $patname = $_POST['patname'];
     $gender = $_POST['gender'];
@@ -405,344 +405,13 @@ if(isset($_POST['submit']))
                       </div>
                       <?php }?>
                         
-                      <section>
-                    <!-- Modal -->
-                    <div class="modal fade modal-dialog-scrollable modal-lg " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">New Prescription</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="post" name="submit">
-                                    <div class="row jumbotron rounded py-2">
-                                      <!--div class="col-sm-12 mx-t3">
-                                        <h2 class="text-center text-info">Register</h2>
-                                      </div-->
-                                      <?php
-              $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
-              while ($row=mysqli_fetch_array($ret)) { 
-                ?>
-          
-                                      <div class="row">
-                  <div class="col-sm-2 text-center justify-content-center m-auto">
-                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
-                  </div>
-                  <div class="col-sm-10">
-                    <div class="row">
-                    <div class="col-sm-7">
-                  <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
-                  <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
-                  <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
-                  <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
-                  
-                </div>
-                  
-                  <div class="col-sm-5">
-                  <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
-                  <div class="text-center text-danger">Closed: Sunday</div>
-                  <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
-                  
-                  </div>
-
-                    </div>
-                    <div class="d-flex flex-row">
-                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
-                  <div id="form-subhead"><?php echo $row['address'];?></div>
-                    </div>
-
-                  </div>
-                  <hr style="border: 1px solid #012970;"> 
-
-                  <?php }?>
-                
-
-              </div> <!---------END OF HEADER----------->
-
-                                      
-          
-                                      <!--div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
-                                          Personal <hr class="mt-0">
-          
-                                      </div-->
-
-                                      <?php
-            $prespid=$_GET['prespid'];
-            $ret=mysqli_query($con,"select * from users where id='$prespid'");
-            while ($row=mysqli_fetch_array($ret)) {
-            
-                               ?>
-                                      <div class="col-sm-4 text-center form-group">
-                              <label for="doctorname" class="fw-bold">Name:</label>
-                              <input type="text" class="form-control text-center border-0" name="patname" id="patname" value="<?php  echo $row['fullName'];?>" readonly  >
-                            </div>
-                            
-                            <div class="col-sm-2 text-center form-group">
-                                <label for="sex" class="fw-bold">Gender:</label>
-                                <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
-                            </div>
-                            <div class="col-sm-2 text-center form-group">
-                                <label for="age" class="fw-bold">Age:</label>
-                                <input type="number" class="form-control text-center border-0" name="patage" id="patage" value="<?php  echo $row['Age'];?>" required >
-                            </div>
-
-
-                            <div class="col-sm-2 text-center form-group">
-                                <label for="blood" class="fw-bold">Blood Group:</label>
-                                <input type="text" class="form-control text-center border-0" name="patblood" id="blood" value="<?php  echo $row['bloodgrp'];?>" readonly  >
-                            </div>
-                            <div class="col-sm-2 text-center form-group">
-                                <label for="weight" class="fw-bold">Weight</label>
-                                <input type="number" class="form-control text-center border-0" name="weight" id="patweight" value="<?php  echo $row['Weight'];?>" required>
-                              </div>
-
-                              <div class="col-sm-4 text-center form-group mt-1">
-                                <label for="bp" class="fw-bold">BP</label>
-                                <input type="number" class="form-control text-center border-0" name="bp" id="patbp" required>
-                              </div>
-                              <div class="col-sm-2 text-center form-group mt-1">
-                                <label for="temp" class="fw-bold">Temp</label>
-                                <input type="number" class="form-control text-center border-0" name="temp" id="patbp"  required>
-                              </div>
-                              
-
-
-                                      
-          
-                                     
-
-                                        <div class=" mt-0"><hr style="border: 1px solid #012970;"></div>
-          
-          
-                                        <?php }?>
-                                     
-                                      <!------------------------------------------------------------------>
-                                      
-                                      
-                                      <div class="col-sm-12  fw-bold" id="form-subhead">
-                                      Symptoms
-                                      </div>
-
-                                      <div class="col-sm-12 form-group">
-                                          <textarea class="form-control border-bottom" name="symptoms" id="symptoms" cols="30" rows="2"></textarea>
-                                      </div>          
-                                      <!--------------------------------------------------------------------->
-                                      
-                                      <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
-                                        Tablets <hr class="mt-0">
-                                      </div>
-                                      <!-------------------START OF TABLET SECTION----------------------->
-                                      <!--section-->
-                                        <div class="col-sm-5 form-group">
-                                          <label for="tabname">Name</label>
-                                          <input type="text" class="form-control border-0 " name="tabname1" id="tabname" placeholder="Tablet Name" required>
-                                        </div>
-                                        <div class="col-sm-2 form-group">
-                                          <label for="tabpattern">Pattern</label>
-                                          <select name="tabpattern1" id="pattern" class="form-control browser-default custom-select border-0">
-                                            
-                                            <option value="1-1-1">1-1-1</option>
-                                            <option value="1-0-1">1-0-1</option>
-                                            <option value="0-1-1">0-1-1</option>
-                                            <option value="1-1-0">1-1-0</option>
-                                            <option value="1-0-0">1-0-0</option>
-                                            <option value="0-1-0">0-1-0</option>
-                                            <option value="0-0-1">0-0-1</option>
-                                          </select>
-                                        </div>
-                                        <div class="col-sm-3 form-group">
-                                          <label for="tabperiod">Period</label>
-                                          <select name="tabperiod1" id="tabperiod1" class="form-control browser-default custom-select border-0">
-                                            
-                                            <option value="After Meal">After Meal</option>
-                                            <option value="Before Meal">Before Meal</option>
-                                            <option value="Take Anytime">Take Anytime</option>
-                                          </select>
-                                        </div>
-                                        <div class="col-sm-2 form-group">
-                                          <label for="tabdays1">Day/Week/Mth</label>
-                                          <input type="text" class="form-control border-0" name="tabdays1" id="tabdays1" placeholder="days" required>
-                                        </div>
-                                        <div class="col-sm-5 form-group mt-1">
-                                          <input type="text" class="form-control border-0" name="tabname2" id="tabname" placeholder="" >
-                                        </div>
-                                        <div class="col-sm-2 form-group mt-1">
-                                          <select name="pattern2" id="pattern" class="form-control border-0 browser-default custom-select">
-                                            <option value=""></option>
-                                            <option value="1-1-1">1-1-1</option>
-                                            <option value="1-0-1">1-0-1</option>
-                                            <option value="0-1-1">0-1-1</option>
-                                            <option value="1-1-0">1-1-0</option>
-                                            <option value="1-0-0">1-0-0</option>
-                                            <option value="0-1-0">0-1-0</option>
-                                            <option value="0-0-1">0-0-1</option>
-                                          </select>
-                                        </div>
-                                        <div class="col-sm-3 form-group mt-1">
-                                          <select name="tabperiod2" id="tabperiod2" class="form-control border-0 browser-default custom-select">
-                                            <option value=""></option>
-                                            <option value="After Meal">After Meal</option>
-                                            <option value="Before Meal">Before Meal</option>
-                                            <option value="Take Anytime">Take Anytime</option>
-                                          </select>
-                                        </div>
-                                        <div class="col-sm-2 form-group mt-1">
-                                          <input type="text" class="form-control border-0" name="tabdays2" id="tabdays2" placeholder="" >
-                                        </div>
-                                        <div class="col-sm-5 form-group mt-1">
-                                          <input type="text" class="form-control border-0" name="tabname3" id="tabname" placeholder="" >
-                                        </div>
-                                        <div class="col-sm-2 form-group mt-1">
-                                          <select name="pattern3" id="pattern" class="form-control border-0 browser-default custom-select">
-                                            <option value=""></option>
-                                            <option value="1-1-1">1-1-1</option>
-                                            <option value="1-0-1">1-0-1</option>
-                                            <option value="0-1-1">0-1-1</option>
-                                            <option value="1-1-0">1-1-0</option>
-                                            <option value="1-0-0">1-0-0</option>
-                                            <option value="0-1-0">0-1-0</option>
-                                            <option value="0-0-1">0-0-1</option>
-                                          </select>
-                                        </div>
-                                        <div class="col-sm-3 form-group mt-1">
-                                          <select name="tabperiod3" id="tabperiod3" class="form-control border-0 browser-default custom-select">
-                                            <option value=""></option>
-                                            <option value="After Meal">After Meal</option>
-                                            <option value="Before Meal">Before Meal</option>
-                                            <option value="Take Anytime">Take Anytime</option>
-                                          </select>
-                                        </div>
-                                        <div class="col-sm-2 form-group mt-1">
-                                          <input type="text" class="form-control border-0" name="tabdays3" id="tabdays3" placeholder="" >
-                                        </div>
-                                      <!--/section-->
-                                      <!-------------------END OF TABLET SECTION----------------------->
-                                      <div class="col-sm-12 form-group mt-1">
-                                          <label for="tabother">Tablet Other Info</label>
-                                          <textarea class="form-control" name="tabother" id="tabother" cols="30" rows="2"></textarea>
-                                      </div>
-          
-                                      <!--------------------------------------------------------------------->
-                                      <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
-                                       Tests/Advice/Other
-                                      </div>
-                                      <div class="col-sm-12 form-group mt-1">
-                                          
-                                          <textarea class="form-control" name="tests" id="tests" cols="30" rows="2"></textarea>
-                                      </div>
-          
-                                      
-                                      
-                                      <div class="col-sm-12 form-group mt-3">
-                                        <hr class="mt-0">
-                                        <button type="submit" name="submit"  class="btn btn-outline-success float-end">Submit</button>
-                                      </div>
-                                
-                                    </div>
-                                  </form>
-                            
-                            </div>
-                            <!--div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                            </div-->
-                        </div>
-                        </div>
-                    </div>
-
-                </section>
+                      
                       
                    </div><!-- End quote -->
        
                    <!-- patient form  -->
                    <div class="col-xxl-9">
-                   <?php  
-                   $docid = $_SESSION['id'];
-
-$ret=mysqli_query($con,"select * from tblmedicalhistory  where PatientID='$prespid' and DocId ='$docid' ");
-
-
-
- ?>
-                         <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
-                        <table class="table datatable">
-                            <thead>
-                              <tr id="form-subhead">
-                                <th scope="col">#</th>
-                                <th scope="col">Visited Date</th>
-                                <th scope="col">Symptoms</th>
-                                <th scope="col">Action</th>
-                              </tr>
-                            </thead>
-
-                            <tbody>
-                            <?php  
-while ($row=mysqli_fetch_array($ret)) { 
-  ?>
-                                <tr>
-                                <td class="center"><?php echo $cnt;?>.</td>
-                                <td><?php echo $row['CreationDate'];?></td>
-                                <td><?php echo $row['symptoms'];?></td>
-
-                                    <td> 
-                                    <a href="view-prescriptions.php?viewid=<?php echo $row['PatientID'];?>"><i class="bi bi-eye"></i></a> 
-                                        <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
-                                    </td>
-                                    
-                                  </tr>
-
-
-                                <?php $cnt=$cnt+1;} ?>
-                            </tbody>
-                          </table>
-                       
-                      </div>
-
-                       
-                      </div><!-- End patient form-->
-
-</div>
-
-
-
-               
-</section>
-
-<!------------------------------------------------------MODAL END--------------------------------------------------------->
-  </main>
-  <!--div class="modal fade modal-dialog-scrollable modal-lg " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">New Prescription</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div-->
-
-
-
-  <!----------------------------------------------VIEW PRESCRIPTION MODAL----------------------------->
-  <section>
-    <div class="modal fade modal-dialog-scrollable modal-lg " id="viewpresp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">New Prescription</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id ="form-print" enctype="text/plain">
+                   <form id ="form-print" enctype="text/plain">
             <?php
               $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
               while ($row=mysqli_fetch_array($ret)) { 
@@ -787,8 +456,8 @@ while ($row=mysqli_fetch_array($ret)) {
               </div> <!---------END OF HEADER----------->
 
               <?php
-              $cntval=$_GET['cntval'];
-              $ret=mysqli_query($con,"select * from tblmedicalhistory where ID='$prespid'");
+              $viewid=$_GET['viewid'];
+              $ret=mysqli_query($con,"select * from tblmedicalhistory where PatientID='$viewid'");
               while ($row=mysqli_fetch_array($ret)) { 
                 ?>
 
@@ -877,15 +546,40 @@ while ($row=mysqli_fetch_array($ret)) {
 
                </div>
               </form>
-            
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-              </div>
-          </div>
-      </div>
-    </div>
-  </section>
+                   
+
+                       
+                      </div><!-- End patient form-->
+
+</div>
+
+
+
+               
+</section>
+
+<!------------------------------------------------------MODAL END--------------------------------------------------------->
+  </main>
+  <!--div class="modal fade modal-dialog-scrollable modal-lg " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">New Prescription</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div-->
+
+
+
+  
 
  
 

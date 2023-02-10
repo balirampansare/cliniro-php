@@ -1,4 +1,4 @@
-<!--!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -37,57 +37,134 @@
 	</h2>
 
 	
-	<form id ="form-print" enctype="text/plain"
-		class="form-control">
-
-		<h2 class="heading">
-			GeeksForGeeks
-			</h2>
-
-		<label for="name">
-		<strong>Name: </strong>
-		</label>
-		<input class="form-control border-0" type="text"
-		id="name" name="Name" placeholder="Enter Name">
-		<br>
-
-		<label for="age">
-		<strong>Enter Age: </strong>
-		</label>
-		<input class="form-control border-0" type="text"
-		id="age" name="Age" placeholder="Enter Age">
-		<br>
-
-		<label for="subject">
-		<strong>Select Subject: </strong>
-		</label>
-		<select class="form-control border-0"
-			id="subject" name="subject">
-			<option value="Web">
-				Web development
-			</option>
-			<option value="App">
-				App development
-			</option>
-			<option value="Others">
-				Others
-			</option>
-		</select>
-		<br>
+	<form id ="form-print" enctype="text/plain">
 		
-		<label for="message">
-		<strong>Enter Message </strong>
-		</label>
-		<textarea class= "form-control border-0"
-		id="autoresizing" name="message"
-		placeholder="Enter you message">
-		</textarea>
-		<br>
+		
+		   <div class="row form-group">
+		   <div class="row form-group">
+			  <div class="col-sm-2 text-center justify-content-center m-auto form-group">
+				<img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
+			  </div>
+			  <div class="col-sm-10 form-group">
+				<div class="row form-group">
+				<div class="col-sm-7 form-group">
+			  <div class="text-center form-group" id="form-subhead">Dr. Baliram Pansare</div>
+			  <div class="text-center form-group" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
+			  Bali Clinic<img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
+			  <div class="text-center fw-bold fs-5" id="form-subhead">ENT Specialist</div>
+			  
+			</div>
+			  
+			  <div class="col-sm-5 form-group">
+			  <div class="text-center form-group fw-bold" id="form-subhead">Timing:</div>
+			  <div class="text-center form-group" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
+			  <div class="text-center form-group text-danger">Closed: Sunday</div>
+			  <div class="text-center form-group fw-bold" id="form-subhead">Contact:</div>
+			  <div class="text-center form-group" id="form-subhead">9854758745 | 78965412587</div>
+			  
+			  </div>
 
+				</div>
+				<div class="d-flex flex-row form-group">
+				<div class="fw-bold mx-2 form-group" id="form-subhead">Address:</div>
+			  <div id="form-subhead form-group">Ground Floor, Canara Apartment, Dr N.A Nair Road, RTO Colony</div>
+				</div>
+
+			  </div>
+			 
+
+			  
 		
 
-		
-	</form>
+		  </div> <!---------END OF HEADER----------->
+
+		  
+
+		  <div class="col-sm-4 text-center form-group">
+						  <label for="doctorname" class="fw-bold">Name:</label>
+						  <input type="text" class="form-control text-center border-0" name="pdfname" id="patname" value="Baliram Pansare"  >
+						</div>
+						
+						<div class="col-sm-2 text-center form-group">
+							<label for="sex" class="fw-bold">Gender:</label>
+							<input type="text" class="form-control text-center border-0" name="pdfgender" id="sex" value="Male" >
+						</div>
+						<div class="col-sm-2 text-center form-group">
+							<label for="age" class="fw-bold">Age:</label>
+							<input type="number" class="form-control text-center border-0" name="pdfpatage" id="patage" value="21" >
+						</div>
+
+
+						<div class="col-sm-2 text-center form-group">
+							<label for="blood" class="fw-bold">Blood Group:</label>
+							<input type="text" class="form-control text-center border-0" name="pdfpatblood" id="blood" value="O+" >
+						</div>
+						<div class="col-sm-2 text-center form-group">
+							<label for="weight" class="fw-bold">Weight</label>
+							<input type="number" class="form-control text-center border-0" name="pdfweight" id="patweight" value="52">
+						  </div>
+						  <div class="col-sm-4 text-center form-group mt-1">
+							<label for="bp" class="fw-bold">BP</label>
+							<input type="number" class="form-control text-center border-0" name="pdfbp" id="patbp" value="120">
+						  </div>
+						  <div class="col-sm-2 text-center form-group mt-1">
+							<label for="temp" class="fw-bold">Temp</label>
+							<input type="number" class="form-control text-center border-0" name="pdftemp" id="patbp" value="98">
+						  </div>
+						  <hr>
+
+						  <div class="col-sm-12  fw-bold form-group" id="form-subhead">Symptoms: </div>
+						  
+						  <div class="col-sm-12 form-group">
+						  <textarea class="form-control border-0" name="pdfsymptoms" id="symptoms" cols="30" rows=auto readonly></textarea>
+						  </div>
+
+						  <div class="table-responsive mt-1"><hr>
+						  <table class="table table-bordered table-sm align-middle border-primary">
+							<thead>
+							  <tr class="text-center">
+								<th scope="col">Tablet</th>
+								<th scope="col">Pattern</th>
+								<th scope="col">Period</th>
+								<th scope="col">Days</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <tr class="text-center">
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							  </tr>
+							 
+							</tbody>
+						  </table>
+
+						  </div>
+
+						  <div class="col-sm-12 form-group mt-1">
+									  
+									  <textarea class="form-control border-0" name="pdftabother" id="tabother" cols="30" rows="2"><?php  echo $row['tabother'];?></textarea>
+								  </div>
+	  
+								  <!--------------------------------------------------------------------->
+								  <div class="col-sm-12 mt-3 fw-bold" id="form-subhead"><hr>
+								   Tests/Advice/Other
+								  </div>
+								  <div class="col-sm-12 form-group mt-1">
+									  
+									  <textarea class="form-control border-0" name="pdftests" id="tests" cols="30" rows="2"><?php  echo $row['tests'];?></textarea>
+								  </div>
+
+						  
+
+						  <?php }?>
+
+
+						  
+
+		   </div>
+		  </form>
 	<input type="button" class="btn btn-primary"
 		onclick="GeneratePdf();" value="GeneratePdf">
 				
@@ -114,7 +191,7 @@
 		crossorigin="anonymous">
 	</script>
 </body>
-</html-->
+</html>
 
 
 
