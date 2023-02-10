@@ -368,7 +368,7 @@ if(isset($_POST['submit']))
 <?php
             $viewid=$_GET['viewid'];
             
-            $ret=mysqli_query($con,"select * from users where ID='$viewid'");
+            $ret=mysqli_query($con,"SELECT * FROM tblmedicalhistory RIGHT JOIN users on users.id = tblmedicalhistory.PatientID WHERE tblmedicalhistory.ID='$viewid';");
             $cnt=1;
             while ($row=mysqli_fetch_array($ret)) {
             
@@ -376,7 +376,7 @@ if(isset($_POST['submit']))
 
                 <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
                   <a href="view-patient.php?viewid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Patient Info</a>
-                  <a href="view-prescriptions.php?viewid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Prescriptions</a>
+                  <a href="view-prescriptions.php?viewid=<?php echo $row['ID'];?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Prescriptions</a>
                   <a href="#" class="p-2 flex-grow-1 border rounded m-2">Appointments</a>
                   <a href="#" class="p-2 flex-grow-1 border rounded m-2">Billings</a>
                 </div>
@@ -412,6 +412,7 @@ if(isset($_POST['submit']))
        
                    <!-- patient form  -->
                    <div class="col-xxl-9">
+                    <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>
                    <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                    <form id ="form-print" enctype="text/plain">
             <?php

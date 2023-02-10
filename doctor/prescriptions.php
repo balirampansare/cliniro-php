@@ -687,7 +687,7 @@ while ($row=mysqli_fetch_array($ret)) {
 
                                     <td> 
                                     <a href="view-prescriptions.php?viewid=<?php echo $row['ID'];?>"><i class="bi bi-eye"></i></a> 
-                                    <button class="btn btn-outline-success mt-2" data-bs-toggle="modal" data-bs-target="#viewpresp">View</button>
+                                    <!--button class="btn btn-outline-success mt-2" data-bs-toggle="modal" data-bs-target="#viewpresp">View</button-->
                                         <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
                                     </td>
                                     
