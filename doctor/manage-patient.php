@@ -339,7 +339,7 @@ if(strlen($_SESSION['id']==0)) {
                             <tbody>
                             <?php
                             $docid=$_SESSION['id'];
-                            $sql=mysqli_query($con,"SELECT PatientID, DocId,PatientName, gender, age,CreationDate FROM `tblmedicalhistory` WHERE DocID = $docid GROUP BY PatientID;");
+                            $sql=mysqli_query($con,"SELECT * FROM users RIGHT JOIN tblmedicalhistory on users.id = tblmedicalhistory.PatientID WHERE DocID = $docid GROUP BY PatientID;");
                             $cnt=1;
                             while($row=mysqli_fetch_array($sql))
                             {
@@ -347,7 +347,7 @@ if(strlen($_SESSION['id']==0)) {
                                 <tr>
                                 <td class="center"><?php echo $cnt;?>.</td>
                                 <td><?php echo $row['PatientName'];?></td>
-                                <td><?php echo $row['PatientContno'];?></td>
+                                <td><?php echo $row['Phone'];?></td>
                                 <td><?php echo $row['gender'];?></td>
                                 <td><?php echo $row['CreationDate'];?></td>
                                 
