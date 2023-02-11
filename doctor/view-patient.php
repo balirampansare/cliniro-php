@@ -214,7 +214,7 @@ header("location:manage-patient.php");
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed"  href="#">
+        <a class="nav-link collapsed"  href="dashboard.php">
           <i class="bi bi-bar-chart"></i><span>Dashboard</span>
         </a>
       </li><!-- End Charts Nav -->
@@ -237,6 +237,11 @@ header("location:manage-patient.php");
           <li>
             <a href="add-patient.php">
               <i class="bi bi-circle"></i><span>Add Patient</span>
+            </a>
+          </li>
+          <li>
+            <a href="search-patient.php">
+              <i class="bi bi-circle"></i><span>Search Patient</span>
             </a>
           </li>
         </ul>
@@ -278,7 +283,7 @@ header("location:manage-patient.php");
       <li class="nav-heading">CliFea</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="beupdated.php">
           <i class="bi bi-newspaper"></i>
           <span>Be Updated</span>
         </a>
@@ -322,7 +327,7 @@ header("location:manage-patient.php");
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="faq.html">
           <i class="bi bi-question-circle"></i>
           <span>F.A.Q</span>
         </a>
@@ -330,14 +335,14 @@ header("location:manage-patient.php");
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="contactus.php">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="doctorlogout.php">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Sign Out</span>
         </a>
