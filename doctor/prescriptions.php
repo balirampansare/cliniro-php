@@ -88,6 +88,8 @@ if(isset($_POST['submit']))
 		crossorigin="anonymous">
 	</script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </head>
 
 <!--script>
@@ -664,13 +666,7 @@ if(isset($_POST['submit']))
        
                    <!-- patient form  -->
                    <div class="col-xxl-9">
-                   <?php  
-                   $docid = $_SESSION['id'];
-
-
-$ret=mysqli_query($con,"SELECT * FROM tblmedicalhistory RIGHT JOIN users on users.id = tblmedicalhistory.PatientID WHERE PatientID='$prespid' AND DocId='$docid'; ");
- ?>
-                         <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
+                   <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                         <table class="table datatable">
                             <thead>
                               <tr id="form-subhead">
@@ -682,29 +678,142 @@ $ret=mysqli_query($con,"SELECT * FROM tblmedicalhistory RIGHT JOIN users on user
                             </thead>
 
                             <tbody>
-                            <?php  
+                            <?php
+                             $docid = $_SESSION['id'];
+
+
+                             $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN tblmedicalhistory ON users.id = tblmedicalhistory.PatientID INNER JOIN doctors ON tblmedicalhistory.DocId = doctors.id WHERE PatientID='5' AND DocId='$docid';
+                             ");
+                             $i = 1;
 while ($row=mysqli_fetch_array($ret)) { 
+  
   ?>
+  
                                 <tr>
-                                <td class="center"><?php echo $cnt;?>.</td>
+                                <td class="center"><?php echo $i;?>.</td>
                                 <td><?php echo $row['CreationDate'];?></td>
                                 <td><?php echo $row['symptoms'];?></td>
 
                                     <td> 
-                                    <!--a href="view-prescriptions.php?viewid=<?php echo $row['ID'];?>"><i class="bi bi-eye"></i></a--> 
-                                    <button class="btn btn-outline-success mt-2" data-vendor="<?php echo $row['ID'];?>" data-bs-toggle="modal" data-bs-target="#viewpresp">View</button>
+                                    
+                                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal<?php echo $row['ID'] ?>">View</button>
                                         <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
                                     </td>
                                     
                                   </tr>
 
 
-                                <?php $cnt=$cnt+1;} ?>
-                            </tbody>
-                          </table>
-                       
-                      </div>
 
+                                  <div id="myModal<?php echo $row['ID'] ?>" class="modal fade modal-lg" role="dialog">
+					<div class="modal-dialog">
+						<div class="modal-content">
+            
+							<div class="modal-body">
+              
+                            <form id ="form-print" enctype="text/plain">
+                                <div class="row">
+                                    <div class="row">
+                                        <div class="col-sm-2 text-center justify-content-center m-auto">
+                                            <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
+                                        </div>
+                                        <div class="col-sm-10">
+                                            
+                                                <div class="row">
+                                                    <div class="col-sm-7">
+                                                        <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+                                                        <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
+                                                            <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> 
+                                                        </div> 
+                                                        <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+                                                    </div>
+                                                    <div class="col-sm-5">
+                                                        <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+                                                        <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
+                                                        <div class="text-center text-danger">Closed: Sunday</div>
+                                                        <div class="text-center fw-bold" id="form-subhead">Contact:</div>
+                                                        <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-row">
+                                                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
+                                                    <div id="form-subhead"><?php echo $row['address'];?></div>
+                                                </div>
+                                            </div>
+                                            <hr style="border: 1px solid #012970;;"> 
+                                            </div> <!---------END OF HEADER----------->
+                                            <div class="col-sm-4 text-center form-group">
+                                                <label for="doctorname" class="fw-bold">Name:</label>
+                                                <input type="text" class="form-control text-center border-0" name="pdfname" id="patname" value="<?php  echo $row['PatientName'];?>" readonly  >
+                                            </div>
+                                            <div class="col-sm-2 text-center form-group">
+                                                <label for="sex" class="fw-bold">Gender:</label>
+                                                <input type="text" class="form-control text-center border-0" name="pdfgender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
+                                            </div>
+                                            <div class="col-sm-2 text-center form-group">
+                                                <label for="age" class="fw-bold">Age:</label>
+                                                <input type="number" class="form-control text-center border-0" name="pdfpatage" id="patage" value="<?php  echo $row['age'];?>" required readonly >
+                                            </div>
+                                            <div class="col-sm-2 text-center form-group">
+                                                <label for="blood" class="fw-bold">Blood Group:</label>
+                                                <input type="text" class="form-control text-center border-0" name="pdfpatblood" id="blood" value="<?php  echo $row['bloodgrp'];?>" readonly readonly >
+                                            </div>
+                                            <div class="col-sm-2 text-center form-group">
+                                                <label for="weight" class="fw-bold">Weight</label>
+                                                <input type="number" class="form-control text-center border-0" name="pdfweight" id="patweight" value="<?php  echo $row['Weight'];?>" required readonly>
+                                            </div>
+                                            <div class="col-sm-4 text-center form-group mt-1">
+                                                <label for="bp" class="fw-bold">BP</label>
+                                                <input type="number" class="form-control text-center border-0" name="pdfbp" id="patbp" value="<?php  echo $row['BloodPressure'];?>" required readonly>
+                                            </div>
+                                            <div class="col-sm-2 text-center form-group mt-1">
+                                                <label for="temp" class="fw-bold">Temp</label>
+                                                <input type="number" class="form-control text-center border-0" name="pdftemp" id="patbp" value="<?php  echo $row['Temperature'];?>"  required readonly>
+                                            </div>
+                                            <hr>
+                                            <div class="col-sm-12  fw-bold form-group" id="form-subhead">Symptoms: </div>
+                                            <div class="col-sm-12 form-group">
+                                                <textarea class="form-control border-0" name="pdfsymptoms" id="symptoms" cols="30" rows=auto readonly><?php  echo $row['symptoms'];?></textarea>
+                                            </div>
+                                            <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">Tablets <hr class="mt-0"></div>
+                                            <!--section-->
+                                        <div class="col-sm-5 form-group">
+                                          <label for="tabname">Name</label>
+                                          <input type="text" class="form-control border-0 " name="tabname1" id="tabname" value="<?php  echo $row['tabname1'];?>" required>
+                                        </div>
+                                        <div class="col-sm-2 form-group">
+                                          <label for="tabpattern">Pattern</label>
+                                          <input type="text" class="form-control border-0 " name="tabpattern1" id="tabpattern1" value="<?php  echo $row['tabpat1'];?>" required>
+                                        </div>
+                                        <div class="col-sm-3 form-group">
+                                          <label for="tabperiod">Period</label>
+                                          <input type="text" class="form-control border-0 " name="tabperiod1" id="tabperiod1" value="<?php  echo $row['tabped1'];?>" required>
+                                        </div>
+                                        <div class="col-sm-2 form-group">
+                                          <label for="tabdays1">Day/Week/Mth</label>
+                                          <input type="text" class="form-control border-0 " name="tabdays1" id="tabdays1" value="<?php  echo $row['tabday1'];?>" required>
+                                        </div>
+                                        <div class="col-sm-12 form-group mt-1">
+                                            <textarea class="form-control border-0" name="pdftabother" id="tabother" cols="30" rows="2"><?php  echo $row['tabother'];?></textarea>
+                                        </div>
+                                        <div class="col-sm-12 mt-3 fw-bold" id="form-subhead"><hr>Tests/Advice/Other</div>
+                                        <div class="col-sm-12 form-group mt-1">
+                                            <textarea class="form-control border-0" name="pdftests" id="tests" cols="30" rows="2"><?php  echo $row['tests'];?></textarea>
+                                        </div>
+
+                              
+                                    </div>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php $i++;}?>
+        </tbody>
+    </table>
+</div>
+
+                   
                        
                       </div><!-- End patient form-->
 
@@ -737,7 +846,7 @@ while ($row=mysqli_fetch_array($ret)) {
 
 
   <!----------------------------------------------VIEW PRESCRIPTION MODAL----------------------------->
-  <section>
+  <!--section>
     <div class="modal fade modal-dialog-scrollable modal-lg " id="viewpresp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -746,7 +855,7 @@ while ($row=mysqli_fetch_array($ret)) {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-          <?php echo $row['ID'];?>
+          
             <form id ="form-print" enctype="text/plain">
             <?php
               $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
@@ -789,10 +898,9 @@ while ($row=mysqli_fetch_array($ret)) {
                   
                 <?php }?>
 
-              </div> <!---------END OF HEADER----------->
-
+              </div> 
               <?php
-              $ret=mysqli_query($con,"select * from tblmedicalhistory where ID='$prespid'");
+              $ret=mysqli_query($con,"select * from tblmedicalhistory where ID='$cpid'");
               while ($row=mysqli_fetch_array($ret)) { 
                 ?>
 
@@ -863,7 +971,7 @@ while ($row=mysqli_fetch_array($ret)) {
                                           <textarea class="form-control border-0" name="pdftabother" id="tabother" cols="30" rows="2"><?php  echo $row['tabother'];?></textarea>
                                       </div>
           
-                                      <!--------------------------------------------------------------------->
+                                      
                                       <div class="col-sm-12 mt-3 fw-bold" id="form-subhead"><hr>
                                        Tests/Advice/Other
                                       </div>
@@ -889,7 +997,7 @@ while ($row=mysqli_fetch_array($ret)) {
           </div>
       </div>
     </div>
-  </section>
+  </section-->
 
  
 
