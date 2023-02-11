@@ -1803,3 +1803,9 @@ label{
   color: #012970 !important;
   
 }
+
+
+
+.scrolling-wrapper{
+	overflow-x: auto;
+}

@@ -88,6 +88,8 @@ if(isset($_POST['submit']))
 		crossorigin="anonymous">
 	</script>
 
+
+
 </head>
 
 <!--script>
@@ -357,6 +359,8 @@ if(isset($_POST['submit']))
 
   </aside><!-- End Sidebar-->
 
+  
+
   <main class="main" id="main">
   <div class="pagetitle">
       <h1>Clifea</h1>
@@ -416,7 +420,28 @@ if(isset($_POST['submit']))
        
                    <!-- patient form  -->
                    <div class="col-xxl-9">
+                    <div class="container-fluid">
+                    <?php  
+                   $docid = $_SESSION['id'];
+
+
+$ret=mysqli_query($con,"SELECT * FROM tblmedicalhistory RIGHT JOIN users on users.id = tblmedicalhistory.PatientID WHERE PatientID='5' AND DocId='$docid'; ");
+ ?>
+                       <div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">
+                       <?php 
+                       $cnt=1; 
+while ($row=mysqli_fetch_array($ret)) { 
+  ?>
+                        <div class="col text-center fw-bold " id="form-subhead">
+                          <a href="view-prescriptions.php?viewid=<?php echo $row['ID'];?>"><div class="card card-block card-1 border border-primary">Presp <?php echo $cnt;?> : <?php echo $row['CreationDate'];?></div></a>
+                          
+                        </div>
+                        <?php $cnt = $cnt + 1; }?>
+                      </div>
+                    </div>
+
                     <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>
+
                    <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                    <form id ="form-print" enctype="text/plain">
             <?php

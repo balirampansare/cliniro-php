@@ -691,8 +691,8 @@ while ($row=mysqli_fetch_array($ret)) {
                                 <td><?php echo $row['symptoms'];?></td>
 
                                     <td> 
-                                    <a href="view-prescriptions.php?viewid=<?php echo $row['ID'];?>"><i class="bi bi-eye"></i></a> 
-                                    <!--button class="btn btn-outline-success mt-2" data-bs-toggle="modal" data-bs-target="#viewpresp">View</button-->
+                                    <!--a href="view-prescriptions.php?viewid=<?php echo $row['ID'];?>"><i class="bi bi-eye"></i></a--> 
+                                    <button class="btn btn-outline-success mt-2" data-vendor="<?php echo $row['ID'];?>" data-bs-toggle="modal" data-bs-target="#viewpresp">View</button>
                                         <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
                                     </td>
                                     
@@ -746,6 +746,7 @@ while ($row=mysqli_fetch_array($ret)) {
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+          <?php echo $row['ID'];?>
             <form id ="form-print" enctype="text/plain">
             <?php
               $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
