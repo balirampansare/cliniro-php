@@ -722,7 +722,7 @@ if(isset($_POST['makepayment']))
                              ");
                              $i = 1;
 while ($row=mysqli_fetch_array($ret)) { 
-  $gc = $row['ID'];
+  
   
   
   ?>
@@ -740,15 +740,32 @@ while ($row=mysqli_fetch_array($ret)) {
                                     </td>
                                     
                                     <td>
-                                      <?php
+                                      <!--?php
                                       if($row['bloodgrp']>0){
                                         echo'<button class="btn btn-outline-success mt-2 text-center align-items-center" data-bs-toggle="modal" data-bs-target="#presppaymentview">Paid</button>';
-                                      }
-                                      else{
-                                        echo '<button class="btn btn-outline-success mt-2 text-center align-items-center" data-bs-toggle="modal" data-bs-target="#presppayment"' . $row['ID'], '>Pay</button>';
                                         
                                       }
-                                      ?>
+                                      else{
+                                        echo '<button class="btn btn-outline-success mt-2 text-center" data-bs-toggle="modal" data-bs-target="#presppayment' .echo $row['ID'].'">Pay</button>';
+                                        
+                                        
+                                      }
+                                      ?-->
+
+                                      <?php
+if ($row['bloodgrp']>0) { 
+?>
+
+<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#presppaymentview<?php echo $row['ID'] ?>">Paid</button>
+
+<?php
+} else { 
+?>
+
+<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#presppayment<?php echo $row['ID'] ?>">Pay</button>
+<?php
+}
+?>
                                     </td>
                                     
                                   </tr>
@@ -862,7 +879,7 @@ while ($row=mysqli_fetch_array($ret)) {
             </div>
 
 
-            <div class="modal fade modal-dialog-scrollable modal-lg " id="presppayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal fade modal-dialog-scrollable modal-lg " id="presppayment<?php echo $row['ID'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -870,7 +887,7 @@ while ($row=mysqli_fetch_array($ret)) {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              MAKE PAYEMENT <?php echo $gc ?>
+                              MAKE PAYEMENT<?php echo $row['ID'] ?>
                                 <form method="post" name="submit">
                                     <div class="row jumbotron rounded py-2">
                                       <!--div class="col-sm-12 mx-t3">
