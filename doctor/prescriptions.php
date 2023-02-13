@@ -674,6 +674,7 @@ if(isset($_POST['submit']))
                                 <th scope="col">Visited Date</th>
                                 <th scope="col">Symptoms</th>
                                 <th scope="col">Action</th>
+                                <th scope="col">Payment</th>
                               </tr>
                             </thead>
 
@@ -697,8 +698,9 @@ while ($row=mysqli_fetch_array($ret)) {
                                     <td> 
                                     
                                     <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal<?php echo $row['ID'] ?>">View</button>
-                                        <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
+                                    <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
                                     </td>
+                                    <td></td>
                                     
                                   </tr>
 
@@ -709,8 +711,11 @@ while ($row=mysqli_fetch_array($ret)) {
 						<div class="modal-content">
             
 							<div class="modal-body">
+                  
+             
               
-                            <form id ="form-print" enctype="text/plain">
+                            <div id="form-print" enctype="text/plain">
+                              
                                 <div class="row">
                                     <div class="row">
                                         <div class="col-sm-2 text-center justify-content-center m-auto">
@@ -800,10 +805,13 @@ while ($row=mysqli_fetch_array($ret)) {
                                             <textarea class="form-control border-0" name="pdftests" id="tests" cols="30" rows="2"><?php  echo $row['tests'];?></textarea>
                                         </div>
 
+                                        <hr>
+                                        
+
                               
                                     </div>
                                 
-                            </form>
+                                  </div>
                         </div>
                     </div>
                 </div>
@@ -822,6 +830,10 @@ while ($row=mysqli_fetch_array($ret)) {
 
 
                
+</section>
+
+<section>
+  
 </section>
 
 <!------------------------------------------------------MODAL END--------------------------------------------------------->
@@ -856,7 +868,7 @@ while ($row=mysqli_fetch_array($ret)) {
           </div>
           <div class="modal-body">
           
-            <form id ="form-print" enctype="text/plain">
+            <form id ="form-printio" enctype="text/plainnk">
             <?php
               $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
               while ($row=mysqli_fetch_array($ret)) { 
@@ -998,6 +1010,8 @@ while ($row=mysqli_fetch_array($ret)) {
       </div>
     </div>
   </section-->
+
+  
 
  
 
