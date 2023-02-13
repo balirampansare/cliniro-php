@@ -45,40 +45,6 @@ if(isset($_POST['submit']))
   
 }
 
-if(isset($_POST['makepayment']))
-  {
-    
-    $prespid=$_GET['prespid'];
-    $docid = $_SESSION['id'];
-    $patname = $_POST['patname'];
-    $gender = $_POST['gender'];
-    $patage = $_POST['patage'];
-    $patblood = $_POST['patblood'];
-    $weight=$_POST['weight'];
-    $bp=$_POST['bp']; 
-    $temp=$_POST['temp'];
-    $symptoms=$_POST['symptoms'];
-    $tabpattern1=$_POST['tabpattern1'];
-    $tabname1=$_POST['tabname1'];
-    $tabperiod1=$_POST['tabperiod1'];
-    $tabdays1=$_POST['tabdays1'];
-    $tabother=$_POST['tabother'];
-    $tests=$_POST['tests'];
-   
- 
-      $query=mysqli_query($con, "insert into  tblmedicalhistory(PatientID,DocId,PatientName,gender,age,bloodgrp,symptoms,BloodPressure,Weight,Temperature,tabname1,tabpat1,tabped1,tabday1,tabother,tests)values('$prespid','$docid','$patname','$gender','$patage','$patblood','$symptoms','$bp','$weight','$temp','$tabname1','$tabpattern1','$tabperiod1','$tabdays1','$tabother','$tests')");
-      //$query=mysqli_query($con,"update tblmedicalhistory set PatientID='$prespid',PatientName='$patname',gender='$gender',age='$patage',bloodgrp='$patblood',BloodPressure='$bp',Weight='$weight',Temperature='$temp',tabname1='$tabname1',tabpat1='$tabpattern1',tabped1='$tabperiod1',tabday1='$tabdays1',tabother='$tabother',tests='$tests'  where ID='$prespid'");
-    if ($query) {
-    echo '<script>alert("Medicle history has been added.")</script>';
-    echo "<script>window.location.href ='manage-patient.php'</script>";
-  }
-  else
-    {
-      echo '<script>alert("Something Went Wrong. Please try again")</script>';
-    }
-
-  
-}
   
 
 ?>
@@ -882,12 +848,10 @@ if ($row['bloodgrp']>0) {
             <div class="modal fade modal-dialog-scrollable modal-lg " id="presppayment<?php echo $row['ID'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Prescription Payment</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
+                            
                             <div class="modal-body">
-                              MAKE PAYEMENT<?php echo $row['ID'] ?>
+                              <?php $gc = $row['ID'] ?>
+                              MAKE PAYEMENT <?PHP echo $gc?>
                                 <form method="post" name="submit">
                                     <div class="row jumbotron rounded py-2">
                                       <!--div class="col-sm-12 mx-t3">
@@ -931,6 +895,25 @@ if ($row['bloodgrp']>0) {
                 
 
               </div> <!---------END OF HEADER----------->
+
+              
+
+              <div class="col-sm-8 form-group text-center fw-bold ">
+                                          <label for="tabname text-center fw-bold">Description</label>
+                                          <hr class="text-primary fw-bold">
+                                          <input type="text" class="form-control" name="paydecrp" id="tabname" placeholder="About Desease" required>
+                                        </div>
+
+                                        <div class="col-sm-4 form-group text-center fw-bold">
+                                          <label for="tabname ">Total</label>
+                                          <hr class="text-primary fw-bold">
+                                          <input type="text" class="form-control" name="payamount" id="tabname" placeholder="Amount" required>
+                                        </div>
+
+                                        <div class="col-sm-12 form-group mt-3">
+                                        <hr class="mt-0">
+                                        <button type="submit" name="makepayment"  class="btn btn-outline-success float-end">Pay</button>
+                                      </div>
                                 
                                     </div>
                                   </form>
