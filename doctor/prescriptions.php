@@ -697,7 +697,7 @@ while ($row=mysqli_fetch_array($ret)) {
                                 <td class="center"><?php echo $i;?>.</td>
                                 <td><?php echo $row['CreationDate'];?></td>
                                 <td><?php echo $row['symptoms'];?></td>
-                                <TD><?PHP ECHO $gc?></TD>
+                                
 
                                     <td> 
                                     
@@ -852,7 +852,7 @@ if ($row['bloodgrp']>0) {
                             <div class="modal-body">
                               <?php $gc = $row['ID'] ?>
                               MAKE PAYEMENT <?PHP echo $gc?>
-                                <form method="post" name="submit">
+                                <form method="post" name="makepayment">
                                     <div class="row jumbotron rounded py-2">
                                       <!--div class="col-sm-12 mx-t3">
                                         <h2 class="text-center text-info">Register</h2>
@@ -901,7 +901,7 @@ if ($row['bloodgrp']>0) {
               <div class="col-sm-8 form-group text-center fw-bold ">
                                           <label for="tabname text-center fw-bold">Description</label>
                                           <hr class="text-primary fw-bold">
-                                          <input type="text" class="form-control" name="paydecrp" id="tabname" placeholder="About Desease" required>
+                                          <input type="text" class="form-control" name="paydescrp" id="tabname" placeholder="About Desease" required>
                                         </div>
 
                                         <div class="col-sm-4 form-group text-center fw-bold">
@@ -917,6 +917,34 @@ if ($row['bloodgrp']>0) {
                                 
                                     </div>
                                   </form>
+
+                                  <?php
+                                  
+if(isset($_POST['makepayment']))
+{
+  
+ 
+  $paydescrp=$_POST['paydescrp'];
+  $payamount=$_POST['payamount'];
+  $gc = $row['ID'];
+ 
+
+  $query=mysqli_query($con,"Update tblmedicalhistory set PayDescription='$paydescrp',PayAmount='$payamount' where ID=8 ");
+  //$query=mysqli_query($con,"update tblmedicalhistory set PatientID='$prespid',PatientName='$patname',gender='$gender',age='$patage',bloodgrp='$patblood',BloodPressure='$bp',Weight='$weight',Temperature='$temp',tabname1='$tabname1',tabpat1='$tabpattern1',tabped1='$tabperiod1',tabday1='$tabdays1',tabother='$tabother',tests='$tests'  where ID='$prespid'");
+  if ($query) {
+  echo '<script>alert("Payment has been added.")</script>';
+  echo "<script>window.location.href ='manage-patient.php'</script>";
+}
+else
+  {
+    echo '<script>alert("Something Went Wrong. Please try again")</script>';
+  }
+
+
+}
+                                  ?>
+
+
                             
                             </div>
                             <!--div class="modal-footer">
