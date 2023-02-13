@@ -44,6 +44,41 @@ if(isset($_POST['submit']))
 
   
 }
+
+if(isset($_POST['makepayment']))
+  {
+    
+    $prespid=$_GET['prespid'];
+    $docid = $_SESSION['id'];
+    $patname = $_POST['patname'];
+    $gender = $_POST['gender'];
+    $patage = $_POST['patage'];
+    $patblood = $_POST['patblood'];
+    $weight=$_POST['weight'];
+    $bp=$_POST['bp']; 
+    $temp=$_POST['temp'];
+    $symptoms=$_POST['symptoms'];
+    $tabpattern1=$_POST['tabpattern1'];
+    $tabname1=$_POST['tabname1'];
+    $tabperiod1=$_POST['tabperiod1'];
+    $tabdays1=$_POST['tabdays1'];
+    $tabother=$_POST['tabother'];
+    $tests=$_POST['tests'];
+   
+ 
+      $query=mysqli_query($con, "insert into  tblmedicalhistory(PatientID,DocId,PatientName,gender,age,bloodgrp,symptoms,BloodPressure,Weight,Temperature,tabname1,tabpat1,tabped1,tabday1,tabother,tests)values('$prespid','$docid','$patname','$gender','$patage','$patblood','$symptoms','$bp','$weight','$temp','$tabname1','$tabpattern1','$tabperiod1','$tabdays1','$tabother','$tests')");
+      //$query=mysqli_query($con,"update tblmedicalhistory set PatientID='$prespid',PatientName='$patname',gender='$gender',age='$patage',bloodgrp='$patblood',BloodPressure='$bp',Weight='$weight',Temperature='$temp',tabname1='$tabname1',tabpat1='$tabpattern1',tabped1='$tabperiod1',tabday1='$tabdays1',tabother='$tabother',tests='$tests'  where ID='$prespid'");
+    if ($query) {
+    echo '<script>alert("Medicle history has been added.")</script>';
+    echo "<script>window.location.href ='manage-patient.php'</script>";
+  }
+  else
+    {
+      echo '<script>alert("Something Went Wrong. Please try again")</script>';
+    }
+
+  
+}
   
 
 ?>
@@ -700,7 +735,17 @@ while ($row=mysqli_fetch_array($ret)) {
                                     <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal<?php echo $row['ID'] ?>">View</button>
                                     <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
                                     </td>
-                                    <td></td>
+                                    <td>
+                                      <?php
+                                      if($row['bloodgrp']>0){
+                                        echo'<button class="btn btn-outline-success mt-2 text-center align-items-center" data-bs-toggle="modal" data-bs-target="#presppaymentview">Paid</button>';
+                                      }
+                                      else{
+                                        echo'<button class="btn btn-outline-danger mt-2 text-center align-items-center" data-bs-toggle="modal" data-bs-target="#presppayment">Pay</button>';
+                                        
+                                      }
+                                      ?>
+                                    </td>
                                     
                                   </tr>
 
@@ -711,11 +756,7 @@ while ($row=mysqli_fetch_array($ret)) {
 						<div class="modal-content">
             
 							<div class="modal-body">
-                  
-             
-              
-                            <div id="form-print" enctype="text/plain">
-                              
+                            <div id="form-print" enctype="text/plain">                              
                                 <div class="row">
                                     <div class="row">
                                         <div class="col-sm-2 text-center justify-content-center m-auto">
@@ -816,6 +857,74 @@ while ($row=mysqli_fetch_array($ret)) {
                     </div>
                 </div>
             </div>
+
+
+            <div class="modal fade modal-dialog-scrollable modal-lg " id="presppayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Prescription Payment</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              MAKE PAYEMENT
+                                <form method="post" name="submit">
+                                    <div class="row jumbotron rounded py-2">
+                                      <!--div class="col-sm-12 mx-t3">
+                                        <h2 class="text-center text-info">Register</h2>
+                                      </div-->
+                                     
+          
+                                      <div class="row">
+                  <div class="col-sm-2 text-center justify-content-center m-auto">
+                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
+                  </div>
+                  <div class="col-sm-10">
+                    <div class="row">
+                    <div class="col-sm-7">
+                  <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+                  <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
+                  <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
+                  <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+                  
+                </div>
+                  
+                  <div class="col-sm-5">
+                  <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
+                  <div class="text-center text-danger">Closed: Sunday</div>
+                  <div class="text-center fw-bold" id="form-subhead">Contact:</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  
+                  </div>
+
+                    </div>
+                    <div class="d-flex flex-row">
+                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
+                  <div id="form-subhead"><?php echo $row['address'];?></div>
+                    </div>
+
+                  </div>
+                  <hr style="border: 1px solid #012970;"> 
+
+                 
+                
+
+              </div> <!---------END OF HEADER----------->
+                                
+                                    </div>
+                                  </form>
+                            
+                            </div>
+                            <!--div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                            </div-->
+                        </div>
+                        </div>
+                    </div>
+
+
             <?php $i++;}?>
         </tbody>
     </table>
@@ -832,9 +941,204 @@ while ($row=mysqli_fetch_array($ret)) {
                
 </section>
 
+
+<!------------------------------------------MAKE PAYMENT MODAL------------------->
 <section>
+<div class="modal fade modal-dialog-scrollable modal-lg " id="presppayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Prescription Payment</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              MAKE PAYEMENT
+                                <form method="post" name="submit">
+                                    <div class="row jumbotron rounded py-2">
+                                      <!--div class="col-sm-12 mx-t3">
+                                        <h2 class="text-center text-info">Register</h2>
+                                      </div-->
+                                      <?php
+              $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
+              while ($row=mysqli_fetch_array($ret)) { 
+                ?>
+          
+                                      <div class="row">
+                  <div class="col-sm-2 text-center justify-content-center m-auto">
+                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
+                  </div>
+                  <div class="col-sm-10">
+                    <div class="row">
+                    <div class="col-sm-7">
+                  <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+                  <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
+                  <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
+                  <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+                  
+                </div>
+                  
+                  <div class="col-sm-5">
+                  <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
+                  <div class="text-center text-danger">Closed: Sunday</div>
+                  <div class="text-center fw-bold" id="form-subhead">Contact:</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  
+                  </div>
+
+                    </div>
+                    <div class="d-flex flex-row">
+                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
+                  <div id="form-subhead"><?php echo $row['address'];?></div>
+                    </div>
+
+                  </div>
+                  <hr style="border: 1px solid #012970;"> 
+
+                  <?php }?>
+                
+
+              </div> <!---------END OF HEADER----------->
+
+                                      
+          
+                                      <!--div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
+                                          Personal <hr class="mt-0">
+          
+                                      </div-->
+
+                                      
+                                     
+                                      <!------------------------------------------------------------------>
+                                      
+                                      
+                                            
+                                      <!--------------------------------------------------------------------->
+                                      
+                                     
+                                      <!-------------------START OF TABLET SECTION----------------------->
+                                      <!--section-->
+                                        
+                                      <!--/section-->
+                                      <!-------------------END OF TABLET SECTION----------------------->
+                                     
+          
+                                      <!--------------------------------------------------------------------->
+                                      
+                                
+                                    </div>
+                                  </form>
+                            
+                            </div>
+                            <!--div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                            </div-->
+                        </div>
+                        </div>
+                    </div>
   
 </section>
+<!------------------------------------------MAKE PAYMENT MODAL------------------->
+
+<!------------------------------------------VIEW PAYMENT MODAL------------------->
+<section>
+<div class="modal fade modal-dialog-scrollable modal-lg " id="presppaymentview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Prescription Payment</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              VIEW PAYMENT
+                                <form method="post" name="submit">
+                                    <div class="row jumbotron rounded py-2">
+                                      <!--div class="col-sm-12 mx-t3">
+                                        <h2 class="text-center text-info">Register</h2>
+                                      </div-->
+                                      <?php
+              $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
+              while ($row=mysqli_fetch_array($ret)) { 
+                ?>
+          
+                                      <div class="row">
+                  <div class="col-sm-2 text-center justify-content-center m-auto">
+                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
+                  </div>
+                  <div class="col-sm-10">
+                    <div class="row">
+                    <div class="col-sm-7">
+                  <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+                  <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
+                  <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
+                  <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+                  
+                </div>
+                  
+                  <div class="col-sm-5">
+                  <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
+                  <div class="text-center text-danger">Closed: Sunday</div>
+                  <div class="text-center fw-bold" id="form-subhead">Contact:</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  
+                  </div>
+
+                    </div>
+                    <div class="d-flex flex-row">
+                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
+                  <div id="form-subhead"><?php echo $row['address'];?></div>
+                    </div>
+
+                  </div>
+                  <hr style="border: 1px solid #012970;"> 
+
+                  <?php }?>
+                
+
+              </div> <!---------END OF HEADER----------->
+
+                                      
+          
+                                      <!--div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
+                                          Personal <hr class="mt-0">
+          
+                                      </div-->
+
+                                      
+                                     
+                                      <!------------------------------------------------------------------>
+                                      
+                                      
+                                            
+                                      <!--------------------------------------------------------------------->
+                                      
+                                     
+                                      <!-------------------START OF TABLET SECTION----------------------->
+                                      <!--section-->
+                                        
+                                      <!--/section-->
+                                      <!-------------------END OF TABLET SECTION----------------------->
+                                     
+          
+                                      <!--------------------------------------------------------------------->
+                                      
+                                
+                                    </div>
+                                  </form>
+                            
+                            </div>
+                            <!--div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                            </div-->
+                        </div>
+                        </div>
+                    </div>
+  
+</section>
+<!------------------------------------------END OF VIEW PAYMENT MODAL------------------->
 
 <!------------------------------------------------------MODAL END--------------------------------------------------------->
   </main>
