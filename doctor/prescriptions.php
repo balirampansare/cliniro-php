@@ -45,6 +45,7 @@ if(isset($_POST['submit']))
   
 }
 
+
   
 
 ?>
@@ -682,12 +683,15 @@ if(isset($_POST['submit']))
                             <tbody>
                             <?php
                              $docid = $_SESSION['id'];
+                             $prespid=$_GET['prespid'];
 
 
-                             $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN tblmedicalhistory ON users.id = tblmedicalhistory.PatientID INNER JOIN doctors ON tblmedicalhistory.DocId = doctors.id WHERE PatientID='5' AND DocId='$docid';
-                             ");
+                             $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN tblmedicalhistory ON users.id = tblmedicalhistory.PatientID INNER JOIN doctors ON tblmedicalhistory.DocId = doctors.id WHERE PatientID='$prespid' AND DocId='$docid';");
                              $i = 1;
 while ($row=mysqli_fetch_array($ret)) { 
+
+
+
   
   
   
@@ -719,10 +723,10 @@ while ($row=mysqli_fetch_array($ret)) {
                                       ?-->
 
                                       <?php
-if ($row['bloodgrp']>0) { 
+if ($row['PayAmount']>0) { 
 ?>
 
-<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#presppaymentview<?php echo $row['ID'] ?>">Paid</button>
+<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#presppaymentview<?php echo $row['ID'] ?>">View</button>
 
 <?php
 } else { 
@@ -851,7 +855,6 @@ if ($row['bloodgrp']>0) {
                             
                             <div class="modal-body">
                               <?php $gc = $row['ID'] ?>
-                              MAKE PAYEMENT <?PHP echo $gc?>
                                 <form method="post" name="makepayment">
                                     <div class="row jumbotron rounded py-2">
                                       <!--div class="col-sm-12 mx-t3">
@@ -912,37 +915,39 @@ if ($row['bloodgrp']>0) {
 
                                         <div class="col-sm-12 form-group mt-3">
                                         <hr class="mt-0">
-                                        <button type="submit" name="makepayment"  class="btn btn-outline-success float-end">Pay</button>
+                                        <button name="makepayment"  class="btn btn-outline-success float-end">Pay</button>
                                       </div>
                                 
                                     </div>
                                   </form>
-
                                   <?php
                                   
-if(isset($_POST['makepayment']))
-{
-  
- 
-  $paydescrp=$_POST['paydescrp'];
-  $payamount=$_POST['payamount'];
-  $gc = $row['ID'];
- 
+                                  if(isset($_POST['makepayment']))
+                                  {
+                                    
+                                   
+                                    $paydescrp=$_POST['paydescrp'];
+                                    $payamount=$_POST['payamount'];
+                                    
+                                   
+                                  
+                                    $query1=mysqli_query($con,"Update tblmedicalhistory set PayDescription='$paydescrp',PayAmount='$payamount' where PayAmount IS NULL and ID='".$row['ID']."' and DocId='".$_SESSION['id']."' ");
+                                    //$query=mysqli_query($con,"update tblmedicalhistory set PatientID='$prespid',PatientName='$patname',gender='$gender',age='$patage',bloodgrp='$patblood',BloodPressure='$bp',Weight='$weight',Temperature='$temp',tabname1='$tabname1',tabpat1='$tabpattern1',tabped1='$tabperiod1',tabday1='$tabdays1',tabother='$tabother',tests='$tests'  where ID='$prespid'");
+                                    if ($query1) {
+                                    echo '<script>alert("Payment has been added.")</script>';
+                                  
+                                    echo "<script>window.location.href ='manage-patient.php'</script>";
+                                  }
+                                  else
+                                    {
+                                      echo '<script>alert("Something Went Wrong. Please try again")</script>';
+                                    }
+                                  
+                                  
+                                  }
+                                                                    ?>
 
-  $query=mysqli_query($con,"Update tblmedicalhistory set PayDescription='$paydescrp',PayAmount='$payamount' where ID=8 ");
-  //$query=mysqli_query($con,"update tblmedicalhistory set PatientID='$prespid',PatientName='$patname',gender='$gender',age='$patage',bloodgrp='$patblood',BloodPressure='$bp',Weight='$weight',Temperature='$temp',tabname1='$tabname1',tabpat1='$tabpattern1',tabped1='$tabperiod1',tabday1='$tabdays1',tabother='$tabother',tests='$tests'  where ID='$prespid'");
-  if ($query) {
-  echo '<script>alert("Payment has been added.")</script>';
-  echo "<script>window.location.href ='manage-patient.php'</script>";
-}
-else
-  {
-    echo '<script>alert("Something Went Wrong. Please try again")</script>';
-  }
-
-
-}
-                                  ?>
+                                 
 
 
                             
@@ -956,43 +961,18 @@ else
                     </div>
 
 
-            <?php $i++;}?>
-        </tbody>
-    </table>
-</div>
-
-                   
-                       
-                      </div><!-- End patient form-->
-
-</div>
-
-
-
-               
-</section>
-
-
-<!------------------------------------------MAKE PAYMENT MODAL------------------->
-<section>
-<div class="modal fade modal-dialog-scrollable modal-lg " id="presppayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade modal-dialog-scrollable modal-lg " id="presppaymentview<?php echo $row['ID'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Prescription Payment</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
+                            
                             <div class="modal-body">
-                              MAKE PAYEMENT
+                              
                                 <form method="post" name="submit">
                                     <div class="row jumbotron rounded py-2">
                                       <!--div class="col-sm-12 mx-t3">
                                         <h2 class="text-center text-info">Register</h2>
                                       </div-->
-                                      <?php
-              $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
-              while ($row=mysqli_fetch_array($ret)) { 
-                ?>
+                                      
           
                                       <div class="row">
                   <div class="col-sm-2 text-center justify-content-center m-auto">
@@ -1026,7 +1006,137 @@ else
                   </div>
                   <hr style="border: 1px solid #012970;"> 
 
-                  <?php }?>
+                  
+                
+
+              </div> <!---------END OF HEADER----------->
+
+              <div class="col-sm-8 form-group text-center fw-bold ">
+                                          <label for="tabname text-center fw-bold">Description</label>
+                                          <hr class="text-primary fw-bold">
+                                          <input type="text" class="form-control" name="paydescrp" id="tabname" value="<?php echo $row['PayDescription'];?>" required>
+                                        </div>
+
+                                        <div class="col-sm-4 form-group text-center fw-bold">
+                                          <label for="tabname ">Total</label>
+                                          <hr class="text-primary fw-bold">
+                                          <input type="text" class="form-control" name="payamount" id="tabname" value="<?php echo $row['PayAmount'];?>" required>
+                                        </div>
+
+                                        
+
+
+                                       
+
+                                      
+          
+                                      <!--div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
+                                          Personal <hr class="mt-0">
+          
+                                      </div-->
+
+                                      
+                                     
+                                      <!------------------------------------------------------------------>
+                                      
+                                      
+                                            
+                                      <!--------------------------------------------------------------------->
+                                      
+                                     
+                                      <!-------------------START OF TABLET SECTION----------------------->
+                                      <!--section-->
+                                        
+                                      <!--/section-->
+                                      <!-------------------END OF TABLET SECTION----------------------->
+                                     
+          
+                                      <!--------------------------------------------------------------------->
+                                      
+                                
+                                    </div>
+                                  </form>
+                            
+                            </div>
+                            <!--div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Understood</button>
+                            </div-->
+                        </div>
+                        </div>
+                    </div>
+
+
+            <?php $i++;}?>
+        </tbody>
+    </table>
+</div>
+
+                   
+                       
+                      </div><!-- End patient form-->
+
+</div>
+
+
+
+               
+</section>
+
+
+
+
+<!------------------------------------------MAKE PAYMENT MODAL------------------->
+<section>
+<div class="modal fade modal-dialog-scrollable modal-lg " id="presppayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Prescription Payment</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              MAKE PAYEMENT
+                                <form method="post" name="submit">
+                                    <div class="row jumbotron rounded py-2">
+                                      <!--div class="col-sm-12 mx-t3">
+                                        <h2 class="text-center text-info">Register</h2>
+                                      </div-->
+                                     
+          
+                                      <div class="row">
+                  <div class="col-sm-2 text-center justify-content-center m-auto">
+                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
+                  </div>
+                  <div class="col-sm-10">
+                    <div class="row">
+                    <div class="col-sm-7">
+                  <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+                  <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
+                  <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
+                  <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+                  
+                </div>
+                  
+                  <div class="col-sm-5">
+                  <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
+                  <div class="text-center text-danger">Closed: Sunday</div>
+                  <div class="text-center fw-bold" id="form-subhead">Contact:</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  
+                  </div>
+
+                    </div>
+                    <div class="d-flex flex-row">
+                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
+                  <div id="form-subhead"><?php echo $row['address'];?></div>
+                    </div>
+
+                  </div>
+                  <hr style="border: 1px solid #012970;"> 
+
+                  
                 
 
               </div> <!---------END OF HEADER----------->
@@ -1059,6 +1169,7 @@ else
                                 
                                     </div>
                                   </form>
+                                 
                             
                             </div>
                             <!--div class="modal-footer">
