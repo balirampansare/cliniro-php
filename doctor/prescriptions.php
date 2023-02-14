@@ -675,7 +675,7 @@ if(isset($_POST['submit']))
                                 <th scope="col">#</th>
                                 <th scope="col">Visited Date</th>
                                 <th scope="col">Symptoms</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Prescription</th>
                                 <th scope="col">Payment</th>
                               </tr>
                             </thead>
