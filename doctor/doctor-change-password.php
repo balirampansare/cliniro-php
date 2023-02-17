@@ -5,27 +5,6 @@ include('include/config.php');
 if(strlen($_SESSION['id']==0)) {
  header('location:doctorlogout.php');
   } else{
-date_default_timezone_set('Asia/Kolkata');// change according timezone
-$currentTime = date( 'd-m-Y h:i:s A', time () );
-if(isset($_POST['submit']))
-{
-$cpass=md5($_POST['cpass']);
-$did=$_SESSION['id'];
-$sql=mysqli_query($con,"SELECT password FROM  doctors where password='$cpass' && id='$did'");
-$num=mysqli_fetch_array($sql);
-if($num>0)
-{
-$npass=md5($_POST['npass']);
- $con=mysqli_query($con,"update doctors set password='$npass', updationDate='$currentTime' where id='$did'");
- echo "<script>alert('Doctor Details updated Successfully')</script>";
- echo "<script>window.location.href ='doctor-change-password.php'</script>";
- 
-}
-else
-{
-$_SESSION['msg1']="Old Password not match !!";
-}
-}
 ?>
 
 <!DOCTYPE html>
@@ -55,6 +34,8 @@ $_SESSION['msg1']="Old Password not match !!";
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -74,6 +55,34 @@ return true;
 </head>
 
 <body>
+
+<?php 
+date_default_timezone_set('Asia/Kolkata');// change according timezone
+$currentTime = date( 'd-m-Y h:i:s A', time () );
+if(isset($_POST['submit']))
+{
+$cpass=md5($_POST['cpass']);
+$did=$_SESSION['id'];
+$sql=mysqli_query($con,"SELECT password FROM  doctors where password='$cpass' && id='$did'");
+$num=mysqli_fetch_array($sql);
+if($num>0)
+{
+$npass=md5($_POST['npass']);
+ $con=mysqli_query($con,"update doctors set password='$npass', updationDate='$currentTime' where id='$did'");
+ echo '<script type="text/javascript">
+ swal("Good job!", "Password Changed Successfully!", "success");
+
+       </script>';
+ echo "<script>window.location.href ='doctor-change-password.php'</script>";
+ 
+}
+else
+{
+$_SESSION['msg1']="Old Password not match !!";
+}
+}
+
+?>
 
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
