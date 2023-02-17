@@ -17,7 +17,7 @@ if($num>0)
 {
 $npass=md5($_POST['npass']);
  $con=mysqli_query($con,"update doctors set password='$npass', updationDate='$currentTime' where id='$did'");
- echo "<script>alert('Doctor Details updated Successfully');</script>";
+ echo "<script>alert('Doctor Details updated Successfully')</script>";
 }
 else
 {

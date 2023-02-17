@@ -27,7 +27,7 @@ $uip=$_SERVER['REMOTE_ADDR'];
 $status=0;
 mysqli_query($con,"insert into doctorslog(username,userip,status) values('$uname','$uip','$status')");
 $_SESSION['errmsg']="Invalid username or password";
-header("location:doctorlogin.php");
+
 
 }
 }

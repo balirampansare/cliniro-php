@@ -385,7 +385,7 @@ header("location:manage-patient.php");
                         <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
                         <div class="card-body text-center">
                           <img class="avatar rounded-circle" src="../assets/img/messages-3.jpg" alt="patientpic">
-                          <h4 class="card-title"><?php  echo $row['PatientName'];?></h4>
+                          <h4 class="card-title"><?php  echo $row['fullName'];?></h4>
                           <div class="d-flex justify-content-between flex-wrap" id="form-subhead">
                             <div class="px-2"> <b>Id:</b>PT-<?php  echo $row['id'];?></div>
                             <div class="px-2"> <b>Weight:</b><?php  echo $row['weight'];?></div>
