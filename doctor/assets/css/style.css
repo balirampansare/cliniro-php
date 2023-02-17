@@ -1363,7 +1363,7 @@ h6 {
   border-radius: 7px;
 }*/
 .tools-board{
-  /*background: white;*/
+  
   border-radius: 7px;
   width: 210px;
   padding: 15px 22px 0;
@@ -1489,7 +1489,7 @@ h6 {
   overflow: hidden;
 }
 .drawing-board canvas{
-  /*background-color: red;*/
+ 
   width: 100%;
   height: 100%;
   border: 1px solid #012970;
