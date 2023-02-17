@@ -5,6 +5,8 @@ include('include/config.php');
 if(strlen($_SESSION['id']==0)) {
  header('location:doctorlogout.php');
   } else{
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -35,28 +37,22 @@ if(strlen($_SESSION['id']==0)) {
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <script type="text/javascript">
-function valid()
-{
-if(document.chngpwd.npass.value!= document.chngpwd.cfpass.value)
-{
-alert("Password and Confirm Password Field do not match  !!");
-document.chngpwd.cfpass.focus();
-return false;
-}
-return true;
-}
-</script>
+ 
+
+  
 </head>
 
 <body>
 
-<?php 
+<?php
 date_default_timezone_set('Asia/Kolkata');// change according timezone
 $currentTime = date( 'd-m-Y h:i:s A', time () );
 if(isset($_POST['submit']))
@@ -68,21 +64,51 @@ $num=mysqli_fetch_array($sql);
 if($num>0)
 {
 $npass=md5($_POST['npass']);
- $con=mysqli_query($con,"update doctors set password='$npass', updationDate='$currentTime' where id='$did'");
- echo '<script type="text/javascript">
- swal("Good job!", "Password Changed Successfully!", "success");
+$cfpass=md5($_POST['cfpass']);
+   if( $npass != $cfpass){
+    echo '<script type="text/javascript">
+ swal("Oops", "Confirm and New password didnt matched", "error");
 
        </script>';
- echo "<script>window.location.href ='doctor-change-password.php'</script>";
+
+
+
+   }
+
+   else{
+    $con=mysqli_query($con,"update doctors set password='$npass', updationDate='$currentTime' where id='$did'");
+ echo '<script type="text/javascript">
+ swal({
+  title: "Password Changed Successfully!",
+  text: "Redirecting in 2 seconds",
+  type: "success",
+  timer: 2000,
+  showConfirmButton: false
+}, function(){
+      window.location.href = "doctor-change-password.php";
+});
+ 
+
+       </script>';
+ //echo "<script>window.location.href ='doctor-change-password.php'</script>";
+
+   }
+ 
  
 }
 else
 {
-$_SESSION['msg1']="Old Password not match !!";
+  echo '<script type="text/javascript">
+  swal("Oops", "Current password didnt matched", "error");
+ 
+        </script>';
 }
 }
-
 ?>
+
+
+
+
 
 <!-- ======= Header ======= -->
 <header id="header" class="header fixed-top d-flex align-items-center">
@@ -417,10 +443,10 @@ while($data=mysqli_fetch_array($sql))
    <!-- patient form  -->
    <div class="col-xxl-9">
     <div class="container rounded" id="patients-patients-cont">
-    <form role="form" name="adddoc" method="post" onSubmit="return valid();">
+    <form role="form" name="adddoc" method="post">
                           <div class="row jumbotron box8 rounded py-2">
                           <p style="color:red;"><?php echo htmlentities($_SESSION['msg1']);?>
-								<?php echo htmlentities($_SESSION['msg1']="");?></p>	
+								</p>	
                             <!--div class="col-sm-12 mx-t3">
                               <h2 class="text-center text-info">Register</h2>
                             </div-->
@@ -429,13 +455,13 @@ while($data=mysqli_fetch_array($sql))
 							                                <input type="password" name="cpass" class="form-control"  placeholder="Enter Current Password" required>
 														</div>
 														<div class="form-group">
-															<label for="exampleInputPassword1">New Password</label>
-					                                        <input type="password" name="npass" class="form-control"  placeholder="New Password" required>
+															<label for="npass">New Password</label>
+					                                        <input type="password" name="npass" class="form-control"  id="npass" placeholder="New Password" required>
 														</div>
 														
                                                         <div class="form-group">
-															<label for="exampleInputPassword1">Confirm Password</label>
-									                        <input type="password" name="cfpass" class="form-control"  placeholder="Confirm Password" required>
+															<label for="cfpass">Confirm Password</label>
+									                        <input type="password" name="cfpass" class="form-control" id="cfpass"  placeholder="Confirm Password" required>
 														</div>
                                                         <div class="col-sm-12 form-group mt-3">
                                                         <button type="submit" name="submit" class="btn btn-outline-success mt-2 float-end">
