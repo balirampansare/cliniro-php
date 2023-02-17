@@ -374,7 +374,7 @@ while($data=mysqli_fetch_array($sql))
 
 
 
-    <div class="col-xxl-3 ">
+    <div class="col-md-4 col-lg-3">
       <div class="card">
         <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
         <div class="card-body text-center">
@@ -423,7 +423,7 @@ while($data=mysqli_fetch_array($sql))
    </div><!-- End quote -->
 
    <!-- patient form  -->
-   <div class="col-xxl-9">
+   <div class="col-md-8 col-lg-9">
     <div class="container rounded" id="patients-patients-cont">
     <form role="form" name="adddoc" method="post" onSubmit="return valid();">
                           <div class="row jumbotron box8 rounded py-2">
