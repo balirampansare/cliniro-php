@@ -322,7 +322,7 @@ error:function (){}
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="scratchpad.php">
           <i class="bi bi-easel2"></i>
           <span>drawing-board</span>
         </a>
