@@ -34,7 +34,6 @@ if($sql)
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
