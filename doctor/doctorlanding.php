@@ -540,7 +540,7 @@ if(strlen($_SESSION['id']==0)) {
 
 <!-- -------------------------------------------START OF DRAWING PAD ROW------------- -->
 
-<div class="container2 mt-3">
+<!--div class="container2 mt-3">
 
 <section class="tools-board">
 <div class="drawrow">
@@ -602,7 +602,7 @@ if(strlen($_SESSION['id']==0)) {
 <canvas></canvas>
 </section>
 
-</div>
+</div-->
 
 <!-- -------------------------------------------START OF NEWS SECTION------------- -->
 <div class="container mt-3">
