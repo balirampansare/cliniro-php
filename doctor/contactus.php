@@ -79,22 +79,19 @@ if(strlen($_SESSION['id']==0)) {
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
-        <li class="nav-item dropdown">
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+      <li >
+          <a class="nav-link nav-icon" href="#">
             <i class="bi bi-stopwatch"></i>
             <!--span class="badge bg-primary badge-number">4</span-->
           </a><!-- End Notification Icon -->
         </li><!-- End Notification Nav -->
 
-        <li class="nav-item dropdown">
+        <li>
 
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+          <a class="nav-link nav-icon" href="scratchpad.php" >
             <i class="bi bi-easel2"></i>
-            <!--span class="badge bg-success badge-number">3</span-->
           </a><!-- End Messages Icon -->
         </li><!-- End Messages Nav -->
-
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">

@@ -312,19 +312,19 @@ else
         </a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
-          <i class="bi bi-heart-pulse"></i>
-          <span>Desease Info</span>
-        </a>
-      </li>
+      <li >
+          <a class="nav-link nav-icon" href="#">
+            <i class="bi bi-stopwatch"></i>
+            <!--span class="badge bg-primary badge-number">4</span-->
+          </a><!-- End Notification Icon -->
+        </li><!-- End Notification Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="scratchpad.php">
-          <i class="bi bi-easel2"></i>
-          <span>drawing-board</span>
-        </a>
-      </li>
+        <li>
+
+          <a class="nav-link nav-icon" href="scratchpad.php" >
+            <i class="bi bi-easel2"></i>
+          </a><!-- End Messages Icon -->
+        </li><!-- End Messages Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#">

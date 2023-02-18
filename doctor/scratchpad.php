@@ -48,18 +48,19 @@ if(strlen($_SESSION['id']==0)) {
     <style>
       
 .container{
-  display: flex;
+ 
   width: 100%;
   gap: 10px;
   padding: 10px;
-  /*max-width: 1050px*/;
+  /*max-width: 1050px;*/
   max-height: 700px;
 }
 
 .tools-board{
-  width: 210px;
-  padding: 15px 22px 0;
+  /*width: 210px;
+  padding: 15px 22px 0;*/
   border: 1px solid #012970;
+  
   
 }
 .tools-board .row{
@@ -145,6 +146,10 @@ if(strlen($_SESSION['id']==0)) {
   opacity: 0;
   cursor: pointer;
 }
+
+
+
+/*
 .buttons button{
   width: 100%;
   color: #fff;
@@ -157,6 +162,7 @@ if(strlen($_SESSION['id']==0)) {
   border-radius: 4px;
   cursor: pointer;
 }
+/*
 .buttons .clear-canvas{
   color: #6C757D;
   border: 1px solid #6C757D;
@@ -169,11 +175,8 @@ if(strlen($_SESSION['id']==0)) {
 .buttons .save-img{
   background: #4A98F7;
   border: 1px solid #4A98F7;
-}
-.drawing-board{
-  flex: 1;
-  overflow: hidden;
-}
+}*/
+
 .drawing-board canvas{
   width: 100%;
   height: 100%;
@@ -210,19 +213,17 @@ if(strlen($_SESSION['id']==0)) {
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
-        <li class="nav-item dropdown">
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+      <li >
+          <a class="nav-link nav-icon" href="#">
             <i class="bi bi-stopwatch"></i>
             <!--span class="badge bg-primary badge-number">4</span-->
           </a><!-- End Notification Icon -->
         </li><!-- End Notification Nav -->
 
-        <li class="nav-item dropdown">
+        <li>
 
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+          <a class="nav-link nav-icon" href="scratchpad.php" >
             <i class="bi bi-easel2"></i>
-            <!--span class="badge bg-success badge-number">3</span-->
           </a><!-- End Messages Icon -->
         </li><!-- End Messages Nav -->
 
@@ -466,21 +467,21 @@ if(strlen($_SESSION['id']==0)) {
 </div><!-- End Page Title -->
 
 <section class="section ">
-<div class="container">
-      <section class="tools-board rounded">
+<div class="row">
+      <section class="col-lg-2 col-sm-2 border border-success  rounded my-2">
         <div class="row">
           <label class="title">Shapes</label>
           <ul class="options">
             <li class="option tool" id="rectangle">
-              <img src="icons/rectangle.svg" alt="">
+              <img src="assets/img/rectangle.svg" alt="">
               <span>Rectangle</span>
             </li>
             <li class="option tool" id="circle">
-              <img src="icons/circle.svg" alt="">
+              <img src="assets/img/circle.svg" alt="">
               <span>Circle</span>
             </li>
             <li class="option tool" id="triangle">
-              <img src="icons/triangle.svg" alt="">
+              <img src="assets/img/triangle.svg" alt="">
               <span>Triangle</span>
             </li>
             <li class="option">
@@ -493,11 +494,11 @@ if(strlen($_SESSION['id']==0)) {
           <label class="title">Options</label>
           <ul class="options">
             <li class="option active tool" id="brush">
-              <img src="icons/brush.svg" alt="">
+              <img src="assets/img/brush.svg" alt="">
               <span>Brush</span>
             </li>
             <li class="option tool" id="eraser">
-              <img src="icons/eraser.svg" alt="">
+              <img src="assets/img/eraser.svg" alt="">
               <span>Eraser</span>
             </li>
             <li class="option">
@@ -517,13 +518,13 @@ if(strlen($_SESSION['id']==0)) {
             </li>
           </ul>
         </div>
-        <div class="row buttons">
-          <button class="clear-canvas">Clear Canvas</button>
-          <button class="save-img">Save As Image</button>
+        <div class="row buttons p-1 ">
+          <button class="btn btn-outline-success clear-canvas my-2">Clear</button>
+          <button class="btn btn-outline-success save-img">Save</button>
         </div>
       </section>
-      <section class="drawing-board rounded">
-        <canvas></canvas>
+      <section class="col-lg-10 col-sm-10 drawing-board ">
+        <canvas class="rounded "></canvas>
       </section>
     </div>
 
