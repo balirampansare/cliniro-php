@@ -1347,21 +1347,18 @@ h6 {
 
 
 
-/*------------DRAWING PAD-----------*/
+/*------------DRAWING PAD-----------
 
 .container2{
   display: flex;
   width: 100%;
   gap: 10px;
   padding: 10px;
-  /*max-width: 1050px;*/
+
   justify-content: center;
   text-align: center;
 }
-/*section{
-  background: red;
-  border-radius: 7px;
-}*/
+
 .tools-board{
   
   border-radius: 7px;
@@ -1483,7 +1480,7 @@ h6 {
 /*.buttons .save-img{
   background: #4A98F7;
   border: 1px solid #4A98F7;
-}*/
+}
 .drawing-board{
   flex: 1;
   overflow: hidden;
@@ -1494,7 +1491,7 @@ h6 {
   height: 100%;
   border: 1px solid #012970;
 
-}
+}*/
 
 /*------------END DRAWING PAD-----------*/
 

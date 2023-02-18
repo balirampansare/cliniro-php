@@ -541,7 +541,7 @@ getNewQuote();
 
 /*------------------END OF QUOTE--------------------------------*/
 
-/*---------------------DRAWING PAD----------------*/
+/*---------------------DRAWING PAD----------------
 const canvas = document.querySelector("canvas"),
 toolBtns = document.querySelectorAll(".tool"),
 fillColor = document.querySelector("#fill-color"),
@@ -676,12 +676,6 @@ canvas.addEventListener("mouseup", () => isDrawing = false);
 /*--------------------END OF DRAWING PAD-----------*/
 
 
-form-print.addEventListener("click", () => {
-  const link = document.createElement("a"); // creating <a> element
-  link.download = `${Date.now()}.jpg`; // passing current date as link download value
-  link.href = canvas.toDataURL(); // passing canvasData as link href value
-  link.click(); // clicking link to download image
-});
 
 
 /*------------------------------------------------------------STICKY NOTES------------------------------------------------------*/
