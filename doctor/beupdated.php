@@ -325,7 +325,7 @@ if(strlen($_SESSION['id']==0)) {
     <?php 
     $url = 'https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=14752f907dba4fa09868548074054773';
     $response = file_get_contents($url);
-    $NewsData = json_decode($response);
+    $NewsData = json_decode($response,true);
     ?>
 
     
