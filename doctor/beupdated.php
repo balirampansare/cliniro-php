@@ -322,6 +322,9 @@ if(strlen($_SESSION['id']==0)) {
         </ol>
       </nav>
     </div>
+    <?php 
+    $url = 'https://newsapi.org/v2/everything?q=bitcoin&from=2023-01-19&sortBy=publishedAt&apiKey=14752f907dba4fa09868548074054773';
+    ?>
   
 
   </main>
