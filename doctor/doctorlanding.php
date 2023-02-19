@@ -612,45 +612,9 @@ if(strlen($_SESSION['id']==0)) {
 
 <hr>
 
-<?php 
-    $url = 'https://newsapi.org/v2/everything?q=health&apiKey=14752f907dba4fa09868548074054773';
-    $response = file_get_contents($url);
-    $NewsData = json_decode($response);
-    ?>
-
-    
-
-    
-   
-
-    
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-    <?php 
-    foreach( array_slice($NewsData -> articles,0,3)  as $News)
-    {
-      
-    ?>
-  <div class="col">
-    <div class="card p-2 h-100 border border-primary rounded">
-    <img src="<?php echo $News->urlToImage?>" class="card-img-top rounded" alt="..." style="height:18rem">
-    <div class="card-body">
-      <h5 class="card-title"><?php echo $News->title?></h5>
-      <p class="card-text"><?php echo $News->description?></p>
-      
-    </div>
-    <div class="card-footer">
-      <small class="text-muted"><?php echo $News->author?></small>
-      <div class="float-end"><a href="<?php echo $News->url?>" target="blank"><button type="button" class="btn btn-outline-success">Read...</button></a></div>
-    </div>
-    </div>
-  </div>
-        
-  <?php }?>
-  
-</div>
 
 
-<!--div class="card-group mt-1">
+<div class="card-group mt-1">
 <div class="card rounded mx-3">
 <img src="assets/img/card.jpg" class="card-img-top" alt="...">
 <div class="card-body">
@@ -684,7 +648,7 @@ if(strlen($_SESSION['id']==0)) {
 </div>
 </div>
 
-</div-->
+</div>
       
 </section>
 
