@@ -83,3 +83,53 @@
 		</table>
   </body>
 </html>
+
+
+<?php 
+    foreach($NewsData -> articles as $News)
+    {
+    ?>
+    
+      <div class="card p-2 rounded mx-3 my-1">
+        <img src="<?php echo $News->urlToImage?>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><?php echo $News->title?></h5>
+          <p class="card-text"><?php echo $News->description?></p>
+          <p class="card-text"><?php echo $News->content?></p>
+          <p class="card-text"><?php echo $News->author?></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"><?php echo $News->publishedAt?></small>
+        </div>
+      </div>
+    
+    <?php 
+    }
+    ?>
+
+
+<div class="container-fluid">
+    <?php 
+    foreach($NewsData -> articles as $News)
+    {
+    ?>
+
+    <div class="row ">
+      <div class="col-md-3">
+      <img src="<?php echo $News->urlToImage?>" class="card-img-top" alt="...">
+
+      </div>
+      <div class="col-md-9">
+      <h5 class="card-title">Title:<?php echo $News->title?></h5>
+          <p class="card-text">description:<?php echo $News->description?></p>
+          <p class="card-text">Content:<?php echo $News->content?></p>
+          <p class="card-text">Author:<?php echo $News->author?></p>
+
+      </div>
+
+    </div>
+    <?php 
+    }
+    ?>
+
+    </div>
