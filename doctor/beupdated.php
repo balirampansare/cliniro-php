@@ -338,10 +338,11 @@ if(strlen($_SESSION['id']==0)) {
     <?php 
     foreach($NewsData -> articles as $News)
     {
+      
     ?>
   <div class="col">
-    <div class="card h-100 border border-primary rounded">
-    <img src="<?php echo $News->urlToImage?>" class="card-img-top" alt="..." style="height:18rem">
+    <div class="card p-2 h-100 border border-primary rounded">
+    <img src="<?php echo $News->urlToImage?>" class="card-img-top rounded" alt="..." style="height:18rem">
     <div class="card-body">
       <h5 class="card-title"><?php echo $News->title?></h5>
       <p class="card-text"><?php echo $News->description?></p>
@@ -353,6 +354,7 @@ if(strlen($_SESSION['id']==0)) {
     </div>
     </div>
   </div>
+        
   <?php }?>
   
 </div>

@@ -606,14 +606,49 @@ if(strlen($_SESSION['id']==0)) {
 <div class="container mt-3">
 <div class="row">
 <div class="col-sm-11" id="news-head">Be Updated</div>
-<div class="col-sm-1 "><button class="btn btn-outline-success btn-sm">View</button></div>
+<div class="col-sm-1 "> <a href="beupdated.php"><button class="btn btn-outline-success btn-sm">View</button></a></div>
 </div>
 </div>
 
 <hr>
 
-<div class="card-group mt-1">
-<div class="card p-2 rounded mx-3 my-1">
+<?php 
+    $url = 'https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=14752f907dba4fa09868548074054773';
+    $response = file_get_contents($url);
+    $NewsData = json_decode($response);
+    ?>
+
+    
+
+    
+   
+
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <?php 
+    foreach( array_slice($NewsData -> articles,0,3) as $News)
+    {
+      
+    ?>
+  <div class="col">
+    <div class="card p-2 h-100 border border-primary rounded">
+    <img src="<?php echo $News->urlToImage?>" class="card-img-top rounded" alt="..." style="height:18rem">
+    <div class="card-body">
+      <h5 class="card-title"><?php echo $News->title?></h5>      
+    </div>
+    <div class="card-footer">
+      <small class="text-muted"><?php echo $News->author?></small>
+      <div class="float-end"><a href="<?php echo $News->url?>" target="blank"><button type="button" class="btn btn-outline-success">Read...</button></a></div>
+    </div>
+    </div>
+  </div>
+        
+  <?php }?>
+  
+</div>
+
+<!--div class="card-group mt-1">
+<div class="card rounded mx-3">
 <img src="assets/img/card.jpg" class="card-img-top" alt="...">
 <div class="card-body">
   <h5 class="card-title">Card title</h5>
@@ -623,27 +658,8 @@ if(strlen($_SESSION['id']==0)) {
   <small class="text-muted">Last updated 3 mins ago</small>
 </div>
 </div>
-<div class="card p-2 rounded mx-3 my-1">
-<img src="assets/img/card.jpg" class="card-img-top" alt="...">
-<div class="card-body">
-  <h5 class="card-title">Card title</h5>
-  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-</div>
-<div class="card-footer">
-  <small class="text-muted">Last updated 3 mins ago</small>
-</div>
-</div>
-<div class="card p-2 rounded mx-3 my-1">
-<img src="assets/img/card.jpg" class="card-img-top" alt="...">
-<div class="card-body">
-  <h5 class="card-title">Card title</h5>
-  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-</div>
-<div class="card-footer">
-  <small class="text-muted">Last updated 3 mins ago</small>
-</div>
-</div>
-</div>
+
+</div-->
       
 </section>
 
