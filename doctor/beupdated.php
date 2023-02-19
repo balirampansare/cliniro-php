@@ -323,9 +323,9 @@ if(strlen($_SESSION['id']==0)) {
       </nav>
     </div>
     <?php 
-    $url = 'https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=14752f907dba4fa09868548074054773';
+    $url = 'https://newsapi.org/v2/everything?q=health&apiKey=14752f907dba4fa09868548074054773';
     $response = file_get_contents($url);
-    $NewsData = json_decode($response,true);
+    $NewsData = json_decode($response);
     ?>
 
     

@@ -83,11 +83,19 @@ $_SESSION['errmsg']="Invalid username or password";
                 </a>
               </div><!-- End Logo -->
 
-              <div class="card mb-3">
+              
+
+              <div class="card ">
+              <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
+                  <a href="../index.html" class="p-2 flex-grow-1 border rounded m-2"><i class="bi bi-house-door"></i></a>
+                  <a href="doctorlogin.php" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Doctor</a>
+                  <a href="../patient/patientlogin.php" class="p-2 flex-grow-1 border rounded m-2">Patient</a>
+                  
+                </div>
 
                 <div class="card-body">
 
-                  <div class="pt-4 pb-2">
+                  <div class=" pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                     <p>
 								Please enter your name and password to log in.<br />
