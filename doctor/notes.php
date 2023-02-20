@@ -116,7 +116,9 @@ if(strlen($_SESSION['id']==0)) {
     </div>
     <div class="card-footer">
       <small class="text-muted"><?php echo $row['Created']?></small>
-      <button class="btn btn-outline-success float-end" name="delete"><i class="bi bi-trash"></i></button>
+      
+      <a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-trash"></i></button></a>
+      
 
       
       
