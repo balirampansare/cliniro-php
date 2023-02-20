@@ -111,7 +111,7 @@ if(strlen($_SESSION['id']==0)) {
     <div class="card-body">
     <h4><i class="bi bi-pin-angle-fill" style="color:#012970"></i></h4>
       
-      <p class="card-text"><?php echo $row['Description']?></p>
+      <p class="card-text fw-bold" id="form-subhead"><?php echo $row['Description']?></p>
       
     </div>
     <div class="card-footer">
