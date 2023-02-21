@@ -21,7 +21,7 @@
 
     <li>
 
-      <a class="nav-link nav-icon" href="scratchpad.php" >
+      <a class="nav-link nav-icon" href="scratchpad.php" target="_blank" >
         <i class="bi bi-easel2"></i>
       </a><!-- End Messages Icon -->
     </li><!-- End Messages Nav -->
