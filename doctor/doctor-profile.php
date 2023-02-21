@@ -84,8 +84,6 @@ if($sql)
 <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
   <a href="doctor-profile.php" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Doctor Info</a>
   <a href="doctor-change-password.php" class="p-2 flex-grow-1 border rounded m-2">Change Password</a>
-  <!--a href="../patients/pages-patient-appointments.html" class="p-2 flex-grow-1 border rounded m-2">Appointments</a>
-  <a href="../patients/pages-patient-billings.html" class="p-2 flex-grow-1 border rounded m-2">Billings</a-->
 </div>
 
 <div class="row" >

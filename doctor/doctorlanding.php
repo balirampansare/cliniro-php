@@ -25,7 +25,7 @@ if(strlen($_SESSION['id']==0)) {
 <body>
 
 <?php include('include/header.php');?>
-  <?php include('include/sidebar.php');?>
+<?php include('include/sidebar.php');?>
 
   <main id="main" class="main">
 
@@ -142,29 +142,8 @@ if(strlen($_SESSION['id']==0)) {
         <div class="col-xxl-3 col-md-6">
 
           <div class="card info-card customers-card">
-
-            <!--div class="filter">
-              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <li class="dropdown-header text-start">
-                  <h6>Filter</h6>
-                </li>
-
-                <li><a class="dropdown-item" href="#">Cancel</a></li>
-                <li><a class="dropdown-item" href="#">View</a></li>
-              </ul>
-            </div-->
-
             <div class="card-body">
-              <!--h5 class="card-title">Stop Watch</h5-->
-
               <div class="d-flex align-items-center">
-                <!--div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                  <i class="bi bi-stopwatch"></i>
-                </div-- >
-                <div class="ps-5">
-                  <div class="stopwatch">
-                    <div class="profilehead"><span class="material-icons">timer</span></div-->
                     <div class="circle mt-4 ps-3">
                       <span class="text-success large pt-1 pe-4 fw-bold " id="display">00:00:00</span>
                     </div>
@@ -210,8 +189,6 @@ if(strlen($_SESSION['id']==0)) {
                 
                 <hr/>
                 <div class="float-end">
-                    <!--a class="twitter" id="tweet" data-size="large" target="_blank" rel="noopener noreferrer"><i class="bi bi-twitter"></i></a-->
-                    <!--add an onclick event on 'next quote' button-->
                     <a class="btn btn-outline-success" id="tweet"><i class="bi bi-twitter"></i></a>
                     <button class="btn btn-outline-success" onclick="getNewQuote()">New quote</button>
                 </div>
@@ -250,71 +227,6 @@ if(strlen($_SESSION['id']==0)) {
         </div>
 
 
-<!-- -------------------------------------------START OF DRAWING PAD ROW------------- -->
-
-<!--div class="container2 mt-3">
-
-<section class="tools-board">
-<div class="drawrow">
-  <label class="title">Shapes</label>
-  <ul class="options">
-    <li class="option tool" id="rectangle">
-      <img src="assets/img/rectangle.svg" alt="">
-      <span>Rectangle</span>
-    </li>
-    <li class="option tool" id="circle">
-      <img src="assets/img/circle.svg" alt="">
-      <span>Circle</span>
-    </li>
-    <li class="option tool" id="triangle">
-      <img src="assets/img/triangle.svg" alt="">
-      <span>Triangle</span>
-    </li>
-    <li class="option">
-      <input type="checkbox" id="fill-color" name="fill-color">
-      <label for="fill-color">Filled shape</label>
-    </li>
-  </ul>
-</div>
-<div class="drawrow">
-  <label class="title">Options</label>
-  <ul class="options">
-    <li class="option active tool" id="brush">
-      <img src="assets/img/brush.svg" alt="">
-      <span>Brush</span>
-    </li>
-    <li class="option tool" id="eraser">
-      <img src="assets/img/eraser.svg" alt="">
-      <span>Eraser</span>
-    </li>
-    <li class="option">
-      <input type="range" id="size-slider" min="1" max="30" value="5">
-    </li>
-  </ul>
-</div>
-<div class="drawrow colors">
-  <label class="title">Colors</label>
-  <ul class="options">
-    <li class="option"></li>
-    <li class="option selected"></li>
-    <li class="option"></li>
-    <li class="option"></li>
-    <li class="option">
-      <input type="color" id="color-picker" value="#4A98F7">
-    </li>
-  </ul>
-</div>
-<div class="d-flex my-2">
-  <button class="btn btn-outline-success fw-bold btn-sm" id="clear-canvas">Clear Canvas</button>
-  <button class="btn btn-outline-success fw-bold btn-sm ms-1" id="save-img">Save As Image</button>
-</div>
-</section>
-
-<section class="drawing-board rounded">
-<canvas></canvas>
-</section>
-
-</div-->
 
 <!-- -------------------------------------------START OF NEWS SECTION------------- -->
 <div class="container mt-3">
