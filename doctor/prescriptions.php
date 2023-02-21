@@ -448,10 +448,10 @@ if(isset($_POST['submit']))
                   
                   <div class="col-sm-5">
                   <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
-                  <div class="text-center text-danger">Closed: Sunday</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
+                  <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
                   <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
                   
                   </div>
 
@@ -762,10 +762,10 @@ if ($row['PayAmount']>0) {
                                                     </div>
                                                     <div class="col-sm-5">
                                                         <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                                                        <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
-                                                        <div class="text-center text-danger">Closed: Sunday</div>
+                                                        <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
+                                                        <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
                                                         <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                                                        <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                                                        <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex flex-row">
@@ -876,10 +876,10 @@ if ($row['PayAmount']>0) {
                   
                   <div class="col-sm-5">
                   <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
-                  <div class="text-center text-danger">Closed: Sunday</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
+                  <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
                   <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
                   
                   </div>
 
@@ -988,10 +988,10 @@ if ($row['PayAmount']>0) {
                   
                   <div class="col-sm-5">
                   <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
-                  <div class="text-center text-danger">Closed: Sunday</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
+                  <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
                   <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
                   
                   </div>
 
@@ -1118,10 +1118,10 @@ if ($row['PayAmount']>0) {
                   
                   <div class="col-sm-5">
                   <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
-                  <div class="text-center text-danger">Closed: Sunday</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
+                  <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
                   <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
                   
                   </div>
 
@@ -1218,10 +1218,10 @@ if ($row['PayAmount']>0) {
                   
                   <div class="col-sm-5">
                   <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
-                  <div class="text-center text-danger">Closed: Sunday</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
+                  <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
                   <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
                   
                   </div>
 
