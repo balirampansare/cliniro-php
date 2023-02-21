@@ -67,7 +67,13 @@ $npass=md5($_POST['npass']);
 $cfpass=md5($_POST['cfpass']);
    if( $npass != $cfpass){
     echo '<script type="text/javascript">
- swal("Oops", "Confirm and New password didnt matched", "error");
+    swal({
+      title:"Oops!",
+      text: "New and Confirm didnt matched",
+      icon: "error"
+    }, function(){
+          window.location.href = "doctor-change-password.php";
+    });
 
        </script>';
 
@@ -99,9 +105,14 @@ $cfpass=md5($_POST['cfpass']);
 else
 {
   echo '<script type="text/javascript">
-  swal("Oops", "Current password didnt matched", "error");
- 
-        </script>';
+  swal({
+    title:"Oops!",
+    text: "Current Password didnt matched!",
+    icon: "error"
+  }, function(){
+        window.location.href = "doctor-change-password.php";
+  });
+  </script>';
 }
 }
 ?>
