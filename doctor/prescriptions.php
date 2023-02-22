@@ -138,7 +138,7 @@ if(isset($_POST['submit']))
 <div class="row" >
 
 
-                    <!-- quote -->
+                    
                     <div class="col-xxl-3 ">
                       <div class="card">
                         <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
@@ -785,7 +785,7 @@ if ($row['PayAmount']>0) {
 
 
 <!------------------------------------------MAKE PAYMENT MODAL------------------->
-<section>
+<!--section>
 <div class="modal fade modal-dialog-scrollable modal-lg " id="presppayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
@@ -828,7 +828,7 @@ if ($row['PayAmount']>0) {
 
                   </div>
                   <hr style="border: 1px solid #012970;"> 
-              </div> <!---------END OF HEADER----------->
+              </div> 
                                     </div>
                                   </form>
                             </div>
@@ -836,11 +836,11 @@ if ($row['PayAmount']>0) {
                         </div>
                     </div>
   
-</section>
+</section-->
 <!------------------------------------------MAKE PAYMENT MODAL------------------->
 
 <!------------------------------------------VIEW PAYMENT MODAL------------------->
-<section>
+<!--section>
 <div class="modal fade modal-dialog-scrollable modal-lg " id="presppaymentview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
@@ -852,9 +852,7 @@ if ($row['PayAmount']>0) {
                               VIEW PAYMENT
                                 <form method="post" name="submit">
                                     <div class="row jumbotron rounded py-2">
-                                      <!--div class="col-sm-12 mx-t3">
-                                        <h2 class="text-center text-info">Register</h2>
-                                      </div-->
+                                      
                                       <?php
               $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
               while ($row=mysqli_fetch_array($ret)) { 
@@ -895,7 +893,7 @@ if ($row['PayAmount']>0) {
                   <?php }?>
                 
 
-              </div> <!---------END OF HEADER----------->
+              </div> 
                                     </div>
                                   </form>
                             
@@ -904,7 +902,7 @@ if ($row['PayAmount']>0) {
                         </div>
                     </div>
   
-</section>
+</section-->
 <!------------------------------------------END OF VIEW PAYMENT MODAL------------------->
   </main>
  
