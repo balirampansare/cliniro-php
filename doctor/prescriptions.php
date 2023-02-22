@@ -132,7 +132,7 @@ if(isset($_POST['submit']))
                   <a href="view-patient.php?viewid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Patient Info</a>
                   <a href="prescriptions.php?prespid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Prescriptions</a>
                   <a href="#" class="p-2 flex-grow-1 border rounded m-2">Appointments</a>
-                  <a href="#" class="p-2 flex-grow-1 border rounded m-2">Billings</a>
+                  <a href="patientbilling.php?patid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Billings</a>
                 </div>
 
 <div class="row" >
@@ -693,17 +693,8 @@ if ($row['PayAmount']>0) {
                                   
                                   
                                   }
-                                                                    ?>
-
-                                 
-
-
-                            
+                                  ?> 
                             </div>
-                            <!--div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                            </div-->
                         </div>
                         </div>
                     </div>
@@ -754,9 +745,6 @@ if ($row['PayAmount']>0) {
                   </div>
                   <hr style="border: 1px solid #012970;"> 
 
-                  
-                
-
               </div> <!---------END OF HEADER----------->
 
               <div class="col-sm-8 form-group text-center fw-bold ">
@@ -770,51 +758,13 @@ if ($row['PayAmount']>0) {
                                           <hr class="text-primary fw-bold">
                                           <input type="text" class="form-control" name="payamount" id="tabname" value="<?php echo $row['PayAmount'];?>" required>
                                         </div>
-
-                                        
-
-
-                                       
-
-                                      
-          
-                                      <!--div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
-                                          Personal <hr class="mt-0">
-          
-                                      </div-->
-
-                                      
-                                     
-                                      <!------------------------------------------------------------------>
-                                      
-                                      
-                                            
-                                      <!--------------------------------------------------------------------->
-                                      
-                                     
-                                      <!-------------------START OF TABLET SECTION----------------------->
-                                      <!--section-->
-                                        
-                                      <!--/section-->
-                                      <!-------------------END OF TABLET SECTION----------------------->
-                                     
-          
-                                      <!--------------------------------------------------------------------->
-                                      
-                                
                                     </div>
                                   </form>
                             
                             </div>
-                            <!--div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                            </div-->
                         </div>
                         </div>
                     </div>
-
-
             <?php $i++;}?>
         </tbody>
     </table>
@@ -847,11 +797,6 @@ if ($row['PayAmount']>0) {
                               MAKE PAYEMENT
                                 <form method="post" name="submit">
                                     <div class="row jumbotron rounded py-2">
-                                      <!--div class="col-sm-12 mx-t3">
-                                        <h2 class="text-center text-info">Register</h2>
-                                      </div-->
-                                     
-          
                                       <div class="row">
                   <div class="col-sm-2 text-center justify-content-center m-auto">
                     <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
@@ -883,47 +828,10 @@ if ($row['PayAmount']>0) {
 
                   </div>
                   <hr style="border: 1px solid #012970;"> 
-
-                  
-                
-
               </div> <!---------END OF HEADER----------->
-
-                                      
-          
-                                      <!--div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
-                                          Personal <hr class="mt-0">
-          
-                                      </div-->
-
-                                      
-                                     
-                                      <!------------------------------------------------------------------>
-                                      
-                                      
-                                            
-                                      <!--------------------------------------------------------------------->
-                                      
-                                     
-                                      <!-------------------START OF TABLET SECTION----------------------->
-                                      <!--section-->
-                                        
-                                      <!--/section-->
-                                      <!-------------------END OF TABLET SECTION----------------------->
-                                     
-          
-                                      <!--------------------------------------------------------------------->
-                                      
-                                
                                     </div>
                                   </form>
-                                 
-                            
                             </div>
-                            <!--div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                            </div-->
                         </div>
                         </div>
                     </div>
@@ -988,257 +896,19 @@ if ($row['PayAmount']>0) {
                 
 
               </div> <!---------END OF HEADER----------->
-
-                                      
-          
-                                      <!--div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
-                                          Personal <hr class="mt-0">
-          
-                                      </div-->
-
-                                      
-                                     
-                                      <!------------------------------------------------------------------>
-                                      
-                                      
-                                            
-                                      <!--------------------------------------------------------------------->
-                                      
-                                     
-                                      <!-------------------START OF TABLET SECTION----------------------->
-                                      <!--section-->
-                                        
-                                      <!--/section-->
-                                      <!-------------------END OF TABLET SECTION----------------------->
-                                     
-          
-                                      <!--------------------------------------------------------------------->
-                                      
-                                
                                     </div>
                                   </form>
                             
                             </div>
-                            <!--div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                            </div-->
                         </div>
                         </div>
                     </div>
   
 </section>
 <!------------------------------------------END OF VIEW PAYMENT MODAL------------------->
-
-<!------------------------------------------------------MODAL END--------------------------------------------------------->
   </main>
-  <!--div class="modal fade modal-dialog-scrollable modal-lg " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">New Prescription</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div-->
-
-
-
-  <!----------------------------------------------VIEW PRESCRIPTION MODAL----------------------------->
-  <!--section>
-    <div class="modal fade modal-dialog-scrollable modal-lg " id="viewpresp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">New Prescription</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-          
-            <form id ="form-printio" enctype="text/plainnk">
-            <?php
-              $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
-              while ($row=mysqli_fetch_array($ret)) { 
-                ?>
-            
-               <div class="row">
-               <div class="row">
-                  <div class="col-sm-2 text-center justify-content-center m-auto">
-                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
-                  </div>
-                  <div class="col-sm-10">
-                    <div class="row">
-                    <div class="col-sm-7">
-                  <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
-                  <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
-                  <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
-                  <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
-                  
-                </div>
-                  
-                  <div class="col-sm-5">
-                  <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                  <div class="text-center" id="form-subhead">9 am to 2pm | 6pm to 9pm</div>
-                  <div class="text-center text-danger">Closed: Sunday</div>
-                  <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?> | 78965412587</div>
-                  
-                  </div>
-
-                    </div>
-                    <div class="d-flex flex-row">
-                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
-                  <div id="form-subhead"><?php echo $row['address'];?></div>
-                    </div>
-
-                  </div>
-                  <hr style="border: 1px solid #012970;;"> 
-
-                  
-                <?php }?>
-
-              </div> 
-              <?php
-              $ret=mysqli_query($con,"select * from tblmedicalhistory where ID='$cpid'");
-              while ($row=mysqli_fetch_array($ret)) { 
-                ?>
-
-              <div class="col-sm-4 text-center form-group">
-                              <label for="doctorname" class="fw-bold">Name:</label>
-                              <input type="text" class="form-control text-center border-0" name="pdfname" id="patname" value="<?php  echo $row['PatientName'];?>" readonly  >
-                            </div>
-                            
-                            <div class="col-sm-2 text-center form-group">
-                                <label for="sex" class="fw-bold">Gender:</label>
-                                <input type="text" class="form-control text-center border-0" name="pdfgender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
-                            </div>
-                            <div class="col-sm-2 text-center form-group">
-                                <label for="age" class="fw-bold">Age:</label>
-                                <input type="number" class="form-control text-center border-0" name="pdfpatage" id="patage" value="<?php  echo $row['age'];?>" required readonly >
-                            </div>
-
-
-                            <div class="col-sm-2 text-center form-group">
-                                <label for="blood" class="fw-bold">Blood Group:</label>
-                                <input type="text" class="form-control text-center border-0" name="pdfpatblood" id="blood" value="<?php  echo $row['bloodgrp'];?>" readonly readonly >
-                            </div>
-                            <div class="col-sm-2 text-center form-group">
-                                <label for="weight" class="fw-bold">Weight</label>
-                                <input type="number" class="form-control text-center border-0" name="pdfweight" id="patweight" value="<?php  echo $row['Weight'];?>" required readonly>
-                              </div>
-                              <div class="col-sm-4 text-center form-group mt-1">
-                                <label for="bp" class="fw-bold">BP</label>
-                                <input type="number" class="form-control text-center border-0" name="pdfbp" id="patbp" value="<?php  echo $row['BloodPressure'];?>" required readonly>
-                              </div>
-                              <div class="col-sm-2 text-center form-group mt-1">
-                                <label for="temp" class="fw-bold">Temp</label>
-                                <input type="number" class="form-control text-center border-0" name="pdftemp" id="patbp" value="<?php  echo $row['Temperature'];?>"  required readonly>
-                              </div>
-                              <hr>
-
-                              <div class="col-sm-12  fw-bold form-group" id="form-subhead">Symptoms: </div>
-                              
-                              <div class="col-sm-12 form-group">
-                              <textarea class="form-control border-0" name="pdfsymptoms" id="symptoms" cols="30" rows=auto readonly><?php  echo $row['symptoms'];?></textarea>
-                              </div>
-
-                              <div class="table-responsive mt-1"><hr>
-                              <table class="table table-bordered table-sm align-middle border-primary">
-                                <thead>
-                                  <tr class="text-center">
-                                    <th scope="col">Tablet</th>
-                                    <th scope="col">Pattern</th>
-                                    <th scope="col">Period</th>
-                                    <th scope="col">Days</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr class="text-center">
-                                    <td><?php  echo $row['tabname1'];?></td>
-                                    <td><?php  echo $row['tabpat1'];?></td>
-                                    <td><?php  echo $row['tabped1'];?></td>
-                                    <td><?php  echo $row['tabday1'];?></td>
-                                  </tr>
-                                 
-                                </tbody>
-                              </table>
-
-                              </div>
-
-                              <div class="col-sm-12 form-group mt-1">
-                                          
-                                          <textarea class="form-control border-0" name="pdftabother" id="tabother" cols="30" rows="2"><?php  echo $row['tabother'];?></textarea>
-                                      </div>
-          
-                                      
-                                      <div class="col-sm-12 mt-3 fw-bold" id="form-subhead"><hr>
-                                       Tests/Advice/Other
-                                      </div>
-                                      <div class="col-sm-12 form-group mt-1">
-                                          
-                                          <textarea class="form-control border-0" name="pdftests" id="tests" cols="30" rows="2"><?php  echo $row['tests'];?></textarea>
-                                      </div>
-
-                              
-
-                              <?php }?>
-
-
-                              
-
-               </div>
-              </form>
-            
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-              </div>
-          </div>
-      </div>
-    </div>
-  </section-->
-
-  
-
  
-
-  
-
-    <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>Cliniro</span></strong>. All Rights Reserved
-    </div>
-  </footer><!--End Footer-->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/js/tablesearch.js"></script>
-
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
-  <!--firebase files-->
-  <script src="assets/js/config.js"></script>
-  <!-- Template Main JS File -->
-
-  <script src="assets/js/main.js"></script>
+  <?php include('include/footer.php');?>
 
   <script>
     function GeneratePdf() {

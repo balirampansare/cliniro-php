@@ -88,7 +88,7 @@ header("location:manage-patient.php");
                   <a href="view-patient.php?viewid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Patient Info</a>
                   <a href="prescriptions.php?prespid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Prescriptions</a>
                   <a href="#" class="p-2 flex-grow-1 border rounded m-2">Appointments</a>
-                  <a href="#" class="p-2 flex-grow-1 border rounded m-2">Billings</a>
+                  <a href="patientbilling.php?patid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Billings</a>
                 </div>
 <div class="row" >
 

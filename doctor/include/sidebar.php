@@ -24,7 +24,7 @@
     <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
         <a href="manage-patient.php">
-          <i class="bi bi-circle"></i><span>All Patients</span>
+          <i class="bi bi-circle"></i><span>My Patients</span>
         </a>
       </li>
       <li>
