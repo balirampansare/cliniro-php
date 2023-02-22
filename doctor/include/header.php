@@ -15,7 +15,6 @@
   <li >
       <a class="nav-link nav-icon" href="#">
         <i class="bi bi-stopwatch"></i>
-        <!--span class="badge bg-primary badge-number">4</span-->
       </a><!-- End Notification Icon -->
     </li><!-- End Notification Nav -->
 
