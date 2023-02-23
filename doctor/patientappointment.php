@@ -40,7 +40,7 @@ if (isset($_GET['Apptid'])) {
     $query=mysqli_query($con, "update patappointments set Appt_Status='0' where Apptid='$Apptid' ");
 if ($query) {
 
-echo "<script>window.location.href ='patientappointment.php'</script>";
+echo "<script>window.location.href ='manage-patient.php'</script>";
 }
 else
 {
@@ -147,6 +147,7 @@ else
                                 <th scope="col">Appointment</th>
                                 <th scope="col">Time</th>
                                 <th scope="col">Created</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
@@ -159,9 +160,10 @@ else
                             while ($row=mysqli_fetch_array($ret)) { ?>
                             <tr>
                                 <td class="center"><?php echo $i;?>.</td>
-                                <td><?php echo $row['Appt_Date'];?></td>
+                                <td ><?php echo $row['Appt_Date'];?></td>
                                 <td><?php echo $row['Appt_Time'];?></td>
                                 <td><?php echo $row['Appt_Created'];?></td>
+                                <td><?php echo $row['Appt_Descrip'];?></td>
                                 <td> 
                                 <?php if($row['Appt_Status']==1)
                                 { ?>
