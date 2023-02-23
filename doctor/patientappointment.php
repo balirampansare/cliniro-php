@@ -17,9 +17,11 @@ if(isset($_POST['submit']))
     $docid = $_SESSION['id'];
     $description = $_POST['apptdescrip'];
     $date = $_POST['appt'];
+    $time = $_POST['time'];
+    $status = 1;
    
  
-      $query=mysqli_query($con, "insert into  patappointments(Appt_Patid,Appt_DocId,Appt_Descrip,Appt_Date)values('$patid','$docid','$description','$date')");
+      $query=mysqli_query($con, "insert into  patappointments(Appt_Patid,Appt_DocId,Appt_Descrip,Appt_Date,Appt_Time,Appt_Status)values('$patid','$docid','$description','$date','$time','$status')");
     if ($query) {
     echo '<script>alert("Appointment Booked")</script>';
     echo "<script>window.location.href ='manage-patient.php'</script>";
@@ -31,6 +33,21 @@ if(isset($_POST['submit']))
 
   
 }
+if (isset($_GET['Apptid'])) {
+
+    $Apptid = $_GET['Apptid'];
+
+    $query=mysqli_query($con, "update patappointments set Appt_Status='0' where Apptid='$Apptid' ");
+if ($query) {
+
+echo "<script>window.location.href ='patientappointment.php'</script>";
+}
+else
+{
+  echo '<script>alert("Something Went Wrong. Please try again")</script>';
+}
+
+} 
 
 
   
@@ -113,6 +130,9 @@ if(isset($_POST['submit']))
                             <div class="col-3 form-group">
                                 <input type="date" class="form-control" name="appt" placeholder="Date"  required>
                             </div>
+                            <div class="col-3 form-group">
+                                <input type="time" class="form-control" name="time" placeholder="time"  required>
+                            </div>
                             <div class="col-1 form-group">
                                 <button type="submit" name="submit" class="btn btn-outline-success ">Add</button>
                             </div>
@@ -125,6 +145,7 @@ if(isset($_POST['submit']))
                             <tr id="form-subhead">
                                 <th scope="col">#</th>
                                 <th scope="col">Appointment</th>
+                                <th scope="col">Time</th>
                                 <th scope="col">Created</th>
                                 <th scope="col">Status</th>
                             </tr>
@@ -139,9 +160,16 @@ if(isset($_POST['submit']))
                             <tr>
                                 <td class="center"><?php echo $i;?>.</td>
                                 <td><?php echo $row['Appt_Date'];?></td>
+                                <td><?php echo $row['Appt_Time'];?></td>
                                 <td><?php echo $row['Appt_Created'];?></td>
                                 <td> 
-                                <button class="btn btn-outline-success text-center align-items-center" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row['Billid']?>">View</button>
+                                <?php if($row['Appt_Status']==1)
+                                { ?>
+                                <a href="patientappointment.php?Apptid=<?php echo $row['Apptid'];?>"><button class="btn btn-outline-success">Active</button></a>
+                                                                <?php } else { ?>
+                                <button type="button" class="btn btn-outline-danger" disabled>Canceled</button>
+
+                                   <?php } ?>
                                 </td>
                             </tr>
                             
