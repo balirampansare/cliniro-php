@@ -1,8 +1,8 @@
 <?php
 
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 session_start();
 error_reporting(0);
@@ -212,7 +212,7 @@ if(isset($_POST['submit']))
                             <?php
                             $docid = $_SESSION['id'];
                             $patid=$_GET['patid'];
-                            $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN billing ON users.id = billing.Patid INNER JOIN doctors ON billing.DocId = doctors.id where Patid='$patid' AND DocId='$docid';");
+                            $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN billing ON users.id = billing.Patid INNER JOIN doctors ON billing.DocId = doctors.id where Patid='$patid' AND Docid='$docid';");
                             $i = 1;
                             while ($row=mysqli_fetch_array($ret)) { ?>
                             <tr>
@@ -220,19 +220,16 @@ if(isset($_POST['submit']))
                                 <td><?php echo $row['Billid'];?></td>
                                 <td><?php echo $row['Created'];?></td>
                                 <td> 
-                                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#billpaymentview<?php echo $row['Billid'] ?>">View</button>
+                                <button class="btn btn-outline-success mt-2 text-center align-items-center" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row['Billid']?>">View</button>
+
                                 </td>
                             </tr>
-                            
-
-                            
-                            
-                            <div id="billpaymentview<?php echo $row['Billid'] ?>" class="modal fade modal-lg" role="dialog">
+                            <div id="myModal<?php echo $row['Billid']?>" class="modal fade modal-lg" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                    <div class="modal-body">
-                                            <form >
-                                                <div class="row jumbotron rounded py-2">      
+                                        <div class="modal-body">
+                                                <div id="form-print" enctype="text/plain">
+                                                    <div class="row jumbotron rounded py-2">       
                                                     <div class="row">
                                                         <div class="col-sm-2 text-center justify-content-center m-auto">
                                                             <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
@@ -266,33 +263,38 @@ if(isset($_POST['submit']))
                                                     </div>
                                                     <div class="col-sm-4 text-center form-group">
                                                         <label for="sex" class="fw-bold">Bill No:</label>
-                                                        <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['Billno'];?>" readonly  >
+                                                        <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
                                                     </div>
                                                     <div class="col-sm-4 text-center form-group">
                                                         <label for="age" class="fw-bold">Date:</label>
                                                         <div>
-                                                            <?php  echo $row['Created'];?>?>
+                                                            <?php
+                                                            echo $row['Created'];
+                                                            ?>
                                                         </div>
                                                     </div>
                                                     <div class=" mt-0"><hr style="border: 1px solid #012970;"></div>
-                                                    <div class="col-sm-8 form-group text-center fw-bold ">
-                                                        <label for="description text-center fw-bold">Description</label>
-                                                        <hr class="text-primary fw-bold">
-                                                        <input type="text" class="form-control" name="paydescrp" id="description" value="<?php  echo $row['Description'];?>" required>
+                                                    <div class="col-sm-8 form-group text-center ">
+                                                        <label for="description text-center">Description</label>
+                                                        <hr class="text-primary">
+                                                        <input type="text" class="form-control" name="paydescrp" id="description" value="<?php  echo $row['Description'];?>" readonly>
                                                     </div>
-                                                    <div class="col-sm-4 form-group text-center fw-bold">
+                                                    <div class="col-sm-4 form-group text-center">
                                                         <label for="total ">Total</label>
-                                                        <hr class="text-primary fw-bold">
-                                                        <input type="text" class="form-control" name="payamount" id="total" value="<?php  echo $row['Amount'];?>" required>
+                                                        <hr class="text-primary">
+                                                        <input type="text" class="form-control" name="payamount" id="total" value="<?php  echo $row['Amount'];?>" readonly>
                                                     </div>
                                                     <div class="col-sm-12 form-group mt-3">
                                                         <br>
                                                         <label for="signature " class="float-end fw-bold">Authorized Signature</label>                                    
                                                     </div>
-                                                </div>
-                                            </form>
+                                                    <div class="col-sm-12 form-group mt-3">
+                                                        <hr class="mt-0">
+                                                        <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>
+                                                    </div>
+                                                </div>                              
+                                            </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -301,12 +303,8 @@ if(isset($_POST['submit']))
                     </table>
                     </div>
                 </div>
-            </div>
-                            
-                
+            </div>         
     </section>
-
-    
   </main>
 
 
