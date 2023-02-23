@@ -15,13 +15,13 @@ if(isset($_POST['submit']))
     
     $patid=$_GET['patid'];
     $docid = $_SESSION['id'];
-    $description = $_POST['paydescrp'];
-    $total = $_POST['payamount'];
+    $description = $_POST['apptdescrip'];
+    $date = $_POST['appt'];
    
  
-      $query=mysqli_query($con, "insert into  billing(Patid,DocId,Description,Amount)values('$patid','$docid','$description','$total')");
+      $query=mysqli_query($con, "insert into  patappointments(Appt_Patid,Appt_DocId,Appt_Descrip,Appt_Date)values('$patid','$docid','$description','$date')");
     if ($query) {
-    echo '<script>alert("Bill Created")</script>';
+    echo '<script>alert("Appointment Booked")</script>';
     echo "<script>window.location.href ='manage-patient.php'</script>";
   }
   else
@@ -97,8 +97,6 @@ if(isset($_POST['submit']))
                             <div class="px-2"> <b>Blood Grp:</b> <?php  echo $row['bloodgrp'];?></div>
                             <div class="px-2"> <b>Allergies:</b> <?php  echo $row['Allergy'];?></div>
                         </div>
-                        <hr class="mt-1">
-                        <button class="btn btn-outline-success mt-2 text-center align-items-center" data-bs-toggle="modal" data-bs-target="#billpayment">Add +</button>
                     </div>
                 </div>
                 <?php }?>
@@ -107,26 +105,41 @@ if(isset($_POST['submit']))
 
             <div class="col-xxl-9">
                 <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
-                    <table class="table datatable">
+                    <form method="post" name="submit">
+                        <div class="row mt-2 justify-content-end">
+                            <div class="col-3 form-group">
+                                <input type="text" class="form-control" name="apptdescrip" placeholder="Any Description" >
+                            </div>
+                            <div class="col-3 form-group">
+                                <input type="date" class="form-control" name="appt" placeholder="Date"  required>
+                            </div>
+                            <div class="col-1 form-group">
+                                <button type="submit" name="submit" class="btn btn-outline-success ">Add</button>
+                            </div>
+                            <hr class="mt-2">
+                        </div>
+                    </form>
+                                        
+                    <table class="table">
                         <thead>
                             <tr id="form-subhead">
                                 <th scope="col">#</th>
-                                <th scope="col">Bill No.</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Appointment</th>
+                                <th scope="col">Created</th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             $docid = $_SESSION['id'];
                             $patid=$_GET['patid'];
-                            $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN billing ON users.id = billing.Patid INNER JOIN doctors ON billing.DocId = doctors.id where Patid='$patid' AND Docid='$docid';");
+                            $ret=mysqli_query($con,"SELECT * FROM patappointments where Appt_Patid='$patid' AND Appt_Docid='$docid';");
                             $i = 1;
                             while ($row=mysqli_fetch_array($ret)) { ?>
                             <tr>
                                 <td class="center"><?php echo $i;?>.</td>
-                                <td><?php echo $row['Billid'];?></td>
-                                <td><?php echo $row['Created'];?></td>
+                                <td><?php echo $row['Appt_Date'];?></td>
+                                <td><?php echo $row['Appt_Created'];?></td>
                                 <td> 
                                 <button class="btn btn-outline-success text-center align-items-center" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row['Billid']?>">View</button>
                                 </td>

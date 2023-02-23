@@ -96,7 +96,19 @@ if(strlen($_SESSION['id']==0)) {
                   <i class="bi bi-people"></i>
                 </div>
                 <div class="ps-5" >
-                  <h6>64</h6>
+                  <h6>
+                    <?php
+                      date_default_timezone_set("Asia/Kolkata");
+                      $todaydate =date("Y-m-d");
+                      $docid = $_SESSION['id'];
+                      $result = mysqli_query($con,"SELECT * FROM patappointments where Appt_Docid = '$docid' and Appt_Date='$todaydate';");
+                      $num_rows = mysqli_num_rows($result);
+                      {
+                        echo htmlentities($num_rows);  
+                      }
+                    ?>
+
+                  </h6>
                 </div>
               </div>
             </div>
