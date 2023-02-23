@@ -220,7 +220,7 @@ if(isset($_POST['submit']))
                                 <td><?php echo $row['Billid'];?></td>
                                 <td><?php echo $row['Created'];?></td>
                                 <td> 
-                                <button class="btn btn-outline-success mt-2 text-center align-items-center" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row['Billid']?>">View</button>
+                                <button class="btn btn-outline-success text-center align-items-center" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row['Billid']?>">View</button>
                                 </td>
                             </tr>
                             <div id="myModal<?php echo $row['Billid']?>" class="modal fade modal-lg" role="dialog">
@@ -286,14 +286,11 @@ if(isset($_POST['submit']))
                                                     <div class="col-sm-12 form-group mt-3">
                                                         <br>
                                                         <label for="signature " class="float-end fw-bold">Authorized Signature</label>                                    
-                                                    </div>
-                                                    <div>
-                                                    <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
-
-
-                                                    </div>
-                                                   
+                                                    </div>  
                                                 </div>                              
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
                                             </div>
                                         </div>
                                     </div>
@@ -302,11 +299,11 @@ if(isset($_POST['submit']))
                             <?php $i++; }?>
                         </tbody>
                     </table>
-                    </div>
                 </div>
-            </div>         
+            </div>
+        </div>         
     </section>
-  </main>
+</main>
 
 
  

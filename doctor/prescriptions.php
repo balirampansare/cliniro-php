@@ -699,7 +699,7 @@ if ($row['PayAmount']>0) {
                     </div>
 
 
-                    <div class="modal fade modal-dialog-scrollable modal-lg " id="presppaymentview<?php echo $row['ID'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal fade modal-lg " id="presppaymentview<?php echo $row['ID'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
                             
@@ -908,23 +908,17 @@ if ($row['PayAmount']>0) {
   <?php include('include/footer.php');?>
 
   <script>
-    function GeneratePdf() {
-			var element = document.getElementById('form-print');
-      var opt = {
-  margin:       0.2,
-  filename:     'myfile.pdf',
-  image:        { type: 'jpeg', quality: 0.98 },
-  html2canvas:  { scale: 2 },
-  jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-};
-
-// New Promise-based usage:
-//html2pdf().set(opt).from(element).save();
-
-// Old monolithic-style usage:
-html2pdf(element, opt);
-		}
-	
+  function GeneratePdf() {
+    var element = document.getElementById('form-print');
+    var opt = {
+      margin:       0.2,
+      filename:     'myfile.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf(element, opt);
+  }
   </script>
 
   
