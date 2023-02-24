@@ -94,12 +94,12 @@
     </a>
   </li>
 
-  <li class="nav-item">
+  <!--li class="nav-item">
     <a class="nav-link collapsed" href="#">
       <i class="bi bi-heart-pulse"></i>
       <span>Desease Info</span>
     </a>
-  </li>
+  </li-->
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="scratchpad.php">
@@ -124,12 +124,12 @@
     </a>
   </li><!-- End Profile Page Nav -->
 
-  <li class="nav-item">
+  <!--li class="nav-item">
     <a class="nav-link collapsed" href="faq.html">
       <i class="bi bi-question-circle"></i>
       <span>F.A.Q</span>
     </a>
-  </li><!-- End F.A.Q Page Nav -->
+  </li-->
 
 
   <li class="nav-item">
