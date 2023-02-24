@@ -53,7 +53,7 @@ if(strlen($_SESSION['id']==0)) {
               </div>
               <div class="col-sm-2 text-center form-group">
                   <label for="patloc" class="fw-bold">Locality:</label>
-                  <input type="text" class="form-control " name="patloc" value="" id="patloc" placeholder="">
+                  <input type="text" class="form-control " name="patloc" value="" id="patloc" placeholder="" required>
               </div>
               <div class="col-sm-2 text-center form-group">
                   <label for="patcity" class="fw-bold">City:</label>
@@ -78,7 +78,7 @@ if(strlen($_SESSION['id']==0)) {
           $patcity=$_POST['patcity'];
           $patpin=$_POST['patpin'];
         
-        $ret=mysqli_query($con,"select * from doctors where (doctorName like '%$patname%'|| clinic_locality like '%$patloc%')");
+        $ret=mysqli_query($con,"select * from doctors where clinic_locality like '%$patloc%' || doctorName like '%$patloc%' || clinic_city like '%$patloc%'");
         $num=mysqli_num_rows($ret);
         echo $num;
         if($num>0)
