@@ -51,7 +51,7 @@
     </a>
     <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="#">
+        <a href="events.php">
           <i class="bi bi-circle"></i><span>Events</span>
         </a>
       </li>

@@ -8,12 +8,16 @@ if(strlen($_SESSION['id']==0)) {
     if(isset($_POST['submit']))
   {
     $docid = $_SESSION['id'];
-    $description = $_POST['description'];
+    $event = $_POST['event'];
+    $edate = $_POST['edate'];
+    $etime = $_POST['etime'];
+    $eventaddress = $_POST['eventaddress'];
+    $eventother = $_POST['eventother'];
 
-    $query=mysqli_query($con, "insert into  notes(Docid,Description)values('$docid','$description')");
+    $query=mysqli_query($con, "insert into  events(Docid,Event_name,Event_date,Event_time,Event_address,Event_other)values('$docid','$event','$edate','$etime','$eventaddress','$eventother')");
     if ($query) {
     
-    echo "<script>window.location.href ='notes.php'</script>";
+    echo "<script>window.location.href ='events.php'</script>";
   }
   else
     {
@@ -50,11 +54,11 @@ if(strlen($_SESSION['id']==0)) {
 
   <main class="main" id="main">
     <div class="pagetitle">
-        <h1>Notes</h1>
+        <h1>Events</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="dashboard.php">Schedules</a></li>
-                <li class="breadcrumb-item active">Notes</li>
+                <li class="breadcrumb-item active">Events</li>
             </ol>
         </nav>
     </div>
@@ -62,6 +66,7 @@ if(strlen($_SESSION['id']==0)) {
     <div class="text-center">
         <button class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#exampleModal">Add +</button>
         <hr>
+       
     </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -71,15 +76,31 @@ if(strlen($_SESSION['id']==0)) {
       <div class="modal-body">
         <form method="post" name="submit">
             <div class="row jumbotron rounded py-2">
-                <div class="col-sm-12 form-group">
-                    <label for="tabname">Description</label>
+                <!--div class="col-sm-12 form-group"-->
                     <div class="col-sm-12 form-group">
-                        <textarea class="form-control border-bottom" name="description" id="description" cols="30" rows="2"></textarea>
-                    </div> 
+                        <label for="event" class="fw-semibold">Event Name:</label>
+                        <input type="text" class="form-control" name="event" id="event" placeholder="Event name">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label for="edate" class="fw-semibold">Date:</label>
+                        <input type="date" class="form-control" name="edate" id="edate" placeholder="Event date">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label for="etime" class="fw-semibold">Time:</label>
+                        <input type="time" class="form-control" name="etime" id="etime" placeholder="Event time">
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <label for="eventaddress" class="fw-semibold">Address:</label>
+                        <textarea class="form-control border-bottom" name="eventaddress" id="eventaddress" placeholder="Address" cols="30" rows="2"></textarea>
+                    </div>
+                    <div class="col-sm-12 form-group">
+                        <label for="eventother" class="fw-semibold">Other Details:</label>
+                        <textarea class="form-control border-bottom" name="eventother" id="eventother" placeholder="Other" cols="30" rows="2"></textarea>
+                    </div>
                     <div class="col-sm-12 form-group mt-1">
                         <button type="submit" name="submit"  class="btn btn-outline-success float-end">Submit</button>
                     </div>
-                </div>
+                <!--/div-->
             </div>
 
         </form>
@@ -94,7 +115,7 @@ if(strlen($_SESSION['id']==0)) {
 </div>
 
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<!--div class="row row-cols-1 row-cols-md-3 g-4">
 <?php
                             $docid=$_SESSION['id'];
                             $sql=mysqli_query($con,"SELECT * FROM notes WHERE DocID = $docid ORDER BY Noteid DESC");
@@ -131,7 +152,7 @@ if(strlen($_SESSION['id']==0)) {
                                 $cnt=$cnt+1;
 							}?>
   
-</div>
+</div-->
     
 
 

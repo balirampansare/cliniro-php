@@ -91,9 +91,7 @@ while($row=mysqli_fetch_array($sql))
 
                                    
                                     <td> 
-                                    <button class="btn btn-outline-success m-1"> <a href="view-patient.php?viewid=<?php echo $row['id'];?>"><i class="bi bi-eye"></i></a></button> 
-                                        <button class="btn btn-outline-success m-1"><a href="#"><i class="bi bi-plus"></i></a></button>  
-                                    </td>
+                                    <a href="view-patient.php?viewid=<?php echo $row['id'];?>"><button class="btn btn-outline-success m-1"> <i class="bi bi-eye"></i></button> </a>                                    </td>
                                     
                                   </tr>
 
