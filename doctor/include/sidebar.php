@@ -71,7 +71,7 @@
     </a>
     <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="#">
+        <a href="inventory.php">
           <i class="bi bi-circle"></i><span>Doctors Inventory</span>
         </a>
       </li>
@@ -132,12 +132,12 @@
   </li-->
 
 
-  <li class="nav-item">
+  <!--li class="nav-item">
     <a class="nav-link collapsed" href="contactus.php">
       <i class="bi bi-envelope"></i>
       <span>Contact</span>
     </a>
-  </li><!-- End Contact Page Nav -->
+  </li--><!-- End Contact Page Nav -->
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="doctorlogout.php">

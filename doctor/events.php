@@ -27,6 +27,22 @@ if(strlen($_SESSION['id']==0)) {
   }
   
 
+  if (isset($_GET['Eventid'])) {
+
+    $eventid = $_GET['Eventid'];
+
+    $query=mysqli_query($con, "delete from events where Eventid='$eventid' ");
+if ($query) {
+
+echo "<script>window.location.href ='events.php'</script>";
+}
+else
+{
+  echo '<script>alert("Something Went Wrong. Please try again")</script>';
+}
+
+} 
+
 
 ?>
 
@@ -114,111 +130,51 @@ if(strlen($_SESSION['id']==0)) {
   </div>
 </div>
 
-<div class="container">
-    <div class="row pt-5 m-auto">
-      <div class="col-md-6 col-lg-4 pb-3">
-
-        <!-- Copy the content below until next comment -->
-        <div class="card card-custom bg-white border-white border-0">
-          <div class="card-custom-img" style="background-image: url('http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg');"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Card has minimum height set but will expand if more space is needed for card body content. You can use Bootstrap <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">card-decks</a> to align multiple cards nicely in a row.</p>
-          </div>
-          <div class="card-footer" style="background: inherit; border-color: inherit;">
-            <a href="#" class="btn btn-primary">Option</a>
-            <a href="#" class="btn btn-outline-primary">Other option</a>
-          </div>
+<div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+    <?php
+    $docid=$_SESSION['id'];
+    $sql=mysqli_query($con,"SELECT * FROM events WHERE DocID = $docid ORDER BY Eventid DESC");
+    $cnt=1;
+    while($row=mysqli_fetch_array($sql))
+    {
+        $add = $row['Event_address'];
+        ?>
+  <div class="col-lg-4">
+    <div class="card border border-dark rounded" style="width: 18rem;">
+      <img src="https://digitalagencynetwork.com/wp-content/uploads/2021/10/top-technology-events-you-should-attend-1.jpg" class="card-img-top" alt="..." style="height:8rem;">
+      <div class="card-body">
+        <h3 class="text-center fw-bold mt-3" id="form-subhead"><?php echo $row['Event_name']?></h3>
+        <div class="row text-center">
+            <div class="col fw-bold text-success"> <i class="bi bi-calendar-date">  </i><?php echo $row['Event_date']?></div>
+            <div class="col fw-bold text-success"><i class="bi bi-hourglass"> </i> <?php echo $row['Event_time']?> </div>
         </div>
-        <!-- Copy until here -->
-
-      </div>
-      <div class="col-md-6 col-lg-4 pb-3">
-
-        <!-- Add a style="height: XYZpx" to div.card to limit the card height and display scrollbar instead -->
-        <div class="card card-custom bg-white border-white border-0" style="height: 450px">
-          <div class="card-custom-img" style="background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);"></div>
-          <div class="card-custom-avatar">
-            <img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />
-          </div>
-          <div class="card-body" style="overflow-y: auto">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">You can also set maximum height on and the card will not expand, instead a scrollbar in the card body will appear.</p>
-            <p class="card-text">Some example text to show the scrollbar.</p>
-            <p class="card-text">Lorem ipsum dolor sit amet, te vix omittam fastidii, enim paulo omnes ea has, illud luptatum no qui. Sed ea qualisque urbanitas, purto elit nec te. Possim inermis antiopam ut eum. Eos te zril labore laboramus, quem erant nam in. Ut sed molestie
-              antiopam. At altera facilisis mel.</p>
-          </div>
-          <div class="card-footer" style="background: inherit; border-color: inherit;">
-            <a href="#" class="btn btn-primary">Option</a>
-            <a href="#" class="btn btn-outline-primary">Other option</a>
-          </div>
+        <hr>
+        <div class=" text-center">
+            <i class="bi bi-pin-map-fill fw-bold text-success"> - </i>
         </div>
+        <div class="text-center"><?php echo $row['Event_address']?></div>
 
-      </div>
-      <div class="col-md-6 col-lg-4 pb-3">
-
-        <div class="card card-custom bg-white border-white border-0">
-          <div class="card-body">
-            <img src="http://res.cloudinary.com/d3/image/upload/c_scale,h_450,q_auto:best/color-cards_lorvwg.jpg" alt="Colored cards" class="img-fluid">
-            <p>You can use this card together with standard Bootstrap 4 cards and use card features on it.</p>
-            <p class="h5 text-center pt-3">See the card on GitHub:</p>
-            <p class="h1 text-center"><a href="https://github.com/peterdanis/custom-bootstrap-cards" target="_blank"><i class="fa fa-github"></i></a></p>
-
-          </div>
+        <div style="overflow-y: auto">
+        <hr>
+        <div class=" text-center">
+            <i class="bi bi-info-circle fw-bold text-success"></i>
         </div>
+        <p class="card-text text-center"><?php echo $row['Event_other']?></p>
+        <small class="text-muted float-end m-0 p-0"><?php echo $row['Event_created']?></small>
 
+        </div>
       </div>
-    </div>
-  </div>
-
-
-<!--div class="row row-cols-1 row-cols-md-3 g-4">
-<?php
-                            $docid=$_SESSION['id'];
-                            $sql=mysqli_query($con,"SELECT * FROM notes WHERE DocID = $docid ORDER BY Noteid DESC");
-                            $cnt=1;
-                            while($row=mysqli_fetch_array($sql))
-                            {
-                                $nid = $row['Noteid'];
-                            ?>
-
-  <div class="col" style="transform: rotate(1.5deg);">
-    <div class="card h-100 border border-primary rounded">
-
-    <div class="card-body">
-    <h4><i class="bi bi-pin-angle-fill" style="color:#012970"></i></h4>
-      
-      <p class="card-text fw-bold" id="form-subhead"><?php echo $row['Description']?></p>
-      
-    </div>
-    <div class="card-footer">
-      <small class="text-muted"><?php echo $row['Created']?></small>
-      
-      <a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-trash"></i></button></a>
-      
-
-      
-      
-      
-      
-    </div>
-    </div>
-  </div>
+      <div class="card-footer">
         
-  <?php 
-                                $cnt=$cnt+1;
-							}?>
-  
-</div-->
-    
-
-
-    
-  
-
+      
+      <a href="http://maps.google.com/?q=<?php echo $add;?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"></i></button></a>      
+      <a href="events.php?Eventid=<?php echo $row['Eventid'];?>"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-trash"></i></button></a>
+      <!--a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-pencil-fill"></i></button></a-->  
+    </div>
+    </div>
+  </div>
+  <?php $cnt=$cnt+1;}?>
+</div>
   </main>
 
   <?php include('include/footer.php');?>
