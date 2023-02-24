@@ -105,7 +105,6 @@ header("location:manage-patient.php");
                             <div class="px-2"> <b>Weight:</b><?php  echo $row['Weight'];?></div>
                             <div class="px-2"> <b>Age:</b><?php  echo $row['Age'];?></div>
                             <div class="px-2"> <b>Gender:</b><?php  echo $row['gender'];?></div>
-                            <div class="px-2"> <b>Blood Grp:</b> <?php  echo $row['bloodgrp'];?></div>
                             <div class="px-2"> <b>Allergies:</b> <?php  echo $row['Allergy'];?></div>
                           </div>
 

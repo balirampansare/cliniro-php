@@ -56,7 +56,7 @@ if(strlen($_SESSION['id']==0)) {
                             <tbody>
                             <?php
                             $docid=$_SESSION['id'];
-                            $sql=mysqli_query($con,"SELECT * FROM users RIGHT JOIN tblmedicalhistory on users.id = tblmedicalhistory.PatientID WHERE DocID = $docid GROUP BY PatientID;");
+                            $sql=mysqli_query($con,"SELECT * FROM users RIGHT JOIN tblmedicalhistory on users.id = tblmedicalhistory.PatientID WHERE DocID = $docid GROUP BY PatientID order by CreationDate;");
                             $cnt=1;
                             while($row=mysqli_fetch_array($sql))
                             {
@@ -69,8 +69,9 @@ if(strlen($_SESSION['id']==0)) {
                                 <td><?php echo $row['CreationDate'];?></td>
                                 
 
-                                    <td> 
-                                        <a href="view-patient.php?viewid=<?php echo $row['PatientID'];?>"><i class="bi bi-eye"></i></a> 
+                                    <td>
+
+                                        <a href="view-patient.php?viewid=<?php echo $row['PatientID'];?>"> <button class="btn btn-outline-success"><i class="bi bi-eye"></i></button> </a> 
                                     </td>
                                     
                                   </tr>
@@ -86,14 +87,6 @@ if(strlen($_SESSION['id']==0)) {
   
 
   </main>
-  
-  
-
-
- 
-
-  
-
   <?php include('include/footer.php');?>
 
 </body>
