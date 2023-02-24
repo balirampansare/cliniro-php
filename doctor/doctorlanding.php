@@ -141,7 +141,18 @@ if(strlen($_SESSION['id']==0)) {
                   <i class="bi bi-table"></i>
                 </div>
                 <div class="ps-5">
-                  <h6>12</h6>
+                  <h6>
+                  <?php
+                      date_default_timezone_set("Asia/Kolkata");
+                      $todaydate =date("Y-m-d");
+                      $docid = $_SESSION['id'];
+                      $result = mysqli_query($con,"SELECT * FROM events where Docid = '$docid' and Event_date='$todaydate';");
+                      $num_rows = mysqli_num_rows($result);
+                      {
+                        echo htmlentities($num_rows);  
+                      }
+                    ?>
+                  </h6>
                 </div>
               </div>
 
