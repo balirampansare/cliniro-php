@@ -48,20 +48,20 @@ if(strlen($_SESSION['id']==0)) {
         <form role="form" method="post" name="search">
             <div class="row border border-primary p-2 rounded">
               <div class="col-sm-4 text-center form-group">
-                  <label for="doctorname" class="fw-bold">Dr. Name:</label>
-                  <input type="text" class="form-control text-center" name="patname" id="patname" placeholder="">
+                  <label for="patname" class="fw-bold">Dr. Name:</label>
+                  <input type="text" class="form-control " name="patname" value="" id="patname" placeholder="">
               </div>
               <div class="col-sm-2 text-center form-group">
-                  <label for="doctorname" class="fw-bold">Locality:</label>
-                  <input type="text" class="form-control text-center" name="patloc" id="patloc" placeholder="">
+                  <label for="patloc" class="fw-bold">Locality:</label>
+                  <input type="text" class="form-control " name="patloc" value="" id="patloc" placeholder="">
               </div>
               <div class="col-sm-2 text-center form-group">
-                  <label for="doctorname" class="fw-bold">City:</label>
-                  <input type="text" class="form-control text-center" name="patcity" id="patcity" placeholder="">
+                  <label for="patcity" class="fw-bold">City:</label>
+                  <input type="text" class="form-control" name="patcity" value="" id="patcity" placeholder="">
               </div>
               <div class="col-sm-2 text-center form-group">
-                  <label for="doctorname" class="fw-bold">Pincode:</label>
-                  <input type="text" class="form-control text-center" name="patpin" id="patpin" placeholder="">
+                  <label for="patpin" class="fw-bold">Pincode:</label>
+                  <input type="text" class="form-control" name="patpin" value="" id="patpin" placeholder="">
               </div>
               <div class="col-sm-2 text-center form-group mt-3">
                 <button type="submit" name="search" id="submit" class="btn btn-outline-success">Submit</button>
@@ -78,8 +78,9 @@ if(strlen($_SESSION['id']==0)) {
           $patcity=$_POST['patcity'];
           $patpin=$_POST['patpin'];
         
-        $ret=mysqli_query($con,"select * from doctors where doctorName like '%$patname%'|| clinic_locality like '%$patloc%' || clinic_city like '%$patcity%'");
+        $ret=mysqli_query($con,"select * from doctors where (doctorName like '%$patname%'|| clinic_locality like '%$patloc%')");
         $num=mysqli_num_rows($ret);
+        echo $num;
         if($num>0)
         {
           while ($row=mysqli_fetch_array($ret)) { 
