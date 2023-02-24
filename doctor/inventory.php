@@ -46,8 +46,85 @@ if(strlen($_SESSION['id']==0)) {
 
     <section>
         <form>
-            
+            <div class="row">
+            <div class="col-sm-4 text-center form-group">
+                <label for="doctorname" class="fw-bold">Dr. Name:</label>
+                <input type="text" class="form-control text-center" name="patname" id="patname" value="<?php  echo $row['fullName'];?>" readonly  >
+            </div>
+            <div class="col-sm-4 text-center form-group">
+                <label for="doctorname" class="fw-bold">Locality:</label>
+                <input type="text" class="form-control text-center" name="patname" id="patname" value="<?php  echo $row['fullName'];?>" readonly  >
+            </div>
+            <div class="col-sm-4 text-center form-group">
+                <label for="doctorname" class="fw-bold">City:</label>
+                <input type="text" class="form-control text-center" name="patname" id="patname" value="<?php  echo $row['fullName'];?>" readonly  >
+            </div>
+
+                           
+
+            </div>
+
         </form>
+        <?php
+              $ret=mysqli_query($con,"select * from doctors");
+              while ($row=mysqli_fetch_array($ret)) { 
+                ?>
+        <div class="card mb-3" style="max-width: 1000px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2021/07/doctor-1625125747.jpg" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-lg-8">
+      <div class="card-body">
+     
+          
+                                      <div class="row">
+                  <!--div class="col-sm-2 text-center justify-content-center m-auto">
+                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
+                  </div-->
+                  <div class="col-sm-12">
+                    <div class="row">
+                    <div class="col-sm-7">
+                  <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+                  <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
+                  <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
+                  <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+                  
+                </div>
+                  
+                  <div class="col-sm-5">
+                  <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
+                  <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
+                  <div class="text-center fw-bold" id="form-subhead">Contact:</div>
+                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
+                  
+                  </div>
+
+                    </div>
+                    <div class="d-flex flex-row">
+                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
+                  <div id="form-subhead"><?php echo $row['address'];?></div>
+                    </div>
+
+                  </div>
+                  <hr style="border: 1px solid #012970;"> 
+                  <div class="card-footer">
+        
+      
+      <a href="http://maps.google.com/?q=<?php echo $add;?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"></i></button></a>      
+      <a href="events.php?Eventid=<?php echo $row['Eventid'];?>"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-trash"></i></button></a>
+      <!--a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-pencil-fill"></i></button></a-->  
+    </div>
+                  
+                
+
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php }?>
     </section>
 
     
