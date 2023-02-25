@@ -36,6 +36,7 @@ if(strlen($_SESSION['id']==0)) {
   
 
   <main class="main" id="main">
+
     <div class="pagetitle">
         <h1>Inventory</h1>
         <nav>
@@ -97,7 +98,7 @@ if(strlen($_SESSION['id']==0)) {
           if($typeofreg == 'Clinics')
           {
 
-        $ret=mysqli_query($con,"select * from doctors where clinic_locality like '%$patloc%' || doctorName like '%$patloc%' || clinic_city like '%$patloc%'");
+        $ret=mysqli_query($con,"select * from doctors where clinic_locality like '%$patloc%' || clinic_city like '%$patloc%'");
         /*$ret=mysqli_query($con,"select * from inventory where Locality like '%$patloc%' and Type='$typeofreg' ");*/
         $num=mysqli_num_rows($ret);
         if($num>0)
@@ -148,19 +149,101 @@ if(strlen($_SESSION['id']==0)) {
           <div class="text-center mt-4 fw-bold" id="form-subhead">No records found</div>
           <?php }
         }  
+       
 
            else
-          { 
-            $ret=mysqli_query($con,"select * from inventory where Locality like '%$patloc%' and Type='$typeofreg' ");
+          {  ?>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <?php 
+            $ret=mysqli_query($con,"select * from inventory where (Locality like '%$patloc%' || City like '%$patloc%') and Type='$typeofreg' ");
             $num=mysqli_num_rows($ret);
             if($num>0)
             {
-            while ($row=mysqli_fetch_array($ret)) { ?>
-            <div class="col-lg-4 mt-2">
-    <div class="card border border-dark rounded" style="width: 18rem;">
-      <img src="https://www.cmss.gov.in/wp-content/uploads/2021/12/Slider-new.jpg" class="card-img-top" alt="..." style="height:8rem;">
+                      while ($row=mysqli_fetch_array($ret)) { 
+                    ?>
+              <div class="col">
+                <div class="card h-100 mt-2">
+                  <?php if($row['Type'] == 'Medical') { 
+                    echo '<img src="https://www.cmss.gov.in/wp-content/uploads/2021/12/Slider-new.jpg" class="card-img-top" alt="Medical">';
+                  }
+                  elseif ($row['Type'] == 'Hospital') {
+                    echo '<img src="https://cdn.systematic.com/media/g0sj1tbg/hospital-building-001-global.jpg?mode=crop&width=1200&height=630&center=" class="card-img-top" alt="Hospital">';
+                  }
+                  elseif ($row['Type'] == 'Ambulance') {
+                    echo '<img src="https://nccdriversed.com/wp-content/uploads/2015/02/10.12-Ambulanc-e.jpg" class="card-img-top" alt="Ambulance">';
+                  }
+                  elseif ($row['Type'] == 'Blood Bank') {
+                    echo '<img src="https://media.istockphoto.com/id/1411192752/vector/two-human-hands-are-holds-heart-wireframe-glowing-low-poly-heart-design-on-dark-blue.jpg?b=1&s=612x612&w=0&k=20&c=edEKMf7rs_M2atHscLaVWWyN95Z_L_bXtgujROs0OQA=" class="card-img-top" alt="Blood Bank">';
+                  }
+                  else{
+                    echo '<img src="https://www.talentmark.com/wp-content/uploads/2022/04/laboratory-700x395.jpg" class="card-img-top" alt="Laboratory">';
+                  }
+                  
+                  ?>
+                    
+            
+                    
+            
+                  <div class="card-body">
+                  <h4 class="text-center fw-bold mt-3" id="form-subhead"><?php echo $row['Name'];?></h4>
+                    <div><i class="bi bi-pin-map-fill fw-bold fs-5 text-justify"  id="form-subhead"> -</i>  <?php echo $row['Address'];?></div>
+                    <div><i class="bi bi-clock fw-bold fs-5"  id="form-subhead"> -</i>  <?php echo $row['Timing'];?></div>
+                    <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i>  <?php echo $row['Contact'];?></div>
+                  </div>
+                  <div class="card-footer">
+                    
+                  
+                  <a href="http://maps.google.com/?q=<?php echo $row['Address'];?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"> Direction</i></button></a>      
+                  <?php if($row['Website']){?>
+                    <a href="<?php echo $row['Website'];?>" target="blank"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-globe"></i></button></a>
+                    <?php } else{
+                      ?>
+                              <a href="#" target="blank"><button class="btn btn-outline-success float-end ms-1 disabled"><i class="bi bi-globe"></i></button></a>
+            
+                            <?php } ?>
+                  <!--a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-pencil-fill"></i></button></a-->  
+                </div>
+                </div>
+              </div>
+              <?php }  ?>
+            </div>
+
+          <?php } else { ?> 
+            <div class="text-center mt-4 fw-bold" id="form-subhead">No records found</div>
+      <?php } } }  
+      
+      else { ?>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+<?php 
+$ret=mysqli_query($con,"select * from inventory ");
+        /*$ret=mysqli_query($con,"select * from inventory where Locality like '%$patloc%' and Type='$typeofreg' ");*/
+          while ($row=mysqli_fetch_array($ret)) { 
+        ?>
+  <div class="col">
+    <div class="card h-100 mt-2">
+      <?php if($row['Type'] == 'Medical') { 
+        echo '<img src="https://www.cmss.gov.in/wp-content/uploads/2021/12/Slider-new.jpg" class="card-img-top" alt="Medical">';
+      }
+      elseif ($row['Type'] == 'Hospital') {
+        echo '<img src="https://cdn.systematic.com/media/g0sj1tbg/hospital-building-001-global.jpg?mode=crop&width=1200&height=630&center=" class="card-img-top" alt="Hospital">';
+      }
+      elseif ($row['Type'] == 'Ambulance') {
+        echo '<img src="https://nccdriversed.com/wp-content/uploads/2015/02/10.12-Ambulanc-e.jpg" class="card-img-top" alt="Ambulance">';
+      }
+      elseif ($row['Type'] == 'Blood Bank') {
+        echo '<img src="https://media.istockphoto.com/id/1411192752/vector/two-human-hands-are-holds-heart-wireframe-glowing-low-poly-heart-design-on-dark-blue.jpg?b=1&s=612x612&w=0&k=20&c=edEKMf7rs_M2atHscLaVWWyN95Z_L_bXtgujROs0OQA=" class="card-img-top" alt="Blood Bank">';
+      }
+      else{
+        echo '<img src="https://www.talentmark.com/wp-content/uploads/2022/04/laboratory-700x395.jpg" class="card-img-top" alt="Laboratory">';
+      }
+      
+      ?>
+        
+
+        
+
       <div class="card-body">
-        <h4 class="text-center fw-bold mt-3" id="form-subhead"><?php echo $row['Name'];?></h4>
+      <h4 class="text-center fw-bold mt-3" id="form-subhead"><?php echo $row['Name'];?></h4>
         <div><i class="bi bi-pin-map-fill fw-bold fs-5 text-justify"  id="form-subhead"> -</i>  <?php echo $row['Address'];?></div>
         <div><i class="bi bi-clock fw-bold fs-5"  id="form-subhead"> -</i>  <?php echo $row['Timing'];?></div>
         <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i>  <?php echo $row['Contact'];?></div>
@@ -169,63 +252,21 @@ if(strlen($_SESSION['id']==0)) {
         
       
       <a href="http://maps.google.com/?q=<?php echo $row['Address'];?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"> Direction</i></button></a>      
-      <a href="<?php echo $row['Website'];?>" target="blank"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-globe"></i></button></a>
+      <?php if($row['Website']){?>
+        <a href="<?php echo $row['Website'];?>" target="blank"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-globe"></i></button></a>
+        <?php } else{
+          ?>
+                  <a href="#" target="blank"><button class="btn btn-outline-success float-end ms-1 disabled"><i class="bi bi-globe"></i></button></a>
+
+                <?php } ?>
       <!--a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-pencil-fill"></i></button></a-->  
     </div>
     </div>
   </div>
-
-          <?php }} else { ?> 
-            <div class="text-center mt-4 fw-bold" id="form-subhead">No records found</div>
-      <?php } } }  
-      
-      else { ?>
-<?php 
-$ret=mysqli_query($con,"select * from doctors");
-        /*$ret=mysqli_query($con,"select * from inventory where Locality like '%$patloc%' and Type='$typeofreg' ");*/
-          while ($row=mysqli_fetch_array($ret)) { 
-        ?>
-        <div class="card mt-4 m-auto" style="max-width: 800px;">
-          <div class="row g-0">
-            <div class="col-lg-12">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-2 text-center justify-content-center m-auto">
-                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
-                  </div>
-                  <div class="col-sm-10">
-                    <div class="row">
-                      <div class="col-sm-7">
-                        <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
-                        <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
-                        <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
-                        <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
-                      </div>
-                      
-                      <div class="col-sm-5">
-                        <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                        <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
-                        <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
-                        <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                        <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
-                      </div>
-                    </div>
-                    <div class="d-flex flex-row">
-                      <div class="fw-bold mx-2" id="form-subhead">Address:</div>
-                      <div id="form-subhead"><?php echo $row['address'];?></div>
-                    </div>
-                  </div>
-                  <hr style="border: 1px solid #012970;"> 
-                  <div class="card-footer">
-                    <a href="http://maps.google.com/?q=<?php echo $add;?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"></i></button></a>      
-                    <a href="events.php?Eventid=<?php echo $row['Eventid'];?>"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-trash"></i></button></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <?php } } ?>
+  <?php }  ?>
+</div>
+        
+        <?php } ?>
 
 
    

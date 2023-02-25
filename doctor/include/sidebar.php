@@ -63,20 +63,16 @@
     </ul>
   </li><!-- End Tables Nav -->
 
+  <li class="nav-item">
+    <a class="nav-link collapsed " href="inventory.php">
+      <i class="bi bi-gem"></i>
+      <span>Inventory</span>
+    </a>
+  </li>
+
   
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-      <i class="bi bi-gem"></i><span>Inventory</span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-        <a href="inventory.php">
-          <i class="bi bi-circle"></i><span>Doctors Inventory</span>
-        </a>
-      </li>
-    </ul>
-  </li><!-- End Icons Nav -->
+  
 
   <li class="nav-heading">CliFea</li>
 

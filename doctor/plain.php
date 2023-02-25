@@ -462,3 +462,31 @@ if(strlen($_SESSION['id']==0)) {
   </div>
   
 </div-->
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+<?php 
+$ret=mysqli_query($con,"select * from inventory ");
+        /*$ret=mysqli_query($con,"select * from inventory where Locality like '%$patloc%' and Type='$typeofreg' ");*/
+          while ($row=mysqli_fetch_array($ret)) { 
+        ?>
+  <div class="col">
+    <div class="card h-100">
+      <img src="https://www.cmss.gov.in/wp-content/uploads/2021/12/Slider-new.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+      <h4 class="text-center fw-bold mt-3" id="form-subhead"><?php echo $row['Name'];?></h4>
+        <div><i class="bi bi-pin-map-fill fw-bold fs-5 text-justify"  id="form-subhead"> -</i>  <?php echo $row['Address'];?></div>
+        <div><i class="bi bi-clock fw-bold fs-5"  id="form-subhead"> -</i>  <?php echo $row['Timing'];?></div>
+        <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i>  <?php echo $row['Contact'];?></div>
+      </div>
+      <div class="card-footer">
+        
+      
+      <a href="http://maps.google.com/?q=<?php echo $row['Address'];?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"> Direction</i></button></a>      
+      <a href="<?php echo $row['Website'];?>" target="blank"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-globe"></i></button></a>
+      <!--a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-pencil-fill"></i></button></a-->  
+    </div>
+    </div>
+  </div>
+  <?php }  ?>
+</div>
