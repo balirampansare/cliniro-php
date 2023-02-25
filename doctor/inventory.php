@@ -45,6 +45,14 @@ if(strlen($_SESSION['id']==0)) {
     </div>
 
       <section>
+        <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
+          <a href="inventory.php?invent=<?php echo $row['Eventid'];?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Clinics</a>
+          <a href="#" class="p-2 flex-grow-1 border rounded m-2">Hospital</a>
+          <a href="#" class="p-2 flex-grow-1 border rounded m-2">Medicals</a>
+          <a href="#" class="p-2 flex-grow-1 border rounded m-2">Laboratory</a>
+          <a href="#" class="p-2 flex-grow-1 border rounded m-2">Ambulance</a>
+          <a href="#" class="p-2 flex-grow-1 border rounded m-2">Blood Bank</a>
+        </div>
         <form role="form" method="post" name="search">
             <div class="row border border-primary p-2 rounded">
               <div class="col-sm-4 text-center form-group">
@@ -176,7 +184,7 @@ if(strlen($_SESSION['id']==0)) {
 
   <div class="col-lg-4">
     <div class="card border border-dark rounded" style="width: 18rem;">
-      <img src="https://thelogicalindian.com/h-upload/2022/07/19/220317-untitled-design-3.jpg" class="card-img-top" alt="..." style="height:8rem;">
+      <img src="https://nccdriversed.com/wp-content/uploads/2015/02/10.12-Ambulanc-e.jpg" class="card-img-top" alt="..." style="height:8rem;">
       <div class="card-body">
         <h4 class="text-center fw-bold mt-3" id="form-subhead">Patel Chemist</h4>
         <div><i class="bi bi-pin-map-fill fw-bold fs-5 text-justify"  id="form-subhead"> -</i>  Louis Wadi, Shop No. 9 Raj Krupa Socity, Thane West, Thane, Maharashtra 400604</div>
@@ -192,6 +200,45 @@ if(strlen($_SESSION['id']==0)) {
     </div>
     </div>
   </div>
+
+  <div class="col-lg-4">
+    <div class="card border border-dark rounded" style="width: 18rem;">
+      <img src="https://media.istockphoto.com/id/1411192752/vector/two-human-hands-are-holds-heart-wireframe-glowing-low-poly-heart-design-on-dark-blue.jpg?b=1&s=612x612&w=0&k=20&c=edEKMf7rs_M2atHscLaVWWyN95Z_L_bXtgujROs0OQA=" class="card-img-top" alt="..." style="height:8rem;">
+      <div class="card-body">
+        <h4 class="text-center fw-bold mt-3" id="form-subhead">Patel Chemist</h4>
+        <div><i class="bi bi-pin-map-fill fw-bold fs-5 text-justify"  id="form-subhead"> -</i>  Louis Wadi, Shop No. 9 Raj Krupa Socity, Thane West, Thane, Maharashtra 400604</div>
+        <div><i class="bi bi-clock fw-bold fs-5"  id="form-subhead"> -</i>  9 am to 9 pm</div>
+        <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i>  7854789658</div>
+      </div>
+      <div class="card-footer">
+        
+      
+      <a href="http://maps.google.com/?q=<?php echo $add;?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"> Direction</i></button></a>      
+      <a href="events.php?Eventid=<?php echo $row['Eventid'];?>"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-globe"></i></button></a>
+      <!--a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-pencil-fill"></i></button></a-->  
+    </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card border border-dark rounded" style="width: 18rem;">
+      <img src="https://cdn.systematic.com/media/g0sj1tbg/hospital-building-001-global.jpg?mode=crop&width=1200&height=630&center=" class="card-img-top" alt="..." style="height:8rem;">
+      <div class="card-body">
+        <h4 class="text-center fw-bold mt-3" id="form-subhead">Patel Chemist</h4>
+        <div><i class="bi bi-pin-map-fill fw-bold fs-5 text-justify"  id="form-subhead"> -</i>  Louis Wadi, Shop No. 9 Raj Krupa Socity, Thane West, Thane, Maharashtra 400604</div>
+        <div><i class="bi bi-clock fw-bold fs-5"  id="form-subhead"> -</i>  9 am to 9 pm</div>
+        <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i>  7854789658</div>
+      </div>
+      <div class="card-footer">
+        
+      
+      <a href="http://maps.google.com/?q=<?php echo $add;?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"> Direction</i></button></a>      
+      <a href="events.php?Eventid=<?php echo $row['Eventid'];?>"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-globe"></i></button></a>
+      <!--a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-pencil-fill"></i></button></a-->  
+    </div>
+    </div>
+  </div>
+  
 </div>
 
 
