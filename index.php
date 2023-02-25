@@ -1,3 +1,35 @@
+<?php
+session_start();
+
+include('./doctor/include/config.php');
+error_reporting(0);
+
+    if(isset($_POST['submit']))
+  {
+
+    $typeofreg = $_POST['typeofreg'];
+    $name = $_POST['name'];
+    $timing = $_POST['timing'];
+    $close = $_POST['closed'];
+    $locality = $_POST['locality'];
+    $city = $_POST['city'];
+    $address = $_POST['address'];
+    $contact = $_POST['contact'];
+    $website = $_POST['website'];
+
+    $query=mysqli_query($con, "insert into  inventory(Type,Name,Timing,Closed,Locality,City,Address,Contact,Website)values('$typeofreg','$name','$timing','$close','$locality','$city','$address','$contact','$website')");
+    if ($query) {
+    
+    echo "<script>window.location.href ='index.php'</script>";
+  }
+  else
+    {
+      echo '<script>alert("Something Went Wrong. Please try again")</script>';
+    }
+
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -674,31 +706,69 @@
 
           <div class="col-lg-5 d-flex align-items-stretch">
             <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
-              </div>
+              <form method="post" name="submit">
+                <div class="row jumbotron rounded py-2">
+                    <!--div class="col-sm-12 form-group"-->
+                    <div class="col-sm-5 form-group text-center  m-auto">
+                      <label for="typeofreg">Select Type</label>
+                      <select name="typeofreg" id="typeofreg" class="form-control browser-default custom-select">
+                        <option value="Ambulance">Ambulance</option>
+                        <option value="Blood Bank">Blood Bank</option>
+                        <option value="Hospital">Hospital</option>
+                        <option value="Laboratory">Laboratory</option>
+                        <option value="Medical">Medical</option>
+                        
+                        
+                      </select>
+                    </div>
+                        <div class="col-sm-12 form-group">
+                            <label for="name" class="fw-semibold">Name:</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                          <label for="timing" class="fw-semibold">Timing:</label>
+                          <input type="text" class="form-control" name="timing" id="timing" placeholder="Timing">
+                      </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="closed" class="fw-semibold">Closed:</label>
+                            <input type="text" class="form-control" name="closed" id="closed" placeholder="Closed on">
+                        </div>
+                        <div class="col-sm-6 form-group">
+                          <label for="locality" class="fw-semibold">Locality:</label>
+                          <input type="text" class="form-control" name="locality" id="locality" placeholder="Locality">
+                      </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="city" class="fw-semibold">City:</label>
+                            <input type="text" class="form-control" name="city" id="city" placeholder="City">
+                        </div>
+                        
+                        <div class="col-sm-12 form-group">
+                            <label for="address" class="fw-semibold">Address:</label>
+                            <textarea class="form-control border-bottom" name="address" id="address" placeholder="Address" cols="30" rows="2" required></textarea>
+                        </div>
+                        <div class="col-sm-5 form-group">
+                            <label for="contact" class="fw-semibold">Contact:</label>
+                            <input type="text" class="form-control" name="contact" id="contact" placeholder="Contact">
+                        </div>
+                        <div class="col-sm-7 form-group">
+                            <label for="website" class="fw-semibold">Website:</label>
+                            <input type="text" class="form-control" name="website" id="website" placeholder="Website">
+                        </div>
+                        <div class="col-sm-12 form-group mt-1">
+                            <button type="submit" name="submit"  class="btn btn-outline-success float-end">Submit</button>
+                        </div>
+                    <!--/div-->
+                </div>
+    
+            </form>
+              
 
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@example.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
-              </div>
-
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
             </div>
 
           </div>
 
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form  class="php-email-form">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>

@@ -59,7 +59,7 @@ $_SESSION['errmsg']="Invalid username or password";
 
               <div class="card ">
               <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
-                  <a href="../index.html" class="p-2 flex-grow-1 border rounded m-2"><i class="bi bi-house-door"></i></a>
+                  <a href="../index.php" class="p-2 flex-grow-1 border rounded m-2"><i class="bi bi-house-door"></i></a>
                   <a href="doctorlogin.php" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Doctor</a>
                   <a href="../patient/patientlogin.php" class="p-2 flex-grow-1 border rounded m-2">Patient</a>
                   
