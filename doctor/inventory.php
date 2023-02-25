@@ -36,6 +36,7 @@ if(strlen($_SESSION['id']==0)) {
   
 
   <main class="main" id="main">
+    <h4 class="text-danger">WHAT IF CONTACT IS TELEPHONE</h4>
 
     <div class="pagetitle">
         <h1>Inventory</h1>
