@@ -135,6 +135,69 @@ if(strlen($_SESSION['id']==0)) {
         } ?>
       </section>
 
+      <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+  <div class="col-lg-4">
+    <div class="card border border-dark rounded" style="width: 18rem;">
+      <img src="https://www.talentmark.com/wp-content/uploads/2022/04/laboratory-700x395.jpg" class="card-img-top" alt="..." style="height:8rem;">
+      <div class="card-body">
+        <h4 class="text-center fw-bold mt-3" id="form-subhead">Patel Chemist</h4>
+        <div><i class="bi bi-pin-map-fill fw-bold fs-5 text-justify"  id="form-subhead"> -</i>  Louis Wadi, Shop No. 9 Raj Krupa Socity, Thane West, Thane, Maharashtra 400604</div>
+        <div><i class="bi bi-clock fw-bold fs-5"  id="form-subhead"> -</i>  9 am to 9 pm</div>
+        <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i>  7854789658</div>
+      </div>
+      <div class="card-footer">
+        
+      
+      <a href="http://maps.google.com/?q=<?php echo $add;?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"> Direction</i></button></a>      
+      <a href="events.php?Eventid=<?php echo $row['Eventid'];?>"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-globe"></i></button></a>
+      <!--a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-pencil-fill"></i></button></a-->  
+    </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card border border-dark rounded" style="width: 18rem;">
+      <img src="https://www.cmss.gov.in/wp-content/uploads/2021/12/Slider-new.jpg" class="card-img-top" alt="..." style="height:8rem;">
+      <div class="card-body">
+        <h4 class="text-center fw-bold mt-3" id="form-subhead">Patel Chemist</h4>
+        <div><i class="bi bi-pin-map-fill fw-bold fs-5 text-justify"  id="form-subhead"> -</i>  Louis Wadi, Shop No. 9 Raj Krupa Socity, Thane West, Thane, Maharashtra 400604</div>
+        <div><i class="bi bi-clock fw-bold fs-5"  id="form-subhead"> -</i>  9 am to 9 pm</div>
+        <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i>  7854789658</div>
+      </div>
+      <div class="card-footer">
+        
+      
+      <a href="http://maps.google.com/?q=<?php echo $add;?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"> Direction</i></button></a>      
+      <a href="events.php?Eventid=<?php echo $row['Eventid'];?>"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-globe"></i></button></a>
+      <!--a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-pencil-fill"></i></button></a-->  
+    </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card border border-dark rounded" style="width: 18rem;">
+      <img src="https://thelogicalindian.com/h-upload/2022/07/19/220317-untitled-design-3.jpg" class="card-img-top" alt="..." style="height:8rem;">
+      <div class="card-body">
+        <h4 class="text-center fw-bold mt-3" id="form-subhead">Patel Chemist</h4>
+        <div><i class="bi bi-pin-map-fill fw-bold fs-5 text-justify"  id="form-subhead"> -</i>  Louis Wadi, Shop No. 9 Raj Krupa Socity, Thane West, Thane, Maharashtra 400604</div>
+        <div><i class="bi bi-clock fw-bold fs-5"  id="form-subhead"> -</i>  9 am to 9 pm</div>
+        <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i>  7854789658</div>
+      </div>
+      <div class="card-footer">
+        
+      
+      <a href="http://maps.google.com/?q=<?php echo $add;?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"> Direction</i></button></a>      
+      <a href="events.php?Eventid=<?php echo $row['Eventid'];?>"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-globe"></i></button></a>
+      <!--a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-pencil-fill"></i></button></a-->  
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+      
+
     
 
     
