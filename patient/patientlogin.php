@@ -79,7 +79,7 @@ header("location:patientlogin.php");
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex justify-content-center py-4">
-                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                <a href="../index.php" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo copy.svg" alt="">
                   <span class="d-none d-lg-block">Patient Login</span>
                 </a>
@@ -87,7 +87,7 @@ header("location:patientlogin.php");
 
               <div class="card mb-3">
               <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
-                  <a href="../index.html" class="p-2 flex-grow-1 border rounded m-2"><i class="bi bi-house-door"></i></a>
+                  <a href="../index.php" class="p-2 flex-grow-1 border rounded m-2"><i class="bi bi-house-door"></i></a>
                   <a href="../doctor/doctorlogin.php" class="p-2 flex-grow-1 border rounded m-2 ">Doctor</a>
                   <a href="../patient/patientlogin.php" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Patient</a>
                   
