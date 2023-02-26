@@ -11,10 +11,21 @@
   </li><!-- End Dashboard Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed " href="#">
-      <i class="bi bi-stack"></i>
-      <span>Stuff</span>
+    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-stack"></i><span>Stuff</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
+    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="mydoctor.php">
+          <i class="bi bi-circle"></i><span>My Doctors</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="bi bi-circle"></i><span>Appointments</span>
+        </a>
+      </li>
+    </ul>
   </li>
 
   <li class="nav-item">
