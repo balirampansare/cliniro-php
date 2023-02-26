@@ -58,7 +58,8 @@ if(strlen($_SESSION['id']==0)) {
                             <tbody>
                             <?php
                             $docid=$_SESSION['id'];
-                            $sql=mysqli_query($con,"SELECT * FROM users RIGHT JOIN tblmedicalhistory on users.id = tblmedicalhistory.PatientID WHERE PatientID = $docid GROUP BY PatientID order by CreationDate;");
+                            $sql=mysqli_query($con,"SELECT * FROM users INNER JOIN tblmedicalhistory ON users.id = tblmedicalhistory.PatientID INNER JOIN doctors ON tblmedicalhistory.DocId = doctors.id WHERE PatientID= $docid GROUP BY DocId;
+                            ");
                             $cnt=1;
                             while($row=mysqli_fetch_array($sql))
                             {
@@ -67,13 +68,13 @@ if(strlen($_SESSION['id']==0)) {
                                 <td class="center"><?php echo $cnt;?>.</td>
                                 <td><?php echo $row['doctorName'];?></td>
                                 <td><?php echo $row['clinic_name'];?></td>
-                                <td><?php echo $row['contactno'];?></td>
+                                <td><?php echo $row['clinic_contact'];?></td>
                                 <td><?php echo $row['oop'];?></td>
                                 
 
                                     <td>
 
-                                        <a href="view-patient.php?viewid=<?php echo $row['PatientID'];?>"> <button class="btn btn-outline-success"><i class="bi bi-eye"></i></button> </a> 
+                                        <a href="doctor-profile.php?viewid=<?php echo $row['DocId'];?>"> <button class="btn btn-outline-success"><i class="bi bi-eye"></i></button> </a> 
                                     </td>
                                     
                                   </tr>
