@@ -5,24 +5,6 @@ include('include/config.php');
 if(strlen($_SESSION['id']==0)) {
  header('location:doctorlogout.php');
   } else{
-    
-if (isset($_GET['Apptid'])) {
-
-  $Apptid = $_GET['Apptid'];
-
-  $query=mysqli_query($con, "update patappointments set Appt_Status='0' where Apptid='$Apptid' ");
-if ($query) {
-
-echo "<script>window.location.href ='appointments.php'</script>";
-}
-else
-{
-echo '<script>alert("Something Went Wrong. Please try again")</script>';
-}
-
-} 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -58,8 +40,8 @@ echo '<script>alert("Something Went Wrong. Please try again")</script>';
         <thead>
           <tr id="form-subhead">
             <th scope="col">#</th>
-            <th scope="col">Patient Name</th>
-            <th scope="col">Patient Contact</th>
+            <th scope="col">Dr. Name</th>
+            <th scope="col">Dr. Contact</th>
             <th scope="col">Appointment Date</th>
             <th scope="col">Created</th>
             <th scope="col">Status</th>
@@ -68,7 +50,7 @@ echo '<script>alert("Something Went Wrong. Please try again")</script>';
         
         <tbody>
           <?php
-          $sql=mysqli_query($con,"select users.fullName as fname, users.phone as contact, patappointments.*  from patappointments join users on users.id=patappointments.Appt_Patid where patappointments.Appt_Docid='".$_SESSION['id']."';");
+          $sql=mysqli_query($con,"select doctors.doctorName as fname, doctors.clinic_contact as contact, patappointments.*  from patappointments join doctors on doctors.id=patappointments.Appt_Docid where patappointments.Appt_Patid='".$_SESSION['id']."';");
           $cnt=1;
           while($row=mysqli_fetch_array($sql))
           {
@@ -107,7 +89,7 @@ echo '<script>alert("Something Went Wrong. Please try again")</script>';
             <td>
             <?php if($row['Appt_Status']==1)
             { ?>
-            <a href="appointments.php?Apptid=<?php echo $row['Apptid'];?>"><button class="btn btn-outline-success">Active</button></a>
+            <button class="btn btn-outline-success" disabled>Active</button>
             <?php } else { ?>
               <button type="button" class="btn btn-outline-danger" disabled>Canceled</button>
               <?php } ?>

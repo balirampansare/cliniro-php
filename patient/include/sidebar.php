@@ -21,8 +21,13 @@
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="appointments.php">
           <i class="bi bi-circle"></i><span>Appointments</span>
+        </a>
+      </li>
+      <li>
+        <a href="bills.php">
+          <i class="bi bi-circle"></i><span>Bills</span>
         </a>
       </li>
     </ul>
@@ -43,12 +48,12 @@
     </a>
   </li><!-- End Profile Page Nav -->
 
-  <li class="nav-item">
+  <!--li class="nav-item">
     <a class="nav-link collapsed" href="#">
       <i class="bi bi-question-circle"></i>
       <span>F.A.Q</span>
     </a>
-  </li><!-- End F.A.Q Page Nav -->
+  </li>
 
 
   <li class="nav-item">
@@ -56,7 +61,7 @@
       <i class="bi bi-envelope"></i>
       <span>Contact</span>
     </a>
-  </li><!-- End Contact Page Nav -->
+  </li-->
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="patientlogout.php">
