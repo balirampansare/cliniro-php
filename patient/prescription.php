@@ -130,9 +130,9 @@ if(isset($_POST['submit']))
 
                 <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
                   <a href="doctor-profile.php?viewid=<?php echo $docid;?>" class="p-2 flex-grow-1 border rounded m-2">Doctor Info</a>
-                  <a href="prescription.php?prespid=<?php echo $docid?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Prescriptions</a>
-                  <a href="patientappointment.php?patid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Appointments</a>
-                  <a href="patientbilling.php?patid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Billings</a>
+                  <a href="prescription.php?prespid=<?php echo $docid;?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Prescriptions</a>
+                  <a href="patientappointment.php?patid=<?php echo $docid;?>" class="p-2 flex-grow-1 border rounded m-2">Appointments</a>
+                  <a href="patientbilling.php?patid=<?php echo $docid;?>" class="p-2 flex-grow-1 border rounded m-2">Billings</a>
                 </div>
 
 <div class="row" >
