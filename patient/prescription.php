@@ -62,12 +62,21 @@ if(strlen($_SESSION['id']==0)) {
   
   <main class="main" id="main">
     <div class="pagetitle">
-      <h1>Clifea</h1>
+      <h1>Prescriptions - 
+      <?php
+                                    $docid=$_GET['prespid'];
+                                    $ret=mysqli_query($con,"SELECT doctorName FROM doctors where id='$docid';");
+                                    if ($row=mysqli_fetch_array($ret)) { ?>
+                                    Dr.<?php echo $row['doctorName'];?></h4>
+                            <?php } ?>
+
+      
+      </h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-          <li class="breadcrumb-item active">Patient</li>
-          <li class="breadcrumb-item active">Patient Info</li>
+          <li class="breadcrumb-item">My Doctors</li>
+          <li class="breadcrumb-item active">Prescriptions</li>
         </ol>
       </nav>
     </div>
@@ -80,6 +89,7 @@ if(strlen($_SESSION['id']==0)) {
       $cnt=1;
       while ($row=mysqli_fetch_array($ret)) {
       ?>
+      
       
       <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
         <a href="doctor-profile.php?viewid=<?php echo $docid;?>" class="p-2 flex-grow-1 border rounded m-2">Doctor Info</a>

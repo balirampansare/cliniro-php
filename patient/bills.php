@@ -29,8 +29,11 @@ if(strlen($_SESSION['id']==0)) {
     <body>
         <?php include('include/header.php');?>
         <?php include('include/sidebar.php');?>
+
+        
         
         <main class="main" id="main">
+        <h5 class="text-danger fw-bold">Issues to solve: bill download nahi hoat</h5>
             <div class="pagetitle">
                 <h1>Bills</h1>
                 <nav>

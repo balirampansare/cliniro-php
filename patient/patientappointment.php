@@ -54,12 +54,20 @@ if(isset($_POST['submit']))
     
     <main class="main" id="main">
       <div class="pagetitle">
-        <h1>Appointments</h1>
+        <h1>Appointments - 
+        <?php
+                                    $docid=$_GET['patid'];
+                                    $ret=mysqli_query($con,"SELECT doctorName FROM doctors where id='$docid';");
+                                    if ($row=mysqli_fetch_array($ret)) { ?>
+                                    Dr.<?php echo $row['doctorName'];?></h4>
+                            <?php } ?>
+
+        </h1>
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-            <li class="breadcrumb-item">Patients</li>
-            <li class="breadcrumb-item active">Billing</li>
+            <li class="breadcrumb-item">My Doctors</li>
+            <li class="breadcrumb-item active">Appointments</li>
           </ol>
         </nav>
       </div>
