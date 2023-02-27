@@ -193,20 +193,18 @@ if(strlen($_SESSION['id']==0)) {
         <?php include('include/footer.php');?>
         
         <script>
-        function GeneratePdf() 
-        {
-            var element = document.getElementById('form-print');
-            var opt = 
-            {
-                margin:       0.2,
-                filename:     'myfile.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-            html2pdf(element, opt);
-        }
-        </script>
+  function GeneratePdf() {
+    var element = document.getElementById('form-print');
+    var opt = {
+      margin:       0.2,
+      filename:     'myfile.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf(element, opt);
+  }
+  </script>
     </body>
 
 </html>

@@ -25,7 +25,7 @@ if(isset($_POST['submit']))
       $query=mysqli_query($con, "insert into  patappointments(Appt_Patid,Appt_DocId,Appt_Descrip,Appt_Date,Appt_Time,Appt_Status)values('$patid','$docid','$description','$date','$time','$status')");
     if ($query) {
     echo '<script>alert("Appointment Booked")</script>';
-    echo "<script>window.location.href ='manage-patient.php'</script>";
+    echo "<script>window.location.href ='mydoctor.php'</script>";
   }
   else
     {
