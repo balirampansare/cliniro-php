@@ -432,14 +432,7 @@ if(isset($_POST['submit']))
 
                              $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN tblmedicalhistory ON users.id = tblmedicalhistory.PatientID INNER JOIN doctors ON tblmedicalhistory.DocId = doctors.id WHERE PatientID='$prespid' AND DocId='$docid';");
                              $i = 1;
-while ($row=mysqli_fetch_array($ret)) { 
-
-
-
-  
-  
-  
-  ?>
+while ($row=mysqli_fetch_array($ret)) {   ?>
                                 <!--SELECT * FROM users INNER JOIN tblmedicalhistory ON users.id = tblmedicalhistory.PatientID INNER JOIN doctors ON tblmedicalhistory.DocId = doctors.id INNER JOIN patappointments ON tblmedicalhistory.DocId = patappointments.Appt_Docid WHERE PatientID='5';-->
                                 <tr>
                                 <td class="center"><?php echo $i;?>.</td>
