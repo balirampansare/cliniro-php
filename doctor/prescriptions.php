@@ -392,16 +392,10 @@ if(isset($_POST['submit']))
                                       <div class="col-sm-12 form-group mt-3">
                                         <hr class="mt-0">
                                         <button type="submit" name="submit"  class="btn btn-outline-success float-end">Submit</button>
-                                      </div>
-                                
+                                      </div>                                
                                     </div>
-                                  </form>
-                            
+                                  </form>                            
                             </div>
-                            <!--div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                            </div-->
                         </div>
                         </div>
                     </div>
