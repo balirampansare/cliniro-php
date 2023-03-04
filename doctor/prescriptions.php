@@ -213,14 +213,7 @@ if(isset($_POST['submit']))
                   <?php }?>
                 
 
-              </div> <!---------END OF HEADER----------->
-
-                                      
-          
-                                      <!--div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
-                                          Personal <hr class="mt-0">
-          
-                                      </div-->
+              </div>
 
                                       <?php
             $prespid=$_GET['prespid'];
