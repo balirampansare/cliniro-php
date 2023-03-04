@@ -102,45 +102,40 @@ if(isset($_POST['submit']))
 </script-->
 
 <body>
-
-<?php include('include/header.php');?>
-<?php include('include/sidebar.php');?>
+  <?php include('include/header.php');?>
+  <?php include('include/sidebar.php');?>
 
   <main class="main" id="main">
   <div class="pagetitle">
-      <h1>Clifea</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-          <li class="breadcrumb-item active">Patient</li>
-          <li class="breadcrumb-item active">Patient Info</li>
-        </ol>
-      </nav>
-    </div>
-
-<section class="section">
-<?php
-            $prespid=$_GET['prespid'];
-            $ret=mysqli_query($con,"select * from users where id='$prespid'");
-            $cnt=1;
-            while ($row=mysqli_fetch_array($ret)) {
-            
-                               ?>
-
-                <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
-                  <a href="view-patient.php?viewid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Patient Info</a>
-                  <a href="prescriptions.php?prespid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Prescriptions</a>
-                  <a href="patientappointment.php?patid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Appointments</a>
-                  <a href="patientbilling.php?patid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Billings</a>
-                </div>
-
-<div class="row" >
-
-
-                    
-                    <div class="col-xxl-3 ">
-                      <div class="card">
-                        <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
+    <h1>Clifea</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+        <li class="breadcrumb-item active">Patient</li>
+        <li class="breadcrumb-item active">Patient Info</li>
+      </ol>
+    </nav>
+  </div>
+  
+  <section class="section">
+    <?php
+    $prespid=$_GET['prespid'];
+    $ret=mysqli_query($con,"select * from users where id='$prespid'");
+    $cnt=1;
+    while ($row=mysqli_fetch_array($ret)) {
+      ?>
+      
+      <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
+        <a href="view-patient.php?viewid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Patient Info</a>
+        <a href="prescriptions.php?prespid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Prescriptions</a>
+        <a href="patientappointment.php?patid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Appointments</a>
+        <a href="patientbilling.php?patid=<?php echo $row['id'];?>" class="p-2 flex-grow-1 border rounded m-2">Billings</a>
+      </div>
+      
+      <div class="row" >
+        <div class="col-xxl-3 ">
+          <div class="card">
+            <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
                         <div class="card-body text-center">
                           <img class="avatar rounded-circle" src="../assets/img/messages-3.jpg" alt="patientpic">
                           <h4 class="card-title"><?php  echo $row['fullName'];?></h4>
