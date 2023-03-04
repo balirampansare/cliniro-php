@@ -136,22 +136,22 @@ if(isset($_POST['submit']))
         <div class="col-xxl-3 ">
           <div class="card">
             <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
-                        <div class="card-body text-center">
-                          <img class="avatar rounded-circle" src="../assets/img/messages-3.jpg" alt="patientpic">
-                          <h4 class="card-title"><?php  echo $row['fullName'];?></h4>
-                          <div class="d-flex justify-content-between flex-wrap" id="form-subhead">
-                            <div class="px-2"> <b>Id:</b>PT-<?php  echo $row['id'];?></div>
-                            <div class="px-2"> <b>Weight:</b><?php  echo $row['Weight'];?></div>
-                            <div class="px-2"> <b>Age:</b><?php  echo $row['Age'];?></div>
-                            <div class="px-2"> <b>Gender:</b><?php  echo $row['gender'];?></div>
-                            <div class="px-2"> <b>Allergies:</b> <?php  echo $row['Allergy'];?></div>
-                          </div>
-
-                          <hr class="mt-1">
-                          <button class="btn btn-outline-success mt-2 text-center align-items-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add +</button>
-                        </div>
-                      </div>
-                      <?php }?>
+            <div class="card-body text-center">
+              <img class="avatar rounded-circle" src="../assets/img/messages-3.jpg" alt="patientpic">
+              <h4 class="card-title"><?php  echo $row['fullName'];?></h4>
+              <div class="d-flex justify-content-between flex-wrap" id="form-subhead">
+                <div class="px-2"> <b>Id:</b>PT-<?php  echo $row['id'];?></div>
+                <div class="px-2"> <b>Weight:</b><?php  echo $row['Weight'];?></div>
+                <div class="px-2"> <b>Age:</b><?php  echo $row['Age'];?></div>
+                <div class="px-2"> <b>Gender:</b><?php  echo $row['gender'];?></div>
+                <div class="px-2"> <b>Allergies:</b> <?php  echo $row['Allergy'];?></div>
+              </div>
+              
+              <hr class="mt-1">
+              <button class="btn btn-outline-success mt-2 text-center align-items-center" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add +</button>
+            </div>
+          </div>
+          <?php }?>
                         
                       <section>
                     <!-- Modal -->
