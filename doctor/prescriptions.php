@@ -385,10 +385,7 @@ if(isset($_POST['submit']))
                                       <div class="col-sm-12 form-group mt-1">
                                           
                                           <textarea class="form-control" name="tests" id="tests" cols="30" rows="2"></textarea>
-                                      </div>
-          
-                                      
-                                      
+                                      </div> 
                                       <div class="col-sm-12 form-group mt-3">
                                         <hr class="mt-0">
                                         <button type="submit" name="submit"  class="btn btn-outline-success float-end">Submit</button>
