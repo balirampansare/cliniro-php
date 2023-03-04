@@ -399,9 +399,8 @@ if(isset($_POST['submit']))
 
                 </section>
                       
-                   </div><!-- End quote -->
+                   </div>
        
-                   <!-- patient form  -->
                    <div class="col-xxl-9">
                    <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                         <table class="table datatable">
