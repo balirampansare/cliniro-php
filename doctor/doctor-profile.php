@@ -214,7 +214,7 @@ while($row=mysqli_fetch_array($ret))
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="email">Dr. Email</label>
-                              <input type="email" id="docemail" name="docemail" class="form-control" value="<?php echo htmlentities($data['docEmail']);?>" >
+                              <input type="email" id="docemail" name="docemail"  class="form-control" value="<?php echo htmlentities($data['docEmail']);?>" >
                               <span id="email-availability-status"></span>
                            </div>
                             <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
@@ -227,7 +227,7 @@ while($row=mysqli_fetch_array($ret))
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="cliniccontact">Clinic Contact</label>
-                              <input type="number" class="form-control" name="cliniccontact" value="<?php echo htmlentities($data['clinic_contact']);?>"  required>
+                              <input type="text" class="form-control" name="cliniccontact" title="format 10 digits" pattern="[1-9]{1}[0-9]{9}" value="<?php echo htmlentities($data['clinic_contact']);?>"  required>
                             </div>
                             <div class="col-sm-3 form-group">
                             <label for="cliniclocality">Clinic Locality</label>
