@@ -165,19 +165,19 @@ if(strlen($_SESSION['id']==0)) {
               <div class="col">
                 <div class="card h-100 mt-2">
                   <?php if($row['Type'] == 'Medical') { 
-                    echo '<img src="https://www.cmss.gov.in/wp-content/uploads/2021/12/Slider-new.jpg" class="card-img-top" alt="Medical">';
+                    echo '<img src="assets/img/medical.jpg" class="card-img-top" alt="Medical">';
                   }
                   elseif ($row['Type'] == 'Hospital') {
-                    echo '<img src="https://cdn.systematic.com/media/g0sj1tbg/hospital-building-001-global.jpg?mode=crop&width=100&height=60&center=" class="card-img-top" alt="Hospital">';
+                    echo '<img src="assets/img/hospital.jpg" class="card-img-top" alt="Hospital">';
                   }
                   elseif ($row['Type'] == 'Ambulance') {
-                    echo '<img src="https://nccdriversed.com/wp-content/uploads/2015/02/10.12-Ambulanc-e.jpg" class="card-img-top" alt="Ambulance" style="width:15vw">';
+                    echo '<img src="assets/img/ambulance.jpg" class="card-img-top" alt="Ambulance" style="width:15vw">';
                   }
                   elseif ($row['Type'] == 'Blood Bank') {
-                    echo '<img src="https://media.istockphoto.com/id/1411192752/vector/two-human-hands-are-holds-heart-wireframe-glowing-low-poly-heart-design-on-dark-blue.jpg?b=1&s=612x612&w=0&k=20&c=edEKMf7rs_M2atHscLaVWWyN95Z_L_bXtgujROs0OQA=" class="card-img-top" alt="Blood Bank">';
+                    echo '<img src="assets/img/bloodbank.jpg" class="card-img-top" alt="Blood Bank">';
                   }
                   else{
-                    echo '<img src="https://www.talentmark.com/wp-content/uploads/2022/04/laboratory-700x395.jpg" class="card-img-top" alt="Laboratory">';
+                    echo '<img src="assets/img/laboratory.jpg" class="card-img-top" alt="Laboratory">';
                   }
                   
                   ?>
@@ -223,19 +223,19 @@ $ret=mysqli_query($con,"select * from inventory ");
   <div class="col">
     <div class="card h-100 mt-2">
       <?php if($row['Type'] == 'Medical') { 
-        echo '<img src="https://www.cmss.gov.in/wp-content/uploads/2021/12/Slider-new.jpg" class="card-img-top" alt="Medical">';
+        echo '<img src="assets/img/medical.jpg" class="card-img-top" alt="Medical">';
       }
       elseif ($row['Type'] == 'Hospital') {
-        echo '<img src="https://cdn.systematic.com/media/g0sj1tbg/hospital-building-001-global.jpg?mode=crop&width=1200&height=630&center=" class="card-img-top" alt="Hospital">';
+        echo '<img src="assets/img/hospital.jpg" class="card-img-top" alt="Hospital">';
       }
       elseif ($row['Type'] == 'Ambulance') {
-        echo '<img src="https://nccdriversed.com/wp-content/uploads/2015/02/10.12-Ambulanc-e.jpg" class="card-img-top" alt="Ambulance">';
+        echo '<img src="assets/img/ambulance.jpg" class="card-img-top" alt="Ambulance">';
       }
       elseif ($row['Type'] == 'Blood Bank') {
-        echo '<img src="https://media.istockphoto.com/id/1411192752/vector/two-human-hands-are-holds-heart-wireframe-glowing-low-poly-heart-design-on-dark-blue.jpg?b=1&s=612x612&w=0&k=20&c=edEKMf7rs_M2atHscLaVWWyN95Z_L_bXtgujROs0OQA=" class="card-img-top" alt="Blood Bank">';
+        echo '<img src="assets/img/bloodbank.jpg" class="card-img-top" alt="Blood Bank">';
       }
       else{
-        echo '<img src="https://www.talentmark.com/wp-content/uploads/2022/04/laboratory-700x395.jpg" class="card-img-top" alt="Laboratory">';
+        echo '<img src="assets/img/laboratory.jpg" class="card-img-top" alt="Laboratory">';
       }
       
       ?>
