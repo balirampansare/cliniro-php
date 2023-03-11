@@ -38,26 +38,40 @@ if(strlen($_SESSION['id']==0)) {
     </ol>
   </nav>
 </div><!-- End Page Title -->
-<p>Chart.JS Examples. You can check the <a href="https://www.chartjs.org/docs/latest/samples/" target="_blank">official website</a> for more examples.</p>
 
     <section class="section">
       <div class="row">
-
         <div class="col-lg-6">
-          <div class="card">
+        <div class="card rounded bg-success">
             <div class="card-body">
-              <h5 class="card-title">Line Chart</h5>
+              <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-person"></i> All At Once</h5>
 
               <!-- Line Chart -->
-              <canvas id="lineChart" style="max-height: 400px;"></canvas>
+              
+             
+              <!-- End Line CHart -->
+
+            </div>
+          </div>
+
+        </div>
+
+        
+      <div class="col-lg-6">
+          <div class="card rounded bg-success">
+            <div class="card-body">
+              <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-person"></i> Total Patients Treated</h5>
+
+              <!-- Line Chart -->
+              <canvas id="lineChart" style="max-height: 400px;background-color:#E9F8F9;border-radius:5px"></canvas>
               <?php 
-              $sql ="SELECT * FROM tblmedicalhistory";
+              $sql ="SELECT COUNT(PatientID) as TotalPatients, MONTHNAME(CreationDate) as Month from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate);";
               $result = mysqli_query($con,$sql);
               $chart_data="";
               while ($row = mysqli_fetch_array($result)) { 
       
-                 $productname[]  = $row['ID']  ;
-                 $sales[] = $row['PayAmount'];
+                 $LineMonth[]  = $row['Month']  ;
+                 $TotalPat[] = $row['TotalPatients'];
              }
               ?>
               <script>
@@ -65,12 +79,12 @@ if(strlen($_SESSION['id']==0)) {
                   new Chart(document.querySelector('#lineChart'), {
                     type: 'line',
                     data: {
-                      labels: <?php echo json_encode($productname); ?>,
+                      labels: <?php echo json_encode($LineMonth); ?>,
                       datasets: [{
-                        label: 'Line Chart',
-                        data: <?php echo json_encode($sales); ?>,
+                        label: 'Patients Treated',
+                        data: <?php echo json_encode($TotalPat); ?>,
                         fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
+                        borderColor: '#012970',
                         tension: 0.1
                       }]
                     },
@@ -92,8 +106,8 @@ if(strlen($_SESSION['id']==0)) {
 
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-body bg-primary rounded">
-              <h5 class="card-title">Month Wise Generated Revenue</h5>
+            <div class="card-body rounded" style="background-color:#012970">
+              <h5 class="card-title text-light text-center"> <i class=" fs-3 bi bi-cash-coin"></i> Month Wise Generated Revenue</h5>
               <?php 
               $sqlbar ="SELECT SUM(PayAmount) as Revenue, MONTHNAME(CreationDate) as Month from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate);";
               $result = mysqli_query($con,$sqlbar);
@@ -193,7 +207,7 @@ if(strlen($_SESSION['id']==0)) {
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Doughnut Chart</h5>
+              <h5 class="card-title">Ratings</h5>
 
               <!-- Doughnut Chart -->
               <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
