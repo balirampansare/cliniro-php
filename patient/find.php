@@ -189,7 +189,7 @@ if(strlen($_SESSION['id']==0)) {
                   <h4 class="text-center fw-bold mt-3" id="form-subhead"><?php echo $row['Name'];?></h4>
                     <div><i class="bi bi-pin-map-fill fw-bold fs-5 text-justify"  id="form-subhead"> -</i>  <?php echo $row['Address'];?></div>
                     <div><i class="bi bi-clock fw-bold fs-5"  id="form-subhead"> -</i>  <?php echo $row['Timing'];?></div>
-                    <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i>  <?php echo $row['Contact'];?></div>
+                    <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i> <a href=""><?php echo $row['Contact'];?></a></div>
                   </div>
                   <div class="card-footer">
                     
@@ -247,7 +247,7 @@ $ret=mysqli_query($con,"select * from inventory ");
       <h4 class="text-center fw-bold mt-3" id="form-subhead"><?php echo $row['Name'];?></h4>
         <div><i class="bi bi-pin-map-fill fw-bold fs-5 text-justify"  id="form-subhead"> -</i>  <?php echo $row['Address'];?></div>
         <div><i class="bi bi-clock fw-bold fs-5"  id="form-subhead"> -</i>  <?php echo $row['Timing'];?></div>
-        <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i>  <?php echo $row['Contact'];?></div>
+        <div><i class="bi bi-telephone fw-bold fs-5"  id="form-subhead"> -</i>  <a href="tel:<?php echo $row['Contact'];?>"><?php echo $row['Contact'];?></a></div>
       </div>
       <div class="card-footer">
         
