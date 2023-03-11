@@ -42,18 +42,82 @@ if(strlen($_SESSION['id']==0)) {
     <section class="section">
       <div class="row">
         <div class="col-lg-6">
-        <div class="card rounded bg-success">
-            <div class="card-body">
-              <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-person"></i> All At Once</h5>
-
-              <!-- Line Chart -->
-              
-             
-              <!-- End Line CHart -->
-
+          <div class="row">
+            <div class="col-xxl-6 mh-100">
+              <div class="card">
+                <div class="card-body">
+                
+                  <h5 class="card-title">Total Patients</h5>
+                  <h1>
+                  <?php 
+             $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
+             $num_rows = mysqli_num_rows($result);
+             {
+               echo htmlentities($num_rows);  
+             }
+              ?>
+                  </h1>
+                  <p class="author" id="author"></p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-xxl-6" style="min-height: 200px">
+              <div class="card recent-sales ">
+                <div class="card-body">
+                  <h5 class="card-title">Weather <span>| Today</span></h5>
+                  <h1>
+                  <?php 
+             $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
+             $num_rows = mysqli_num_rows($result);
+             {
+               echo htmlentities($num_rows);  
+             }
+              ?>
+                  </h1>                
+                </div>
+              </div>
             </div>
           </div>
 
+          <div class="row">
+            <div class="col-xxl-6" style="min-height: 200px">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Quote</h5>
+                  <h1>
+                  <?php 
+             $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
+             $num_rows = mysqli_num_rows($result);
+             {
+               echo htmlentities($num_rows);  
+             }
+              ?>
+                  </h1>
+                  <p class="author" id="author"></p>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-xxl-6" style="min-height: 200px">
+              <div class="card recent-sales ">
+                <div class="card-body">
+                  <h5 class="card-title">Weather <span>| Today</span></h5>      
+                  <h1>
+                  <?php 
+             $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
+             $num_rows = mysqli_num_rows($result);
+             {
+               echo htmlentities($num_rows);  
+             }
+              ?>
+                  </h1>          
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         
