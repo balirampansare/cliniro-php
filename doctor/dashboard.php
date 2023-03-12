@@ -50,7 +50,7 @@ if(strlen($_SESSION['id']==0)) {
             <div class="row border border-primary bg-success m-auto p-2 justify-content-center rounded">
               <div class="col-sm-4 text-center form-group">
                   <label for="patname" class="fw-bold text-light">Date:</label>
-                  <input type="date" id="datesearch" name="datesearch">
+                  <input class="rounded" type="date" id="datesearch" name="datesearch">
               </div>
 
               <div class="col-sm-2 text-center form-group mt-3">
@@ -69,161 +69,71 @@ if(strlen($_SESSION['id']==0)) {
                       while ($row=mysqli_fetch_array($result)) { 
                       ?>
                   
-              <div class="col-lg-5 m-auto mt-4 rounded" style="background-color:#20bf55">
+              <div class="col-lg-5 m-auto mt-4 rounded" style="background-color:#20bf55;transform: rotate(1.5deg);"> 
                 <div class="p-3">
-                <h3 class="fw-bold text-center">Patients</h3>
+                <h4><i class="bi bi-pin-angle-fill" style="color:#012970"></i></h4>
+                <h3 class="fw-bold text-center text-dark">Patients</h3>
                 <h1 class="fw-bold" id="form-subhead">
                 <i class="bi bi-person"></i> <?php echo $row['TPat'];?>
                   </h1>
                   <hr>
-                  <?php echo $datesearch?>
+                  <span class="text-dark"><?php echo $datesearch?></span>
                 </div>
               </div>
-              <div class="col-lg-5 m-auto mt-4 bg-info rounded">
+              <div class="col-lg-5 m-auto mt-4 bg-info rounded" style="transform: rotate(1.5deg);"> 
                 <div class="p-3">
-                <h3 class="fw-bold text-center">Revenue</h3>
+                <h4><i class="bi bi-pin-angle-fill" style="color:#012970"></i></h4>
+                <h3 class="fw-bold text-center text-dark">Revenue</h3>
                 <h1 class="fw-bold" id="form-subhead">
                 ₹ <?php echo $row['TAmt'];?> 
                   </h1>
                   <hr>
-                  <?php echo $datesearch?>
+                  <span class="text-dark"><?php echo $datesearch?></span>
+                  
                 </div>
               </div>
               <?php } } else { ?>
 
-                <div class="col-lg-5 m-auto mt-4  bg-info rounded">
-                <div class="p-3">
-                <h3 class="fw-bold text-center">Revenue</h3>
-                <h1 class="fw-bold" id="form-subhead">
-                  <?php
+                <?php
                       date_default_timezone_set("Asia/Kolkata");
                       $todaydate =date("Y-m-d");
-                      $docid = $_SESSION['id'];
-                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
-                      $num_rows = mysqli_num_rows($result);
-                      {
-                        echo htmlentities($num_rows);  
-                      }
-                    ?>
+                      $result = mysqli_query($con,"SELECT COUNT(PatientID) as TPat, SUM(PayAmount) TAmt from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$todaydate%';");
+                      while ($row=mysqli_fetch_array($result)) { 
+                      ?>
+
+                <div class="col-lg-5 m-auto mt-4  bg-info rounded" style="transform: rotate(1.5deg);">
+                <div class="p-3">
+                <h4><i class="bi bi-pin-angle-fill" style="color:#012970"></i></h4>
+                <h3 class="fw-bold text-center text-dark">Patients</h3>
+                <h1 class="fw-bold" id="form-subhead">
+                <i class="bi bi-person"></i> <?php echo $row['TPat'];?>
                   </h1>
+                  <hr>
+                  <span class="text-dark"> <?php echo $todaydate?></span>
+                  
                 </div>
               </div>
-              <div class="col-lg-5 m-auto mt-4  rounded" style="background-color:#20bf55">
+              <div class="col-lg-5 m-auto mt-4  rounded" style="background-color:#20bf55;transform: rotate(1.5deg);">
                 <div class="p-3">
-                <h3 class="fw-bold text-center">Revenue</h3>
+                <h4><i class="bi bi-pin-angle-fill" style="color:#012970"></i></h4>
+                <h3 class="fw-bold text-center text-dark">Revenue</h3>
                 <h1 class="fw-bold" id="form-subhead">
-                  <?php
-                      date_default_timezone_set("Asia/Kolkata");
-                      $todaydate =date("Y-m-d");
-                      $docid = $_SESSION['id'];
-                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
-                      $num_rows = mysqli_num_rows($result);
-                      {
-                        echo htmlentities($num_rows);  
-                      }
-                    ?>
+                ₹ <?php echo $row['TAmt'];?>
                   </h1>
+                  <hr>
+                  <span class="text-dark"> <?php echo $todaydate?></span>
                 </div>
               </div>
 
 
-                <?php } ?>
+                <?php } } ?>
+
+                
             </div>
           </div>
         </div>
 
         
-      <div class="col-lg-6">
-          <div class="card rounded bg-success">
-            <div class="card-body">
-              <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-person"></i> Total Patients Treated</h5>
-
-              <!-- Line Chart -->
-              <canvas id="lineChart" style="max-height: 400px;background-color:#E9F8F9;border-radius:5px"></canvas>
-              <?php 
-              $sql ="SELECT COUNT(PatientID) as TotalPatients, MONTHNAME(CreationDate) as Month from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate);";
-              $result = mysqli_query($con,$sql);
-              $chart_data="";
-              while ($row = mysqli_fetch_array($result)) { 
-      
-                 $LineMonth[]  = $row['Month']  ;
-                 $TotalPat[] = $row['TotalPatients'];
-             }
-              ?>
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new Chart(document.querySelector('#lineChart'), {
-                    type: 'line',
-                    data: {
-                      labels: <?php echo json_encode($LineMonth); ?>,
-                      datasets: [{
-                        label: 'Patients Treated',
-                        data: <?php echo json_encode($TotalPat); ?>,
-                        fill: false,
-                        borderColor: '#012970',
-                        tension: 0.1,
-                        pointStyle: 'circle',
-                        pointRadius: 5,
-                        pointHoverRadius: 10
-                      }]
-                    },
-                    options: {
-                      scales: {
-                        y: {
-                          beginAtZero: true
-                        }
-                      }
-                    }
-                  });
-                });
-              </script>
-              <!-- End Line CHart -->
-
-            </div>
-          </div>
-        </div>
-
-       
-
-        
-
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Ratings</h5>
-
-              <!-- Doughnut Chart -->
-              <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new Chart(document.querySelector('#doughnutChart'), {
-                    type: 'doughnut',
-                    data: {
-                      labels: [
-                        'Red',
-                        'Blue',
-                        'Yellow'
-                      ],
-                      datasets: [{
-                        label: 'My First Dataset',
-                        data: [300, 50, 100],
-                        backgroundColor: [
-                          'rgb(255, 99, 132)',
-                          'rgb(54, 162, 235)',
-                          'rgb(255, 205, 86)'
-                        ],
-                        hoverOffset: 4
-                      }]
-                    }
-                  });
-                });
-              </script>
-              <!-- End Doughnut CHart -->
-
-            </div>
-          </div>
-        </div>
-
         <div class="col-lg-6">
           <div class="card">
             <div class="card-body rounded" style="background-color:#012970">
@@ -287,6 +197,99 @@ if(strlen($_SESSION['id']==0)) {
             </div>
           </div>
         </div>
+      
+        <div class="col-lg-6">
+          <div class="card rounded bg-dark">
+            <div class="card-body">
+              <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-person"></i> Total Patients Treated Month Wise</h5>
+
+              <!-- Line Chart -->
+              <canvas id="lineChart" style="max-height: 400px;background-color:#E9F8F9;border-radius:5px"></canvas>
+              <?php 
+              $sql ="SELECT COUNT(PatientID) as TotalPatients, MONTHNAME(CreationDate) as Month from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate);";
+              $result = mysqli_query($con,$sql);
+              $chart_data="";
+              while ($row = mysqli_fetch_array($result)) { 
+      
+                 $LineMonth[]  = $row['Month']  ;
+                 $TotalPat[] = $row['TotalPatients'];
+             }
+              ?>
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#lineChart'), {
+                    type: 'line',
+                    data: {
+                      labels: <?php echo json_encode($LineMonth); ?>,
+                      datasets: [{
+                        label: 'Patients Treated',
+                        data: <?php echo json_encode($TotalPat); ?>,
+                        fill: false,
+                        borderColor: '#012970',
+                        tension: 0.1,
+                        pointStyle: 'circle',
+                        pointRadius: 5,
+                        pointHoverRadius: 10
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  });
+                });
+              </script>
+              <!-- End Line CHart -->
+
+            </div>
+          </div>
+        </div>
+
+       
+
+        
+
+        <div class="col-lg-6">
+          <div class="card rounded bg-success">
+            <div class="card-body">
+              <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-bookmark-star"></i> Ratings</h5>
+
+              <!-- Doughnut Chart -->
+              <canvas id="doughnutChart" style="max-height: 265px;background-color:#E9F8F9;border-radius:5px""></canvas>
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#doughnutChart'), {
+                    type: 'doughnut',
+                    data: {
+                      labels: [
+                        'Red',
+                        'Blue',
+                        'Yellow'
+                      ],
+                      datasets: [{
+                        label: 'My First Dataset',
+                        data: [300, 50, 100],
+                        backgroundColor: [
+                          'rgb(255, 99, 132)',
+                          'rgb(54, 162, 235)',
+                          'rgb(255, 205, 86)'
+                        ],
+                        hoverOffset: 4
+                      }]
+                    }
+                  });
+                });
+              </script>
+              <!-- End Doughnut CHart -->
+
+            </div>
+          </div>
+        </div>
+
+        
 
         <div class="col-lg-6">
           <div class="card">
