@@ -42,7 +42,7 @@ if(strlen($_SESSION['id']==0)) {
         <div class="col-lg-6" >
           <div class="container text-center">
             <div class="row g-2">
-              <div class="col-lg-5 m-auto mt-4 bg-info rounded">
+              <div class="col-lg-5 m-auto mt-4 rounded" style="background-color:#20bf55">
                 <div class="p-3">
                 <h3 class="fw-bold text-center">Patients</h3>
                 <h1 class="fw-bold" id="form-subhead">
@@ -93,7 +93,7 @@ if(strlen($_SESSION['id']==0)) {
                   </h1>
                 </div>
               </div>
-              <div class="col-lg-5 m-auto mt-4  bg-info rounded">
+              <div class="col-lg-5 m-auto mt-4  rounded" style="background-color:#20bf55">
                 <div class="p-3">
                 <h3 class="fw-bold text-center">Revenue</h3>
                 <h1 class="fw-bold" id="form-subhead">
@@ -160,6 +160,47 @@ if(strlen($_SESSION['id']==0)) {
                 });
               </script>
               <!-- End Line CHart -->
+
+            </div>
+          </div>
+        </div>
+
+       
+
+        
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Ratings</h5>
+
+              <!-- Doughnut Chart -->
+              <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#doughnutChart'), {
+                    type: 'doughnut',
+                    data: {
+                      labels: [
+                        'Red',
+                        'Blue',
+                        'Yellow'
+                      ],
+                      datasets: [{
+                        label: 'My First Dataset',
+                        data: [300, 50, 100],
+                        backgroundColor: [
+                          'rgb(255, 99, 132)',
+                          'rgb(54, 162, 235)',
+                          'rgb(255, 205, 86)'
+                        ],
+                        hoverOffset: 4
+                      }]
+                    }
+                  });
+                });
+              </script>
+              <!-- End Doughnut CHart -->
 
             </div>
           </div>
@@ -261,43 +302,6 @@ if(strlen($_SESSION['id']==0)) {
                 });
               </script>
               <!-- End Pie CHart -->
-
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Ratings</h5>
-
-              <!-- Doughnut Chart -->
-              <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
-              <script>
-                document.addEventListener("DOMContentLoaded", () => {
-                  new Chart(document.querySelector('#doughnutChart'), {
-                    type: 'doughnut',
-                    data: {
-                      labels: [
-                        'Red',
-                        'Blue',
-                        'Yellow'
-                      ],
-                      datasets: [{
-                        label: 'My First Dataset',
-                        data: [300, 50, 100],
-                        backgroundColor: [
-                          'rgb(255, 99, 132)',
-                          'rgb(54, 162, 235)',
-                          'rgb(255, 205, 86)'
-                        ],
-                        hoverOffset: 4
-                      }]
-                    }
-                  });
-                });
-              </script>
-              <!-- End Doughnut CHart -->
 
             </div>
           </div>
