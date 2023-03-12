@@ -50,7 +50,7 @@ if(strlen($_SESSION['id']==0)) {
             <div class="row border border-primary bg-success m-auto p-2 justify-content-center rounded">
               <div class="col-sm-4 text-center form-group">
                   <label for="patname" class="fw-bold text-light">Date:</label>
-                  <input class="rounded" type="date" id="datesearch" name="datesearch">
+                  <input class="rounded" type="date" id="datesearch" name="datesearch" required>
               </div>
 
               <div class="col-sm-2 text-center form-group mt-3">
