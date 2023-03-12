@@ -93,14 +93,18 @@ if(strlen($_SESSION['id']==0)) {
                 <h3 class="fw-bold text-center">Revenue</h3>
                 <h1 class="fw-bold" id="form-subhead">
                   <?php
+                     if(isset($_POST['search']))
+                     { 
+                     $datesearch=$_POST['datesearch'];
                       date_default_timezone_set("Asia/Kolkata");
                       $todaydate =date("Y-m-d");
                       $docid = $_SESSION['id'];
-                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
-                      $num_rows = mysqli_num_rows($result);
+                      $result = mysqli_query($con,"SELECT SUM(PayAmount) from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$datesearch%';");
+                      if($result):
                       {
-                        echo htmlentities($num_rows);  
+                        echo htmlentities($result);  
                       }
+                    }
                     ?>
                   </h1>
                 </div>
