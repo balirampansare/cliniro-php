@@ -41,75 +41,57 @@ if(strlen($_SESSION['id']==0)) {
       <div class="row">
         <div class="col-lg-6" >
 
-        <form role="form" method="post" name="search">
-            <div class="row border border-primary p-2 rounded">
+        
+
+        
+          <div class="container text-center">
+            <div class="row g-2">
+            <form role="form" method="post" name="search" >
+            <div class="row border border-primary bg-success m-auto p-2 justify-content-center rounded">
               <div class="col-sm-4 text-center form-group">
-                  <label for="patname" class="fw-bold">Date:</label>
+                  <label for="patname" class="fw-bold text-light">Date:</label>
                   <input type="date" id="datesearch" name="datesearch">
               </div>
 
               <div class="col-sm-2 text-center form-group mt-3">
-                <button type="submit" name="search" id="submit" class="btn btn-outline-success">Submit</button>
+                <button type="submit" name="search" id="submit" class="btn btn-outline-light">Submit</button>
               </div>
               
               
             </div>
 
         </form>
-
-        
-          <div class="container text-center">
-            <div class="row g-2">
+            <?php
+                   if(isset($_POST['search']))
+                   { 
+                      $datesearch=$_POST['datesearch'];
+                      $result = mysqli_query($con,"SELECT COUNT(PatientID) as TPat, SUM(PayAmount) TAmt from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$datesearch%';");
+                      while ($row=mysqli_fetch_array($result)) { 
+                      ?>
+                  
               <div class="col-lg-5 m-auto mt-4 rounded" style="background-color:#20bf55">
                 <div class="p-3">
                 <h3 class="fw-bold text-center">Patients</h3>
                 <h1 class="fw-bold" id="form-subhead">
-                  <?php
-                      if(isset($_POST['search']))
-                      { 
-                      $datesearch=$_POST['datesearch'];
-                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$datesearch%';");
-                      $num_rows = mysqli_num_rows($result);
-                      {
-                        echo htmlentities($num_rows);  
-                      }
-                    }
-                    else{
-                      date_default_timezone_set("Asia/Kolkata");
-                      $todaydate =date("Y-m-d");
-                      $docid = $_SESSION['id'];
-                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$todaydate%';");
-                      $num_rows = mysqli_num_rows($result);
-                      {
-                        echo htmlentities($num_rows);  
-                      }
-                    }
-                    ?>
+                <i class="bi bi-person"></i> <?php echo $row['TPat'];?>
                   </h1>
+                  <hr>
+                  <?php echo $datesearch?>
                 </div>
               </div>
               <div class="col-lg-5 m-auto mt-4 bg-info rounded">
                 <div class="p-3">
                 <h3 class="fw-bold text-center">Revenue</h3>
                 <h1 class="fw-bold" id="form-subhead">
-                  <?php
-                     if(isset($_POST['search']))
-                     { 
-                     $datesearch=$_POST['datesearch'];
-                      date_default_timezone_set("Asia/Kolkata");
-                      $todaydate =date("Y-m-d");
-                      $docid = $_SESSION['id'];
-                      $result = mysqli_query($con,"SELECT SUM(PayAmount) from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$datesearch%';");
-                      if($result):
-                      {
-                        echo htmlentities($result);  
-                      }
-                    }
-                    ?>
+                ₹ <?php echo $row['TAmt'];?> 
                   </h1>
+                  <hr>
+                  <?php echo $datesearch?>
                 </div>
               </div>
-              <div class="col-lg-5 m-auto mt-4  bg-info rounded">
+              <?php } } else { ?>
+
+                <div class="col-lg-5 m-auto mt-4  bg-info rounded">
                 <div class="p-3">
                 <h3 class="fw-bold text-center">Revenue</h3>
                 <h1 class="fw-bold" id="form-subhead">
@@ -143,6 +125,9 @@ if(strlen($_SESSION['id']==0)) {
                   </h1>
                 </div>
               </div>
+
+
+                <?php } ?>
             </div>
           </div>
         </div>
