@@ -5,8 +5,6 @@ include('include/config.php');
 if(strlen($_SESSION['id']==0)) {
  header('location:doctorlogout.php');
   } else{
-
-
 ?>
 
 <!DOCTYPE html>
@@ -29,91 +27,87 @@ if(strlen($_SESSION['id']==0)) {
 
   <main id="main" class="main">
 
-<div class="pagetitle">
-  <h1>Dashboard</h1>
-  <nav>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-      <li class="breadcrumb-item active">Dashboard</li>
-    </ol>
-  </nav>
-</div><!-- End Page Title -->
+    <div class="pagetitle">
+      <h1>Dashboard</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
-        <div class="col-lg-6">
-          <div class="row">
-            <div class="col-xxl-6 mh-100">
-              <div class="card">
-                <div class="card-body">
-                
-                  <h5 class="card-title">Total Patients</h5>
-                  <h1>
-                  <?php 
-             $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
-             $num_rows = mysqli_num_rows($result);
-             {
-               echo htmlentities($num_rows);  
-             }
-              ?>
+        <div class="col-lg-6" >
+          <div class="container text-center">
+            <div class="row g-2">
+              <div class="col-lg-5 m-auto mt-4 bg-info rounded">
+                <div class="p-3">
+                <h3 class="fw-bold text-center">Patients</h3>
+                <h1 class="fw-bold" id="form-subhead">
+                  <?php
+                      date_default_timezone_set("Asia/Kolkata");
+                      $todaydate =date("Y-m-d");
+                      $docid = $_SESSION['id'];
+                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
+                      $num_rows = mysqli_num_rows($result);
+                      {
+                        echo htmlentities($num_rows);  
+                      }
+                    ?>
                   </h1>
-                  <p class="author" id="author"></p>
-                  <hr/>
                 </div>
               </div>
-            </div>
-            
-            <div class="col-xxl-6" style="min-height: 200px">
-              <div class="card recent-sales ">
-                <div class="card-body">
-                  <h5 class="card-title">Weather <span>| Today</span></h5>
-                  <h1>
-                  <?php 
-             $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
-             $num_rows = mysqli_num_rows($result);
-             {
-               echo htmlentities($num_rows);  
-             }
-              ?>
-                  </h1>                
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xxl-6" style="min-height: 200px">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Quote</h5>
-                  <h1>
-                  <?php 
-             $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
-             $num_rows = mysqli_num_rows($result);
-             {
-               echo htmlentities($num_rows);  
-             }
-              ?>
+              <div class="col-lg-5 m-auto mt-4 bg-info rounded">
+                <div class="p-3">
+                <h3 class="fw-bold text-center">Revenue</h3>
+                <h1 class="fw-bold" id="form-subhead">
+                  <?php
+                      date_default_timezone_set("Asia/Kolkata");
+                      $todaydate =date("Y-m-d");
+                      $docid = $_SESSION['id'];
+                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
+                      $num_rows = mysqli_num_rows($result);
+                      {
+                        echo htmlentities($num_rows);  
+                      }
+                    ?>
                   </h1>
-                  <p class="author" id="author"></p>
-                  <hr/>
                 </div>
               </div>
-            </div>
-            
-            <div class="col-xxl-6" style="min-height: 200px">
-              <div class="card recent-sales ">
-                <div class="card-body">
-                  <h5 class="card-title">Weather <span>| Today</span></h5>      
-                  <h1>
-                  <?php 
-             $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
-             $num_rows = mysqli_num_rows($result);
-             {
-               echo htmlentities($num_rows);  
-             }
-              ?>
-                  </h1>          
+              <div class="col-lg-5 m-auto mt-4  bg-info rounded">
+                <div class="p-3">
+                <h3 class="fw-bold text-center">Revenue</h3>
+                <h1 class="fw-bold" id="form-subhead">
+                  <?php
+                      date_default_timezone_set("Asia/Kolkata");
+                      $todaydate =date("Y-m-d");
+                      $docid = $_SESSION['id'];
+                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
+                      $num_rows = mysqli_num_rows($result);
+                      {
+                        echo htmlentities($num_rows);  
+                      }
+                    ?>
+                  </h1>
+                </div>
+              </div>
+              <div class="col-lg-5 m-auto mt-4  bg-info rounded">
+                <div class="p-3">
+                <h3 class="fw-bold text-center">Revenue</h3>
+                <h1 class="fw-bold" id="form-subhead">
+                  <?php
+                      date_default_timezone_set("Asia/Kolkata");
+                      $todaydate =date("Y-m-d");
+                      $docid = $_SESSION['id'];
+                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
+                      $num_rows = mysqli_num_rows($result);
+                      {
+                        echo htmlentities($num_rows);  
+                      }
+                    ?>
+                  </h1>
                 </div>
               </div>
             </div>
@@ -149,7 +143,10 @@ if(strlen($_SESSION['id']==0)) {
                         data: <?php echo json_encode($TotalPat); ?>,
                         fill: false,
                         borderColor: '#012970',
-                        tension: 0.1
+                        tension: 0.1,
+                        pointStyle: 'circle',
+                        pointRadius: 5,
+                        pointHoverRadius: 10
                       }]
                     },
                     options: {
@@ -194,6 +191,7 @@ if(strlen($_SESSION['id']==0)) {
                       datasets: [{
                         label: 'Revenue',
                         data: <?php echo json_encode($revenue); ?>,
+                        borderRadius: 5,
                         backgroundColor: [
                           'rgba(255, 99, 132, 0.2)',
                           'rgba(255, 159, 64, 0.2)',
