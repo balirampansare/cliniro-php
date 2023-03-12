@@ -40,6 +40,24 @@ if(strlen($_SESSION['id']==0)) {
     <section class="section">
       <div class="row">
         <div class="col-lg-6" >
+
+        <form role="form" method="post" name="search">
+            <div class="row border border-primary p-2 rounded">
+              <div class="col-sm-4 text-center form-group">
+                  <label for="patname" class="fw-bold">Date:</label>
+                  <input type="date" id="datesearch" name="datesearch">
+              </div>
+
+              <div class="col-sm-2 text-center form-group mt-3">
+                <button type="submit" name="search" id="submit" class="btn btn-outline-success">Submit</button>
+              </div>
+              
+              
+            </div>
+
+        </form>
+
+        
           <div class="container text-center">
             <div class="row g-2">
               <div class="col-lg-5 m-auto mt-4 rounded" style="background-color:#20bf55">
@@ -47,14 +65,25 @@ if(strlen($_SESSION['id']==0)) {
                 <h3 class="fw-bold text-center">Patients</h3>
                 <h1 class="fw-bold" id="form-subhead">
                   <?php
-                      date_default_timezone_set("Asia/Kolkata");
-                      $todaydate =date("Y-m-d");
-                      $docid = $_SESSION['id'];
-                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
+                      if(isset($_POST['search']))
+                      { 
+                      $datesearch=$_POST['datesearch'];
+                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$datesearch%';");
                       $num_rows = mysqli_num_rows($result);
                       {
                         echo htmlentities($num_rows);  
                       }
+                    }
+                    else{
+                      date_default_timezone_set("Asia/Kolkata");
+                      $todaydate =date("Y-m-d");
+                      $docid = $_SESSION['id'];
+                      $result = mysqli_query($con,"SELECT PatientID as TotalPatients from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$todaydate%';");
+                      $num_rows = mysqli_num_rows($result);
+                      {
+                        echo htmlentities($num_rows);  
+                      }
+                    }
                     ?>
                   </h1>
                 </div>
