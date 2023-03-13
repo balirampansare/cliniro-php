@@ -258,24 +258,32 @@ if(strlen($_SESSION['id']==0)) {
               <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-bookmark-star"></i> Ratings</h5>
 
               <!-- Doughnut Chart -->
-              <canvas id="doughnutChart" style="max-height: 265px;background-color:#E9F8F9;border-radius:5px""></canvas>
+              <canvas id="doughnutChart" style="max-height: 265px;background-color:#E9F8F9;border-radius:5px"></canvas>
+              <?php 
+              $sqlpie ="select rating as ratings, COUNT(rating) as count FROM ratings WHERE ratedocid=".$_SESSION['id']." GROUP BY rating;";
+              $resultpie = mysqli_query($con,$sqlpie);
+              $chart_data="";
+              while ($row = mysqli_fetch_array($resultpie)) { 
+      
+                 $pielabels[]  = $row['ratings']  ;
+                 $ratingscount[] = $row['count'];
+             }
+              ?>
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
                   new Chart(document.querySelector('#doughnutChart'), {
                     type: 'doughnut',
                     data: {
-                      labels: [
-                        'Red',
-                        'Blue',
-                        'Yellow'
-                      ],
+                      labels:<?php echo json_encode($pielabels); ?>,
                       datasets: [{
                         label: 'My First Dataset',
-                        data: [300, 50, 100],
+                        data:<?php echo json_encode($ratingscount); ?>,
                         backgroundColor: [
                           'rgb(255, 99, 132)',
                           'rgb(54, 162, 235)',
-                          'rgb(255, 205, 86)'
+                          'rgb(255, 205, 86)',
+                          'orange',
+                          'red'
                         ],
                         hoverOffset: 4
                       }]
@@ -288,6 +296,8 @@ if(strlen($_SESSION['id']==0)) {
             </div>
           </div>
         </div>
+
+        
 
         
 
