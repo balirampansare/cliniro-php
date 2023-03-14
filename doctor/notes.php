@@ -74,7 +74,7 @@ if(strlen($_SESSION['id']==0)) {
                 <div class="col-sm-12 form-group">
                     <label for="tabname">Description</label>
                     <div class="col-sm-12 form-group">
-                        <textarea class="form-control border-bottom" name="description" id="description" cols="30" rows="2"></textarea>
+                        <textarea class="form-control border-bottom" name="description" id="description" cols="30" rows="2" required></textarea>
                     </div> 
                     <div class="col-sm-12 form-group mt-1">
                         <button type="submit" name="submit"  class="btn btn-outline-success float-end">Submit</button>

@@ -68,7 +68,12 @@ echo '<script>alert("Something Went Wrong. Please try again")</script>';
         
         <tbody>
           <?php
-          $sql=mysqli_query($con,"select users.fullName as fname, users.phone as contact, patappointments.*  from patappointments join users on users.id=patappointments.Appt_Patid where patappointments.Appt_Docid='".$_SESSION['id']."';");
+          $sql=mysqli_query($con,"select users.fullName as fname, users.phone as contact, patappointments.*  from patappointments join users on users.id=patappointments.Appt_Patid where patappointments.Appt_Docid=".$_SESSION['id']." ORDER BY
+          CASE 
+            WHEN Appt_Date = CURDATE() THEN 0 -- current date
+            ELSE 1 -- other dates
+          END,
+          Appt_Date DESC;");
           $cnt=1;
           while($row=mysqli_fetch_array($sql))
           {
@@ -126,3 +131,15 @@ echo '<script>alert("Something Went Wrong. Please try again")</script>';
 
 </html>
 <?php } ?>
+
+
+<!--
+  SELECT date_column
+FROM your_table_name
+ORDER BY
+  CASE 
+    WHEN date_column = CURDATE() THEN 0 -- current date
+    ELSE 1 -- other dates
+  END,
+  date_column DESC;
+-->
