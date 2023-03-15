@@ -91,8 +91,7 @@ if(strlen($_SESSION['id']==0)) {
                   }
                   else
                   {
-                    echo'9';
-                    echo'zero';
+                    echo'₹ 0 ';
                   }
                   ?>
                  
@@ -128,7 +127,15 @@ if(strlen($_SESSION['id']==0)) {
                 <h4><i class="bi bi-pin-angle-fill" style="color:#012970"></i></h4>
                 <h3 class="fw-bold text-center text-dark">Revenue</h3>
                 <h1 class="fw-bold" id="form-subhead">
-                ₹ <?php echo $row['TAmt'];?>
+                <?php 
+                  if ($row['TAmt'] > 0){
+                    echo'₹ '; echo $row['TAmt'];
+                  }
+                  else
+                  {
+                    echo'₹ 0';
+                  }
+                  ?>
                   </h1>
                   <hr>
                   <span class="text-dark"> <?php echo $todaydate?></span>
