@@ -100,7 +100,7 @@ if(strlen($_SESSION['id']==0)) {
                   date_default_timezone_set("Asia/Kolkata");
                   $todaydate =date("Y-m-d");
                   $patid = $_SESSION['id'];
-                  $result = mysqli_query($con,"SELECT Appt_Date FROM patappointments WHERE Appt_Patid=$patid AND Appt_Status='1' AND Appt_Date >= CURDATE() ORDER by Appt_Date DESC LIMIT 1;");
+                  $result = mysqli_query($con,"SELECT Appt_Date FROM patappointments WHERE Appt_Patid=$patid AND Appt_Status='1' AND Appt_Date >= CURDATE() ORDER by Appt_Date ASC LIMIT 1;");
                   if ($row=mysqli_fetch_array($result)) { 
                     echo $row['Appt_Date'];
                     
@@ -201,9 +201,10 @@ if(strlen($_SESSION['id']==0)) {
                                 <th scope="col">Dr. Name</th>
                                 <th scope="col">Clinic Name</th>
                                 <th scope="col">Contact</th>
-                                <th scope="col">Upcoming Appointment</th>
+                                <th scope="col">Timing</th>
+                                <th scope="col">Closed</th>
+                                <th scope="col">Fees</th>
                                 <th scope="col">Action</th>
-                                <th scope="col">Rate Your Doctor</th>
                               </tr>
                             </thead>
 
@@ -220,32 +221,13 @@ if(strlen($_SESSION['id']==0)) {
                                 <td><?php echo $row['doctorName'];?></td>
                                 <td><?php echo $row['clinic_name'];?></td>
                                 <td><?php echo $row['clinic_contact'];?></td>
-                                <td><?php echo $row['oop'];?></td>                         
+                                <td><?php echo $row['clinic_timing'];?></td>
+                                <td><?php echo $row['closed'];?></td>
+                                <td><?php echo $row['docFees'];?></td>                         
                                     <td>
 
                                         <a href="doctor-profile.php?viewid=<?php echo $row['DocId'];?>"> <button class="btn btn-outline-success"><i class="bi bi-eye"></i></button> </a> 
-                                    </td>
-                                <td>
-                                  <!--button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#rateview<?php echo $row['DocId'] ?>">Give Your Ratings <i class="bi bi-star"></i></button-->
-                                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row['DocId'] ?>">
-  Launch demo modal
-</button>
-                                <?php
-                                if ($row['rating']>0) { 
-                                ?>
-
-                                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $row['DocId'] ?>">You Rated: <?php echo $row['rating'] ?> </button>
-
-                                <?php
-                                } else { 
-                                ?>
-
-                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#presppayment<?php echo $row['ID'] ?>">Pay</button>
-                                <?php
-                                }
-                                ?>
-                              </td>
-                                    
+                                    </td>                                   
                                   </tr>
 
                                   <div class="modal fade" id="exampleModal<?php echo $row['DocId'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
