@@ -33,7 +33,7 @@ if(strlen($_SESSION['id']==0)) {
         
         
         <main class="main" id="main">
-        <h5 class="text-danger fw-bold">Issues to solve: bill download nahi hoat</h5>
+        
             <div class="pagetitle">
                 <h1>Bills</h1>
                 <nav>
@@ -134,12 +134,12 @@ if(strlen($_SESSION['id']==0)) {
                                                             <div class="col-sm-8 form-group text-center ">
                                                                 <label for="description text-center">Description</label>
                                                                 <hr class="text-primary">
-                                                                <input type="text" class="form-control" name="paydescrp" id="description" value="<?php  echo $row['Description'];?>" readonly>
+                                                                <input type="text" class="form-control text-center" name="paydescrp" id="description" value="<?php  echo $row['Description'];?>" readonly>
                                                             </div>
                                                             <div class="col-sm-4 form-group text-center">
                                                                 <label for="total ">Total</label>
                                                                 <hr class="text-primary">
-                                                                <input type="text" class="form-control" name="payamount" id="total" value="<?php  echo $row['Amount'];?>" readonly>
+                                                                <input type="text" class="form-control text-center" name="payamount" id="total" value="<?php  echo $row['Amount'];?>" readonly>
                                                             </div>
                                                             <div class="col-sm-12 form-group mt-3">
                                                                 <br>

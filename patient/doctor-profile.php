@@ -44,7 +44,36 @@ if($sql)
     text: "Details Updated Successfully",
     icon: "success"
   }, function(){
-        window.location.href = "doctor-profile.php";
+        window.location.href = "patientlanding.php";
+  });
+
+     </script>';
+
+}
+}
+?>
+
+<?php 
+
+if(isset($_POST['submit']))
+{
+  $did=$_GET['viewid'];
+  $patid = $_SESSION['id'];
+
+
+$rate=$_POST['rate'];
+$review=$_POST['review'];
+
+$sql=mysqli_query($con, "insert into  ratings(ratedocid,ratepatid,rating,comment)values('$did','$patid','$rate','$review')");
+if($sql)
+{
+  echo '<script type="text/javascript">
+  swal({
+    title:"Thanks!",
+    text: "Thanks for Your Review",
+    icon: "success"
+  }, function(){
+        window.location.href = "patientlanding.php";
   });
 
      </script>';
@@ -127,8 +156,8 @@ while($data=mysqli_fetch_array($sql))
               <?php $query=mysqli_query($con,"SELECT * FROM ratings WHERE ratings.ratedocid='$did' AND ratings.ratepatid=".$_SESSION['id']."; ");
               $row=mysqli_fetch_array($query);
 	            if($row['rating']>0){ ?>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                You rated: <?php echo htmlentities($row['rating']);?>
+              <button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                You rated: <?php echo htmlentities($row['rating']);?> <i class="bi bi-star-fill"></i>
               </button>
              <?php  } else { ?> 
               <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#fillreview">Rate Your Doctor</button>
@@ -262,13 +291,13 @@ while($data=mysqli_fetch_array($sql))
             <div class="row jumbotron rounded py-2">
                 <!--div class="col-sm-12 form-group"-->
                     <div class="col-sm-12 form-group">
-                    <label for="rate" class="form-label">Rate</label>
-                      <input type="range" class="form-range" name="rate" min="0" max="5" id="customRange2" value="<?php echo $data['rating'];?>" required>
+                    <label for="rate" class="form-label">Rate 1 - 5</label>
+                      <input type="range" class="form-range" name="rate" min="0" max="5" id="customRange2" value="<?php echo htmlentities($data['rating']);?>" required>
                     </div>
                     
                     <div class="col-sm-12 form-group">
                         <label for="review" class="fw-semibold">Review:</label>
-                        <textarea class="form-control border-bottom" name="review" id="review"  cols="30" rows="2"><?php echo $data['comment'];?></textarea>
+                        <textarea class="form-control border-bottom" name="review" id="review"  cols="30" rows="2"><?php echo htmlentities($data['comment']);?></textarea>
                     </div>
                     <div class="col-sm-12 form-group mt-1">
                       
