@@ -36,14 +36,14 @@ if(strlen($_SESSION['id']==0)) {
   
 
   <main class="main" id="main">
-    <h4 class="text-danger">WHAT IF CONTACT IS TELEPHONE</h4>
+    
 
     <div class="pagetitle">
-        <h1>Inventory</h1>
+        <h1>Find</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="dashboard.php">Inventory</a></li>
-                <li class="breadcrumb-item active">Doctors Inventory</li>
+                <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+                <li class="breadcrumb-item active">Find</li>
             </ol>
         </nav>
     </div>
@@ -54,17 +54,17 @@ if(strlen($_SESSION['id']==0)) {
         
 
         <form role="form" method="post" name="search">
-            <div class="row border border-primary p-2 rounded">
-              <div class="col-sm-4 text-center form-group">
+            <div class="row border border-primary p-2 rounded justify-content-center">
+              <!--div class="col-sm-4 text-center form-group">
                   <label for="patname" class="fw-bold">Dr. Name:</label>
                   <input type="text" class="form-control " name="patname" value="" id="patname" placeholder="">
-              </div>
+              </div-->
               <div class="col-sm-2 text-center form-group">
-                  <label for="patloc" class="fw-bold">Locality:</label>
+                  <label for="patloc" class="fw-bold">Locality/City:</label>
                   <input type="text" class="form-control " name="patloc" value="" id="patloc" placeholder="" required>
               </div>
               <div class="col-sm-2 text-center form-group">
-                  <label for="patcity" class="fw-bold">City:</label>
+                  <label for="patcity" class="fw-bold">Select:</label>
                   <!--input type="text" class="form-control" name="patcity" value="" id="patcity" placeholder=""-->
                   <select name="typeofreg" id="typeofreg" class="form-control browser-default custom-select">
                         <option value="Ambulance">Ambulance</option>
@@ -77,10 +77,10 @@ if(strlen($_SESSION['id']==0)) {
                         
                       </select>
               </div>
-              <div class="col-sm-2 text-center form-group">
+              <!--div class="col-sm-2 text-center form-group">
                   <label for="patpin" class="fw-bold">Pincode:</label>
                   <input type="text" class="form-control" name="patpin" value="" id="patpin" placeholder="">
-              </div>
+              </div-->
               <div class="col-sm-2 text-center form-group mt-3">
                 <button type="submit" name="search" id="submit" class="btn btn-outline-success">Submit</button>
               </div>

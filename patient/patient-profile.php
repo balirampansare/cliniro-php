@@ -26,6 +26,47 @@ if(strlen($_SESSION['id']==0)) {
 
 <body>
 
+<?php 
+
+if(isset($_POST['submit']))
+{
+$patname=$_POST['patname'];
+$gender=$_POST['gender'];
+$patage=$_POST['patage'];
+$patheight=$_POST['patheight'];
+$patweight=$_POST['patweight'];
+$medhis=$_POST['medhis'];
+$patallergy=$_POST['patallergy'];
+$patcontact=$_POST['patcontact'];
+$patemail=$_POST['patemail'];
+$patlocality=$_POST['patlocality'];
+$patcity=$_POST['patcity'];
+$pataddress=$_POST['pataddress'];
+$ename=$_POST['ename'];
+$erelation=$_POST['erelation'];
+$ephone=$_POST['ephone'];
+
+
+
+$sql=mysqli_query($con,"Update users set fullName='$patname',address='$pataddress',city='$patcity',gender='$gender',email='$patemail',Age='$patage',Height='$patheight',Weight='$patweight',Medication='$medhis',Allergy='$patallergy',Phone='$patcontact',Locality='$patlocality',Ename='$ename',Erelation='$erelation',Econtact='$ephone', where id='".$_SESSION['id']."';");
+
+if($sql)
+{
+  echo '<script type="text/javascript">
+  swal({
+    title:"Hurray!",
+    text: "Details Updated Successfully",
+    icon: "success"
+  }, function(){
+        window.location.href = "patient-profile.php";
+  });
+
+     </script>';
+
+}
+}
+?>
+
 
   <?php include('include/header.php');?>
   <?php include('include/sidebar.php');?>
@@ -39,7 +80,7 @@ if(strlen($_SESSION['id']==0)) {
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Profile</li>
         </ol>
       </nav>
     </div>
@@ -135,35 +176,7 @@ while($row=mysqli_fetch_array($sql))
                             </div>
 
 
-                            <div class="col-sm-2 form-group mt-1">
-                                <label for="blood">Blood Group</label>
-                                <select id="blood" name="patblood"  class="form-control browser-default custom-select">
-                                <option value="<?php  echo $row['bloodgrp'];?>">
-                                <?php  echo $row['bloodgrp'];?></option>
-                                  <option value="A+">A+</option>
-                                  <option value="A-">A-</option>
-                                  <option value="B+">B+</option>
-                                  <option value="B-">B-</option>
-                                  <option value="O+">O+</option>
-                                  <option value="O-">O-</option>
-                                  <option value="AB+">AB+</option>
-                                  <option value="AB-">AB-</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-2 form-group mt-1">
-                                <label for="sugar">Sugar</label>
-                                <select id="sugar" name="patsugar" class="form-control browser-default custom-select">
-                                <option value="<?php  echo $row['sugar'];?>">
-                                <?php  echo $row['sugar'];?></option>    
-                                <option value="none">None</option>
-                                    <option value="type1">Type1</option>
-                                    <option value="type2">Type2</option>
-                                  </select>
-                            </div>
-                            <div class="col-sm-3 form-group mt-1">
-                                <label for="Date">Date Of Birth</label>
-                                <input type="Date" name="patdob" class="form-control" id="patdob" value="<?php  echo $row['dob'];?>" required>
-                            </div>
+                            
                             <div class="col-sm-2 form-group mt-1">
                                 <label for="height">Height</label>
                                 <input type="text" name="patheight" class="form-control" id="patheight"value="<?php  echo $row['Height'];?>" required>
@@ -192,7 +205,7 @@ while($row=mysqli_fetch_array($sql))
                             </div>
                             <div class="col-sm-5 form-group">
                               <label for="email">Email</label>
-                              <input type="email" class="form-control" name="patemail" id="patemail" value="<?php  echo $row['Email'];?>" required>
+                              <input type="email" class="form-control" name="patemail" id="email" value="<?php  echo $row['email'];?>" required>
                            </div>
                            <div class="col-sm-2 form-group">
                             <label for="locality">Locality</label>
@@ -204,7 +217,7 @@ while($row=mysqli_fetch_array($sql))
                             <input type="text" class="form-control" name="patcity" id="patcity" value="<?php  echo $row['city'];?>" required>
                           </div>
 
-                          <div class="col-sm-6 form-group">
+                          <div class="col-sm-12 form-group">
                             <label for="address">Patient Address</label>
                             <textarea name="pataddress" class="form-control" required><?php  echo $row['address'];?></textarea>
                           </div>
@@ -229,14 +242,8 @@ while($row=mysqli_fetch_array($sql))
                             <!--------------------------------------------------------------------->
                            
 
-                             <!--------------------------------------------------------------------->
-                             <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
-                              Other<hr class="mt-0">
-                            </div>
-                            <div class="col-sm-12 form-group mt-1">
-                              <label for="other">Detail</label>
-                              <textarea class="form-control" name="patother" id="patother" cols="30" rows="2" ><?php  echo $row['patother'];?></textarea>
-                            </div>
+                            
+                            
                               
                               <!--div class="col-sm-12">
                                 <input type="checkbox" class="form-check d-inline" id="chb" required><label for="chb" class="form-check-label">&nbsp;I accept all terms and conditions.

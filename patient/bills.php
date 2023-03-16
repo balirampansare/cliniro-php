@@ -39,7 +39,6 @@ if(strlen($_SESSION['id']==0)) {
                 <nav>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-                        <li class="breadcrumb-item">Stuff</li>
                         <li class="breadcrumb-item active">Bills</li>
                     </ol>
                 </nav>
