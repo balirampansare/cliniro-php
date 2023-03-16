@@ -23,6 +23,39 @@ if(strlen($_SESSION['id']==0)) {
 </script-->
 
 <body>
+
+<?php 
+
+if(isset($_POST['update']))
+{
+  $did=$_GET['viewid'];
+
+
+$rate=$_POST['rate'];
+$review=$_POST['review'];
+
+$sql=mysqli_query($con,"Update ratings set rating='$rate',comment='$review' where ratepatid='".$_SESSION['id']."' and ratedocid='$did';");
+
+if($sql)
+{
+  echo '<script type="text/javascript">
+  swal({
+    title:"Hurray!",
+    text: "Details Updated Successfully",
+    icon: "success"
+  }, function(){
+        window.location.href = "doctor-profile.php";
+  });
+
+     </script>';
+
+}
+}
+?>
+
+
+
+
 <?php include('include/header.php');?>
 <?php include('include/sidebar.php');?>
 
@@ -71,11 +104,9 @@ while($data=mysqli_fetch_array($sql))
           <div>
           <h4 class="card-title"><?php echo htmlentities($data['doctorName']);?></h4>
           <span>
-              <?php $query=mysqli_query($con,"select specilization from doctors where id='".$_SESSION['id']."'");
-            while($row=mysqli_fetch_array($query))
-            {
-	            echo $row['specilization'];
-            }?> Specialist
+              <?php 
+	            echo $data['specilization'];
+            ?> Specialist
               </span>
 
           </div>
@@ -90,6 +121,22 @@ while($data=mysqli_fetch_array($sql))
             <div class="px-2"> <b>Email:</b> <?php echo htmlentities($data['docEmail']);?></div>
             <div class="px-2"> <b>Fees:</b> <?php echo htmlentities($data['docFees']);?></div>
           </div>
+
+          <hr>
+          <span>
+              <?php $query=mysqli_query($con,"SELECT * FROM ratings WHERE ratings.ratedocid='$did' AND ratings.ratepatid=".$_SESSION['id']."; ");
+              $row=mysqli_fetch_array($query);
+	            if($row['rating']>0){ ?>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                You rated: <?php echo htmlentities($row['rating']);?>
+              </button>
+             <?php  } else { ?> 
+              <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#fillreview">Rate Your Doctor</button>
+              
+
+              <?php } ?>
+              </span>
+
 
          
 
@@ -119,26 +166,21 @@ while($data=mysqli_fetch_array($sql))
                             </div-->
                             <div class="col-sm-5 form-group">
                             <label for="doctorname">Doctor Name</label>
-                      <input type="text" name="docname" class="form-control" value="<?php echo htmlentities($data['doctorName']);?>" >
+                      <input type="text" name="docname" class="form-control" value="<?php echo htmlentities($data['doctorName']);?>" readonly >
                             </div>
                             <div class="col-sm-2 form-group">
                                 <label for="sex">Gender</label>
-                                <select id="sex" name="docgender" class="form-control browser-default custom-select">
-                                <option value="<?php echo htmlentities($data['gender']);?>">
-					<?php echo htmlentities($data['gender']);?></option>
-                                  <option value="male">Male</option>
-                                  <option value="female">Female</option>
-                                  <option value="other">Other</option>
-                                </select>
+                                <input type="text" name="docgender" class="form-control" value="<?php echo htmlentities($data['gender']);?>" readonly>
+                                
                             </div>
                             <div class="col-sm-2 form-group">
                                 <label for="docage">Age</label>
-                                <input type="number" class="form-control" name="docage" value="<?php echo htmlentities($data['age']);?>">
+                                <input type="number" class="form-control" name="docage" value="<?php echo htmlentities($data['age']);?>" readonly>
                             </div>
 
                             <div class="col-sm-3 form-group mt-1">
                                 <label for="Date">Date Of Birth</label>
-                                <input type="Date" name="docdob" class="form-control" value="<?php echo htmlentities($data['dob']);?>">
+                                <input type="Date" name="docdob" class="form-control" value="<?php echo htmlentities($data['dob']);?>" readonly>
                             </div>
 
 
@@ -146,28 +188,16 @@ while($data=mysqli_fetch_array($sql))
 															<label for="DoctorSpecialization">
 																Doctor Specialization
 															</label>
-							                <select name="Doctorspecialization" class="form-control" required="required">
-					<option value="<?php echo htmlentities($data['specilization']);?>">
-					<?php echo htmlentities($data['specilization']);?></option>
-<?php $ret=mysqli_query($con,"select * from doctorspecilization");
-while($row=mysqli_fetch_array($ret))
-{
-?>
-																<option value="<?php echo htmlentities($row['specilization']);?>">
-																	<?php echo htmlentities($row['specilization']);?>
-																</option>
-																<?php } ?>
-																
-															</select>
+                              <input type="text" name="Doctorspecialization" class="form-control" value="<?php echo htmlentities($data['specilization']);?>" readonly>
 														</div>
 
                             <div class="col-sm-3 form-group">
                               <label for="phone">Dr. Phone</label>
-                              <input type="number" class="form-control" name="doccontact" value="<?php echo htmlentities($data['contactno']);?>">
+                              <input type="number" class="form-control" name="doccontact" value="<?php echo htmlentities($data['contactno']);?>" readonly>
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="email">Dr. Email</label>
-                              <input type="email" id="docemail" name="docemail" class="form-control" value="<?php echo htmlentities($data['docEmail']);?>" >
+                              <input type="email" id="docemail" name="docemail" class="form-control" value="<?php echo htmlentities($data['docEmail']);?>" readonly >
                               <span id="email-availability-status"></span>
                            </div>
                             <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
@@ -176,36 +206,36 @@ while($row=mysqli_fetch_array($ret))
 
                             <div class="col-sm-5 form-group">
                               <label for="clinicname">Clinic Name</label>
-                              <input type="text" class="form-control" name="clinicname" value="<?php echo htmlentities($data['clinic_name']);?>" >
+                              <input type="text" class="form-control" name="clinicname" value="<?php echo htmlentities($data['clinic_name']);?>" readonly >
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="cliniccontact">Clinic Contact</label>
-                              <input type="number" class="form-control" name="cliniccontact" value="<?php echo htmlentities($data['clinic_contact']);?>"  required>
+                              <input type="number" class="form-control" name="cliniccontact" value="<?php echo htmlentities($data['clinic_contact']);?>" readonly >
                             </div>
                             <div class="col-sm-3 form-group">
                             <label for="cliniclocality">Clinic Locality</label>
-                            <input type="text" class="form-control" name="cliniclocality" value="<?php echo htmlentities($data['clinic_locality']);?>"  required>
+                            <input type="text" class="form-control" name="cliniclocality" value="<?php echo htmlentities($data['clinic_locality']);?>" readonly >
                           </div>
                           <div class="col-sm-2 form-group">
                             <label for="cliniccity">Clinic City</label>
-                            <input type="text" class="form-control" name="cliniccity" value="<?php echo htmlentities($data['clinic_city']);?>"required>
+                            <input type="text" class="form-control" name="cliniccity" value="<?php echo htmlentities($data['clinic_city']);?>" readonly>
                           </div>
                           <div class="col-sm-4 form-group">
                             <label for="clinictiming">Clinic Timing</label>
-                            <input type="text" class="form-control" name="clinictiming" value="<?php echo htmlentities($data['clinic_timing']);?>" required>
+                            <input type="text" class="form-control" name="clinictiming" value="<?php echo htmlentities($data['clinic_timing']);?>" readonly>
                           </div>
                           <div class="col-sm-4 form-group">
                             <label for="closed">Clinic Closed On</label>
-                            <input type="text" class="form-control" name="closed" value="<?php echo htmlentities($data['closed']);?>" required>
+                            <input type="text" class="form-control" name="closed" value="<?php echo htmlentities($data['closed']);?>" readonly>
                           </div>
                             <div class="col-sm-2 form-group">
                               <label for="docfees">Fees</label>
-                              <input type="text" class="form-control" name="docfees" value="<?php echo htmlentities($data['docFees']);?>"  required>
+                              <input type="text" class="form-control" name="docfees" value="<?php echo htmlentities($data['docFees']);?>" readonly >
                             </div>
 
                             <div class="col-sm-10 form-group">
                             <label for="address">Doctor Clinic Address</label>
-                            <textarea name="clinicaddress" class="form-control"><?php echo htmlentities($data['address']);?></textarea>
+                            <textarea name="clinicaddress" class="form-control" readonly><?php echo htmlentities($data['address']);?></textarea>
 													</div>                            
                            
                       
@@ -216,6 +246,83 @@ while($row=mysqli_fetch_array($ret))
       </div>
      </div><!-- End patient form-->
    </div>
+
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+      <?php 
+$did=$_GET['viewid'];
+$sql=mysqli_query($con,"SELECT * FROM ratings WHERE ratings.ratedocid='$did' AND ratings.ratepatid=".$_SESSION['id'].";");
+while($data=mysqli_fetch_array($sql))
+{
+?>
+      <form method="post" name="update">
+            <div class="row jumbotron rounded py-2">
+                <!--div class="col-sm-12 form-group"-->
+                    <div class="col-sm-12 form-group">
+                    <label for="rate" class="form-label">Rate</label>
+                      <input type="range" class="form-range" name="rate" min="0" max="5" id="customRange2" value="<?php echo $data['rating'];?>" required>
+                    </div>
+                    
+                    <div class="col-sm-12 form-group">
+                        <label for="review" class="fw-semibold">Review:</label>
+                        <textarea class="form-control border-bottom" name="review" id="review"  cols="30" rows="2"><?php echo $data['comment'];?></textarea>
+                    </div>
+                    <div class="col-sm-12 form-group mt-1">
+                      
+                        <button type="submit" name="update" class="btn btn-outline-success float-end">Submit</button>
+                    </div>
+                <!--/div-->
+            </div>
+            <?php }?>
+
+        </form>
+         
+         
+                           
+                                  
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="fillreview" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-body">
+      
+      <form method="post" name="submit">
+            <div class="row jumbotron rounded py-2">
+                <!--div class="col-sm-12 form-group"-->
+                    <div class="col-sm-12 form-group">
+                    <label for="rate" class="form-label">Rate</label>
+                      <input type="range" class="form-range" name="rate" min="0" max="5" id="customRange2"  required>
+                    </div>
+                    
+                    <div class="col-sm-12 form-group">
+                        <label for="review" class="fw-semibold">Review:</label>
+                        <textarea class="form-control border-bottom" name="review" id="review"  cols="30" rows="2"></textarea>
+                    </div>
+                    <div class="col-sm-12 form-group mt-1">
+                      
+                        <button type="submit" name="submit" class="btn btn-outline-success float-end">Submit</button>
+                    </div>
+                <!--/div-->
+            </div>
+        </form>
+         
+         
+                           
+                                  
+          </div>
+          
+        </div>
+      </div>
+    </div>
 
 
 </section>
