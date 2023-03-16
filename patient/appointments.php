@@ -49,18 +49,15 @@ if(strlen($_SESSION['id']==0)) {
         </thead>
         
         <tbody>
+        <tr>
+          <td colspan="6" class="text-center fw-bold text-success">Today's Appointments</td>
+        </tr>
           <?php
-          $sql=mysqli_query($con,"select doctors.doctorName as fname, doctors.clinic_contact as contact, patappointments.*  from patappointments join doctors on doctors.id=patappointments.Appt_Docid where patappointments.Appt_Patid='".$_SESSION['id']."';");
+          $sql=mysqli_query($con,"select doctors.doctorName as fname, doctors.clinic_contact as contact, patappointments.*  from patappointments join doctors on doctors.id=patappointments.Appt_Docid where patappointments.Appt_Patid='".$_SESSION['id']."' AND patappointments.Appt_Date=CURDATE();");
           $cnt=1;
           while($row=mysqli_fetch_array($sql))
-          {
-           
+          { 
           ?>
-          <?php
-           date_default_timezone_set("Asia/Kolkata");
-           $todaydate =date("Y-m-d");
-           if($row['Appt_Date'] == $todaydate)
-           {?>
             <tr class="table-active">
             <td class="center"><?php echo $cnt;?>.</td>
             <td class="hidden-xs"><?php echo $row['fname'];?></td>
@@ -76,11 +73,20 @@ if(strlen($_SESSION['id']==0)) {
               <?php } ?>
             </td>
           </tr>
+          <?php 
+          $cnt=$cnt+1;
+          }?>
 
-           <?php }
-            else{
-            ?>
-            <tr>
+        <tr>
+          <td colspan="6" class="text-center fw-bold text-primary">Upcoming Appointments</td>
+        </tr>
+          <?php
+          $sql=mysqli_query($con,"select doctors.doctorName as fname, doctors.clinic_contact as contact, patappointments.*  from patappointments join doctors on doctors.id=patappointments.Appt_Docid where patappointments.Appt_Patid='".$_SESSION['id']."' AND patappointments.Appt_Date > CURDATE();");
+          $cnt=1;
+          while($row=mysqli_fetch_array($sql))
+          { 
+          ?>
+            <tr class="table-warning">
             <td class="center"><?php echo $cnt;?>.</td>
             <td class="hidden-xs"><?php echo $row['fname'];?></td>
             <td><?php echo $row['contact'];?></td>
@@ -89,16 +95,45 @@ if(strlen($_SESSION['id']==0)) {
             <td>
             <?php if($row['Appt_Status']==1)
             { ?>
-            <button class="btn btn-outline-success" disabled>Active</button>
+            <a href="appointments.php?Apptid=<?php echo $row['Apptid'];?>"><button class="btn btn-outline-success">Active</button></a>
             <?php } else { ?>
               <button type="button" class="btn btn-outline-danger" disabled>Canceled</button>
               <?php } ?>
             </td>
           </tr>
-            <?php }?>
           <?php 
           $cnt=$cnt+1;
           }?>
+
+<tr>
+          <td colspan="6" class="text-center fw-bold text-danger">Past Appointments</td>
+        </tr>
+          <?php
+          $sql=mysqli_query($con,"select doctors.doctorName as fname, doctors.clinic_contact as contact, patappointments.*  from patappointments join doctors on doctors.id=patappointments.Appt_Docid where patappointments.Appt_Patid='".$_SESSION['id']."' AND patappointments.Appt_Date < CURDATE();");
+          $cnt=1;
+          while($row=mysqli_fetch_array($sql))
+          { 
+          ?>
+            <tr class="table-danger">
+            <td class="center"><?php echo $cnt;?>.</td>
+            <td class="hidden-xs"><?php echo $row['fname'];?></td>
+            <td><?php echo $row['contact'];?></td>
+            <td><?php echo $row['Appt_Date'];?> / <?php echo $row['Appt_Time'];?></td>
+            <td><?php echo $row['Appt_Created'];?></td>
+            <td>
+            <?php if($row['Appt_Status']==1)
+            { ?>
+            <a href="appointments.php?Apptid=<?php echo $row['Apptid'];?>"><button class="btn btn-outline-success" disabled>Done</button></a>
+            <?php } else { ?>
+              <button type="button" class="btn btn-outline-danger" disabled>Canceled</button>
+              <?php } ?>
+            </td>
+          </tr>
+          <?php 
+          $cnt=$cnt+1;
+          }?>
+
+
         </tbody>
       </table>
     </div>
