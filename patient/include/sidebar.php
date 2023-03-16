@@ -33,12 +33,7 @@
     </ul>
   </li-->
 
-  <li class="nav-item">
-    <a class="nav-link collapsed " href="mydoctor.php">
-      <i class="bi bi-people-fill"></i>
-      <span>My Doctors</span>
-    </a>
-  </li>
+  
 
   <li class="nav-item">
     <a class="nav-link collapsed " href="appointments.php">
