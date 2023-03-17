@@ -12,11 +12,11 @@
 <nav class="header-nav ms-auto">
   <ul class="d-flex align-items-center">
 
-  <li >
-      <a class="nav-link nav-icon" href="#">
+  <!--li >
+      <a class="nav-link nav-icon" href="stopwatch.php">
         <i class="bi bi-stopwatch"></i>
-      </a><!-- End Notification Icon -->
-    </li><!-- End Notification Nav -->
+      </a>
+    </li-->
 
     <li>
 
@@ -66,12 +66,12 @@
         <li>
           <hr class="dropdown-divider">
         </li>
-        <li>
+        <!--li>
           <a class="dropdown-item d-flex align-items-center" href="#">
             <i class="bi bi-question-circle"></i>
             <span>Need Help?</span>
           </a>
-        </li>
+        </li-->
         <li>
           <hr class="dropdown-divider">
         </li>
