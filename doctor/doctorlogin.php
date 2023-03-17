@@ -1,7 +1,17 @@
 <?php
 session_start();
 include("include/config.php");
-error_reporting(0);
+error_reporting(0); ?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<?php include('include/head.php');?>
+
+<body>
+<?php 
 if(isset($_POST['submit']))
 {
 $uname=$_POST['username'];
@@ -23,22 +33,21 @@ header("location:doctorlanding.php");
 else
 {
 
-$uip=$_SERVER['REMOTE_ADDR'];
-$status=0;
-mysqli_query($con,"insert into doctorslog(username,userip,status) values('$uname','$uip','$status')");
-$_SESSION['errmsg']="Invalid username or password";
+  echo '<script type="text/javascript">
+  swal({
+    title:"Oops!",
+    text: "Invalid Username or Password",
+    icon: "error"
+  }, function(){
+        window.location.href = "doctorlogin.php";
+  });
+
+     </script>';
 
 
 }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<?php include('include/head.php');?>
-
-<body>
 
   <main>
     <div class="container">

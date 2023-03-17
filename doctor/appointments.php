@@ -134,7 +134,7 @@ echo '<script>alert("Something Went Wrong. Please try again")</script>';
             <td>
             <?php if($row['Appt_Status']==1)
             { ?>
-            <a href="appointments.php?Apptid=<?php echo $row['Apptid'];?>"><button class="btn btn-outline-success" disabled>Done</button></a>
+            <button class="btn btn-outline-success" disabled>Done</button>
             <?php } else { ?>
               <button type="button" class="btn btn-outline-danger" disabled>Canceled</button>
               <?php } ?>

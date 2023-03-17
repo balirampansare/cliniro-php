@@ -1,3 +1,9 @@
+<?php 
+session_start();
+error_reporting(0);
+include("include/config.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +41,7 @@
 
 <body>
 <?php
-session_start();
-error_reporting(0);
-include("include/config.php");
+
 if(isset($_POST['submit']))
 {
 $puname=$_POST['username'];	
