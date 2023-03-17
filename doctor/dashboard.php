@@ -314,16 +314,52 @@ if(strlen($_SESSION['id']==0)) {
           </div>
         </div>
 
-        
+        <div class="col-xxl-12 mx-auto">
+                    <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
+                        <table class="table table-warning table-striped">
+                            <thead>
+                              <tr id="form-subhead">
+                                <th scope="col">#</th>
+                                <th scope="col">Review</th>
+                                <th scope="col">Rating</th>
+                              </tr>
+                            </thead>
+
+                            <tbody>
+                            <?php
+                            $docid=$_SESSION['id'];
+                            $sql=mysqli_query($con,"SELECT * FROM ratings where ratedocid='$docid';");
+                            $cnt=1;
+                            while($row=mysqli_fetch_array($sql))
+                            {
+                            ?>
+                                <tr>
+                                <td class="center"><?php echo $cnt;?>.</td>
+                                <td><?php echo $row['comment'];?></td>
+                                <td class="text-center fw-bold"><?php echo $row['rating'];?></td>
+                                
+                                    
+                                  </tr>
+
+                                <?php 
+                                $cnt=$cnt+1;
+							}?>
+                            </tbody>
+                          </table>
+                       
+                      </div>
+                     </div>
 
         
 
-        <div class="col-lg-6">
+        
+
+        <!--div class="col-lg-6">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Pie Chart</h5>
 
-              <!-- Pie Chart -->
+              
               <canvas id="pieChart" style="max-height: 400px;"></canvas>
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
@@ -349,7 +385,7 @@ if(strlen($_SESSION['id']==0)) {
                   });
                 });
               </script>
-              <!-- End Pie CHart -->
+             
 
             </div>
           </div>
@@ -360,7 +396,7 @@ if(strlen($_SESSION['id']==0)) {
             <div class="card-body">
               <h5 class="card-title">Radar Chart</h5>
 
-              <!-- Radar Chart -->
+              
               <canvas id="radarChart" style="max-height: 400px;"></canvas>
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
@@ -408,7 +444,7 @@ if(strlen($_SESSION['id']==0)) {
                   });
                 });
               </script>
-              <!-- End Radar CHart -->
+              
 
             </div>
           </div>
@@ -419,7 +455,7 @@ if(strlen($_SESSION['id']==0)) {
             <div class="card-body">
               <h5 class="card-title">Polar Area Chart</h5>
 
-              <!-- Polar Area Chart -->
+             
               <canvas id="polarAreaChart" style="max-height: 400px;"></canvas>
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
@@ -448,7 +484,7 @@ if(strlen($_SESSION['id']==0)) {
                   });
                 });
               </script>
-              <!-- End Polar Area Chart -->
+             
 
             </div>
           </div>
@@ -459,7 +495,7 @@ if(strlen($_SESSION['id']==0)) {
             <div class="card-body">
               <h5 class="card-title">Stacked Bar Chart</h5>
 
-              <!-- Stacked Bar Chart -->
+              
               <canvas id="stakedBarChart" style="max-height: 400px;"></canvas>
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
@@ -504,7 +540,7 @@ if(strlen($_SESSION['id']==0)) {
                   });
                 });
               </script>
-              <!-- End Stacked Bar Chart -->
+             
 
             </div>
           </div>
@@ -515,7 +551,7 @@ if(strlen($_SESSION['id']==0)) {
             <div class="card-body">
               <h5 class="card-title">Bubble Chart</h5>
 
-              <!-- Bubble Chart -->
+             
               <canvas id="bubbleChart" style="max-height: 400px;"></canvas>
               <script>
                 document.addEventListener("DOMContentLoaded", () => {
@@ -592,11 +628,11 @@ if(strlen($_SESSION['id']==0)) {
                   });
                 });
               </script>
-              <!-- End Bubble Chart -->
+              
 
             </div>
           </div>
-        </div>
+        </div-->
 
       </div>
     </section>

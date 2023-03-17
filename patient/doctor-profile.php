@@ -328,7 +328,7 @@ while($data=mysqli_fetch_array($sql))
             <div class="row jumbotron rounded py-2">
                 <!--div class="col-sm-12 form-group"-->
                     <div class="col-sm-12 form-group">
-                    <label for="rate" class="form-label">Rate</label>
+                    <label for="rate" class="form-label">Rate 1 - 5</label>
                       <input type="range" class="form-range" name="rate" min="0" max="5" id="customRange2"  required>
                     </div>
                     

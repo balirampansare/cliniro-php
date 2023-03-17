@@ -54,17 +54,17 @@ if(strlen($_SESSION['id']==0)) {
         
 
         <form role="form" method="post" name="search">
-            <div class="row border border-primary p-2 rounded">
-              <div class="col-sm-4 text-center form-group">
+            <div class="row border border-primary p-2 rounded justify-content-center">
+              <!--div class="col-sm-4 text-center form-group">
                   <label for="patname" class="fw-bold">Dr. Name:</label>
                   <input type="text" class="form-control " name="patname" value="" id="patname" placeholder="">
-              </div>
+              </div-->
               <div class="col-sm-2 text-center form-group">
-                  <label for="patloc" class="fw-bold">Locality:</label>
+                  <label for="patloc" class="fw-bold">Locality/City :</label>
                   <input type="text" class="form-control " name="patloc" value="" id="patloc" placeholder="" required>
               </div>
               <div class="col-sm-2 text-center form-group">
-                  <label for="patcity" class="fw-bold">City:</label>
+                  <label for="patcity" class="fw-bold">Select:</label>
                   <!--input type="text" class="form-control" name="patcity" value="" id="patcity" placeholder=""-->
                   <select name="typeofreg" id="typeofreg" class="form-control browser-default custom-select">
                         <option value="Ambulance">Ambulance</option>
@@ -77,12 +77,12 @@ if(strlen($_SESSION['id']==0)) {
                         
                       </select>
               </div>
-              <div class="col-sm-2 text-center form-group">
+              <!--div class="col-sm-2 text-center form-group">
                   <label for="patpin" class="fw-bold">Pincode:</label>
                   <input type="text" class="form-control" name="patpin" value="" id="patpin" placeholder="">
-              </div>
+              </div-->
               <div class="col-sm-2 text-center form-group mt-3">
-                <button type="submit" name="search" id="submit" class="btn btn-outline-success">Submit</button>
+                <button type="submit" name="search" id="submit" class="btn btn-outline-success mt-1">Submit</button>
               </div>
             </div>
 

@@ -32,11 +32,11 @@
           <i class="bi bi-circle"></i><span>Appointments</span>
         </a>
       </li>
-      <li>
+      <!--li>
         <a href="add-patient.php">
           <i class="bi bi-circle"></i><span>Add Patient</span>
         </a>
-      </li>
+      </li-->
       <li>
         <a href="search-patient.php">
           <i class="bi bi-circle"></i><span>Search Patient</span>
