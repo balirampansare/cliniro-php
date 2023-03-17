@@ -121,7 +121,7 @@ echo '<script>alert("Something Went Wrong. Please try again")</script>';
           <td colspan="6" class="text-center fw-bold text-danger">Past Appointments</td>
         </tr>
           <?php
-          $sql=mysqli_query($con,"select users.fullName as fname, users.phone as contact, patappointments.*  from patappointments join users on users.id=patappointments.Appt_Patid where patappointments.Appt_Docid=".$_SESSION['id']." AND patappointments.Appt_Date < CURDATE();");
+          $sql=mysqli_query($con,"select users.fullName as fname, users.phone as contact, patappointments.*  from patappointments join users on users.id=patappointments.Appt_Patid where patappointments.Appt_Docid=".$_SESSION['id']." AND patappointments.Appt_Date < CURDATE() order by patappointments.Appt_Date desc;");
           $cnt=1;
           while($row=mysqli_fetch_array($sql))
           { ?>

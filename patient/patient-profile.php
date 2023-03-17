@@ -109,7 +109,7 @@ while($row=mysqli_fetch_array($sql))
           <img class="avatar rounded-circle" src="../assets/img/messages-3.jpg" alt="patientpic">
 
           <div>
-          <h4 class="card-title"><?php echo htmlentities($data['fullName']);?></h4>
+          <h4 class="card-title"><?php echo htmlentities($row['fullName']);?></h4>
           
 
           </div>
@@ -120,10 +120,10 @@ while($row=mysqli_fetch_array($sql))
           <a href="#" class="btn btn-outline-info">Message</a-->
 
           <div class="d-flex justify-content-between flex-wrap" id="form-subhead">
-                            <div class="px-2"> <b>Id:</b>PT-<?php echo $row['id'];?></div>
-                            <div class="px-2"> <b>City:</b><?php echo $row['city'];?></div>
+                            <div class="px-2"> <b>Id:</b> PT- <?php echo $row['id'];?></div>
+                            <div class="px-2"> <b>City:</b> <?php echo $row['city'];?></div>
                             
-                            <div class="px-2"> <b>Gender:</b><?php echo $row['gender'];?></div>
+                            <div class="px-2"> <b>Gender:</b> <?php echo $row['gender'];?></div>
                             <div class="px-2"> <b>Email:</b> <?php echo $row['email'];?></div>
                             <div class="px-2"> <b>Address:</b> <?php echo $row['address'];?></div>
                           </div>

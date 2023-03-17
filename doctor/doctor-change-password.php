@@ -164,7 +164,7 @@ while($data=mysqli_fetch_array($sql))
    <!-- patient form  -->
    <div class="col-md-8 col-lg-9">
     <div class="container rounded" id="patients-patients-cont">
-      <form role="form" name="adddoc" method="post">
+      <form role="form" name="submit" method="post">
         <div class="row jumbotron box8 rounded py-2">
           <p style="color:red;"><?php echo htmlentities($_SESSION['msg1']);?></p>	
           <div class="form-group">

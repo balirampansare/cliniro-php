@@ -109,7 +109,7 @@ if(strlen($_SESSION['id']==0)) {
           <td colspan="6" class="text-center fw-bold text-danger">Past Appointments</td>
         </tr>
           <?php
-          $sql=mysqli_query($con,"select doctors.doctorName as fname, doctors.clinic_contact as contact, patappointments.*  from patappointments join doctors on doctors.id=patappointments.Appt_Docid where patappointments.Appt_Patid='".$_SESSION['id']."' AND patappointments.Appt_Date < CURDATE();");
+          $sql=mysqli_query($con,"select doctors.doctorName as fname, doctors.clinic_contact as contact, patappointments.*  from patappointments join doctors on doctors.id=patappointments.Appt_Docid where patappointments.Appt_Patid='".$_SESSION['id']."' AND patappointments.Appt_Date < CURDATE() order by patappointments.Appt_Date Desc;");
           $cnt=1;
           while($row=mysqli_fetch_array($sql))
           { 
