@@ -37,8 +37,10 @@ if(strlen($_SESSION['id']==0)) {
           <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
+        <h3 class="text-danger fw-bold text-center">Billing madhe bill no remaining</h3>
       </nav>
     </div>
+    
 
     <section class="section dashboard">
     <div class="row">
@@ -78,12 +80,7 @@ if(strlen($_SESSION['id']==0)) {
         <div class="filter">
           <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <li class="dropdown-header text-start">
-              <h6>Filter</h6>
-            </li>
-
-            <li><a class="dropdown-item" href="#">Cancel</a></li>
-            <li><a class="dropdown-item" href="#">View</a></li>
+            <li><a class="dropdown-item" href="appointments.php">View</a></li>
           </ul>
         </div>
 
