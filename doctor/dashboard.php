@@ -315,8 +315,8 @@ if(strlen($_SESSION['id']==0)) {
         </div>
 
         <div class="col-xxl-12 mx-auto">
-                    <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
-                        <table class="table table-warning table-striped">
+                    <div class="container-fluid box8 rounded table-responsive bg-primary" id="patients-patients-cont">
+                        <table class="table table-warning table-striped rounded mt-3">
                             <thead>
                               <tr id="form-subhead">
                                 <th scope="col">#</th>
