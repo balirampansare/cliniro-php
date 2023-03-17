@@ -48,7 +48,7 @@ $ephone=$_POST['ephone'];
 
 
 
-$sql=mysqli_query($con,"Update users set fullName='$patname',address='$pataddress',city='$patcity',gender='$gender',email='$patemail',Age='$patage',Height='$patheight',Weight='$patweight',Medication='$medhis',Allergy='$patallergy',Phone='$patcontact',Locality='$patlocality',Ename='$ename',Erelation='$erelation',Econtact='$ephone', where id='".$_SESSION['id']."';");
+$sql=mysqli_query($con,"Update users set fullName='$patname',address='$pataddress',city='$patcity',gender='$gender',email='$patemail',Age='$patage',Height='$patheight',Weight='$patweight',Medication='$medhis',Allergy='$patallergy',Phone='$patcontact',Locality='$patlocality',Ename='$ename',Erelation='$erelation',Econtact='$ephone' where id='".$_SESSION['id']."';");
 
 if($sql)
 {
@@ -148,7 +148,7 @@ while($row=mysqli_fetch_array($sql))
    <!-- patient form  -->
    <div class="col-xxl-9">
                         <div class="container rounded" id="patients-patients-cont">
-                          <form role="form" name="" method="post">
+                          <form  name="submit" method="post">
                             <div class="row jumbotron box8 rounded py-2">
 
                               <div class="d-flex">

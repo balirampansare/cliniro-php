@@ -1,40 +1,3 @@
-<?php
-session_start();
-error_reporting(0);
-include("include/config.php");
-if(isset($_POST['submit']))
-{
-$puname=$_POST['username'];	
-$ppwd=md5($_POST['password']);
-$ret=mysqli_query($con,"SELECT * FROM users WHERE email='$puname' and password='$ppwd'");
-$num=mysqli_fetch_array($ret);
-if($num>0)
-{
-$_SESSION['login']=$_POST['username'];
-$_SESSION['id']=$num['id'];
-$pid=$num['id'];
-$host=$_SERVER['HTTP_HOST'];
-$uip=$_SERVER['REMOTE_ADDR'];
-$status=1;
-// For stroing log if user login successfull
-$log=mysqli_query($con,"insert into userlog(uid,username,userip,status) values('$pid','$puname','$uip','$status')");
-header("location:patientlanding.php");
-}
-else
-{
-// For stroing log if user login unsuccessfull
-$_SESSION['login']=$_POST['username'];	
-$uip=$_SERVER['REMOTE_ADDR'];
-$status=0;
-mysqli_query($con,"insert into userlog(username,userip,status) values('$puname','$uip','$status')");
-$_SESSION['errmsg']="Invalid username or password";
-
-header("location:patientlogin.php");
-}
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,6 +25,8 @@ header("location:patientlogin.php");
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -69,6 +34,43 @@ header("location:patientlogin.php");
 </head>
 
 <body>
+<?php
+session_start();
+error_reporting(0);
+include("include/config.php");
+if(isset($_POST['submit']))
+{
+$puname=$_POST['username'];	
+$ppwd=md5($_POST['password']);
+$ret=mysqli_query($con,"SELECT * FROM users WHERE email='$puname' and password='$ppwd'");
+$num=mysqli_fetch_array($ret);
+if($num>0)
+{
+$_SESSION['login']=$_POST['username'];
+$_SESSION['id']=$num['id'];
+$pid=$num['id'];
+$host=$_SERVER['HTTP_HOST'];
+$uip=$_SERVER['REMOTE_ADDR'];
+$status=1;
+// For stroing log if user login successfull
+$log=mysqli_query($con,"insert into userlog(uid,username,userip,status) values('$pid','$puname','$uip','$status')");
+header("location:patientlanding.php");
+}
+else
+{
+  echo '<script type="text/javascript">
+  swal({
+    title:"Oops!",
+    text: "Invalid Username or Password",
+    icon: "error"
+  }, function(){
+        window.location.href = "patientlogin.php";
+  });
+
+     </script>';
+}
+}
+?>
 
   <main>
     <div class="container">
@@ -168,6 +170,8 @@ header("location:patientlogin.php");
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  
 
  
   
