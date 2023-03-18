@@ -37,7 +37,7 @@ if(strlen($_SESSION['id']==0)) {
           <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
-        <h3 class="text-danger fw-bold text-center">Billing madhe bill no remaining</h3>
+        <!--h3 class="text-danger fw-bold text-center">Billing madhe bill no remaining</h3-->
       </nav>
     </div>
     
