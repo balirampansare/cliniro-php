@@ -4,13 +4,8 @@ error_reporting(0);
 include('include/config.php');
 if(strlen($_SESSION['id']==0)) {
  header('location:doctorlogout.php');
-  } 
-  
+  }  
   else{
-   
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -139,7 +134,7 @@ if(strlen($_SESSION['id']==0)) {
                   <hr style="border: 1px solid #012970;"> 
                   <div class="card-footer">
                     <a href="http://maps.google.com/?q=<?php echo $add;?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"></i></button></a>      
-                    <a href="events.php?Eventid=<?php echo $row['Eventid'];?>"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-trash"></i></button></a>
+                    <a href="#"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-trash"></i></button></a>
                   </div>
                 </div>
               </div>
