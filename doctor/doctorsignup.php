@@ -2,69 +2,11 @@
 include('include/config.php');
 
 
-if(isset($_POST['submit']))
-{	
-$docname=$_POST['docname'];
-$docgender=$_POST['docgender'];
-$docage=$_POST['docage'];
-$docdob=$_POST['docdob'];
-$docspecialization=$_POST['Doctorspecialization'];
-$doccontactno=$_POST['doccontact'];
-$docemail=$_POST['docemail'];
-$clinicname=$_POST['clinicname'];
-$cliniccontact=$_POST['cliniccontact'];
-$cliniclocality=$_POST['cliniclocality'];
-$cliniccity=$_POST['cliniccity'];
-$clinictiming=$_POST['clinictiming'];
-$closed=$_POST['closed'];
-$docfees=$_POST['docfees'];
-$docaddress=$_POST['clinicaddress'];
-$password=md5($_POST['npass']);
-
-$sql=mysqli_query($con,"insert into doctors(specilization,doctorName,address,docFees,contactno,docEmail,gender,age,dob,clinic_name,clinic_contact,clinic_locality,clinic_city,password) values('$docspecialization','$docname','$docaddress','$docfees','$doccontactno','$docemail','$docgender','$docage','$docdob','$clinicname','$cliniccontact','$cliniclocality','$cliniccity','$password')");
-if($sql)
-{
-echo "<script>alert('Doctor info added Successfully');</script>";
-echo "<script>window.location.href ='managedoctor.php'</script>";
-
-}
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>Cliniro</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/logo.svg" rel="icon">
-  <!--link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"-->
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-
-  <script data-require="jquery@*" data-semver="3.0.0" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css" />
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+<?php include('include/head.php');?>
 
 
     <script type="text/javascript">
@@ -98,7 +40,7 @@ error:function (){}
 </script>
 
 
-</head>
+
 
 <!--script>
   const uid = sessionStorage.getItem("uid")
@@ -109,6 +51,71 @@ error:function (){}
 </script-->
 
 <body>
+<?php
+if(isset($_POST['submit']))
+{
+
+$npass=md5($_POST['npass']);
+$cfpass=md5($_POST['cfpass']);
+   if( $npass != $cfpass){
+    echo '<script type="text/javascript">
+    swal({
+      title:"Oops!",
+      text: "Password and Confirm Password didnt matched",
+      icon: "error"
+    }, function(){
+          window.location.href = "doctorsignup.php";
+    });
+
+       </script>';
+
+
+
+   } 
+        else
+        {	
+        $docname=$_POST['docname'];
+        $docgender=$_POST['docgender'];
+        $docage=$_POST['docage'];
+        $docdob=$_POST['docdob'];
+        $docspecialization=$_POST['Doctorspecialization'];
+        $doccontactno=$_POST['doccontact'];
+        $docemail=$_POST['docemail'];
+        $clinicname=$_POST['clinicname'];
+        $cliniccontact=$_POST['cliniccontact'];
+        $cliniclocality=$_POST['cliniclocality'];
+        $cliniccity=$_POST['cliniccity'];
+        $clinictiming=$_POST['clinictiming'];
+        $closed=$_POST['closed'];
+        $docfees=$_POST['docfees'];
+        $docaddress=$_POST['clinicaddress'];
+        $password=md5($_POST['npass']);
+
+        $sql=mysqli_query($con,"insert into doctors(specilization,doctorName,address,docFees,contactno,docEmail,gender,age,dob,clinic_name,clinic_contact,clinic_locality,clinic_city,clinic_timing,closed,password) values('$docspecialization','$docname','$docaddress','$docfees','$doccontactno','$docemail','$docgender','$docage','$docdob','$clinicname','$cliniccontact','$cliniclocality','$cliniccity','$clinictiming','$closed','$password')");
+        if($sql)
+        {
+        
+            echo '<script type="text/javascript">
+            swal({
+            title: "Account Created Successfully!",
+            text: "Redirecting in 2 seconds",
+            type: "success",
+            timer: 2000,
+            showConfirmButton: false
+        }, function(){
+                window.location.href = "doctorlogin.php";
+        });
+            
+        
+                </script>';
+
+        }
+
+        }
+
+}
+
+?>
 
 <main>
     <div class="container">
@@ -217,7 +224,7 @@ error:function (){}
                               <input type="number" class="form-control" name="cliniccontact" id="cliniccontact" placeholder="Contact" required>
                             </div>
                             <div class="col-sm-3 form-group">
-                            <label for="cliniclocality">clinicLocality</label>
+                            <label for="cliniclocality">Clinic Locality</label>
                             <input type="text" class="form-control" name="cliniclocality" id="cliniclocality" placeholder="locality" required>
                           </div>
 
@@ -289,34 +296,7 @@ error:function (){}
 
   
 
-    <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>Cliniro</span></strong>. All Rights Reserved
-    </div>
-  </footer><!--End Footer-->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.min.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/js/tablesearch.js"></script>
-
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
-  <!--firebase files-->
-  <script src="assets/js/config.js"></script>
-  <!-- Template Main JS File -->
-
-  <script src="assets/js/main.js"></script>
+  <?php include('include/footer.php');?>
 
 </body>
 
