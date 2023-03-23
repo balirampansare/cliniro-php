@@ -141,10 +141,67 @@ if(isset($_POST['submit']))
                   </tr>
                 </thead>
                 <tbody>
+                <tr>
+          <td colspan="6" class="text-center fw-bold text-success">Today's Appointments</td>
+        </tr>
                   <?php
                   $docid=$_GET['patid'];
                   $patid = $_SESSION['id'];
-                  $ret=mysqli_query($con,"SELECT * FROM patappointments where Appt_Patid='$patid' AND Appt_Docid='$docid';");
+                  $ret=mysqli_query($con,"SELECT * FROM patappointments where Appt_Patid='$patid' AND Appt_Docid='$docid' AND Appt_Date = CURDATE();");
+                  $i = 1;
+                  while ($row=mysqli_fetch_array($ret)) { ?>
+                  
+                  <tr>
+                    <td class="center"><?php echo $i;?>.</td>
+                    <td ><?php echo $row['Appt_Date'];?></td>
+                    <td><?php echo $row['Appt_Time'];?></td>
+                    <td><?php echo $row['Appt_Created'];?></td>
+                    <td><?php echo $row['Appt_Descrip'];?></td>
+                    <td> 
+                      <?php if($row['Appt_Status']==1)
+                      { ?>
+                      <button class="btn btn-outline-success" disabled>Active</button>
+                      <?php } else { ?>
+                        <button type="button" class="btn btn-outline-danger" disabled>Canceled</button>
+                        <?php } ?>
+                      </td>
+                    </tr>
+                    <?php $i++; }?>
+
+                    <tr>
+          <td colspan="6" class="text-center fw-bold text-primary">Upcoming Appointments</td>
+        </tr>
+                  <?php
+                  $docid=$_GET['patid'];
+                  $patid = $_SESSION['id'];
+                  $ret=mysqli_query($con,"SELECT * FROM patappointments where Appt_Patid='$patid' AND Appt_Docid='$docid' AND Appt_Date > CURDATE();");
+                  $i = 1;
+                  while ($row=mysqli_fetch_array($ret)) { ?>
+                  
+                  <tr>
+                    <td class="center"><?php echo $i;?>.</td>
+                    <td ><?php echo $row['Appt_Date'];?></td>
+                    <td><?php echo $row['Appt_Time'];?></td>
+                    <td><?php echo $row['Appt_Created'];?></td>
+                    <td><?php echo $row['Appt_Descrip'];?></td>
+                    <td> 
+                      <?php if($row['Appt_Status']==1)
+                      { ?>
+                      <button class="btn btn-outline-success" disabled>Active</button>
+                      <?php } else { ?>
+                        <button type="button" class="btn btn-outline-danger" disabled>Canceled</button>
+                        <?php } ?>
+                      </td>
+                    </tr>
+                    <?php $i++; }?>
+
+                    <tr>
+          <td colspan="6" class="text-center fw-bold text-success">Past Appointments</td>
+        </tr>
+                  <?php
+                  $docid=$_GET['patid'];
+                  $patid = $_SESSION['id'];
+                  $ret=mysqli_query($con,"SELECT * FROM patappointments where Appt_Patid='$patid' AND Appt_Docid='$docid' AND Appt_Date < CURDATE();");
                   $i = 1;
                   while ($row=mysqli_fetch_array($ret)) { ?>
                   
