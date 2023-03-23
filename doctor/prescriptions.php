@@ -242,11 +242,11 @@ if(isset($_POST['submit']))
 
                               <div class="col-sm-4 text-center form-group mt-1">
                                 <label for="bp" class="fw-bold">BP</label>
-                                <input type="number" class="form-control text-center border-0" name="bp" id="patbp" required>
+                                <input type="text" class="form-control text-center border-0" name="bp" id="patbp" required>
                               </div>
                               <div class="col-sm-2 text-center form-group mt-1">
                                 <label for="temp" class="fw-bold">Temp</label>
-                                <input type="number" class="form-control text-center border-0" name="temp" id="patbp"  required>
+                                <input type="text" class="form-control text-center border-0" name="temp" id="patbp"  required>
                               </div>
                               
 
@@ -408,7 +408,7 @@ if(isset($_POST['submit']))
                              $prespid=$_GET['prespid'];
 
 
-                             $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN tblmedicalhistory ON users.id = tblmedicalhistory.PatientID INNER JOIN doctors ON tblmedicalhistory.DocId = doctors.id WHERE PatientID='$prespid' AND DocId='$docid';");
+                             $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN tblmedicalhistory ON users.id = tblmedicalhistory.PatientID INNER JOIN doctors ON tblmedicalhistory.DocId = doctors.id WHERE PatientID='$prespid' AND DocId='$docid' ORDER BY tblmedicalhistory.CreationDate DESC;");
                              $i = 1;
 while ($row=mysqli_fetch_array($ret)) {   ?>
                                 <!--SELECT * FROM users INNER JOIN tblmedicalhistory ON users.id = tblmedicalhistory.PatientID INNER JOIN doctors ON tblmedicalhistory.DocId = doctors.id INNER JOIN patappointments ON tblmedicalhistory.DocId = patappointments.Appt_Docid WHERE PatientID='5';-->
@@ -520,7 +520,11 @@ if ($row['PayAmount']>0) {
                                             </div>
                                             <div class="col-sm-2 text-center form-group mt-1">
                                                 <label for="temp" class="fw-bold">Temp</label>
-                                                <input type="number" class="form-control text-center border-0" name="pdftemp" id="patbp" value="<?php  echo $row['Temperature'];?>"  required readonly>
+                                                <input type="number" class="form-control text-center border-0" name="pdftemp" id="pattemp" value="<?php  echo $row['Temperature'];?>"  required readonly>
+                                            </div>
+                                            <div class="col-sm-2 text-center form-group mt-1">
+                                                <label for="date" class="fw-bold">Date</label>
+                                                <input type="text"  class="form-control text-center border-0" name="pdfdate" id="date" value="<?php  echo $row['CreationDate'];?>"  required readonly>
                                             </div>
                                             <hr>
                                             <div class="col-sm-12  fw-bold form-group" id="form-subhead">Symptoms: </div>

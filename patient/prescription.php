@@ -135,7 +135,7 @@ if(strlen($_SESSION['id']==0)) {
                 <?php
                   $patientid = $_SESSION['id'];
                   $docid=$_GET['prespid'];
-                  $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN tblmedicalhistory ON users.id = tblmedicalhistory.PatientID INNER JOIN doctors ON tblmedicalhistory.DocId = doctors.id WHERE PatientID='$patientid' AND DocId='$docid';");
+                  $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN tblmedicalhistory ON users.id = tblmedicalhistory.PatientID INNER JOIN doctors ON tblmedicalhistory.DocId = doctors.id WHERE PatientID='$patientid' AND DocId='$docid' ORDER BY tblmedicalhistory.CreationDate DESC;;");
                   $i = 1;
                   while ($row=mysqli_fetch_array($ret)) { 
                   ?>
