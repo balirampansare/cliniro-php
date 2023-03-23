@@ -196,7 +196,7 @@ if(isset($_POST['submit']))
                     <?php $i++; }?>
 
                     <tr>
-          <td colspan="6" class="text-center fw-bold text-success">Past Appointments</td>
+          <td colspan="6" class="text-center fw-bold text-danger">Past Appointments</td>
         </tr>
                   <?php
                   $docid=$_GET['patid'];
@@ -214,7 +214,7 @@ if(isset($_POST['submit']))
                     <td> 
                       <?php if($row['Appt_Status']==1)
                       { ?>
-                      <button class="btn btn-outline-success" disabled>Active</button>
+                      <button class="btn btn-outline-success" disabled>Done</button>
                       <?php } else { ?>
                         <button type="button" class="btn btn-outline-danger" disabled>Canceled</button>
                         <?php } ?>
