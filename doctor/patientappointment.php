@@ -151,10 +151,13 @@ else
                             </tr>
                         </thead>
                         <tbody>
+                        <tr>
+          <td colspan="6" class="text-center fw-bold text-success">Today's Appointments</td>
+        </tr>
                             <?php
                             $docid = $_SESSION['id'];
                             $patid=$_GET['patid'];
-                            $ret=mysqli_query($con,"SELECT * FROM patappointments where Appt_Patid='$patid' AND Appt_Docid='$docid';");
+                            $ret=mysqli_query($con,"SELECT * FROM patappointments where Appt_Patid='$patid' AND Appt_Docid='$docid' AND Appt_Date=CURDATE();");
                             $i = 1;
                             while ($row=mysqli_fetch_array($ret)) { ?>
                             <tr>
@@ -175,6 +178,63 @@ else
                             </tr>
                             
                             <?php $i++; }?>
+
+                            <tr>
+          <td colspan="6" class="text-center fw-bold text-primary">Upcoming Appointments</td>
+        </tr>
+                            <?php
+                            $docid = $_SESSION['id'];
+                            $patid=$_GET['patid'];
+                            $ret=mysqli_query($con,"SELECT * FROM patappointments where Appt_Patid='$patid' AND Appt_Docid='$docid' AND Appt_Date > CURDATE();");
+                            $i = 1;
+                            while ($row=mysqli_fetch_array($ret)) { ?>
+                            <tr>
+                                <td class="center"><?php echo $i;?>.</td>
+                                <td ><?php echo $row['Appt_Date'];?></td>
+                                <td><?php echo $row['Appt_Time'];?></td>
+                                <td><?php echo $row['Appt_Created'];?></td>
+                                <td><?php echo $row['Appt_Descrip'];?></td>
+                                <td> 
+                                <?php if($row['Appt_Status']==1)
+                                { ?>
+                                <a href="patientappointment.php?Apptid=<?php echo $row['Apptid'];?>"><button class="btn btn-outline-success">Active</button></a>
+                                                                <?php } else { ?>
+                                <button type="button" class="btn btn-outline-danger" disabled>Canceled</button>
+
+                                   <?php } ?>
+                                </td>
+                            </tr>
+                            
+                            <?php $i++; }?>
+
+                            <tr>
+          <td colspan="6" class="text-center fw-bold text-danger">Past Appointments</td>
+        </tr>
+                            <?php
+                            $docid = $_SESSION['id'];
+                            $patid=$_GET['patid'];
+                            $ret=mysqli_query($con,"SELECT * FROM patappointments where Appt_Patid='$patid' AND Appt_Docid='$docid' AND Appt_Date < CURDATE();");
+                            $i = 1;
+                            while ($row=mysqli_fetch_array($ret)) { ?>
+                            <tr>
+                                <td class="center"><?php echo $i;?>.</td>
+                                <td ><?php echo $row['Appt_Date'];?></td>
+                                <td><?php echo $row['Appt_Time'];?></td>
+                                <td><?php echo $row['Appt_Created'];?></td>
+                                <td><?php echo $row['Appt_Descrip'];?></td>
+                                <td> 
+                                <?php if($row['Appt_Status']==1)
+                                { ?>
+                                <button class="btn btn-outline-success" disabled>Done</button>
+                                                                <?php } else { ?>
+                                <button type="button" class="btn btn-outline-danger" disabled>Canceled</button>
+
+                                   <?php } ?>
+                                </td>
+                            </tr>
+                            
+                            <?php $i++; }?>
+
                         </tbody>
                     </table>
                 </div>

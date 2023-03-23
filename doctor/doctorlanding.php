@@ -230,7 +230,7 @@ if(strlen($_SESSION['id']==0)) {
                 <div class="weather-icon d-flex "> <i class="bi bi-wind"></i><span id="wind"></span></div>
               </div> 
               </div>
-              <form class="d-flex">
+              <form onSubmit="return false;" class="d-flex">
                 <input class="form-control me-2" type="text " placeholder="Enter city" aria-label="Search" id="cityinput">
                 <button type="button" class="btn btn-outline-success"  id="add">Search</button>
               </form>
