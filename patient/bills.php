@@ -119,7 +119,7 @@ if(strlen($_SESSION['id']==0)) {
                                                             </div>
                                                             <div class="col-sm-4 text-center form-group">
                                                                 <label for="sex" class="fw-bold">Bill No:</label>
-                                                                <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
+                                                                <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="Cli-<?php  echo $row['Clibillid'];?>" readonly  >
                                                             </div>
                                                             <div class="col-sm-4 text-center form-group">
                                                                 <label for="age" class="fw-bold">Date:</label>
@@ -138,7 +138,7 @@ if(strlen($_SESSION['id']==0)) {
                                                             <div class="col-sm-4 form-group text-center">
                                                                 <label for="total ">Total</label>
                                                                 <hr class="text-primary">
-                                                                <input type="text" class="form-control text-center" name="payamount" id="total" value="<?php  echo $row['Amount'];?>" readonly>
+                                                                <input type="text" class="form-control text-center" name="payamount" id="total" value="<?php  echo $row['Amount'];?>/-" readonly>
                                                             </div>
                                                             <div class="col-sm-12 form-group mt-3">
                                                                 <br>

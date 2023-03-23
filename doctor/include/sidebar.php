@@ -96,12 +96,12 @@
     </a>
   </li>
 
-  <li class="nav-item">
+  <!--li class="nav-item">
     <a class="nav-link collapsed" href="#">
       <i class="bi bi-calculator"></i>
       <span>Calci</span>
     </a>
-  </li>
+  </li-->
 
   <!--li class="nav-item">
     <a class="nav-link collapsed" href="#">

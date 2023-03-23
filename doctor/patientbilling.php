@@ -310,7 +310,7 @@ if(isset($_POST['submit']))
                                                     <div class="col-sm-4 form-group text-center">
                                                         <label for="total ">Total</label>
                                                         <hr class="text-primary">
-                                                        <input type="text" class="form-control" name="payamount" id="total" value="<?php  echo $row['Amount'];?>" readonly>
+                                                        <input type="text" class="form-control" name="payamount" id="total" value="<?php  echo $row['Amount'];?>/-" readonly>
                                                     </div>
                                                     <div class="col-sm-12 form-group mt-3">
                                                         <br>

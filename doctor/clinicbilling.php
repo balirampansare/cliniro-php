@@ -70,17 +70,18 @@ else
 
   <main class="main" id="main">
     <div class="pagetitle">
-        <h1>Events</h1>
+        <h1>Clinic Bills</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="dashboard.php">Schedules</a></li>
-                <li class="breadcrumb-item active">Events</li>
+                <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+                <li class="breadcrumb-item">Inventory</li>
+                <li class="breadcrumb-item active">Bills</li>
             </ol>
         </nav>
     </div>
 
     <div class="text-center">
-        <button class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#exampleModal">Add +</button>
+        <!--button class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#exampleModal">Add +</button-->
         <hr>
        
     </div>
@@ -175,54 +176,127 @@ else
   </div>
 </div>
 
-<div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
-    <?php
-    $docid=$_SESSION['id'];
-    $sql=mysqli_query($con,"SELECT * FROM events WHERE DocID = $docid ORDER BY Eventid DESC");
-    $cnt=1;
-    while($row=mysqli_fetch_array($sql))
-    {
-        $add = $row['Event_address'];
-        ?>
-  <div class="col-lg-4">
-    <div class="card border border-dark rounded" style="width: 18rem;">
-      <img src="https://digitalagencynetwork.com/wp-content/uploads/2021/10/top-technology-events-you-should-attend-1.jpg" class="card-img-top" alt="..." style="height:8rem;">
-      <div class="card-body">
-        <h3 class="text-center fw-bold mt-3" id="form-subhead"><?php echo $row['Event_name']?></h3>
-        <div class="row text-center">
-            <div class="col fw-bold text-success"> <i class="bi bi-calendar-date">  </i><?php echo $row['Event_date']?></div>
-            <div class="col fw-bold text-success"><i class="bi bi-hourglass"> </i> <?php echo $row['Event_time']?> </div>
-        </div>
-        <hr>
-        <div class=" text-center">
-            <i class="bi bi-pin-map-fill fw-bold text-success"> - </i>
-        </div>
-        <div class="text-center"><?php echo $row['Event_address']?></div>
-
-        <div style="overflow-y: auto">
-        <hr>
-        <div class=" text-center">
-            <i class="bi bi-info-circle fw-bold text-success"></i>
-        </div>
-        <p class="card-text text-center"><?php echo $row['Event_other']?></p>
-        <small class="text-muted float-end m-0 p-0"><?php echo $row['Event_created']?></small>
-
-        </div>
-      </div>
-      <div class="card-footer">
-        
-      
-      <a href="http://maps.google.com/?q=<?php echo $add;?>" target="blank"><button class="btn btn-outline-success"><i class="bi bi-geo-alt"></i></button></a>      
-      <a href="events.php?Eventid=<?php echo $row['Eventid'];?>"><button class="btn btn-outline-success float-end ms-1"><i class="bi bi-trash"></i></button></a>
-      <!--a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-pencil-fill"></i></button></a-->  
-    </div>
-    </div>
-  </div>
-  <?php $cnt=$cnt+1;}?>
-</div>
+<div class="col-xxl-12">
+                <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
+                    <table class="table datatable">
+                        <thead>
+                            <tr id="form-subhead">
+                                <th scope="col">#</th>
+                                <th scope="col">Bill No.</th>
+                                <th scope="col">Bill Of.</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $docid = $_SESSION['id'];
+                            $ret=mysqli_query($con,"SELECT * FROM users INNER JOIN billing ON users.id = billing.Patid INNER JOIN doctors ON billing.DocId = doctors.id where Docid='$docid';");
+                            $i = 1;
+                            while ($row=mysqli_fetch_array($ret)) { ?>
+                            <tr>
+                                <td class="center"><?php echo $i;?>.</td>
+                                <td>Cli-<?php echo $row['Clibillid'];?></td>
+                                <td><?php echo $row['Amount'];?>/-</td>
+                                <td><?php echo $row['Created'];?></td>
+                                <td> 
+                                <button class="btn btn-outline-success text-center align-items-center" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row['Billid']?>">View</button>
+                                </td>
+                            </tr>
+                            <div id="myModal<?php echo $row['Billid']?>" class="modal fade modal-lg" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                                <div id="form-print" enctype="text/plain">
+                                                    <div class="row jumbotron rounded py-2">       
+                                                    <div class="row">
+                                                        <div class="col-sm-2 text-center justify-content-center m-auto">
+                                                            <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
+                                                        </div>
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <div class="col-sm-7">
+                                                                    <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+                                                                    <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
+                                                                    <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
+                                                                    <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+                                                                </div>
+                                                                <div class="col-sm-5">
+                                                                    <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+                                                                    <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
+                                                                    <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
+                                                                    <div class="text-center fw-bold" id="form-subhead">Contact:</div>
+                                                                    <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex flex-row">
+                                                                <div class="fw-bold mx-2" id="form-subhead">Address:</div>
+                                                                <div id="form-subhead"><?php echo $row['address'];?></div>
+                                                            </div>
+                                                        </div>
+                                                        <hr style="border: 1px solid #012970;"> 
+                                                    </div> <!---------END OF HEADER----------->
+                                                    <div class="col-sm-4 text-center form-group">
+                                                        <label for="doctorname" class="fw-bold">Name:</label>
+                                                        <input type="text" class="form-control text-center border-0" name="patname" id="patname" value="<?php  echo $row['fullName'];?>" readonly  >
+                                                    </div>
+                                                    <div class="col-sm-4 text-center form-group">
+                                                        <label for="sex" class="fw-bold">Bill No:</label>
+                                                        <input type="text" class="form-control text-center border-0" name="Clibillid" id="sex" value="Cli-<?php  echo $row['Clibillid'];?>" readonly  >
+                                                    </div>
+                                                    <div class="col-sm-4 text-center form-group">
+                                                        <label for="age" class="fw-bold">Date:</label>
+                                                        <div>
+                                                            <?php
+                                                            echo $row['Created'];
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class=" mt-0"><hr style="border: 1px solid #012970;"></div>
+                                                    <div class="col-sm-8 form-group text-center ">
+                                                        <label for="description text-center">Description</label>
+                                                        <hr class="text-primary">
+                                                        <input type="text" class="form-control text-center" name="paydescrp" id="description" value="<?php  echo $row['Description'];?>" readonly>
+                                                    </div>
+                                                    <div class="col-sm-4 form-group text-center">
+                                                        <label for="total ">Total</label>
+                                                        <hr class="text-primary">
+                                                        <input type="text" class="form-control text-center" name="payamount" id="total" value="<?php  echo $row['Amount'];?>/-" readonly>
+                                                    </div>
+                                                    <div class="col-sm-12 form-group mt-3">
+                                                        <br>
+                                                        <label for="signature " class="float-end fw-bold">Authorized Signature</label>                                    
+                                                    </div>  
+                                                </div>                              
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php $i++; }?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
   </main>
 
   <?php include('include/footer.php');?>
+  <script>
+  function GeneratePdf() {
+    var element = document.getElementById('form-print');
+    var opt = {
+        margin:       0.2,
+        filename:     'myfile.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf(element, opt);
+}
+  </script>
 
 
 </body>

@@ -108,7 +108,7 @@ if(strlen($_SESSION['id']==0)) {
                                     
                                     <tr>
                                         <td class="center"><?php echo $i;?>.</td>
-                                        <td><?php echo $row['Billid'];?></td>
+                                        <td>Cli-<?php echo $row['Clibillid'];?></td>
                                         <td><?php echo $row['Created'];?></td>
                                         <td> 
                                             <button class="btn btn-outline-success text-center align-items-center" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row['Billid']?>">View</button>
@@ -154,7 +154,7 @@ if(strlen($_SESSION['id']==0)) {
                                                             </div>
                                                             <div class="col-sm-4 text-center form-group">
                                                                 <label for="sex" class="fw-bold">Bill No:</label>
-                                                                <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
+                                                                <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="Cli-<?php  echo $row['Clibillid'];?>" readonly  >
                                                             </div>
                                                             <div class="col-sm-4 text-center form-group">
                                                                 <label for="age" class="fw-bold">Date:</label>
@@ -168,12 +168,12 @@ if(strlen($_SESSION['id']==0)) {
                                                             <div class="col-sm-8 form-group text-center ">
                                                                 <label for="description text-center">Description</label>
                                                                 <hr class="text-primary">
-                                                                <input type="text" class="form-control" name="paydescrp" id="description" value="<?php  echo $row['Description'];?>" readonly>
+                                                                <input type="text" class="form-control text-center" name="paydescrp" id="description" value="<?php  echo $row['Description'];?>" readonly>
                                                             </div>
                                                             <div class="col-sm-4 form-group text-center">
                                                                 <label for="total ">Total</label>
                                                                 <hr class="text-primary">
-                                                                <input type="text" class="form-control" name="payamount" id="total" value="<?php  echo $row['Amount'];?>" readonly>
+                                                                <input type="text" class="form-control text-center" name="payamount" id="total" value="<?php  echo $row['Amount'];?>/-" readonly>
                                                             </div>
                                                             <div class="col-sm-12 form-group mt-3">
                                                                 <br>

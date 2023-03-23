@@ -151,7 +151,7 @@ if(isset($_POST['submit']))
                   $i = 1;
                   while ($row=mysqli_fetch_array($ret)) { ?>
                   
-                  <tr>
+                  <tr class="table-active">
                     <td class="center"><?php echo $i;?>.</td>
                     <td ><?php echo $row['Appt_Date'];?></td>
                     <td><?php echo $row['Appt_Time'];?></td>
@@ -178,7 +178,7 @@ if(isset($_POST['submit']))
                   $i = 1;
                   while ($row=mysqli_fetch_array($ret)) { ?>
                   
-                  <tr>
+                  <tr class="table-warning">
                     <td class="center"><?php echo $i;?>.</td>
                     <td ><?php echo $row['Appt_Date'];?></td>
                     <td><?php echo $row['Appt_Time'];?></td>
@@ -205,7 +205,7 @@ if(isset($_POST['submit']))
                   $i = 1;
                   while ($row=mysqli_fetch_array($ret)) { ?>
                   
-                  <tr>
+                  <tr class="table-danger">
                     <td class="center"><?php echo $i;?>.</td>
                     <td ><?php echo $row['Appt_Date'];?></td>
                     <td><?php echo $row['Appt_Time'];?></td>
