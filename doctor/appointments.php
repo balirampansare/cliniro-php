@@ -71,13 +71,13 @@ echo '<script>alert("Something Went Wrong. Please try again")</script>';
           <td colspan="6" class="text-center fw-bold text-success">Today's Appointments</td>
         </tr>
           <?php
-          $sql=mysqli_query($con,"select users.fullName as fname, users.phone as contact, patappointments.*  from patappointments join users on users.id=patappointments.Appt_Patid where patappointments.Appt_Docid=".$_SESSION['id']." AND patappointments.Appt_Date=CURDATE();");
+          $sql=mysqli_query($con,"select users.id as patid, users.fullName as fname, users.phone as contact, patappointments.*  from patappointments join users on users.id=patappointments.Appt_Patid where patappointments.Appt_Docid=".$_SESSION['id']." AND patappointments.Appt_Date=CURDATE();");
           $cnt=1;
           while($row=mysqli_fetch_array($sql))
           { ?>
             <tr class="table-active">
             <td class="center"><?php echo $cnt;?>.</td>
-            <td class="hidden-xs"><?php echo $row['fname'];?></td>
+            <td class="hidden-xs"><a href="view-patient.php?viewid=<?php echo $row['patid'];?>" id="form-subhead"><?php echo $row['fname'];?></a></td>
             <td><?php echo $row['contact'];?></td>
             <td><?php echo $row['Appt_Date'];?> / <?php echo $row['Appt_Time'];?></td>
             <td><?php echo $row['Appt_Created'];?></td>
@@ -96,13 +96,13 @@ echo '<script>alert("Something Went Wrong. Please try again")</script>';
           <td colspan="6" class="text-center fw-bold text-primary">Upcoming Appointments</td>
         </tr>
           <?php
-          $sql=mysqli_query($con,"select users.fullName as fname, users.phone as contact, patappointments.*  from patappointments join users on users.id=patappointments.Appt_Patid where patappointments.Appt_Docid=".$_SESSION['id']." AND patappointments.Appt_Date > CURDATE();");
+          $sql=mysqli_query($con,"select users.id as patid, users.fullName as fname, users.phone as contact, patappointments.*  from patappointments join users on users.id=patappointments.Appt_Patid where patappointments.Appt_Docid=".$_SESSION['id']." AND patappointments.Appt_Date > CURDATE();");
           $cnt=1;
           while($row=mysqli_fetch_array($sql))
           { ?>
             <tr class="table-warning">
             <td class="center"><?php echo $cnt;?>.</td>
-            <td class="hidden-xs"><?php echo $row['fname'];?></td>
+            <td class="hidden-xs"><a href="view-patient.php?viewid=<?php echo $row['patid'];?>" id="form-subhead"><?php echo $row['fname'];?></a></td>
             <td><?php echo $row['contact'];?></td>
             <td><?php echo $row['Appt_Date'];?> / <?php echo $row['Appt_Time'];?></td>
             <td><?php echo $row['Appt_Created'];?></td>
@@ -121,13 +121,13 @@ echo '<script>alert("Something Went Wrong. Please try again")</script>';
           <td colspan="6" class="text-center fw-bold text-danger">Past Appointments</td>
         </tr>
           <?php
-          $sql=mysqli_query($con,"select users.fullName as fname, users.phone as contact, patappointments.*  from patappointments join users on users.id=patappointments.Appt_Patid where patappointments.Appt_Docid=".$_SESSION['id']." AND patappointments.Appt_Date < CURDATE() order by patappointments.Appt_Date desc;");
+          $sql=mysqli_query($con,"select users.id as patid, users.fullName as fname, users.phone as contact, patappointments.*  from patappointments join users on users.id=patappointments.Appt_Patid where patappointments.Appt_Docid=".$_SESSION['id']." AND patappointments.Appt_Date < CURDATE() order by patappointments.Appt_Date desc;");
           $cnt=1;
           while($row=mysqli_fetch_array($sql))
           { ?>
             <tr class="table-danger">
             <td class="center"><?php echo $cnt;?>.</td>
-            <td class="hidden-xs"><?php echo $row['fname'];?></td>
+            <td class="hidden-xs"><a href="view-patient.php?viewid=<?php echo $row['patid'];?>" id="form-subhead"><?php echo $row['fname'];?></a></td>
             <td><?php echo $row['contact'];?></td>
             <td><?php echo $row['Appt_Date'];?> / <?php echo $row['Appt_Time'];?></td>
             <td><?php echo $row['Appt_Created'];?></td>

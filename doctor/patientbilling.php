@@ -17,9 +17,22 @@ if(isset($_POST['submit']))
     $docid = $_SESSION['id'];
     $description = $_POST['paydescrp'];
     $total = $_POST['payamount'];
+
+    $ret=mysqli_query($con,"select Clibillid FROM billing WHERE billing.Docid='$docid' ORDER BY billing.Clibillid DESC LIMIT 1; ");
+    while ($row=mysqli_fetch_array($ret)) {
+        if($row['Clibillid'] >= 1){
+            $billno = $row['Clibillid'] + 1;
+        }
+        else{
+            $billno = 1;
+        }
+
+    }
+
+    
    
  
-      $query=mysqli_query($con, "insert into  billing(Patid,DocId,Description,Amount)values('$patid','$docid','$description','$total')");
+    $query=mysqli_query($con, "insert into  billing(Patid,DocId,Clibillid,Description,Amount)values('$patid','$docid','$billno','$description','$total')");
     if ($query) {
     echo '<script>alert("Bill Created")</script>';
     echo "<script>window.location.href ='manage-patient.php'</script>";
@@ -155,7 +168,24 @@ if(isset($_POST['submit']))
                                             </div>
                                             <div class="col-sm-4 text-center form-group">
                                                 <label for="sex" class="fw-bold">Bill No:</label>
-                                                <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
+                                                <?php 
+                                                 $patid=$_GET['patid'];
+                                                 $docid = $_SESSION['id'];
+                                                 $ret=mysqli_query($con,"select Clibillid FROM billing WHERE billing.Docid='$docid' ORDER BY billing.Clibillid DESC LIMIT 1; ");
+                                                 while ($row=mysqli_fetch_array($ret)) {
+                                                     if($row['Clibillid'] >= 1){
+                                                         $billno = $row['Clibillid'] + 1;
+                                                     }
+                                                     else{
+                                                         $billno = 1;
+                                                     } ?>
+                                             
+                                               
+                                                <input type="text" class="form-control text-center border-0" name="Clibillid" id="sex" value="Cli-<?php  echo $billno;?>" readonly  >
+                                                <?php  }
+                                                ?>
+                                                
+
                                             </div>
                                             <div class="col-sm-4 text-center form-group">
                                                 <label for="age" class="fw-bold">Date:</label>
@@ -216,7 +246,7 @@ if(isset($_POST['submit']))
                             while ($row=mysqli_fetch_array($ret)) { ?>
                             <tr>
                                 <td class="center"><?php echo $i;?>.</td>
-                                <td><?php echo $row['Billid'];?></td>
+                                <td>Cli-<?php echo $row['Clibillid'];?></td>
                                 <td><?php echo $row['Created'];?></td>
                                 <td> 
                                 <button class="btn btn-outline-success text-center align-items-center" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row['Billid']?>">View</button>
@@ -261,7 +291,7 @@ if(isset($_POST['submit']))
                                                     </div>
                                                     <div class="col-sm-4 text-center form-group">
                                                         <label for="sex" class="fw-bold">Bill No:</label>
-                                                        <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['gender'];?>" readonly  >
+                                                        <input type="text" class="form-control text-center border-0" name="Clibillid" id="sex" value="Cli-<?php  echo $row['Clibillid'];?>" readonly  >
                                                     </div>
                                                     <div class="col-sm-4 text-center form-group">
                                                         <label for="age" class="fw-bold">Date:</label>
