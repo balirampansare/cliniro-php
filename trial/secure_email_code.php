@@ -1,5 +1,7 @@
 
 <?php
+ini_set('SMTP','myserver');
+ini_set('smtp_port',25);
 if(isset($_POST["submit"])){
 // Checking For Blank Fields..
 if($_POST["vname"]==""||$_POST["vemail"]==""||$_POST["sub"]==""||$_POST["msg"]==""){
@@ -17,12 +19,11 @@ echo "Invalid Sender's Email";
 else{
 $subject = $_POST['sub'];
 $message = $_POST['msg'];
-$headers = 'From:'. $email2 . "rn"; // Sender's Email
-$headers .= 'Cc:'. $email2 . "rn"; // Carbon copy to Sender
+
 // Message lines should not exceed 70 characters (PHP rule), so wrap it
 $message = wordwrap($message, 70);
 // Send Mail By PHP Mail Function
-mail("recievers_mail_id@xyz.com", $subject, $message, $headers);
+mail("recievers_mail_id@xyz.com", $subject, $message);
 echo "Your mail has been sent successfuly ! Thank you for your feedback";
 }
 }
