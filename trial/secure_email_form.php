@@ -15,3 +15,7 @@
       echo "Sorry, unable to send mail...";  
    }  
 ?>  
+
+<!--a href="mailto:pansarebaliram@kccemsr.edu.in?cc=scomeone@example.com, another@example.com&bcc=person@example.com&subject=mail%20subject&body=Body-goes-here">Email button</a-->
+
+<a href="mailto:pansarebaliram@kccemsr.edu.in?subject=mail%20subject&body=hello">Email button</a>
