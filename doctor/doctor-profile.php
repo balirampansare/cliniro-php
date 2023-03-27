@@ -210,11 +210,11 @@ while($row=mysqli_fetch_array($ret))
 
                             <div class="col-sm-3 form-group">
                               <label for="phone">Dr. Phone</label>
-                              <input type="text" class="form-control" name="doccontact" title="format 10 digits" pattern="[1-9]{1}[0-9]{9}" value="<?php echo htmlentities($data['contactno']);?>">
+                              <input type="text" class="form-control" name="doccontact" title="format 10 digits" pattern="[1-9]{1}[0-9]{9}" value="<?php echo htmlentities($data['contactno']);?>" required>
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="email">Dr. Email</label>
-                              <input type="email" id="docemail" name="docemail"  class="form-control" value="<?php echo htmlentities($data['docEmail']);?>" >
+                              <input type="email" id="docemail" name="docemail"  class="form-control" value="<?php echo htmlentities($data['docEmail']);?>" required>
                               <span id="email-availability-status"></span>
                            </div>
                             <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
@@ -223,7 +223,7 @@ while($row=mysqli_fetch_array($ret))
 
                             <div class="col-sm-5 form-group">
                               <label for="clinicname">Clinic Name</label>
-                              <input type="text" class="form-control" name="clinicname" value="<?php echo htmlentities($data['clinic_name']);?>" >
+                              <input type="text" class="form-control" name="clinicname" value="<?php echo htmlentities($data['clinic_name']);?>" required >
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="cliniccontact">Clinic Contact</label>
@@ -250,9 +250,9 @@ while($row=mysqli_fetch_array($ret))
                               <input type="text" class="form-control" name="docfees" value="<?php echo htmlentities($data['docFees']);?>"  required>
                             </div>
 
-                            <div class="col-sm-10 form-group">
+                            <div class="col-sm-12 form-group">
                             <label for="address">Doctor Clinic Address</label>
-                            <textarea name="clinicaddress" class="form-control"><?php echo htmlentities($data['address']);?></textarea>
+                            <textarea name="clinicaddress" class="form-control" required><?php echo htmlentities($data['address']);?></textarea>
 													</div>                            
                             <div class="col-sm-12 form-group mt-3">
                               <hr class="mt-0">

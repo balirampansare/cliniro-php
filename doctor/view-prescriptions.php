@@ -1,9 +1,4 @@
 <?php
-
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
-
 session_start();
 error_reporting(0);
 include('include/config.php');
@@ -342,30 +337,7 @@ while ($row=mysqli_fetch_array($ret)) {
 
 <!------------------------------------------------------MODAL END--------------------------------------------------------->
   </main>
-  <!--div class="modal fade modal-dialog-scrollable modal-lg " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">New Prescription</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div-->
-
-
-
-  
-
- 
-
-  
+    
 
     <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -407,10 +379,6 @@ while ($row=mysqli_fetch_array($ret)) {
   jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
 };
 
-// New Promise-based usage:
-//html2pdf().set(opt).from(element).save();
-
-// Old monolithic-style usage:
 html2pdf(element, opt);
 		}
 	

@@ -128,7 +128,7 @@ while($data=mysqli_fetch_array($sql))
                                 <input type="number" class="form-control" name="docage" value="<?php echo htmlentities($data['age']);?>" readonly>
                             </div>
 
-                            <div class="col-sm-3 form-group mt-1">
+                            <div class="col-sm-3 form-group">
                                 <label for="Date">Date Of Birth</label>
                                 <input type="Date" name="docdob" class="form-control" value="<?php echo htmlentities($data['dob']);?>" readonly>
                             </div>

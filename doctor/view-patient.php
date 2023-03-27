@@ -5,58 +5,12 @@ include('include/config.php');
 if(strlen($_SESSION['id']==0)) {
  header('location:doctorlogout.php');
   } else{
-
-if(isset($_POST['submit']))
-{	
-$vid=$_GET['viewid'];
-$patname=$_POST['patname'];
-$gender=$_POST['gender'];
-$patage=$_POST['patage'];
-$patblood=$_POST['patblood'];
-$patsugar=$_POST['patsugar'];
-$patdob=$_POST['patdob'];
-$patheight=$_POST['patheight'];
-$patweight=$_POST['patweight'];
-$medhis=$_POST['medhis'];
-$patallergy=$_POST['patallergy'];
-$patcontact=$_POST['patcontact'];
-$patemail=$_POST['patemail'];
-$patlocality=$_POST['patlocality'];
-$patcity=$_POST['patcity'];
-$pataddress=$_POST['pataddress'];
-$ename=$_POST['ename'];
-$erelation=$_POST['erelation'];
-$ephone=$_POST['ephone'];
-$refdrname=$_POST['refdrname'];
-$refdrclinic=$_POST['refdrclinic'];
-$refdrcontact=$_POST['refdrcontact'];
-$refdrlocality=$_POST['refdrlocality'];
-$refdremail=$_POST['refdremail'];
-$refdraddress=$_POST['refdraddress'];
-$patother=$_POST['patother'];
-
-$sql=mysqli_query($con,"update tblpatient set PatientName='$patname',PatientContno='$patcontact',PatientEmail='$patemail',PatientGender='$gender',PatientAdd='$pataddress',PatientAge='$patage',PatientMedhis='$medhis', bloodgrp='$patblood', height='$patheight', sugar='$patsugar',dob='$patdob',weight='$patweight',allergy='$patallergy',locality='$patlocality',city='$patcity',ename='$ename',erelation='$erelation',ephone='$ephone',refdrname='$refdrname',refdrclinic='$refdrclinic',refdrcontact='$refdrcontact',refdrlocality='$refdrlocality',refdremail='$refdremail',refdradd='$refdraddress',patother='$patother' where ID='$vid'");
-if($sql)
-{
-echo "<script>alert('Patient info updated Successfully');</script>";
-header("location:manage-patient.php");
-
-}
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <?php include('include/head.php');?>
-
-<!--script>
-  const uid = sessionStorage.getItem("uid")
-
-  if (uid == null){
-    window.location.href = "pages-login.html"
-  }
-</script-->
 
 <body>
 
@@ -107,18 +61,6 @@ header("location:manage-patient.php");
                             <div class="px-2"> <b>Gender:</b><?php  echo $row['gender'];?></div>
                             <div class="px-2"> <b>Allergies:</b> <?php  echo $row['Allergy'];?></div>
                           </div>
-
-                          <!--div class="text-center">
-                            <hr>Profile
-                          </div>
-                          <div class="d-flex justify-content-between flex-wrap" id="form-subhead">
-                              <div class="px-2"> <b>Registerd:</b><?php  echo $row['regDate'];?></div>
-                              <div class="px-2">
-                                <?php if($row['UpdationDate']){?>
-                                    <b>Updated:</b> <?php  echo $row['UpdationDate'];?>
-                                <?php } ?>  
-                              </div>
-                          </div-->
                         </div>
                       </div>
 
@@ -213,21 +155,7 @@ header("location:manage-patient.php");
                             <div class="col-sm-4 form-group">
                               <label for="ephone" class="ms-2 fw-semibold">Phone</label>
                               <input type="tel" class="form-control border-0" name="ephone" id="ephone" value="<?php  echo $row['Econtact'];?>" required readonly>
-                            </div>
-
-                            <!--------------------------------------------------------------------->
-                           
-                              
-                              <!--div class="col-sm-12">
-                                <input type="checkbox" class="form-check d-inline" id="chb" required><label for="chb" class="form-check-label">&nbsp;I accept all terms and conditions.
-                                </label>
-                              </div-->
-                              
-                              <!--div class="col-sm-12 form-group mt-3">
-                                <hr class="mt-0">
-                                <button  type="submit" name="submit" id="submit" class="btn btn-outline-success float-end">Update</button>
-                              </div-->
-                        
+                            </div>                        
                             </div>
                             <?php }?>
                           </form>
@@ -235,22 +163,8 @@ header("location:manage-patient.php");
                       </div><!-- End patient form-->
 
 </div>
-
-               
 </section>
-
-
-
-
-
-  
-
   </main>
-
-
- 
-
-  
   <?php include('include/footer.php');?>
 
 </body>

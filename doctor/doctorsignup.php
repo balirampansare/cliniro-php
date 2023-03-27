@@ -161,7 +161,7 @@ $cfpass=md5($_POST['cfpass']);
                             </div>
                             <div class="col-sm-2 form-group">
                                 <label for="sex">Gender</label>
-                                <select id="sex" name="docgender" class="form-control browser-default custom-select">
+                                <select id="sex" name="docgender" class="form-control browser-default custom-select" required>
                                   <option value="male">Male</option>
                                   <option value="female">Female</option>
                                   <option value="other">Other</option>
@@ -202,7 +202,7 @@ $cfpass=md5($_POST['cfpass']);
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="email">Dr. Email</label>
-                              <input type="email" id="docemail" name="docemail" class="form-control"  placeholder="Enter Doctor Email id" required="true" onBlur="checkemailAvailability()">
+                              <input type="email" id="docemail" name="docemail" class="form-control"  placeholder="Enter Doctor Email id" required="true" onBlur="checkemailAvailability()" >
                               <span id="email-availability-status"></span>
                            </div>
 
@@ -249,7 +249,7 @@ $cfpass=md5($_POST['cfpass']);
 
                             <div class="col-sm-12 form-group">
                             <label for="address">Doctor Clinic Address</label>
-                            <textarea name="clinicaddress" class="form-control"></textarea>
+                            <textarea name="clinicaddress" class="form-control" required></textarea>
 													</div>
                              <!--------------------------------------------------------------------->
                              <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
@@ -257,11 +257,11 @@ $cfpass=md5($_POST['cfpass']);
                             </div>
                             <div class="col-sm-6 form-group">
                               <label for="exampleInputPassword1">Password</label>
-                              <input type="password" name="npass" class="form-control"  placeholder="New Password" required="required">
+                              <input type="password" name="npass" class="form-control"  placeholder="New Password" required>
 														</div>				
                             <div class="col-sm-6 form-group">
 															<label for="exampleInputPassword2">Confirm Password</label>
-                              <input type="password" name="cfpass" class="form-control"  placeholder="Confirm Password" required="required">
+                              <input type="password" name="cfpass" class="form-control"  placeholder="Confirm Password" required>
 														</div>
                             
                             <!--div class="col-sm-12">
