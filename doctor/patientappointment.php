@@ -130,7 +130,7 @@ else
                                 <input type="date" class="form-control" name="appt" placeholder="Date"  required>
                             </div>
                             <div class="col-3 form-group">
-                                <input type="time" class="form-control" name="time" placeholder="time"  required>
+                                <input type="time" class="form-control" name="time" placeholder="time">
                             </div>
                             <div class="col-1 form-group">
                                 <button type="submit" name="submit" class="btn btn-outline-success ">Add</button>

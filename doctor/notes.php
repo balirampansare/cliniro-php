@@ -21,6 +21,22 @@ if(strlen($_SESSION['id']==0)) {
     }
 
   }
+
+  if (isset($_GET['noteid'])) {
+
+    $Noteid = $_GET['noteid'];
+
+    $query=mysqli_query($con, "delete from notes where Noteid='$Noteid' ");
+if ($query) {
+
+echo "<script>window.location.href ='notes.php'</script>";
+}
+else
+{
+  echo '<script>alert("Something Went Wrong. Please try again")</script>';
+}
+
+} 
   
 
 
@@ -85,10 +101,7 @@ if(strlen($_SESSION['id']==0)) {
         </form>
        
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        
-      </div>
+      
     </div>
   </div>
 </div>
@@ -116,7 +129,7 @@ if(strlen($_SESSION['id']==0)) {
     <div class="card-footer">
       <small class="text-muted"><?php echo $row['Created']?></small>
       
-      <a href="notedelete.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-trash"></i></button></a>
+      <a href="notes.php?noteid=<?php echo $row['Noteid'];?>"><button class="btn btn-outline-success float-end"><i class="bi bi-trash"></i></button></a>
       
 
       
