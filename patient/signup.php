@@ -152,7 +152,7 @@ return true;
                             </div>
                             <div class="col-sm-3 form-group">
                               <label for="phone">Phone</label>
-                              <input type="tel" class="form-control" name="contact" id="patcontact"  required>
+                              <input type="text" class="form-control" name="contact" title="format 10 digits" pattern="[1-9]{1}[0-9]{9}" id="patcontact"  required>
                             </div>
                             <div class="col-sm-5 form-group">
                               <label for="email">Email</label>
@@ -187,7 +187,7 @@ return true;
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="ephone">Phone</label>
-                              <input type="tel" class="form-control" name="ephone" id="ephone">
+                              <input type="text" class="form-control" title="format 10 digits" pattern="[1-9]{1}[0-9]{9}" name="ephone" id="ephone">
                             </div>
 
                             <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">

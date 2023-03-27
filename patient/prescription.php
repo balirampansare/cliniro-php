@@ -236,26 +236,26 @@ if(strlen($_SESSION['id']==0)) {
                                             <!--section-->
                                         <div class="col-sm-5 form-group">
                                           <label for="tabname">Name</label>
-                                          <input type="text" class="form-control border-0 " name="tabname1" id="tabname" value="<?php  echo $row['tabname1'];?>" required>
+                                          <input type="text" class="form-control border-0 " name="tabname1" id="tabname" value="<?php  echo $row['tabname1'];?>" required readonly>
                                         </div>
                                         <div class="col-sm-2 form-group">
                                           <label for="tabpattern">Pattern</label>
-                                          <input type="text" class="form-control border-0 " name="tabpattern1" id="tabpattern1" value="<?php  echo $row['tabpat1'];?>" required>
+                                          <input type="text" class="form-control border-0 " name="tabpattern1" id="tabpattern1" value="<?php  echo $row['tabpat1'];?>" required readonly>
                                         </div>
                                         <div class="col-sm-3 form-group">
                                           <label for="tabperiod">Period</label>
-                                          <input type="text" class="form-control border-0 " name="tabperiod1" id="tabperiod1" value="<?php  echo $row['tabped1'];?>" required>
+                                          <input type="text" class="form-control border-0 " name="tabperiod1" id="tabperiod1" value="<?php  echo $row['tabped1'];?>" required readonly>
                                         </div>
                                         <div class="col-sm-2 form-group">
                                           <label for="tabdays1">Day/Week/Mth</label>
-                                          <input type="text" class="form-control border-0 " name="tabdays1" id="tabdays1" value="<?php  echo $row['tabday1'];?>" required>
+                                          <input type="text" class="form-control border-0 " name="tabdays1" id="tabdays1" value="<?php  echo $row['tabday1'];?>" required readonly>
                                         </div>
                                         <div class="col-sm-12 form-group mt-1">
-                                            <textarea class="form-control border-0" name="pdftabother" id="tabother" cols="30" rows="2"><?php  echo $row['tabother'];?></textarea>
+                                            <textarea class="form-control border-0" name="pdftabother" id="tabother" cols="30" rows="2" readonly><?php  echo $row['tabother'];?></textarea>
                                         </div>
                                         <div class="col-sm-12 mt-3 fw-bold" id="form-subhead"><hr>Tests/Advice/Other</div>
                                         <div class="col-sm-12 form-group mt-1">
-                                            <textarea class="form-control border-0" name="pdftests" id="tests" cols="30" rows="2"><?php  echo $row['tests'];?></textarea>
+                                            <textarea class="form-control border-0" name="pdftests" id="tests" cols="30" rows="2" readonly><?php  echo $row['tests'];?></textarea>
                                         </div>
                                         <hr>
                                     </div>
@@ -315,13 +315,13 @@ if(strlen($_SESSION['id']==0)) {
               <div class="col-sm-8 form-group text-center fw-bold ">
                                           <label for="tabname text-center fw-bold">Description</label>
                                           <hr class="text-primary fw-bold">
-                                          <input type="text" class="form-control" name="paydescrp" id="tabname" value="<?php echo $row['PayDescription'];?>" required>
+                                          <input type="text" class="form-control" name="paydescrp" id="tabname" value="<?php echo $row['PayDescription'];?>" required readonly>
                                         </div>
 
                                         <div class="col-sm-4 form-group text-center fw-bold">
                                           <label for="tabname ">Total</label>
                                           <hr class="text-primary fw-bold">
-                                          <input type="text" class="form-control" name="payamount" id="tabname" value="<?php echo $row['PayAmount'];?>" required>
+                                          <input type="text" class="form-control" name="payamount" id="tabname" value="<?php echo $row['PayAmount'];?>/-" required readonly>
                                         </div>
                                     </div>
                                   </form>

@@ -198,7 +198,7 @@ $cfpass=md5($_POST['cfpass']);
 
                             <div class="col-sm-3 form-group">
                               <label for="phone">Dr. Phone</label>
-                              <input type="number" class="form-control" name="doccontact" id="phone" placeholder="phone" required>
+                              <input type="text" class="form-control" name="doccontact" title="format 10 digits" pattern="[1-9]{1}[0-9]{9}" id="phone" placeholder="phone" required>
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="email">Dr. Email</label>
@@ -221,7 +221,7 @@ $cfpass=md5($_POST['cfpass']);
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="cliniccontact">Clinic Contact</label>
-                              <input type="number" class="form-control" name="cliniccontact" id="cliniccontact" placeholder="Contact" required>
+                              <input type="text" class="form-control" name="cliniccontact" title="format 10 digits" pattern="[1-9]{1}[0-9]{9}" id="cliniccontact" placeholder="Contact" required>
                             </div>
                             <div class="col-sm-3 form-group">
                             <label for="cliniclocality">Clinic Locality</label>

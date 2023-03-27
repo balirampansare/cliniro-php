@@ -220,10 +220,10 @@ while($data=mysqli_fetch_array($sql))
                               <input type="text" name="Doctorspecialization" class="form-control" value="<?php echo htmlentities($data['specilization']);?>" readonly>
 														</div>
 
-                            <div class="col-sm-3 form-group">
+                            <!--div class="col-sm-3 form-group">
                               <label for="phone">Dr. Phone</label>
                               <input type="number" class="form-control" name="doccontact" value="<?php echo htmlentities($data['contactno']);?>" readonly>
-                            </div>
+                            </div-->
                             <div class="col-sm-4 form-group">
                               <label for="email">Dr. Email</label>
                               <input type="email" id="docemail" name="docemail" class="form-control" value="<?php echo htmlentities($data['docEmail']);?>" readonly >

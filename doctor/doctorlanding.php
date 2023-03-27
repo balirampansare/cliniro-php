@@ -253,7 +253,7 @@ if(strlen($_SESSION['id']==0)) {
 
 
 
-<div class="card-group mt-1">
+<!--div class="card-group mt-1">
 <div class="card rounded mx-3">
 <img src="assets/img/card.jpg" class="card-img-top" alt="...">
 <div class="card-body">
@@ -287,7 +287,9 @@ if(strlen($_SESSION['id']==0)) {
 </div>
 </div>
 
-</div>
+</div-->
+
+<rssapp-wall id="9CCLUg7bG3yiDeda"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>
       
 </section>
 

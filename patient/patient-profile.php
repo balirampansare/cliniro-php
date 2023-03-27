@@ -201,7 +201,7 @@ while($row=mysqli_fetch_array($sql))
                             </div>
                             <div class="col-sm-3 form-group">
                               <label for="phone">Phone</label>
-                              <input type="tel" class="form-control" name="patcontact" id="patcontact" value="<?php  echo $row['Phone'];?>" required>
+                              <input type="text" class="form-control" name="patcontact" id="patcontact" title="format 10 digits" pattern="[1-9]{1}[0-9]{9}" value="<?php  echo $row['Phone'];?>" required>
                             </div>
                             <div class="col-sm-5 form-group">
                               <label for="email">Email</label>
@@ -236,7 +236,7 @@ while($row=mysqli_fetch_array($sql))
                             </div>
                             <div class="col-sm-4 form-group">
                               <label for="ephone">Phone</label>
-                              <input type="tel" class="form-control" name="ephone" id="ephone" value="<?php  echo $row['Econtact'];?>" required>
+                              <input type="text" class="form-control" name="ephone" id="ephone" title="format 10 digits" pattern="[1-9]{1}[0-9]{9}" value="<?php  echo $row['Econtact'];?>" required>
                             </div>
 
                             <!--------------------------------------------------------------------->
