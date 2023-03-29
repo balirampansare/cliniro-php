@@ -79,6 +79,11 @@
           <i class="bi bi-circle"></i><span>Billing</span>
         </a>
       </li>
+      <li>
+        <a href="receptionist.php">
+          <i class="bi bi-circle"></i><span>Receptionist</span>
+        </a>
+      </li>
     </ul>
    
   </li>

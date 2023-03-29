@@ -58,7 +58,19 @@ $uip=$_SERVER['REMOTE_ADDR'];
 $status=1;
 // For stroing log if user login successfull
 $log=mysqli_query($con,"insert into userlog(uid,username,userip,status) values('$pid','$puname','$uip','$status')");
-header("location:patientlanding.php");
+echo '<script type="text/javascript">
+ swal({
+  title: "Setting up your profile",
+  text: "Redirecting to your profile",
+  type: "success",
+  timer: 2000,
+  showConfirmButton: false
+}, function(){
+      window.location.href = "patientlanding.php";
+});
+ 
+
+       </script>';
 }
 else
 {

@@ -28,7 +28,20 @@ $status=1;
 //Code Logs
 $log=mysqli_query($con,"insert into doctorslog(uid,username,userip,status) values('$uid','$uname','$uip','$status')");
 
-header("location:doctorlanding.php");
+/*header("location:doctorlanding.php")*/
+echo '<script type="text/javascript">
+ swal({
+  title: "Setting up your profile",
+  text: "Redirecting to your profile",
+  type: "success",
+  timer: 2000,
+  showConfirmButton: false
+}, function(){
+      window.location.href = "doctorlanding.php";
+});
+ 
+
+       </script>';
 }
 else
 {
