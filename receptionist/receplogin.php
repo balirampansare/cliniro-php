@@ -100,9 +100,8 @@ else
                   <form class="row g-3 needs-validation" method="post" novalidate>
 
                     <div class="col-12">
-                      <label for="yourEmaillogin" class="form-label">Your Email</label>
+                      <label for="yourEmaillogin" class="form-label">Your Username</label>
                       <input type="text" name="username" class="form-control" id="yourEmaillogin" required>
-                      <div class="invalid-feedback" id="error-name-login">Please enter a valid Email adddress!</div>
                     </div>
 
                     <div class="col-12">
@@ -124,9 +123,7 @@ else
 							</div-->
 
               
-                    <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="doctorsignup.php">Create an account</a></p>
-                    </div>
+                    
                   </form>
 
                 </div>
