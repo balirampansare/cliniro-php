@@ -49,6 +49,59 @@ error:function (){}
 <?php include('include/header.php');?>
 <?php include('include/sidebar.php');?>
 
+<?php
+if(isset($_POST['submit']))
+{
+
+$npass=md5($_POST['npass']);
+$cfpass=md5($_POST['cfpass']);
+   if( $npass != $cfpass){
+    echo '<script type="text/javascript">
+    swal({
+      title:"Oops!",
+      text: "Password and Confirm Password didnt matched",
+      icon: "error"
+    }, function(){
+          window.location.href = "receptionist.php";
+    });
+
+       </script>';
+
+
+
+   } 
+        else
+        {	
+        $docid = $_SESSION['id'];
+        $username=$_POST['username'];
+        $password=md5($_POST['npass']);
+
+        $sql=mysqli_query($con,"insert into receptionist(recep_docid,recep_username,recep_password) values('$docid','$username','$password')");
+        if($sql)
+        {
+        
+            echo '<script type="text/javascript">
+            swal({
+            title: "Account Created Successfully!",
+            text: "Redirecting in 2 seconds",
+            type: "success",
+            timer: 2000,
+            showConfirmButton: false
+        }, function(){
+                window.location.href = "receptionist.php";
+        });
+            
+        
+                </script>';
+
+        }
+
+        }
+
+}
+
+?>
+
   <main class="main" id="main">
   <div class="pagetitle">
       <h1>Search Patient</h1>
@@ -75,23 +128,20 @@ error:function (){}
                 <div class="card-body">
 
                   <div class="">
-                    <h5 class="card-title text-center pb-0 fs-4">Just one form to setup your profile</h5>
+                    <h5 class="card-title text-center pb-0 fs-4">Just few input to setup</h5>
                     
                   </div>
                   <form role="form" name="adddoc" method="post" onSubmit="return valid();">
                           <div class="row jumbotron  rounded py-2">
-                            <!--div class="col-sm-12 mx-t3">
-                              <h2 class="text-center text-info">Register</h2>
-                            </div-->
 
                             <div class="d-flex">
                               <div class="p-1 fw-bold" id="form-subhead">Personal</div>
                             </div>
                             <div class=" mt-0"><hr></div>
 
-                            <div class="col-sm-4 form-group">
-                              <label for="email">Dr. Email</label>
-                              <input type="email" id="docemail" name="docemail" class="form-control"  placeholder="Enter Doctor Email id" required="true" onBlur="checkemailAvailability()" >
+                            <div class="col-sm-12 form-group">
+                              <label for="email">Username for Login</label>
+                              <input type="text" id="username" name="username" class="form-control"  placeholder="Enter username for login" required="true" onBlur="checkemailAvailability()" >
                               <span id="email-availability-status"></span>
                            </div>                          
                              <!--------------------------------------------------------------------->

@@ -1,7 +1,11 @@
- <!-- ======= Footer ======= -->
- <footer id="footer" class="footer">
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright <strong><span>Cliniro</span></strong>. All Rights Reserved
+    </div>
+    <div class="text-center" id="form-subhead">
+      cliniro@gmail.com
+
     </div>
   </footer><!--End Footer-->
 
@@ -19,10 +23,5 @@
   <script src="assets/js/tablesearch.js"></script>
 
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-
-  <!--firebase files-->
   <script src="assets/js/config.js"></script>
-  <!-- Template Main JS File -->
-
   <script src="assets/js/main.js"></script>
