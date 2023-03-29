@@ -131,7 +131,7 @@ error_reporting(0);
 
   </section><!-- End Hero -->
 
-  <main id="main">
+  <!--main id="main">
 
    
     <section id="clients" class="clients section-bg">
@@ -166,8 +166,7 @@ error_reporting(0);
         </div>
 
       </div>
-    </section><End Cliens Section -->
-
+    </section>
     
     <section id="about" class="about">
       <div class="container" data-aos="fade-up">
@@ -871,7 +870,7 @@ error_reporting(0);
       </div>
       
     </div>
-  </footer>
+  </footer-->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
