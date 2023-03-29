@@ -108,6 +108,7 @@ else
                   <a href="../index.php" class="p-2 flex-grow-1 border rounded m-2"><i class="bi bi-house-door"></i></a>
                   <a href="../doctor/doctorlogin.php" class="p-2 flex-grow-1 border rounded m-2 ">Doctor</a>
                   <a href="../patient/patientlogin.php" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Patient</a>
+                  <a href="../receptionist/receplogin.php" class="p-2 flex-grow-1 border rounded m-2">R</a>
                   
                 </div>
 

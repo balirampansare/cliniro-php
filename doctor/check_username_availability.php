@@ -1,7 +1,7 @@
 <?php 
 require_once("include/config.php");
-if(!empty($_POST["emailid"])) {
-	$email= $_POST["emailid"];
+if(!empty($_POST["username"])) {
+	$email= $_POST["username"];
 	
 		$result =mysqli_query($con,"SELECT recep_username FROM receptionist WHERE recep_username='$email'");
 		$count=mysqli_num_rows($result);

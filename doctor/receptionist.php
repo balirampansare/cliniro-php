@@ -33,7 +33,7 @@ function checkemailAvailability() {
 $("#loaderIcon").show();
 jQuery.ajax({
 url: "check_username_availability.php",
-data:'emailid='+$("#docemail").val(),
+data:'username='+$("#username").val(),
 type: "POST",
 success:function(data){
 $("#email-availability-status").html(data);
@@ -48,6 +48,75 @@ error:function (){}
 
 <?php include('include/header.php');?>
 <?php include('include/sidebar.php');?>
+
+
+<?php
+date_default_timezone_set('Asia/Kolkata');// change according timezone
+$currentTime = date( 'd-m-Y h:i:s A', time () );
+if(isset($_POST['update']))
+{
+$cpass=md5($_POST['cpass']);
+$did=$_SESSION['id'];
+$username = $_POST['username'];
+$sql=mysqli_query($con,"SELECT recep_password FROM  receptionist where recep_password='$cpass' && recep_docid='$did'");
+$num=mysqli_fetch_array($sql);
+if($num>0)
+{
+$npass=md5($_POST['npass']);
+$cfpass=md5($_POST['cfpass']);
+   if( $npass != $cfpass){
+    echo '<script type="text/javascript">
+    swal({
+      title:"Oops!",
+      text: "New and Confirm didnt matched",
+      icon: "error"
+    }, function(){
+          window.location.href = "receptionist.php";
+    });
+
+       </script>';
+
+
+
+   }
+
+   else{
+    $con=mysqli_query($con,"update receptionist set recep_password='$npass', recep_username='$username' where recep_docid='$did'");
+ echo '<script type="text/javascript">
+ swal({
+  title: "Password Changed Successfully!",
+  text: "Redirecting in 2 seconds",
+  type: "success",
+  timer: 2000,
+  showConfirmButton: false
+}, function(){
+      window.location.href = "receptionist.php";
+});
+ 
+
+       </script>';
+ //echo "<script>window.location.href ='receptionist.php'</script>";
+
+   }
+ 
+ 
+}
+else
+{
+  echo '<script type="text/javascript">
+  swal({
+    title:"Oops!",
+    text: "Current Password didnt matched!",
+    icon: "error"
+  }, function(){
+        window.location.href = "receptionist.php";
+  });
+  </script>';
+}
+}
+?>
+
+
 
 <?php
 if(isset($_POST['submit']))
@@ -127,11 +196,73 @@ $cfpass=md5($_POST['cfpass']);
 
                 <div class="card-body">
 
-                  <div class="">
+                  
+
+                  <?php
+                $docid = $_SESSION['id'];
+                $result =mysqli_query($con,"SELECT recep_username FROM receptionist WHERE recep_docid='$docid'");
+                $count=mysqli_num_rows($result);
+                if($count>0)
+                { ?>
+
+<div class="">
+<?php
+            $docid = $_SESSION['id'];
+            $ret=mysqli_query($con,"select * from receptionist where recep_docid='$docid'");
+            $cnt=1;
+            while ($row=mysqli_fetch_array($ret)) {
+                               ?>
                     <h5 class="card-title text-center pb-0 fs-4">Just few input to setup</h5>
                     
                   </div>
-                  <form role="form" name="adddoc" method="post" onSubmit="return valid();">
+
+                        <form role="form" name="adddoc" method="post" >
+                          <div class="row jumbotron  rounded py-2">
+
+                            <div class="d-flex">
+                              <div class="p-1 fw-bold" id="form-subhead">Personal</div>
+                            </div>
+                            <div class=" mt-0"><hr></div>
+
+                            <div class="col-sm-12 form-group">
+                              <label for="username">Username for Login</label>
+                              <input type="text" id="username" name="username" class="form-control"  value="<?php  echo $row['recep_username'];?>" required="true" onBlur="checkemailAvailability()" >
+                              <span id="email-availability-status"></span>
+                           </div>                          
+                             <!--------------------------------------------------------------------->
+                             <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
+                              Change Password<hr class="mt-0">
+                            </div>
+                            <div class="form-group">
+                            <label for="exampleInputEmail1">Current Password</label>
+                            <input type="password" name="cpass" class="form-control"  placeholder="Enter Current Password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="npass">New Password</label>
+                                <input type="password" name="npass" class="form-control"  id="npass" placeholder="New Password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cfpass">Confirm Password</label>
+                                <input type="password" name="cfpass" class="form-control" id="cfpass"  placeholder="Confirm Password" required>
+                            </div>
+                                                       
+                            <div class="col-sm-12 form-group mt-3">
+                              <hr class="mt-0">
+                              <button type="submit" name="update" id="update" class="btn btn-outline-success float-end">Update</button>
+                            </div>
+                      
+                          </div>
+                        </form>
+                        <?php }?>
+
+
+                <?php } else{ ?>
+    <div class="">
+                    <h5 class="card-title text-center pb-0 fs-4">Just few input to setup</h5>
+                    
+                  </div>
+
+    <form role="form" name="adddoc" method="post" onSubmit="return valid();">
                           <div class="row jumbotron  rounded py-2">
 
                             <div class="d-flex">
@@ -164,6 +295,14 @@ $cfpass=md5($_POST['cfpass']);
                       
                           </div>
                         </form>
+<?php }
+
+                  
+                  ?>
+
+
+
+                  
 
                 </div>
               </div>

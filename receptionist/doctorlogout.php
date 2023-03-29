@@ -11,5 +11,5 @@ session_unset();
 $_SESSION['errmsg']="You have successfully logout";
 ?>
 <script language="javascript">
-document.location="doctorlogin.php";
+document.location="receplogin.php";
 </script>

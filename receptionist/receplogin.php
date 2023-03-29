@@ -16,17 +16,16 @@ if(isset($_POST['submit']))
 {
 $uname=$_POST['username'];
 $dpassword=md5($_POST['password']);	
-$ret=mysqli_query($con,"SELECT * FROM doctors WHERE docEmail='$uname' and password='$dpassword'");
+$ret=mysqli_query($con,"SELECT * FROM receptionist WHERE recep_username='$uname' and recep_password='$dpassword'");
 $num=mysqli_fetch_array($ret);
 if($num>0)
 {
 $_SESSION['dlogin']=$_POST['username'];
-$_SESSION['id']=$num['id'];
-$uid=$num['id'];
+$_SESSION['id']=$num['recepid'];
+$uid=$num['recepid'];
 $uip=$_SERVER['REMOTE_ADDR'];
 $status=1;
 //Code Logs
-$log=mysqli_query($con,"insert into doctorslog(uid,username,userip,status) values('$uid','$uname','$uip','$status')");
 
 /*header("location:doctorlanding.php")*/
 echo '<script type="text/javascript">
@@ -82,8 +81,9 @@ else
               <div class="card ">
               <div class="d-flex flex-wrap text-center m-2 rounded" id="patient-nav">
                   <a href="../index.php" class="p-2 flex-grow-1 border rounded m-2"><i class="bi bi-house-door"></i></a>
-                  <a href="doctorlogin.php" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Doctor</a>
+                  <a href="../doctor/doctorlogin.php" class="p-2 flex-grow-1 border rounded m-2 ">Doctor</a>
                   <a href="../patient/patientlogin.php" class="p-2 flex-grow-1 border rounded m-2">Patient</a>
+                  <a href="receplogin.php" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">R</a>
                   
                 </div>
 
@@ -101,7 +101,7 @@ else
 
                     <div class="col-12">
                       <label for="yourEmaillogin" class="form-label">Your Email</label>
-                      <input type="email" name="username" class="form-control" id="yourEmaillogin" required>
+                      <input type="text" name="username" class="form-control" id="yourEmaillogin" required>
                       <div class="invalid-feedback" id="error-name-login">Please enter a valid Email adddress!</div>
                     </div>
 

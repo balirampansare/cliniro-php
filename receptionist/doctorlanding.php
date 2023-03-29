@@ -242,54 +242,7 @@ if(strlen($_SESSION['id']==0)) {
 
 
 <!-- -------------------------------------------START OF NEWS SECTION------------- -->
-<div class="container mt-3">
-<div class="row">
-<div class="col-sm-11" id="news-head">Be Updated</div>
-<div class="col-sm-1 "> <a href="beupdated.php"><button class="btn btn-outline-success btn-sm">View</button></a></div>
-</div>
-</div>
 
-<hr>
-
-
-
-<!--div class="card-group mt-1">
-<div class="card rounded mx-3">
-<img src="assets/img/card.jpg" class="card-img-top" alt="...">
-<div class="card-body">
-  <h5 class="card-title">Card title</h5>
-  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-</div>
-<div class="card-footer">
-  <small class="text-muted">Last updated 3 mins ago</small>
-</div>
-</div>
-
-<div class="card rounded mx-3">
-<img src="assets/img/card.jpg" class="card-img-top" alt="...">
-<div class="card-body">
-  <h5 class="card-title">Card title</h5>
-  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-</div>
-<div class="card-footer">
-  <small class="text-muted">Last updated 3 mins ago</small>
-</div>
-</div>
-
-<div class="card rounded mx-3">
-<img src="assets/img/card.jpg" class="card-img-top" alt="...">
-<div class="card-body">
-  <h5 class="card-title">Card title</h5>
-  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-</div>
-<div class="card-footer">
-  <small class="text-muted">Last updated 3 mins ago</small>
-</div>
-</div>
-
-</div-->
-
-<rssapp-wall id="9CCLUg7bG3yiDeda"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>
       
 </section>
 
