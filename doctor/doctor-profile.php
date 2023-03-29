@@ -22,6 +22,22 @@ if(strlen($_SESSION['id']==0)) {
   }
 </script-->
 
+<script>
+function checkemailAvailability() {
+$("#loaderIcon").show();
+jQuery.ajax({
+url: "check_availability.php",
+data:'emailid='+$("#docemail").val(),
+type: "POST",
+success:function(data){
+$("#email-availability-status").html(data);
+$("#loaderIcon").hide();
+},
+error:function (){}
+});
+}
+</script>
+
 <body>
 
 <?php 
@@ -213,9 +229,14 @@ while($row=mysqli_fetch_array($ret))
                               <input type="text" class="form-control" name="doccontact" title="format 10 digits" pattern="[1-9]{1}[0-9]{9}" value="<?php echo htmlentities($data['contactno']);?>" required>
                             </div>
                             <div class="col-sm-4 form-group">
-                              <label for="email">Dr. Email</label>
+                              <!--label for="email">Dr. Email</label>
                               <input type="email" id="docemail" name="docemail"  class="form-control" value="<?php echo htmlentities($data['docEmail']);?>" required>
+                              <span id="email-availability-status"></span-->
+
+                              <label for="email">Dr. Email</label>
+                              <input type="email" id="docemail" name="docemail" class="form-control"  value="<?php echo htmlentities($data['docEmail']);?>" required="true" onBlur="checkemailAvailability()" >
                               <span id="email-availability-status"></span>
+
                            </div>
                             <div class="col-sm-12 mt-3 fw-bold" id="form-subhead">
                               Clinic Details <hr class="mt-0">
