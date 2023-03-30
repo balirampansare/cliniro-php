@@ -46,7 +46,7 @@ if(strlen($_SESSION['id']==0)) {
 
     <!-- Left side columns -->
     <div class="col-lg-12">
-      <div class="row">
+      <div class="row m-auto justify-content-center">
 
         <!-- Time Card -->
         <div class="col-xxl-3 col-md-6">
@@ -112,7 +112,7 @@ if(strlen($_SESSION['id']==0)) {
         </div><!-- End Appoinments Card -->
 
         <!-- Events Card -->
-        <div class="col-xxl-3 col-md-6">
+        <!--div class="col-xxl-3 col-md-6">
 
           <div class="card info-card customers-card">
 
@@ -149,7 +149,7 @@ if(strlen($_SESSION['id']==0)) {
             </div>
           </div>
 
-        </div><!-- End Events Card -->
+        </div--><!-- End Events Card -->
 
         <!-- Stop watch Card -->
         <div class="col-xxl-3 col-md-6">
