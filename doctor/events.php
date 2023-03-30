@@ -133,7 +133,7 @@ else
 <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
     <?php
     $docid=$_SESSION['id'];
-    $sql=mysqli_query($con,"SELECT * FROM events WHERE DocID = $docid ORDER BY Eventid DESC");
+    $sql=mysqli_query($con,"SELECT * FROM events WHERE DocID = $docid ORDER BY Event_date DESC;");
     $cnt=1;
     while($row=mysqli_fetch_array($sql))
     {
