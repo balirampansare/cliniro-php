@@ -257,7 +257,7 @@ $cfpass=md5($_POST['cfpass']);
                             </div>
                             <div class="col-sm-6 form-group">
                               <label for="exampleInputPassword1">Password</label>
-                              <input type="password" name="npass" class="form-control"  placeholder="New Password" required>
+                              <input type="password" name="npass" class="form-control" title="min length: 8 with atleast one 0-9,a-z,A-Z,spl char" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"  placeholder="Password" required>
 														</div>				
                             <div class="col-sm-6 form-group">
 															<label for="exampleInputPassword2">Confirm Password</label>

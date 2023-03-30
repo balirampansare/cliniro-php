@@ -196,7 +196,7 @@ return true;
 
                             <div class="col-sm-6 form-group">
                               <label for="password">Password</label>
-                              <input type="password" class="form-control" name="password" id="password" required>
+                              <input type="password" class="form-control" title="min length: 8 with atleast one 0-9,a-z,A-Z,spl char" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$" name="password" id="password" required>
                             </div>
                             <div class="col-sm-6 form-group">
                               <label for="password_again">Enter Password Again</label>

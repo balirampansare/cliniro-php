@@ -173,7 +173,7 @@ while($data=mysqli_fetch_array($sql))
           </div>
           <div class="form-group">
             <label for="npass">New Password</label>
-            <input type="password" name="npass" class="form-control"  id="npass" placeholder="New Password" required>
+            <input type="password" name="npass" class="form-control" title="min length: 8 with atleast one 0-9,a-z,A-Z,spl char" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"  id="npass" placeholder="New Password" required>
           </div>
           <div class="form-group">
             <label for="cfpass">Confirm Password</label>
