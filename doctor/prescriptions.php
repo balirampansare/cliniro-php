@@ -165,9 +165,6 @@ if(isset($_POST['submit']))
                             <div class="modal-body">
                                 <form method="post" name="submit">
                                     <div class="row jumbotron rounded py-2">
-                                      <!--div class="col-sm-12 mx-t3">
-                                        <h2 class="text-center text-info">Register</h2>
-                                      </div-->
                                       <?php
               $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
               while ($row=mysqli_fetch_array($ret)) { 
@@ -229,8 +226,6 @@ if(isset($_POST['submit']))
                                 <label for="age" class="fw-bold">Age:</label>
                                 <input type="number" class="form-control text-center border-0" name="patage" id="patage" value="<?php  echo $row['Age'];?>" required >
                             </div>
-
-
                             <div class="col-sm-2 text-center form-group">
                                 <label for="blood" class="fw-bold">Blood Group:</label>
                                 <input type="text" class="form-control text-center border-0" name="patblood" id="blood" value="<?php  echo $row['bloodgrp'];?>" readonly  >
@@ -248,13 +243,6 @@ if(isset($_POST['submit']))
                                 <label for="temp" class="fw-bold">Temp</label>
                                 <input type="text" class="form-control text-center border-0" name="temp" id="patbp"  required>
                               </div>
-                              
-
-
-                                      
-          
-                                     
-
                                         <div class=" mt-0"><hr style="border: 1px solid #012970;"></div>
           
           
@@ -425,18 +413,6 @@ while ($row=mysqli_fetch_array($ret)) {   ?>
                                     </td>
                                     
                                     <td>
-                                      <!--?php
-                                      if($row['bloodgrp']>0){
-                                        echo'<button class="btn btn-outline-success mt-2 text-center align-items-center" data-bs-toggle="modal" data-bs-target="#presppaymentview">Paid</button>';
-                                        
-                                      }
-                                      else{
-                                        echo '<button class="btn btn-outline-success mt-2 text-center" data-bs-toggle="modal" data-bs-target="#presppayment' .echo $row['ID'].'">Pay</button>';
-                                        
-                                        
-                                      }
-                                      ?-->
-
                                       <?php
 if ($row['PayAmount']>0) { 
 ?>
@@ -558,9 +534,6 @@ if ($row['PayAmount']>0) {
                                         </div>
 
                                         <hr>
-                                        
-
-                              
                                     </div>
                                 
                                   </div>
@@ -578,11 +551,6 @@ if ($row['PayAmount']>0) {
                               <?php $gc = $row['ID'] ?>
                                 <form method="post" name="makepayment">
                                     <div class="row jumbotron rounded py-2">
-                                      <!--div class="col-sm-12 mx-t3">
-                                        <h2 class="text-center text-info">Register</h2>
-                                      </div-->
-                                     
-          
                                       <div class="row">
                   <div class="col-sm-2 text-center justify-content-center m-auto">
                     <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
@@ -680,12 +648,7 @@ if ($row['PayAmount']>0) {
                             <div class="modal-body">
                               
                                 <form method="post" name="submit">
-                                    <div class="row jumbotron rounded py-2">
-                                      <!--div class="col-sm-12 mx-t3">
-                                        <h2 class="text-center text-info">Register</h2>
-                                      </div-->
-                                      
-          
+                                    <div class="row jumbotron rounded py-2">          
                                       <div class="row">
                   <div class="col-sm-2 text-center justify-content-center m-auto">
                     <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
@@ -745,8 +708,7 @@ if ($row['PayAmount']>0) {
 
                    
                        
-                      </div><!-- End patient form-->
-
+                      </div>
 </div>
 
 
@@ -756,127 +718,6 @@ if ($row['PayAmount']>0) {
 
 
 
-
-<!------------------------------------------MAKE PAYMENT MODAL------------------->
-<!--section>
-<div class="modal fade modal-dialog-scrollable modal-lg " id="presppayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Prescription Payment</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              MAKE PAYEMENT
-                                <form method="post" name="submit">
-                                    <div class="row jumbotron rounded py-2">
-                                      <div class="row">
-                  <div class="col-sm-2 text-center justify-content-center m-auto">
-                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
-                  </div>
-                  <div class="col-sm-10">
-                    <div class="row">
-                    <div class="col-sm-7">
-                  <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
-                  <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
-                  <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
-                  <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
-                  
-                </div>
-                  
-                  <div class="col-sm-5">
-                  <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
-                  <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
-                  <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
-                  
-                  </div>
-
-                    </div>
-                    <div class="d-flex flex-row">
-                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
-                  <div id="form-subhead"><?php echo $row['address'];?></div>
-                    </div>
-
-                  </div>
-                  <hr style="border: 1px solid #012970;"> 
-              </div> 
-                                    </div>
-                                  </form>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-  
-</section-->
-<!------------------------------------------MAKE PAYMENT MODAL------------------->
-
-<!------------------------------------------VIEW PAYMENT MODAL------------------->
-<!--section>
-<div class="modal fade modal-dialog-scrollable modal-lg " id="presppaymentview" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Prescription Payment</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              VIEW PAYMENT
-                                <form method="post" name="submit">
-                                    <div class="row jumbotron rounded py-2">
-                                      
-                                      <?php
-              $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
-              while ($row=mysqli_fetch_array($ret)) { 
-                ?>
-          
-                                      <div class="row">
-                  <div class="col-sm-2 text-center justify-content-center m-auto">
-                    <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
-                  </div>
-                  <div class="col-sm-10">
-                    <div class="row">
-                    <div class="col-sm-7">
-                  <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
-                  <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
-                  <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
-                  <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
-                  
-                </div>
-                  
-                  <div class="col-sm-5">
-                  <div class="text-center fw-bold" id="form-subhead">Timing:</div>
-                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
-                  <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
-                  <div class="text-center fw-bold" id="form-subhead">Contact:</div>
-                  <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
-                  
-                  </div>
-
-                    </div>
-                    <div class="d-flex flex-row">
-                    <div class="fw-bold mx-2" id="form-subhead">Address:</div>
-                  <div id="form-subhead"><?php echo $row['address'];?></div>
-                    </div>
-
-                  </div>
-                  <hr style="border: 1px solid #012970;"> 
-
-                  <?php }?>
-                
-
-              </div> 
-                                    </div>
-                                  </form>
-                            
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-  
-</section-->
-<!------------------------------------------END OF VIEW PAYMENT MODAL------------------->
   </main>
  
   <?php include('include/footer.php');?>

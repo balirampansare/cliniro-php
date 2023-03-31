@@ -83,12 +83,12 @@ error_reporting(0);
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link   scrollto" href="#portfolio">Portfolio</a></li>
+          <!--li><a class="nav-link   scrollto" href="#portfolio">Portfolio</a></li-->
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
+          <!--li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="admin/adminlogin.php">Admin</a></li>
-              <!--li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
                   <li><a href="#">Deep Drop Down 2</a></li>
@@ -96,11 +96,11 @@ error_reporting(0);
                   <li><a href="#">Deep Drop Down 4</a></li>
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
-              </li-->
+              </li>
               <li><a href="doctor/doctorlogin.php">Doctor</a></li>
               <li><a href="patient/patientlogin.php">Patient</a></li>
             </ul>
-          </li>
+          </li-->
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><a class="getstarted scrollto" href="doctor/doctorlogin.php">Login</a></li>
         </ul>
@@ -131,7 +131,7 @@ error_reporting(0);
 
   </section><!-- End Hero -->
 
-  <!--main id="main">
+  <main id="main">
 
    
     <section id="clients" class="clients section-bg">
@@ -870,7 +870,7 @@ error_reporting(0);
       </div>
       
     </div>
-  </footer-->
+  </footer>
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

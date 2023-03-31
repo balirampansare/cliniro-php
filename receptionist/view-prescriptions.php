@@ -6,9 +6,7 @@ if(strlen($_SESSION['id']==0)) {
  header('location:doctorlogout.php');
   } else{
 if(isset($_POST['submit']))
-  {
-    
-    
+  {    
     $docid = $_SESSION['id'];
     $patname = $_POST['patname'];
     $gender = $_POST['gender'];
