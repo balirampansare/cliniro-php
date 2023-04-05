@@ -35,13 +35,13 @@ if(strlen($_SESSION['id']==0)) {
         </ol>
       </nav>
     </div>
-    <?php 
+    <!--?php 
     $url = 'https://newsapi.org/v2/everything?q=health&apiKey=14752f907dba4fa09868548074054773';
     $response = file_get_contents($url);
     $NewsData = json_decode($response);
-    ?>
+    ?-->
     
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <!--div class="row row-cols-1 row-cols-md-3 g-4">
     <?php 
     foreach($NewsData -> articles as $News)
     {
@@ -64,9 +64,10 @@ if(strlen($_SESSION['id']==0)) {
         
   <?php }?>
   
-</div>
+</div-->
 
 
+<rssapp-wall id="wEGMRIiSCAPDp082"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>
 
 
 
