@@ -128,7 +128,7 @@ while($data=mysqli_fetch_array($sql))
       <div class="card">
         <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
         <div class="card-body text-center">
-          <img class="avatar rounded-circle" src="../assets/img/messages-3.jpg" alt="patientpic">
+          <img class="avatar rounded-circle" src="assets/img/cliniro logo.png" alt="patientpic">
 
           <div>
           <h4 class="card-title"><?php echo htmlentities($data['doctorName']);?></h4>
