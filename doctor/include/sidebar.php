@@ -92,7 +92,7 @@
 
   
 
-  <li class="nav-heading">CliFea</li>
+  <li class="nav-heading">CliFea-Pages</li>
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="beupdated.php">
@@ -122,12 +122,12 @@
     </a>
   </li>
 
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="doctorlanding.php">
+  <!--li class="nav-item">
+    <a class="nav-link collapsed" href="stopwatch.php">
       <i class="bi bi-stopwatch"></i>
       <span>Stop Watch</span>
     </a>
-  </li>
+  </li-->
 
   <hr>
 

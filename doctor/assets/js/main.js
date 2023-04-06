@@ -424,18 +424,18 @@ pauseButton.addEventListener("click", pause);
 resetButton.addEventListener("click", reset);
 
 
-  var datetime = new Date().toDateString();
+  /*var datetime = new Date().toDateString();
   console.log(datetime); // it will represent date in the console of  developers tool
-  document.getElementById("date").textContent = datetime; 
+  document.getElementById("date").textContent = datetime; */
 
 
-  function refreshTime() {
+  /*function refreshTime() {
     const timeDisplay = document.getElementById("timer");
     const dateString = new Date().toLocaleTimeString();
     //const formattedString = dateString.replace(", ", " - ");
     timeDisplay.textContent = dateString;
   }
-    setInterval(refreshTime, 1000);
+    setInterval(refreshTime, 1000);*/
 
 
     var inputval = document.querySelector('#cityinput')
@@ -473,7 +473,7 @@ resetButton.addEventListener("click", reset);
       .catch(err => alert('You entered Wrong city name'))
     })();
 
-    btn.addEventListener("click", myFunction);
+    //btn.addEventListener("click", myFunction);
 
     function myFunction() {
       fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputval.value+'&appid='+apik)
@@ -495,6 +495,13 @@ resetButton.addEventListener("click", reset);
     
       .catch(err => alert('You entered Wrong city name'))
     }
+
+    let weathersearch = document.getElementById("add");
+
+weathersearch.addEventListener("click", myFunction);
+    
+
+    
     /*------------------END OF WEATHER-------------------------*/
 
 /*------------------QUOTE--------------------------------*/
