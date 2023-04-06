@@ -5,43 +5,45 @@ include('include/config.php');
 if(strlen($_SESSION['id']==0)) {
  header('location:doctorlogout.php');
   } else{
+   
+
     if(isset($_POST['submit']))
   {
-    $docid = $_SESSION['id'];
-    $event = $_POST['event'];
-    $edate = $_POST['edate'];
-    $etime = $_POST['etime'];
-    $eventaddress = $_POST['eventaddress'];
-    $eventother = $_POST['eventother'];
-
-    $query=mysqli_query($con, "insert into  events(Docid,Event_name,Event_date,Event_time,Event_address,Event_other)values('$docid','$event','$edate','$etime','$eventaddress','$eventother')");
-    if ($query) {
     
-    echo "<script>window.location.href ='events.php'</script>";
+    $docid = $_SESSION['id'];
+    $billname = $_POST['billname'];
+    $description = $_POST['paydescrp'];
+    $total = $_POST['payamount'];
+
+    $ret=mysqli_query($con,"select Clibillid FROM billing WHERE billing.Docid='$docid' ORDER BY billing.Clibillid DESC LIMIT 1; ");
+    while ($row=mysqli_fetch_array($ret)) {
+        if($row['Clibillid'] >= 1){
+            $billno = $row['Clibillid'] + 1;
+        }
+        else{
+            $billno = 1;
+        }
+
+    }
+
+    
+   
+ 
+    $query=mysqli_query($con, "insert into  billing(billname,DocId,Clibillid,Description,Amount)values('$billname','$docid','$billno','$description','$total')");
+    if ($query) {
+    echo '<script>alert("Bill Created")</script>';
+    echo "<script>window.location.href ='clinicbilling.php'</script>";
   }
   else
     {
       echo '<script>alert("Something Went Wrong. Please try again")</script>';
     }
 
-  }
+  
+}
   
 
-  if (isset($_GET['Eventid'])) {
-
-    $eventid = $_GET['Eventid'];
-
-    $query=mysqli_query($con, "delete from events where Eventid='$eventid' ");
-if ($query) {
-
-echo "<script>window.location.href ='events.php'</script>";
-}
-else
-{
-  echo '<script>alert("Something Went Wrong. Please try again")</script>';
-}
-
-} 
+ 
 
 
 ?>
@@ -81,17 +83,20 @@ else
     </div>
 
     <div class="text-center">
-        <!--button class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#exampleModal">Add +</button-->
+        <button class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#billpayment">Add +</button>
         <hr>
        
     </div>
 
-    <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      
-      <div class="modal-body">
-      <form method="post" name="submit">
+    <div class="modal fade modal-dialog-scrollable modal-lg " id="billpayment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="billpayment">Bill</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" name="submit">
                                         <div class="row jumbotron rounded py-2">
                                             <?php
                                             $ret=mysqli_query($con,"select * from doctors  where id='".$_SESSION['id']."'");
@@ -127,12 +132,29 @@ else
                                             </div> <!---------END OF HEADER----------->
                                             
                                             <div class="col-sm-4 text-center form-group">
-                                                <label for="doctorname" class="fw-bold">Name:</label>
-                                                <input type="text" class="form-control text-center border-0" name="patname" id="patname" value="<?php  echo $row['fullName'];?>" readonly  >
+                                                <label for="billname" class="fw-bold">Name:</label>
+                                                <input type="text" class="form-control text-center border-0" name="billname" id="billname" value="<?php  echo $row['fullName'];?>">
                                             </div>
                                             <div class="col-sm-4 text-center form-group">
                                                 <label for="sex" class="fw-bold">Bill No:</label>
-                                                <input type="text" class="form-control text-center border-0" name="gender" id="sex" value="<?php  echo $row['Clibillid'];?>" readonly  >
+                                                <?php 
+                                                 $patid=$_GET['patid'];
+                                                 $docid = $_SESSION['id'];
+                                                 $ret=mysqli_query($con,"select Clibillid FROM billing WHERE billing.Docid='$docid' ORDER BY billing.Clibillid DESC LIMIT 1; ");
+                                                 while ($row=mysqli_fetch_array($ret)) {
+                                                     if($row['Clibillid'] >= 1){
+                                                         $billno = $row['Clibillid'] + 1;
+                                                     }
+                                                     else{
+                                                         $billno = 1;
+                                                     } ?>
+                                             
+                                               
+                                                <input type="text" class="form-control text-center border-0" name="Clibillid" id="sex" value="Cli-<?php  echo $billno;?>" readonly  >
+                                                <?php  }
+                                                ?>
+                                                
+
                                             </div>
                                             <div class="col-sm-4 text-center form-group">
                                                 <label for="age" class="fw-bold">Date:</label>
@@ -149,7 +171,7 @@ else
                                             <div class="col-sm-8 form-group text-center fw-bold ">
                                                 <label for="description text-center fw-bold">Description</label>
                                                 <hr class="text-primary fw-bold">
-                                                <textarea type="text" class="form-control" name="paydescrp" id="description" placeholder="About Desease" required> </textarea>
+                                                <input type="text" class="form-control" name="paydescrp" id="description" placeholder="Description" required>
                                             </div>
                                             <div class="col-sm-4 form-group text-center fw-bold">
                                                 <label for="total ">Total</label>
@@ -166,17 +188,13 @@ else
                                             </div>
                                         </div>
                                     </form>
-       
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 <div class="col-xxl-12">
+                <h3 id="form-subhead">Patients Bills</h3>
                 <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                     <table class="table datatable">
                         <thead>
@@ -239,6 +257,113 @@ else
                                                     <div class="col-sm-4 text-center form-group">
                                                         <label for="doctorname" class="fw-bold">Name:</label>
                                                         <input type="text" class="form-control text-center border-0" name="patname" id="patname" value="<?php  echo $row['fullName'];?>" readonly  >
+                                                    </div>
+                                                    <div class="col-sm-4 text-center form-group">
+                                                        <label for="sex" class="fw-bold">Bill No:</label>
+                                                        <input type="text" class="form-control text-center border-0" name="Clibillid" id="sex" value="Cli-<?php  echo $row['Clibillid'];?>" readonly  >
+                                                    </div>
+                                                    <div class="col-sm-4 text-center form-group">
+                                                        <label for="age" class="fw-bold">Date:</label>
+                                                        <div>
+                                                            <?php
+                                                            echo $row['Created'];
+                                                            ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class=" mt-0"><hr style="border: 1px solid #012970;"></div>
+                                                    <div class="col-sm-8 form-group text-center ">
+                                                        <label for="description text-center">Description</label>
+                                                        <hr class="text-primary">
+                                                        <input type="text" class="form-control text-center" name="paydescrp" id="description" value="<?php  echo $row['Description'];?>" readonly>
+                                                    </div>
+                                                    <div class="col-sm-4 form-group text-center">
+                                                        <label for="total ">Total</label>
+                                                        <hr class="text-primary">
+                                                        <input type="text" class="form-control text-center" name="payamount" id="total" value="<?php  echo $row['Amount'];?>/-" readonly>
+                                                    </div>
+                                                    <div class="col-sm-12 form-group mt-3">
+                                                        <br>
+                                                        <label for="signature " class="float-end fw-bold">Authorized Signature</label>                                    
+                                                    </div>  
+                                                </div>                              
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button>  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php $i++; }?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <h3 id="form-subhead" class="mt-2">Clinics Bills</h3>
+            <div class="col-xxl-12">
+                <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
+                    <table class="table datatable">
+                        <thead>
+                            <tr id="form-subhead">
+                                <th scope="col">#</th>
+                                <th scope="col">Bill No.</th>
+                                <th scope="col">Bill Of.</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $docid = $_SESSION['id'];
+                            $ret=mysqli_query($con,"SELECT * FROM billing INNER JOIN doctors ON billing.DocId = doctors.id where Docid='1' and Patid < 1;");
+                            $i = 1;
+                            while ($row=mysqli_fetch_array($ret)) { ?>
+                            <tr>
+                                <td class="center"><?php echo $i;?>.</td>
+                                <td>Cli-<?php echo $row['Clibillid'];?></td>
+                                <td><?php echo $row['Amount'];?>/-</td>
+                                <td><?php echo $row['Created'];?></td>
+                                <td> 
+                                <button class="btn btn-outline-success text-center align-items-center" data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row['Billid']?>">View</button>
+                                </td>
+                            </tr>
+                            <div id="myModal<?php echo $row['Billid']?>" class="modal fade modal-lg" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                                <div id="form-print" enctype="text/plain">
+                                                    <div class="row jumbotron rounded py-2">       
+                                                    <div class="row">
+                                                        <div class="col-sm-2 text-center justify-content-center m-auto">
+                                                            <img src="assets/img/logo.svg"  alt="" style="width:100px; height:100px; ">
+                                                        </div>
+                                                        <div class="col-sm-10">
+                                                            <div class="row">
+                                                                <div class="col-sm-7">
+                                                                    <div class="text-center fw-bold fs-3" id="form-subhead">Dr. <?php echo $row['doctorName'];?></div>
+                                                                    <div class="text-center fw-bold fs-5" id="form-subhead"> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px">
+                                                                    <?php echo $row['clinic_name'];?> <img src="assets/img/logo.svg" alt="" style="width:15px; height:15px"> </div> 
+                                                                    <div class="text-center fw-bold fs-5" id="form-subhead"><?php echo $row['specilization'];?> Specialist</div>
+                                                                </div>
+                                                                <div class="col-sm-5">
+                                                                    <div class="text-center fw-bold" id="form-subhead">Timing:</div>
+                                                                    <div class="text-center" id="form-subhead"><?php echo $row['clinic_timing'];?></div>
+                                                                    <div class="text-center text-danger">Closed: <?php echo $row['closed'];?></div>
+                                                                    <div class="text-center fw-bold" id="form-subhead">Contact:</div>
+                                                                    <div class="text-center" id="form-subhead"><?php echo $row['clinic_contact'];?></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="d-flex flex-row">
+                                                                <div class="fw-bold mx-2" id="form-subhead">Address:</div>
+                                                                <div id="form-subhead"><?php echo $row['address'];?></div>
+                                                            </div>
+                                                        </div>
+                                                        <hr style="border: 1px solid #012970;"> 
+                                                    </div> <!---------END OF HEADER----------->
+                                                    <div class="col-sm-4 text-center form-group">
+                                                        <label for="doctorname" class="fw-bold">Name:</label>
+                                                        <input type="text" class="form-control text-center border-0" name="patname" id="patname" value="<?php  echo $row['billname'];?>" readonly  >
                                                     </div>
                                                     <div class="col-sm-4 text-center form-group">
                                                         <label for="sex" class="fw-bold">Bill No:</label>

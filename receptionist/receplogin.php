@@ -10,7 +10,7 @@ error_reporting(0); ?>
 
 <?php include('include/head.php');?>
 
-<body>
+<body style="background: url('../assets/img/better.jfif');">
 <?php 
 if(isset($_POST['submit']))
 {
@@ -51,7 +51,7 @@ else
     text: "Invalid Username or Password",
     icon: "error"
   }, function(){
-        window.location.href = "doctorlogin.php";
+        window.location.href = "receplogin.php";
   });
 
      </script>';
@@ -72,7 +72,7 @@ else
               <div class="d-flex justify-content-center py-4">
                 <a href="../index.php" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo copy.svg" alt="">
-                  <span class="d-none d-lg-block">Doctor Login</span>
+                  <span class="d-none d-lg-block text-primary">Receptionist Login</span>
                 </a>
               </div><!-- End Logo -->
 

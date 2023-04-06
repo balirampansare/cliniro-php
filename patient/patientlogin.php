@@ -39,7 +39,7 @@ include("include/config.php");
 
 </head>
 
-<body>
+<body style="background: url('../assets/img/better.jfif');">
 <?php
 
 if(isset($_POST['submit']))
@@ -99,7 +99,7 @@ else
               <div class="d-flex justify-content-center py-4">
                 <a href="../index.php" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo copy.svg" alt="">
-                  <span class="d-none d-lg-block">Patient Login</span>
+                  <span class="d-none d-lg-block text-primary">Patient Login</span>
                 </a>
               </div><!-- End Logo -->
 
