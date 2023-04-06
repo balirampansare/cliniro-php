@@ -126,7 +126,7 @@ $cfpass=md5($_POST['cfpass']);
             <div class="col-lg-9 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
               <div class="d-flex justify-content-center py-4">
-                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                <a href="../index.php" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo copy.svg" alt="">
                   <span class="d-none d-lg-block me-1">Signup</span> <img src="assets/img/logo copy.svg" alt="">
                 </a>
@@ -232,19 +232,19 @@ $cfpass=md5($_POST['cfpass']);
 
                           <div class="col-sm-2 form-group">
                             <label for="cliniccity">Clinic City</label>
-                            <input type="text" class="form-control" name="cliniccity" required>
+                            <input type="text" class="form-control" name="cliniccity" placeholder="cliniccity" required>
                           </div>
                           <div class="col-sm-4 form-group">
                             <label for="clinictiming">Clinic Timing</label>
-                            <input type="text" class="form-control" name="clinictiming"  required>
+                            <input type="text" class="form-control" name="clinictiming" placeholder="clinictiming"  required>
                           </div>
                           <div class="col-sm-4 form-group">
                             <label for="closed">Clinic Closed On</label>
-                            <input type="text" class="form-control" name="closed"  required>
+                            <input type="text" class="form-control" name="closed" placeholder="closed"  required>
                           </div>
                             <div class="col-sm-2 form-group">
                               <label for="docfees">Fees</label>
-                              <input type="text" class="form-control" name="docfees"  required>
+                              <input type="text" class="form-control" name="docfees" placeholder="fees"  required>
                             </div>
 
                             <div class="col-sm-12 form-group">

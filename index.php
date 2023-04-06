@@ -1,3 +1,36 @@
+
+<?php
+session_start();
+
+include('./doctor/include/config.php');
+error_reporting(0);
+
+    if(isset($_POST['submit']))
+  {
+
+    $typeofreg = $_POST['typeofreg'];
+    $name = $_POST['name'];
+    $timing = $_POST['timing'];
+    $close = $_POST['closed'];
+    $locality = $_POST['locality'];
+    $city = $_POST['city'];
+    $address = $_POST['address'];
+    $contact = $_POST['contact'];
+    $website = $_POST['website'];
+
+    $query=mysqli_query($con, "insert into  inventory(Type,Name,Timing,Closed,Locality,City,Address,Contact,Website)values('$typeofreg','$name','$timing','$close','$locality','$city','$address','$contact','$website')");
+    if ($query) {
+    
+    echo "<script>window.location.href ='index.php'</script>";
+  }
+  else
+    {
+      echo '<script>alert("Something Went Wrong. Please try again")</script>';
+    }
+
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +87,7 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Features</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <!--li><a class="nav-link scrollto" href="#team">Team</a></li-->
           <!--li><a class="nav-link scrollto" href="#pricing">Pricing</a></li-->
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><a href="doctor/doctorlogin.php">Login</a></li>
@@ -153,48 +186,10 @@
       </div>
     </section><!-- End Services Section -->
 
-    <!-- ======= Featured Section ======= -->
-    <!--section id="featured" class="featured">
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="card">
-              <img src="assets/img/featured-1.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Autem sunt earum</a></h5>
-                <p class="card-text">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore</p>
-                <a href="#" class="btn">Explore more</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="card">
-              <img src="assets/img/featured-2.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Nobis et tempore</a></h5>
-                <p class="card-text">Ut quas omnis est. Non et aut tempora dignissimos similique in dignissimos. Sit incidunt et odit iusto</p>
-                <a href="#" class="btn">Explore more</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="card">
-              <img src="assets/img/featured-3.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Facere quia quae dolores</a></h5>
-                <p class="card-text">Modi ut et delectus. Modi nobis saepe voluptates nostrum. Sed quod consequatur quia provident dera</p>
-                <a href="#" class="btn">Explore more</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section--><!-- End Featured Section -->
+   
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
+    <!--section id="testimonials" class="testimonials">
       <div class="container position-relative">
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -211,8 +206,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
-
+            </div>
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
@@ -224,8 +218,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
-
+            </div>
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
@@ -237,8 +230,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
-
+            </div>
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
@@ -250,8 +242,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
-
+            </div>
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
@@ -263,133 +254,17 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
-
+            </div>
           </div>
           <div class="swiper-pagination"></div>
         </div>
 
       </div>
-    </section><!-- End Testimonials Section -->
+    </section>
 
-    <!-- ======= Portfolio Section ======= -->
-    <!--section id="portfolio" class="portfolio">
-      <div class="container">
+   
 
-        <div class="section-title">
-          <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit onsequatur ex aliquid fuga eum quidem</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 2</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Card 2</h4>
-              <p>Card</p>
-              <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 2</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 3</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Card 1</h4>
-              <p>Card</p>
-              <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Card 3</h4>
-              <p>Card</p>
-              <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section--><!-- End Portfolio Section -->
-
-    <!-- ======= Team Section ======= -->
+   
     <section id="team" class="team section-bg">
       <div class="container">
 
@@ -415,7 +290,7 @@
               </div>
               <div class="member-info">
                 <h4>Vaishnavi Kulkarni</h4>
-                <!--span>Product Manager</span-->
+                
               </div>
             </div>
           </div>
@@ -433,7 +308,7 @@
               </div>
               <div class="member-info">
                 <h4>Baliram Pansare</h4>
-                <!--span>CTO</span-->
+                
               </div>
             </div>
           </div>
@@ -451,7 +326,7 @@
               </div>
               <div class="member-info">
                 <h4>Mrunmai Patil</h4>
-                <!--span>Accountant</span-->
+                
               </div>
             </div>
           </div>
@@ -459,7 +334,7 @@
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section-->
 
     <!-- ======= Pricing Section ======= -->
     <!--section id="pricing" class="pricing">
@@ -528,7 +403,7 @@
     </section--><!-- End Pricing Section -->
 
     <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq">
+    <!--section id="faq" class="faq">
       <div class="container">
 
         <div class="section-title">
@@ -588,10 +463,10 @@
         </div>
 
       </div>
-    </section><!-- End Frequently Asked Questions Section -->
+    </section--><!-- End Frequently Asked Questions Section -->
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact section-bg">
+    <section id="getregistered" class="contact section-bg">
       <div class="container">
 
         <div class="section-title">
@@ -605,29 +480,60 @@
       <div class="container">
         
 
-        <div class="row mt-5 justify-content-center">
+        <div class="row mt-2 justify-content-center">
           <div class="col-lg-10">
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              
+            <div class="row jumbotron rounded py-2">
+                    <div class="col-sm-5 form-group text-center  m-auto">
+                      <label for="typeofreg">Select Type</label>
+                      <select name="typeofreg" id="typeofreg" class="form-control browser-default custom-select">
+                        <option value="Ambulance">Ambulance</option>
+                        <option value="Blood Bank">Blood Bank</option>
+                        <option value="Hospital">Hospital</option>
+                        <option value="Laboratory">Laboratory</option>
+                        <option value="Medical">Medical</option>
+                        
+                        
+                      </select>
+                    </div>
+                        <div class="col-sm-12 form-group">
+                            <label for="name" class="fw-semibold">Name:</label>
+                            <input type="text" class="form-control rounded" name="name" id="name" placeholder="Name" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                          <label for="timing" class="fw-semibold">Timing:</label>
+                          <input type="text" class="form-control rounded" name="timing" id="timing" placeholder="Timing" required>
+                      </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="closed" class="fw-semibold">Closed:</label>
+                            <input type="text" class="form-control rounded" name="closed" id="closed" placeholder="Closed on">
+                        </div>
+                        <div class="col-sm-6 form-group">
+                          <label for="locality" class="fw-semibold">Locality:</label>
+                          <input type="text" class="form-control rounded" name="locality" id="locality" placeholder="Locality" required>
+                      </div>
+                        <div class="col-sm-6 form-group">
+                            <label for="city" class="fw-semibold">City:</label>
+                            <input type="text" class="form-control rounded" name="city" id="city" placeholder="City" required>
+                        </div>
+                        
+                        <div class="col-sm-12 form-group">
+                            <label for="address" class="fw-semibold">Address:</label>
+                            <textarea class="form-control rounded border-bottom" name="address" id="address" placeholder="Address" cols="30" rows="2" required></textarea>
+                        </div>
+                        <div class="col-sm-5 form-group">
+                            <label for="contact" class="fw-semibold">Contact:</label>
+                            <input type="text" class="form-control rounded" name="contact" id="contact" placeholder="Contact" required>
+                        </div>
+                        <div class="col-sm-7 form-group">
+                            <label for="website" class="fw-semibold">Website:</label>
+                            <input type="text" class="form-control rounded" name="website" id="website" placeholder="Website">
+                        </div>
+                        
+
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button type="submit">Submit</button></div>
             </form>
           </div>
 
@@ -653,7 +559,7 @@
         <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
       </div-->
       <div class="container">
-        <div class="row mt-5 justify-content-center">
+        <div class="row mt-2 justify-content-center">
 
           <div class="col-lg-10">
 
@@ -685,6 +591,8 @@
 
         
 
+
+
       </div>
     </section><!-- End Contact Section -->
 
@@ -693,46 +601,12 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
-    <div class="footer-top">
-
-      <div class="container">
-
-        <!--div class="row  justify-content-center">
-          <div class="col-lg-6">
-            <h3>Vlava</h3>
-            <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
-          </div>
-        </div-->
-
-        <!--div class="row footer-newsletter justify-content-center">
-          <div class="col-lg-6">
-            <form action="" method="post">
-              <input type="email" name="email" placeholder="Enter your Email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
-
-        <div class="social-links">
-          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div-->
-
-      </div>
-    </div>
-
-    <div class="container footer-bottom clearfix">
+        <div class="container footer-bottom clearfix ">
       <div class="copyright">
-        &copy; Copyright <strong><span>Vlava</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Cliniro</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/vlava-free-bootstrap-one-page-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+       <p>cliniro@gmail.com</p>
       </div>
     </div>
   </footer><!-- End Footer -->

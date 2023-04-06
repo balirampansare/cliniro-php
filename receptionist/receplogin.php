@@ -72,7 +72,7 @@ else
               <div class="d-flex justify-content-center py-4">
                 <a href="../index.php" class="logo d-flex align-items-center w-auto">
                   <img src="assets/img/logo copy.svg" alt="">
-                  <span class="d-none d-lg-block text-primary">Receptionist Login</span>
+                  <span class="d-none d-lg-block text-primary">Assistant Login</span>
                 </a>
               </div><!-- End Logo -->
 
@@ -83,7 +83,7 @@ else
                   <a href="../index.php" class="p-2 flex-grow-1 border rounded m-2"><i class="bi bi-house-door"></i></a>
                   <a href="../doctor/doctorlogin.php" class="p-2 flex-grow-1 border rounded m-2 ">Doctor</a>
                   <a href="../patient/patientlogin.php" class="p-2 flex-grow-1 border rounded m-2">Patient</a>
-                  <a href="receplogin.php" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">R</a>
+                  <a href="receplogin.php" class="p-2 flex-grow-1 border rounded m-2 border-success border-2  fw-bold">Assistant</a>
                   
                 </div>
 
