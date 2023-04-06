@@ -50,7 +50,7 @@ error:function (){}
   }
 </script-->
 
-<body>
+<body >
 <?php
 if(isset($_POST['submit']))
 {
