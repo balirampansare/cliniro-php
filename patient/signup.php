@@ -22,8 +22,14 @@ $query=mysqli_query($con,"insert into users(fullname,address,city,gender,email,p
 if($query)
 {
 	echo "<script>alert('Successfully Registered. You can login now');</script>";
-	//header('location:user-login.php');
+  echo "<script>window.location.href ='patientlogin.php'</script>";
+	
 }
+else
+{
+  echo '<script>alert("Something Went Wrong. Please try again")</script>';
+}
+
 }
 ?>
 

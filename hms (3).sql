@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2023 at 01:05 PM
+-- Generation Time: Apr 07, 2023 at 02:22 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -406,7 +406,36 @@ INSERT INTO `doctorslog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logou
 (258, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-03-30 15:07:02', '31-03-2023 11:22:04 AM', 1),
 (259, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-03-31 05:52:13', '31-03-2023 11:24:41 AM', 1),
 (260, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-03-31 06:06:25', '31-03-2023 11:37:17 AM', 1),
-(261, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-03-31 14:17:45', '31-03-2023 11:55:51 PM', 1);
+(261, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-03-31 14:17:45', '31-03-2023 11:55:51 PM', 1),
+(262, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-04 17:55:22', '04-04-2023 11:25:40 PM', 1),
+(263, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-05 10:24:22', '05-04-2023 04:07:11 PM', 1),
+(264, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-05 17:17:01', '05-04-2023 10:49:59 PM', 1),
+(265, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 05:56:44', '06-04-2023 11:34:50 AM', 1),
+(266, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 14:38:48', '06-04-2023 08:09:31 PM', 1),
+(267, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 15:59:43', '06-04-2023 09:30:55 PM', 1),
+(268, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 16:01:36', '06-04-2023 09:32:32 PM', 1),
+(269, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 16:03:17', '06-04-2023 09:34:29 PM', 1),
+(270, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 16:06:17', '06-04-2023 09:36:27 PM', 1),
+(271, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 16:09:26', '06-04-2023 09:51:26 PM', 1),
+(272, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 16:56:19', NULL, 1),
+(273, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 17:24:18', '06-04-2023 10:54:55 PM', 1),
+(274, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 17:25:01', '06-04-2023 11:09:29 PM', 1),
+(275, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 17:39:41', '06-04-2023 11:11:48 PM', 1),
+(276, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 17:51:12', NULL, 1),
+(277, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 18:43:53', '07-04-2023 12:21:19 AM', 1),
+(278, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 18:51:32', '07-04-2023 12:28:36 AM', 1),
+(279, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 06:59:31', '07-04-2023 12:40:41 PM', 1),
+(280, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 07:11:51', NULL, 1),
+(281, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 07:20:05', '07-04-2023 12:53:47 PM', 1),
+(282, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 07:48:08', '07-04-2023 01:21:09 PM', 1),
+(283, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 07:54:02', '07-04-2023 01:24:42 PM', 1),
+(284, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 08:44:38', '07-04-2023 02:16:28 PM', 1),
+(285, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 08:53:22', '07-04-2023 02:29:49 PM', 1),
+(286, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 09:03:01', '07-04-2023 03:11:55 PM', 1),
+(287, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 09:57:29', '07-04-2023 03:42:56 PM', 1),
+(288, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 10:13:09', '07-04-2023 03:50:12 PM', 1),
+(289, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 10:44:10', '07-04-2023 04:23:48 PM', 1),
+(290, 1, 'anujk123@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 10:54:20', '07-04-2023 04:31:17 PM', 1);
 
 -- --------------------------------------------------------
 
@@ -503,7 +532,10 @@ INSERT INTO `inventory` (`Inventid`, `Type`, `Name`, `Timing`, `Contact`, `Close
 (6, 'Laboratory', 'SRL Dr. Avinash Phadke Labs', '7:30 am to 9 pm', 9870492600, 'Sun after 1pm', 'Shop no 4, Rajkripa Society, near Saibaba Temple, Louis Wadi, Thane West, Maharashtra 400604', '', 'Kajuwadi', 'Thane', '2023-02-25 17:35:37'),
 (7, 'Blood Bank', 'Navjivan Blood Bank', '24/7', 2225371000, '', 'Prakash Bhuvan, Gokhale Rd, Next to Cosmos Bank, Naupada, Thane West, Thane, Maharashtra 400602', '', 'Naupada', 'Thane', '2023-02-25 17:37:41'),
 (8, 'Ambulance', 'Ekvira Ambulance Services', '24/7', 0, '', 'S 3 ,shop 57,vedant commercial complex, Vartak Nagar, Thane West, Thane, Maharashtra 400606', 'https://ekviraambulanceservice.business.site/?utm_source=gmb&utm_medium=referral', 'Vartak Nagar', 'Thane', '2023-02-25 17:40:09'),
-(9, 'Hospital', 'Kaushalya Medical Foundation Trust Hospital', '24/7', 2245454000, '', 'Ganeshwadi, behind Nitin Company, Panch Pakhdi, Thane, Maharashtra 400601', 'https://kaushalyahospitalthane.com/', 'Panch Pakhdi', 'Thane', '2023-02-25 17:41:55');
+(9, 'Hospital', 'Kaushalya Medical Foundation Trust Hospital', '24/7', 2245454000, '', 'Ganeshwadi, behind Nitin Company, Panch Pakhdi, Thane, Maharashtra 400601', 'https://kaushalyahospitalthane.com/', 'Panch Pakhdi', 'Thane', '2023-02-25 17:41:55'),
+(10, 'Hospital', 'Maa Vaishnavis Multispeciality Hospital', '24/7', 8291188000, '-', 'Shiv Co-Operative Society, Kopri Rd, Kopri, Thane East, Thane, Maharashtra 400603', '', 'Kopri', 'Thane', '2023-04-07 13:06:56'),
+(12, 'Ambulance', 'Jeevan Ambulance', '24/7', 9821555528, '', 'Service Road Hanuman Anand, Eastern Express High way, Bhaskar Colony, near Shree Dakshineswar Hanuman Mandir, Naupada, Thane West, Thane, Maharashtra 400602', '', 'Naupada', 'Thane', '2023-04-07 13:17:40'),
+(13, 'Hospital', 'Aayush Multispeciality Hospital - Emergency & Crit', '24/7', 9607666768, '', 'Shopping Complex, Building No. E2, 2nd & 3rd Floor, Radha Nagar, Khadakpada, Kalyan, Maharashtra 421301', 'https://aayush-hospitals.com/', 'Khadakpada', 'Kalyan', '2023-04-07 13:23:37');
 
 -- --------------------------------------------------------
 
@@ -561,7 +593,9 @@ INSERT INTO `patappointments` (`Apptid`, `Appt_Docid`, `Appt_Patid`, `Appt_Descr
 (12, 5, 5, '', '2023-03-16', '12:00', 1, '2023-03-16'),
 (13, 1, 5, '', '2023-03-16', '19:30', 1, '2023-03-16'),
 (14, 1, 5, 'routine checkup', '2023-03-24', '19:00', 1, '2023-03-16'),
-(15, 1, 5, 'fever', '2023-03-23', '20:30', 1, '2023-03-23');
+(15, 1, 5, 'fever', '2023-03-23', '20:30', 1, '2023-03-23'),
+(16, 1, 5, 'Throat Pain', '2023-04-07', '20:30', 1, '2023-04-07'),
+(17, 1, 5, 'Follow Up', '2023-04-08', '19:30', 1, '2023-04-07');
 
 -- --------------------------------------------------------
 
@@ -582,7 +616,7 @@ CREATE TABLE `ratings` (
 --
 
 INSERT INTO `ratings` (`ratingid`, `ratedocid`, `ratepatid`, `rating`, `comment`) VALUES
-(1, 1, 5, 4, 'get well soon buddy'),
+(1, 1, 5, 4, 'Good doctor. He is very simple and gentle in his behaviour. Give sufficient time to each patient.'),
 (5, 5, 5, 3, 'one get well soon'),
 (6, 1, 6, 5, 'Dr. is a great doctor! He’s very understanding and listens to your concerns. He takes time with the patient to help them with their health issues! I highly recommend him to anyone looking for a specialist.'),
 (7, 1, 1, 3, 'The services that I receive from doctor is excellent.'),
@@ -855,7 +889,14 @@ INSERT INTO `userlog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logout`,
 (71, 5, 'bali@test.com', 0x3a3a3100000000000000000000000000, '2023-03-23 13:01:27', '23-03-2023 06:39:39 PM', 1),
 (72, 5, 'bali@test.com', 0x3a3a3100000000000000000000000000, '2023-03-23 13:48:08', '23-03-2023 07:18:54 PM', 1),
 (73, 5, 'bali@test.com', 0x3a3a3100000000000000000000000000, '2023-03-23 17:33:40', '23-03-2023 11:08:40 PM', 1),
-(74, 5, 'bali@test.com', 0x3a3a3100000000000000000000000000, '2023-03-27 16:39:19', '27-03-2023 10:18:36 PM', 1);
+(74, 5, 'bali@test.com', 0x3a3a3100000000000000000000000000, '2023-03-27 16:39:19', '27-03-2023 10:18:36 PM', 1),
+(75, 5, 'bali@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 17:29:46', '06-04-2023 11:02:38 PM', 1),
+(76, 5, 'bali@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 17:32:45', NULL, 1),
+(77, 5, 'bali@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 17:33:32', '06-04-2023 11:05:03 PM', 1),
+(78, 5, 'bali@test.com', 0x3a3a3100000000000000000000000000, '2023-04-06 17:41:56', '06-04-2023 11:21:04 PM', 1),
+(79, 5, 'bali@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 09:43:27', '07-04-2023 03:34:40 PM', 1),
+(80, 5, 'bali@test.com', 0x3a3a3100000000000000000000000000, '2023-04-07 10:20:30', '07-04-2023 03:51:55 PM', 1),
+(81, 7, 'baliram.psmbn@gmail.com', 0x3a3a3100000000000000000000000000, '2023-04-07 12:11:16', '07-04-2023 05:41:29 PM', 1);
 
 -- --------------------------------------------------------
 
@@ -895,7 +936,8 @@ INSERT INTO `users` (`id`, `fullName`, `address`, `city`, `gender`, `email`, `pa
 (2, 'Amit kumar', 'new Delhi india', 'New Delhi', 'male', 'amitk@gmail.com', 'f925916e2754e5e03f75dd58a5733251', '2022-11-06 13:15:32', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
 (3, 'bali bhau', 'wada', 'thane', 'male', 'pansarebaliram@kccemsr.edu.in', 'Test@123', '2023-02-01 03:17:54', '2023-04-03 11:10:01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
 (5, 'Baliram Pansare', '15, Sai Om, ekta vihar,ekta nagar', 'Thane', 'Male', 'bali@test.com', 'f925916e2754e5e03f75dd58a5733251', '2023-02-09 12:19:04', '2023-03-27 16:46:42', 21, 165, 50, 'no medication taken', 'no allergies', 2147483641, 'Kajuwadi', 'Nishant', 'Friend', 2147483641, 0),
-(6, 'Sai Gadge', '6, chawl, ramchandra', 'Thane', 'Male', 'sai@test.com', 'f925916e2754e5e03f75dd58a5733251', '2023-02-09 12:28:32', NULL, 20, 150, 50, 'nothing medication ', 'no', 9324025123, 'Ramchandra', 'Bali', 'Brother', 7738986445, 0);
+(6, 'Sai Gadge', '6, chawl, ramchandra', 'Thane', 'Male', 'sai@test.com', 'f925916e2754e5e03f75dd58a5733251', '2023-02-09 12:28:32', NULL, 20, 150, 50, 'nothing medication ', 'no', 9324025123, 'Ramchandra', 'Bali', 'Brother', 7738986445, 0),
+(7, 'Baliram', 'sai om chs, louiswadi', 'Thane', 'Male', 'baliram.psmbn@gmail.com', '3e8bde4cf35f90bfa7d0f147b1e189c4', '2023-04-07 12:10:05', NULL, 22, 163, 50, '', '', 8291188000, 'Kajuwadi', '', '', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -1042,7 +1084,7 @@ ALTER TABLE `doctors`
 -- AUTO_INCREMENT for table `doctorslog`
 --
 ALTER TABLE `doctorslog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=262;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
 
 --
 -- AUTO_INCREMENT for table `doctorspecilization`
@@ -1060,7 +1102,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `Inventid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Inventid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `notes`
@@ -1072,7 +1114,7 @@ ALTER TABLE `notes`
 -- AUTO_INCREMENT for table `patappointments`
 --
 ALTER TABLE `patappointments`
-  MODIFY `Apptid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Apptid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `ratings`
@@ -1114,13 +1156,13 @@ ALTER TABLE `tblpatient`
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
