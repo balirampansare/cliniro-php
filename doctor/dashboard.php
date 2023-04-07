@@ -156,7 +156,7 @@ if(strlen($_SESSION['id']==0)) {
             <div class="card-body rounded" style="background-color:#012970">
               <h5 class="card-title text-light text-center"> <i class=" fs-3 bi bi-cash-coin"></i> Month Wise Generated Revenue</h5>
               <?php 
-              $sqlbar ="SELECT SUM(PayAmount) as Revenue, MONTHNAME(CreationDate) as Month from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate);";
+              $sqlbar ="SELECT SUM(PayAmount) as Revenue, MONTHNAME(CreationDate) as Month from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate) order by Year(CreationDate),MONTH(CreationDate);";
               $result = mysqli_query($con,$sqlbar);
               $chart_data="";
               while ($row = mysqli_fetch_array($result)) { 
@@ -223,7 +223,7 @@ if(strlen($_SESSION['id']==0)) {
               <!-- Line Chart -->
               <canvas id="lineChart" style="max-height: 400px;background-color:#E9F8F9;border-radius:5px"></canvas>
               <?php 
-              $sql ="SELECT COUNT(PatientID) as TotalPatients, MONTHNAME(CreationDate) as Month from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate);";
+              $sql ="SELECT COUNT(PatientID) as TotalPatients, MONTHNAME(CreationDate) as Month from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate) order by Year(CreationDate),MONTH(CreationDate);;";
               $result = mysqli_query($con,$sql);
               $chart_data="";
               while ($row = mysqli_fetch_array($result)) { 
@@ -328,7 +328,7 @@ if(strlen($_SESSION['id']==0)) {
                             <tbody>
                             <?php
                             $docid=$_SESSION['id'];
-                            $sql=mysqli_query($con,"SELECT * FROM ratings where ratedocid='$docid';");
+                            $sql=mysqli_query($con,"SELECT * FROM ratings where ratedocid='$docid' ORDER BY rating desc;");
                             $cnt=1;
                             while($row=mysqli_fetch_array($sql))
                             {
