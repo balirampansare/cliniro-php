@@ -290,7 +290,8 @@ if(strlen($_SESSION['id']==0)) {
 </div-->
 
 <!--rssapp-wall id="9CCLUg7bG3yiDeda"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script-->
-<rssapp-wall id="epf8uhi4hBBVHzDM"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>      
+
+<rssapp-wall id="epf8uhi4hBBVHzDM"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script> 
 </section>
 
 </main><!-- End #main -->
