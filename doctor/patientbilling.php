@@ -96,7 +96,7 @@ if(isset($_POST['submit']))
         </div>
         
         <div class="row" >
-            <div class="col-xxl-3 ">
+            <div class="col-md-4 col-lg-3 ">
                 <div class="card">
                     <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
                     <div class="card-body text-center">
@@ -226,7 +226,7 @@ if(isset($_POST['submit']))
                 </section>
             </div>
 
-            <div class="col-xxl-9">
+            <div class="col-md-8 col-lg-9">
                 <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                     <table class="table datatable">
                         <thead>

@@ -117,7 +117,7 @@ else
                   <div class="pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                     <p>
-								Please enter your name and password to log in.<br />
+								Please enter your email and password to log in.<br />
 								<span style="color:red;"><?php echo htmlentities($_SESSION['errmsg']); ?><?php echo htmlentities($_SESSION['errmsg']="");?></span>
 							</p>
                   </div>

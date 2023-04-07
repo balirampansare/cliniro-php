@@ -139,7 +139,7 @@ else
     {
         $add = $row['Event_address'];
         ?>
-  <div class="col-lg-4">
+  <div class="col-lg-4 ">
     <div class="card border border-dark rounded" style="width: 18rem;">
       <img src="https://digitalagencynetwork.com/wp-content/uploads/2021/10/top-technology-events-you-should-attend-1.jpg" class="card-img-top" alt="..." style="height:8rem;">
       <div class="card-body">
