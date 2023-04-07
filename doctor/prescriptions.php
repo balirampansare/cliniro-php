@@ -107,10 +107,10 @@ if(isset($_POST['submit']))
 
   <main class="main" id="main">
   <div class="pagetitle">
-    <h1>Clifea</h1>
+    <h1>Prescriptions</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+        <li class="breadcrumb-item"><a href="doctorlanding.php">Home</a></li>
         <li class="breadcrumb-item active">Patient</li>
         <li class="breadcrumb-item active">Patient Info</li>
       </ol>

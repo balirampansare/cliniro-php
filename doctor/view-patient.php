@@ -24,7 +24,7 @@ if(strlen($_SESSION['id']==0)) {
       <h1>Patients</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="doctorlanding.php">Home</a></li>
           <li class="breadcrumb-item active">Patient</li>
           <li class="breadcrumb-item active">Patient Info</li>
         </ol>

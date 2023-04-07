@@ -97,7 +97,7 @@ else
       <h1>Profile-Change Password</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item"><a href="patientlanding.php">Home</a></li>
           <li class="breadcrumb-item active ">Profile</li>
           <li class="breadcrumb-item active ">Change Password</li>
         </ol>

@@ -88,7 +88,7 @@ if($sql)
       <h1>Profile-Details</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="doctorlanding.php">Home</a></li>
           <li class="breadcrumb-item">Profile</li>
           <li class="breadcrumb-item active">Info</li>
         </ol>

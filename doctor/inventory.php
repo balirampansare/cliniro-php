@@ -37,7 +37,7 @@ if(strlen($_SESSION['id']==0)) {
         <h1>Inventory</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="dashboard.php">Inventory</a></li>
+                <li class="breadcrumb-item"><a href="doctorlanding.php">Inventory</a></li>
                 <li class="breadcrumb-item active">Doctors Inventory</li>
             </ol>
         </nav>

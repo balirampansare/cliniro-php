@@ -176,7 +176,7 @@ $cfpass=md5($_POST['cfpass']);
       <h1> Receptionist Login</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="doctorlanding.php">Home</a></li>
           <li class="breadcrumb-item">Inventory</li>
           <li class="breadcrumb-item active">Receptionist</li>
         </ol>

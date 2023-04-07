@@ -65,7 +65,7 @@ if(isset($_POST['submit']))
         </h1>
         <nav>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+            <li class="breadcrumb-item"><a href="patientlanding.php">Home</a></li>
             <li class="breadcrumb-item">My Doctors</li>
             <li class="breadcrumb-item active">Appointments</li>
           </ol>

@@ -30,7 +30,7 @@ if(strlen($_SESSION['id']==0)) {
       <h1>Be Updated</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="doctorlanding.php">Home</a></li>
           <li class="breadcrumb-item active">Be Updated</li>
         </ol>
       </nav>

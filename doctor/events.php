@@ -73,7 +73,7 @@ else
         <h1>Events</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="dashboard.php">Schedules</a></li>
+                <li class="breadcrumb-item"><a href="doctorlanding.php">Schedules</a></li>
                 <li class="breadcrumb-item active">Events</li>
             </ol>
         </nav>
