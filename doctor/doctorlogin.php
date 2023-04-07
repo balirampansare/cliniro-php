@@ -26,7 +26,7 @@ $uid=$num['id'];
 $uip=$_SERVER['REMOTE_ADDR'];
 $status=1;
 //Code Logs
-$log=mysqli_query($con,"insert into doctorslog(uid,username,userip,status) values('$uid','$uname','$uip','$status')");
+
 
 /*header("location:doctorlanding.php")*/
 echo '<script type="text/javascript">
