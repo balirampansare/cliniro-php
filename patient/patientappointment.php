@@ -25,7 +25,7 @@ if(isset($_POST['submit']))
       $query=mysqli_query($con, "insert into  patappointments(Appt_Patid,Appt_DocId,Appt_Descrip,Appt_Date,Appt_Time,Appt_Status)values('$patid','$docid','$description','$date','$time','$status')");
     if ($query) {
     echo '<script>alert("Appointment Booked")</script>';
-    echo "<script>window.location.href ='mydoctor.php'</script>";
+    echo "<script>window.location.href ='patientlanding.php'</script>";
   }
   else
     {
@@ -89,7 +89,7 @@ if(isset($_POST['submit']))
         </div>
         
         <div class="row" >
-          <div class="col-xxl-3 ">
+          <div class="col-md-4 col-lg-3 ">
             <div class="card">
               <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
               <div class="card-body text-center">
@@ -109,7 +109,7 @@ if(isset($_POST['submit']))
             <?php }?>
           </div>
           
-          <div class="col-xxl-9">
+          <div class="col-md-8 col-lg-9">
             <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
               <form method="post" name="submit">
                   <div class="row mt-2 justify-content-end">
