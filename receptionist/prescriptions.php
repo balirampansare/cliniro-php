@@ -71,12 +71,12 @@ if(strlen($_SESSION['id']==0)) {
 
   <main class="main" id="main">
   <div class="pagetitle">
-    <h1>Clifea</h1>
+    <h1>Prescriptions</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+        <li class="breadcrumb-item"><a href="doctorlanding.php">Home</a></li>
         <li class="breadcrumb-item active">Patient</li>
-        <li class="breadcrumb-item active">Patient Info</li>
+        <li class="breadcrumb-item active">Patient Prescriptions</li>
       </ol>
     </nav>
   </div>
@@ -97,7 +97,7 @@ if(strlen($_SESSION['id']==0)) {
       </div>
       
       <div class="row" >
-        <div class="col-xxl-3 ">
+        <div class="col-md-4 col-lg-3">
           <div class="card">
             <img class="card-img-top" src="../assets/img/cardback.png" alt="Bologna">
             <div class="card-body text-center">
@@ -120,7 +120,7 @@ if(strlen($_SESSION['id']==0)) {
                       
                    </div>
        
-                   <div class="col-xxl-9">
+                   <div class="col-md-8 col-lg-9">
                    <div class="container-fluid box8 rounded table-responsive" id="patients-patients-cont">
                         <table class="table datatable">
                             <thead>

@@ -47,7 +47,7 @@ echo '<script>alert("Something Went Wrong. Please try again")</script>';
       <h1>All Appointments</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="doctorlanding.php">Home</a></li>
           <li class="breadcrumb-item active">Appointments</li>
         </ol>
       </nav>

@@ -32,7 +32,7 @@ if(strlen($_SESSION['id']==0)) {
       <h1>Search Patient</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="doctorlanding.php">Home</a></li>
           <li class="breadcrumb-item">Patients</li>
           <li class="breadcrumb-item active">Search Patient</li>
         </ol>
