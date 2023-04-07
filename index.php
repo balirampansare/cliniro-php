@@ -72,7 +72,7 @@ error_reporting(0);
 
       <div class="logo d-flex">
         <img src="assets/img/logo copy.svg" alt="">
-        <h1><a href="index.html" class="mx-2"> Cliniro</a></h1>
+        <h1><a href="index.php" class="mx-2"> Cliniro</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
