@@ -21,7 +21,8 @@ error_reporting(0);
     $query=mysqli_query($con, "insert into  inventory(Type,Name,Timing,Closed,Locality,City,Address,Contact,Website)values('$typeofreg','$name','$timing','$close','$locality','$city','$address','$contact','$website')");
     if ($query) {
     
-    echo "<script>window.location.href ='index.php'</script>";
+      echo '<script>alert("Details Added Successfully")</script>';
+      echo "<script>window.location.href ='index.php'</script>";
   }
   else
     {
@@ -44,7 +45,7 @@ error_reporting(0);
 
   <!-- Favicons -->
   <link href="assets/img/logo copy.svg" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!--link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"-->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -60,13 +61,7 @@ error_reporting(0);
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Vlava
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/vlava-free-bootstrap-one-page-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  
 </head>
 
 <body>
@@ -471,20 +466,19 @@ error_reporting(0);
 
         <div class="section-title">
           <h2>Get Registered</h2>
-          <p>Reach out by our doctors and patients by filling out below form</p>
+          <p>Fill out the below form to get reach out by our doctors and patients.</p>
         </div>
       </div>
-      <!--div class="map">
-        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-      </div-->
+      
       <div class="container">
         
 
         <div class="row mt-2 justify-content-center">
-          <div class="col-lg-10">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              
-            <div class="row jumbotron rounded py-2">
+          <div class="col-lg-10" style="background-color:white;box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);">
+         
+            <div class="info">
+              <form method="post" name="submit">
+                <div class="row jumbotron  rounded py-2">
                     <div class="col-sm-5 form-group text-center  m-auto">
                       <label for="typeofreg">Select Type</label>
                       <select name="typeofreg" id="typeofreg" class="form-control browser-default custom-select">
@@ -499,42 +493,49 @@ error_reporting(0);
                     </div>
                         <div class="col-sm-12 form-group">
                             <label for="name" class="fw-semibold">Name:</label>
-                            <input type="text" class="form-control rounded" name="name" id="name" placeholder="Name" required>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Name" required>
                         </div>
                         <div class="col-sm-6 form-group">
                           <label for="timing" class="fw-semibold">Timing:</label>
-                          <input type="text" class="form-control rounded" name="timing" id="timing" placeholder="Timing" required>
+                          <input type="text" class="form-control" name="timing" id="timing" placeholder="Timing">
                       </div>
                         <div class="col-sm-6 form-group">
                             <label for="closed" class="fw-semibold">Closed:</label>
-                            <input type="text" class="form-control rounded" name="closed" id="closed" placeholder="Closed on">
+                            <input type="text" class="form-control" name="closed" id="closed" placeholder="Closed on">
                         </div>
                         <div class="col-sm-6 form-group">
                           <label for="locality" class="fw-semibold">Locality:</label>
-                          <input type="text" class="form-control rounded" name="locality" id="locality" placeholder="Locality" required>
+                          <input type="text" class="form-control" name="locality" id="locality" placeholder="Locality">
                       </div>
                         <div class="col-sm-6 form-group">
                             <label for="city" class="fw-semibold">City:</label>
-                            <input type="text" class="form-control rounded" name="city" id="city" placeholder="City" required>
+                            <input type="text" class="form-control" name="city" id="city" placeholder="City">
                         </div>
                         
                         <div class="col-sm-12 form-group">
                             <label for="address" class="fw-semibold">Address:</label>
-                            <textarea class="form-control rounded border-bottom" name="address" id="address" placeholder="Address" cols="30" rows="2" required></textarea>
+                            <textarea class="form-control border-bottom" name="address" id="address" placeholder="Address" cols="30" rows="2" required></textarea>
                         </div>
                         <div class="col-sm-5 form-group">
                             <label for="contact" class="fw-semibold">Contact:</label>
-                            <input type="text" class="form-control rounded" name="contact" id="contact" placeholder="Contact" required>
+                            <input type="text" class="form-control" name="contact" pattern="[1-9]{1}[0-9]{9}" id="contact" placeholder="Contact">
                         </div>
                         <div class="col-sm-7 form-group">
                             <label for="website" class="fw-semibold">Website:</label>
-                            <input type="text" class="form-control rounded" name="website" id="website" placeholder="Website">
+                            <input type="text" class="form-control" name="website" id="website" placeholder="Website">
                         </div>
-                        
+                        <div class="col-sm-12 form-group mt-1">
+                            <button type="submit" name="submit"  class="btn btn-outline-success float-end">Submit</button>
+                        </div>
 
                 </div>
-              <div class="text-center"><button type="submit">Submit</button></div>
+    
             </form>
+              
+
+            </div>
+
+          
           </div>
 
         </div>
@@ -552,12 +553,10 @@ error_reporting(0);
 
         <div class="section-title">
           <h2>Contact</h2>
-          <!--p>Magnam dolores commodi suscipituia fugiat sit in iste officiis commodi quidem hic quas.</p-->
+          
         </div>
       </div>
-      <!--div class="map">
-        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-      </div-->
+     
       <div class="container">
         <div class="row mt-2 justify-content-center">
 
