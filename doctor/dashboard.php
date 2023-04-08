@@ -293,7 +293,7 @@ if(strlen($_SESSION['id']==0)) {
                     data: {
                       labels:<?php echo json_encode($pielabels); ?>,
                       datasets: [{
-                        label: 'My First Dataset',
+                        label: 'Total no of reviews',
                         data:<?php echo json_encode($ratingscount); ?>,
                         backgroundColor: [
                           'rgb(255, 99, 132)',
