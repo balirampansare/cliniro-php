@@ -37,7 +37,8 @@ if(strlen($_SESSION['id']==0)) {
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section">
+    <section class="section" id="form-print">
+    <!--button class="btn btn-outline-success m-1" onclick="GeneratePdf();" value="GeneratePdf"><i class="bi bi-download"></i></button--> 
       <div class="row">
         <div class="col-lg-6" >
 
@@ -646,6 +647,20 @@ if(strlen($_SESSION['id']==0)) {
   
 
 <?php include('include/footer.php');?>
+
+<!--script>
+  function GeneratePdf() {
+    var element = document.getElementById('form-print');
+    var opt = {
+      margin:       0.2,
+      filename:     'myfile.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'a2', orientation: 'portrait' }
+    };
+    html2pdf(element, opt);
+  }
+  </script-->
 
 </body>
 
