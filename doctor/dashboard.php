@@ -155,9 +155,9 @@ if(strlen($_SESSION['id']==0)) {
         </div>
 
         <div class="col-lg-6">
-          <div class="card rounded bg-primary ">
+          <div class="card rounded " style="background-color:#088F8F ">
             <div class="card-body">
-              <h5 class="card-title text-dark text-center"> <i class="fs-3 bi bi-bookmark-star"></i> Ratings</h5>
+              <h5 class="card-title text-dark text-center"> <i class="fs-3 bi bi-cash-coin"></i> Revenue At Glance</h5>
               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
               <?php 
               $sql=mysqli_query($con,"SELECT SUM(PayAmount) TillDate FROM tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
@@ -182,7 +182,7 @@ if(strlen($_SESSION['id']==0)) {
                 <script>
                 var xValues = ["Today", "Yesterday", "Till-Date"];
                 var yValues = [ <?php echo $row['TAmt']  ?>, <?php echo $rowdata['YAmt']?>, <?php echo $data['TillDate']?>];
-                var barColors = ["red", "green","blue"];
+                var barColors = ["brown", "green","#CD7F32"];
 
                 new Chart("myChart", {
                   type: "horizontalBar",
@@ -197,7 +197,7 @@ if(strlen($_SESSION['id']==0)) {
                     legend: {display: false},
                     title: {
                       display: true,
-                      text: "<?php echo $yestdate ?>"
+                      text: "Revenue insight"
                     },
                     scales: {
                       y: {
@@ -218,14 +218,7 @@ if(strlen($_SESSION['id']==0)) {
           <div class="card">
             <div class="card-body rounded" style="background-color:#012970">
               <h5 class="card-title text-light text-center"> <i class=" fs-3 bi bi-cash-coin"></i> Month Wise Generated Revenue</h5>
-              <?php 
-              $sql=mysqli_query($con,"SELECT SUM(PayAmount) TillDate FROM tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
-              while($data=mysqli_fetch_array($sql))
-              {
-              ?>
-              <h6 class="text-light text-center">Till Date Revenue: ₹ <b><?php echo $data['TillDate'];?></b> </h6>
-
-              <?php }?>
+              
 
               
               <?php 
@@ -291,7 +284,7 @@ if(strlen($_SESSION['id']==0)) {
         <div class="col-lg-6">
           <div class="card rounded bg-dark">
             <div class="card-body">
-              <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-person"></i> Total Patients Treated Month Wise</h5><br>
+              <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-person"></i> Total Patients Treated Month Wise</h5>
 
               <!-- Line Chart -->
               <canvas id="lineChart" style="max-height: 400px;background-color:#E9F8F9;border-radius:5px"></canvas>
