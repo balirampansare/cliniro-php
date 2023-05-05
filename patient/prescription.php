@@ -221,7 +221,7 @@ if(strlen($_SESSION['id']==0)) {
                                             </div>
                                             <div class="col-sm-4 text-center form-group mt-1">
                                                 <label for="bp" class="fw-bold">BP</label>
-                                                <input type="number" class="form-control text-center border-0" name="pdfbp" id="patbp" value="<?php  echo $row['BloodPressure'];?>" required readonly>
+                                                <input type="text" class="form-control text-center border-0" name="pdfbp" id="patbp" value="<?php  echo $row['BloodPressure'];?>" required readonly>
                                             </div>
                                             <div class="col-sm-2 text-center form-group mt-1">
                                                 <label for="temp" class="fw-bold">Temp</label>
