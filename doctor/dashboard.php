@@ -331,16 +331,44 @@ if(strlen($_SESSION['id']==0)) {
         <div class="col-lg-6">
           <div class="card rounded ">
             <div class="card-body">
-              <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-bookmark-star"></i> Ratings</h5>
+              <h5 class="card-title text-dark text-center"> <i class="fs-3 bi bi-bookmark-star"></i> Ratings</h5>
               <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+              <?php 
+              $sql=mysqli_query($con,"SELECT SUM(PayAmount) TillDate FROM tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
+              while($data=mysqli_fetch_array($sql))
+              {
+              ?>
+
+                    <?php
+                      date_default_timezone_set("Asia/Kolkata");
+                      $todaydate =date("Y-m-d");
+                      $result = mysqli_query($con,"SELECT SUM(PayAmount) TAmt from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$todaydate%';");
+                      while ($row=mysqli_fetch_array($result)) { 
+                      ?>
+              <?php
+                      date_default_timezone_set("Asia/Kolkata");
+                      $yestdate =date("Y-m-d",strtotime("-1 days"));
+                      $yestrev = mysqli_query($con,"SELECT SUM(PayAmount) YAmt from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$yestdate%';");
+                      while ($rowdata=mysqli_fetch_array($yestrev)) { 
+                      ?>
+
+                  <?php
+                      date_default_timezone_set("Asia/Kolkata");
+                      $currdate =date("Y-m-d");
+                      $sevendate =date("Y-m-d",strtotime("-7 days"));
+                      $lastsev = mysqli_query($con,"SELECT SUM(PayAmount) YAmt from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$yestdate%';");
+                      while ($rowdata=mysqli_fetch_array($lastsev)) { 
+                      ?>
+
+              
 
               
               <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
                 <script>
-                var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-                var yValues = [55, 49, 44, 24, 15];
-                var barColors = ["red", "green","blue","orange","brown"];
+                var xValues = ["Today", "Yesterday", "Till-Date"];
+                var yValues = [ <?php echo $row['TAmt']  ?>, <?php echo $rowdata['YAmt']?>, <?php echo $data['TillDate']?>];
+                var barColors = ["red", "green","blue"];
 
                 new Chart("myChart", {
                   type: "horizontalBar",
@@ -355,13 +383,16 @@ if(strlen($_SESSION['id']==0)) {
                     legend: {display: false},
                     title: {
                       display: true,
-                      text: "World Wine Production 2018"
+                      text: "<?php echo $yestdate ?>"
                     },
                     scales: {
-                      xAxes: [{ticks: {min: 10, max:60}}]
+                      y: {
+                          beginAtZero: true
+                        }
                     }
                   }
                 });
+                <?php } } } }?>
                 </script>
 
             </div>
