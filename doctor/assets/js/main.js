@@ -483,7 +483,7 @@ resetButton.addEventListener("click", reset);
         city.innerHTML=`<span>${nameval}<span>`
         temp.innerHTML = ` <span>${ convertion(tempature)} C</span>`
         description.innerHTML = ` <span>${descrip}<span>`
-        //wind.innerHTML = `Wind Speed: <span>${wndspd} km/h<span>`
+        wind.innerHTML = `Wind Speed: <span>${wndspd} km/h<span>`
     
       })
     
