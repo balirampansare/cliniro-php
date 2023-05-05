@@ -29,7 +29,7 @@ if(strlen($_SESSION['id']==0)) {
       <h1>All Appointments</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="patientlanding.php">Home</a></li>
           <li class="breadcrumb-item active">Appointments</li>
         </ol>
       </nav>
