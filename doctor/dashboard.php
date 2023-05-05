@@ -154,6 +154,65 @@ if(strlen($_SESSION['id']==0)) {
           </div>
         </div>
 
+        <div class="col-lg-6">
+          <div class="card rounded bg-primary ">
+            <div class="card-body">
+              <h5 class="card-title text-dark text-center"> <i class="fs-3 bi bi-bookmark-star"></i> Ratings</h5>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+              <?php 
+              $sql=mysqli_query($con,"SELECT SUM(PayAmount) TillDate FROM tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
+              while($data=mysqli_fetch_array($sql))
+              {
+              ?>
+
+                    <?php
+                      date_default_timezone_set("Asia/Kolkata");
+                      $todaydate =date("Y-m-d");
+                      $result = mysqli_query($con,"SELECT SUM(PayAmount) TAmt from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$todaydate%';");
+                      while ($row=mysqli_fetch_array($result)) { 
+                      ?>
+              <?php
+                      date_default_timezone_set("Asia/Kolkata");
+                      $yestdate =date("Y-m-d",strtotime("-1 days"));
+                      $yestrev = mysqli_query($con,"SELECT SUM(PayAmount) YAmt from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$yestdate%';");
+                      while ($rowdata=mysqli_fetch_array($yestrev)) { 
+                      ?>            
+              <canvas id="myChart" style="width:100%;max-width:600px;background-color:#E9F8F9;border-radius:5px"></canvas>
+
+                <script>
+                var xValues = ["Today", "Yesterday", "Till-Date"];
+                var yValues = [ <?php echo $row['TAmt']  ?>, <?php echo $rowdata['YAmt']?>, <?php echo $data['TillDate']?>];
+                var barColors = ["red", "green","blue"];
+
+                new Chart("myChart", {
+                  type: "horizontalBar",
+                  data: {
+                  labels: xValues,
+                  datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                  }]
+                },
+                  options: {
+                    legend: {display: false},
+                    title: {
+                      display: true,
+                      text: "<?php echo $yestdate ?>"
+                    },
+                    scales: {
+                      y: {
+                          beginAtZero: true
+                        }
+                    }
+                  }
+                });
+                <?php  } } }?>
+                </script>
+
+            </div>
+          </div>
+        </div>
+
         
         <div class="col-lg-6">
           <div class="card">
@@ -232,7 +291,7 @@ if(strlen($_SESSION['id']==0)) {
         <div class="col-lg-6">
           <div class="card rounded bg-dark">
             <div class="card-body">
-              <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-person"></i> Total Patients Treated Month Wise</h5>
+              <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-person"></i> Total Patients Treated Month Wise</h5><br>
 
               <!-- Line Chart -->
               <canvas id="lineChart" style="max-height: 400px;background-color:#E9F8F9;border-radius:5px"></canvas>
@@ -283,7 +342,7 @@ if(strlen($_SESSION['id']==0)) {
 
         
 
-        <div class="col-lg-6">
+        <div class="col-lg-6 m-auto">
           <div class="card rounded bg-success">
             <div class="card-body">
               <h5 class="card-title text-light text-center"> <i class="fs-3 bi bi-bookmark-star"></i> Ratings</h5>
@@ -328,76 +387,7 @@ if(strlen($_SESSION['id']==0)) {
           </div>
         </div>
 
-        <div class="col-lg-6">
-          <div class="card rounded ">
-            <div class="card-body">
-              <h5 class="card-title text-dark text-center"> <i class="fs-3 bi bi-bookmark-star"></i> Ratings</h5>
-              <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-              <?php 
-              $sql=mysqli_query($con,"SELECT SUM(PayAmount) TillDate FROM tblmedicalhistory WHERE DocId=".$_SESSION['id'].";");
-              while($data=mysqli_fetch_array($sql))
-              {
-              ?>
-
-                    <?php
-                      date_default_timezone_set("Asia/Kolkata");
-                      $todaydate =date("Y-m-d");
-                      $result = mysqli_query($con,"SELECT SUM(PayAmount) TAmt from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$todaydate%';");
-                      while ($row=mysqli_fetch_array($result)) { 
-                      ?>
-              <?php
-                      date_default_timezone_set("Asia/Kolkata");
-                      $yestdate =date("Y-m-d",strtotime("-1 days"));
-                      $yestrev = mysqli_query($con,"SELECT SUM(PayAmount) YAmt from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$yestdate%';");
-                      while ($rowdata=mysqli_fetch_array($yestrev)) { 
-                      ?>
-
-                  <?php
-                      date_default_timezone_set("Asia/Kolkata");
-                      $currdate =date("Y-m-d");
-                      $sevendate =date("Y-m-d",strtotime("-7 days"));
-                      $lastsev = mysqli_query($con,"SELECT SUM(PayAmount) YAmt from tblmedicalhistory WHERE DocId=".$_SESSION['id']." and CreationDate like '$yestdate%';");
-                      while ($rowdata=mysqli_fetch_array($lastsev)) { 
-                      ?>
-
-              
-
-              
-              <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-
-                <script>
-                var xValues = ["Today", "Yesterday", "Till-Date"];
-                var yValues = [ <?php echo $row['TAmt']  ?>, <?php echo $rowdata['YAmt']?>, <?php echo $data['TillDate']?>];
-                var barColors = ["red", "green","blue"];
-
-                new Chart("myChart", {
-                  type: "horizontalBar",
-                  data: {
-                  labels: xValues,
-                  datasets: [{
-                    backgroundColor: barColors,
-                    data: yValues
-                  }]
-                },
-                  options: {
-                    legend: {display: false},
-                    title: {
-                      display: true,
-                      text: "<?php echo $yestdate ?>"
-                    },
-                    scales: {
-                      y: {
-                          beginAtZero: true
-                        }
-                    }
-                  }
-                });
-                <?php } } } }?>
-                </script>
-
-            </div>
-          </div>
-        </div>
+        
 
         <div class="col-xxl-12 mx-auto">
                     <div class="container-fluid box8 rounded table-responsive bg-primary" id="patients-patients-cont">
