@@ -67,8 +67,9 @@ if(strlen($_SESSION['id']==0)) {
 </div-->
 
 
-<rssapp-wall id="wEGMRIiSCAPDp082"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>
+<!--rssapp-wall id="wEGMRIiSCAPDp082"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script-->
 
+<rssapp-wall id="IrhVzIvI0KMejgc8"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>
 
 
       
