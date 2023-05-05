@@ -81,6 +81,7 @@ if(strlen($_SESSION['id']==0)) {
                   <span class="text-dark"><?php echo $datesearch?></span>
                 </div>
               </div>
+              
               <div class="col-lg-5 m-auto mt-4 bg-info rounded" style="transform: rotate(1.5deg);"> 
                 <div class="p-3">
                 <h4><i class="bi bi-pin-angle-fill" style="color:#012970"></i></h4>
@@ -123,6 +124,8 @@ if(strlen($_SESSION['id']==0)) {
                   
                 </div>
               </div>
+
+              
               <div class="col-lg-5 m-auto mt-4  rounded" style="background-color:#20bf55;transform: rotate(1.5deg);">
                 <div class="p-3">
                 <h4><i class="bi bi-pin-angle-fill" style="color:#012970"></i></h4>

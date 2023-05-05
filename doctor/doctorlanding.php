@@ -224,11 +224,11 @@ if(strlen($_SESSION['id']==0)) {
               <h5 class="card-title">Weather <span>| Today</span></h5>                
               <div class="container-fluid">
                 <div class="align-items-center justify-content-center">
-                  <div class="weather-icon d-flex "><i class="bi bi-geo"></i><span id="cityoutput"></span></div> <br>
-                <div class="weather-icon d-flex" ><i class="bi bi-info-circle"></i><span id="description"></span></div> <br>
+                  <div class="weather-icon d-flex "><i class="bi bi-geo"></i><span id="cityoutput"></span></div> 
+                <div class="weather-icon d-flex" ><i class="bi bi-info-circle"></i><span id="description"></span></div> 
                 <div class="weather-icon d-flex p-2"> <i class="bi bi-thermometer-sun"></i><span id="temp"></span></div>
                 
-                <!--div class="weather-icon d-flex "> <i class="bi bi-wind"></i><span id="wind"></span></div-->
+                <div class="weather-icon d-flex "> <i class="bi bi-wind"></i><span id="wind"></span></div>
               </div> 
               </div>
               <form onSubmit="return false;" class="d-flex">
