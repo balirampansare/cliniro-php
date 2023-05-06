@@ -15,6 +15,7 @@ if(strlen($_SESSION['id']==0)) {
     $description = $_POST['paydescrp'];
     $total = $_POST['payamount'];
 
+    
     $ret=mysqli_query($con,"select Clibillid FROM billing WHERE billing.Docid='$docid' ORDER BY billing.Clibillid DESC LIMIT 1; ");
     while ($row=mysqli_fetch_array($ret)) {
         if($row['Clibillid'] >= 1){
