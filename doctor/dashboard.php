@@ -222,12 +222,12 @@ if(strlen($_SESSION['id']==0)) {
 
               
               <?php 
-              $sqlbar ="SELECT SUM(PayAmount) as Revenue, MONTHNAME(CreationDate) as Month from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate) order by Year(CreationDate),MONTH(CreationDate);";
+              $sqlbar ="SELECT SUM(PayAmount) as Revenue, MONTHNAME(CreationDate) as Month,Year(CreationDate) as Year  from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate) order by Year(CreationDate),MONTH(CreationDate);";
               $result = mysqli_query($con,$sqlbar);
               $chart_data="";
               while ($row = mysqli_fetch_array($result)) { 
       
-                 $month[]  = $row['Month']  ;
+                 $month[]  = $row['Month'] . '-' . $row['Year'];
                  $revenue[] = $row['Revenue'];
              }
               ?>
@@ -289,12 +289,12 @@ if(strlen($_SESSION['id']==0)) {
               <!-- Line Chart -->
               <canvas id="lineChart" style="max-height: 400px;background-color:#E9F8F9;border-radius:5px"></canvas>
               <?php 
-              $sql ="SELECT COUNT(PatientID) as TotalPatients, MONTHNAME(CreationDate) as Month from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate) order by Year(CreationDate),MONTH(CreationDate);;";
+              $sql ="SELECT COUNT(PatientID) as TotalPatients, MONTHNAME(CreationDate) as Month,Year(CreationDate) as Year from tblmedicalhistory WHERE DocId=".$_SESSION['id']." GROUP by MONTHNAME(CreationDate) order by Year(CreationDate),MONTH(CreationDate);;";
               $result = mysqli_query($con,$sql);
               $chart_data="";
               while ($row = mysqli_fetch_array($result)) { 
       
-                 $LineMonth[]  = $row['Month']  ;
+                 $LineMonth[]  = $row['Month'] . '-' . $row['Year']  ;
                  $TotalPat[] = $row['TotalPatients'];
              }
               ?>
