@@ -292,7 +292,9 @@ if(strlen($_SESSION['id']==0)) {
 
 <!--rssapp-wall id="9CCLUg7bG3yiDeda"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script-->
 
-<rssapp-wall id="UWdP8jY7eQz5AgIA"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>
+<!--rssapp-wall id="UWdP8jY7eQz5AgIA"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script-->
+
+<rssapp-wall id="0l34EqDiS2WaK0re"></rssapp-wall><script src="https://widget.rss.app/v1/wall.js" type="text/javascript" async></script>
 </section>
 
 </main><!-- End #main -->
